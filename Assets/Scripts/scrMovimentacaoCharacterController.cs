@@ -20,6 +20,7 @@ public class scrMovimentacaoCharacterController : MonoBehaviour
     float gravity = -9.8f;
     Vector3 velocity;
 
+    // leonardo
     void Start()
     {
         control = GetComponent<CharacterController>();
