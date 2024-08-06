@@ -39,11 +39,6 @@ public class PlayerMoveRigidbody : MonoBehaviour
             gameObject.tag = "Player1";
         }
     }
-
-    private void Start()
-    {
-    }
-
     //private void OnEnable()
     //{
     //    playerInputs.Player.Jump.started += OnJump;
@@ -67,10 +62,10 @@ public class PlayerMoveRigidbody : MonoBehaviour
         }
         else
             rb.velocity = new Vector3(rb.velocity.x ,rb.velocity.y ,rb.velocity.z);
+        //WasPressedThisFrame() pesquisar em casa
         if (InJump)
-        { 
+        {
             rb.AddForce(Vector3.up * jumpForce);
-            Debug.Log("Pulou");
             InJump = false;
         }
     }
@@ -83,9 +78,8 @@ public class PlayerMoveRigidbody : MonoBehaviour
     public void OnJump(InputAction.CallbackContext context)
     {
         if (IsGrounded() && !InAttack)
-        { 
-            anim.SetTrigger("Jump");
-            InJump = true;
+        {
+            rb.AddForce(Vector3.up * jumpForce);
         }
     }
     public bool IsGrounded()

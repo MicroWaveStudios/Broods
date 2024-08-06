@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerCombat : MonoBehaviour
 {
-    private PlayerInputs playerInputs;
+    PlayerInputs playerInputs;
     PlayerMoveRigidbody playerMove;
     public bool InAttack = false;
     public bool InCombo = false;
@@ -16,7 +16,7 @@ public class PlayerCombat : MonoBehaviour
     
     Animator anim;
 
-    [SerializeField] int actualNumber = -1;
+    [SerializeField] int actualNumber = 0;
     float timer = 0f;
     [SerializeField] float delayAtaques;
 
@@ -25,7 +25,7 @@ public class PlayerCombat : MonoBehaviour
         anim = transform.GetChild(0).GetComponent<Animator>();
         playerMove = GetComponent<PlayerMoveRigidbody>();
         playerInputs = new PlayerInputs();
-        SyncActions();
+        //SyncActions();
     }
 
     void SyncActions()
@@ -35,20 +35,20 @@ public class PlayerCombat : MonoBehaviour
         action[2] = playerInputs.Player.AttackButtonNorth;
     }
 
-    private void OnEnable()
-    {
-        playerInputs.Player.AttackButtonWest.started += Punch0;
-        playerInputs.Player.AttackButtonEast.started += Punch1;
-        playerInputs.Player.AttackButtonNorth.started += Punch2;
-        playerInputs.Player.Enable();
-    }
-    private void OnDisable()
-    {
-        playerInputs.Player.AttackButtonWest.started -= Punch0;
-        playerInputs.Player.AttackButtonEast.started -= Punch1;
-        playerInputs.Player.AttackButtonNorth.started -= Punch2;
-        playerInputs.Player.Disable();
-    }
+    //private void OnEnable()
+    //{
+    //    playerInputs.Player.AttackButtonWest.started += Punch0;
+    //    playerInputs.Player.AttackButtonEast.started += Punch1;
+    //    playerInputs.Player.AttackButtonNorth.started += Punch2;
+    //    playerInputs.Player.Enable();
+    //}
+    //private void OnDisable()
+    //{
+    //    playerInputs.Player.AttackButtonWest.started -= Punch0;
+    //    playerInputs.Player.AttackButtonEast.started -= Punch1;
+    //    playerInputs.Player.AttackButtonNorth.started -= Punch2;
+    //    playerInputs.Player.Disable();
+    //}
 
     void ActiveBooleanInAttack(bool value)
     { 
@@ -61,28 +61,38 @@ public class PlayerCombat : MonoBehaviour
 
     public void Punch0(InputAction.CallbackContext context)
     {
+        StartCoroutine(ChangeActualNumber(0));
         if (!InAttack && !InCombo)
             StartCoroutine(FirstCombo());
     }
     public void Punch1(InputAction.CallbackContext context)
     {
+        StartCoroutine(ChangeActualNumber(1));
         if (!InAttack && !InCombo)
             StartCoroutine(SecondAttack());
     }
     public void Punch2(InputAction.CallbackContext context)
     {
+        StartCoroutine(ChangeActualNumber(2));
         if (!InAttack && !InCombo)
             StartCoroutine(ThirdAttack());
     }
 
 
 
+    IEnumerator ChangeActualNumber(int number)
+    {
+        actualNumber = number;
+        yield return new WaitForSeconds(0.02f);
+        actualNumber = -1;
+        yield break;
+    }
+
     IEnumerator FirstAttack()
     {
         anim.SetTrigger("Punch0");
-        yield return new WaitForSeconds(0.01f);
         ActiveBooleanInAttack(true);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.6f);
     }
     IEnumerator SecondAttack()
     {
@@ -96,7 +106,7 @@ public class PlayerCombat : MonoBehaviour
     {
         ActiveBooleanInAttack(true);
         anim.SetTrigger("Punch2");
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.2f);
         ActiveBooleanInAttack(false);
     }
 
@@ -105,6 +115,7 @@ public class PlayerCombat : MonoBehaviour
         yield return FirstAttack();
         InCombo = true;
         anim.SetBool("InCombo", InCombo);
+        //yield return new WaitForSeconds(1f);
         yield return Continued(0.2f, 2);
         yield return new WaitForSeconds(1f);
         yield return Continued(0.2f, 1);
@@ -116,11 +127,11 @@ public class PlayerCombat : MonoBehaviour
 
     IEnumerator Continued(float delay, int number)
     {
-        actualNumber = number;
         while (timer < delay - 0.05f)
         {
             timer += 1 * Time.deltaTime;
-            if (action[actualNumber].triggered)
+            Debug.Log(timer.ToString());
+            if (actualNumber == number)
             {
                 timer = 0f;
                 Debug.Log("Continuou");

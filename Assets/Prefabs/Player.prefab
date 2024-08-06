@@ -279,7 +279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveForce: 2
-  jumpForce: 300
+  jumpForce: 100
   GroundCheck: {fileID: 3953280824637603789}
   ground:
     serializedVersion: 2
