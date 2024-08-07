@@ -285,6 +285,20 @@ MonoBehaviour:
       m_Height: 83
     m_Scale: 1
     m_AtlasIndex: 0
+  - m_Index: 44
+    m_Metrics:
+      m_Width: 70.296875
+      m_Height: 77.40625
+      m_HorizontalBearingX: 2.25
+      m_HorizontalBearingY: 69.390625
+      m_HorizontalAdvance: 74.796875
+    m_GlyphRect:
+      m_X: 727
+      m_Y: 285
+      m_Width: 71
+      m_Height: 79
+    m_Scale: 1
+    m_AtlasIndex: 0
   - m_Index: 45
     m_Metrics:
       m_Width: 26.09375
@@ -761,20 +775,6 @@ MonoBehaviour:
       m_Height: 56
     m_Scale: 1
     m_AtlasIndex: 0
-  - m_Index: 44
-    m_Metrics:
-      m_Width: 70.296875
-      m_Height: 77.40625
-      m_HorizontalBearingX: 2.25
-      m_HorizontalBearingY: 69.390625
-      m_HorizontalAdvance: 74.796875
-    m_GlyphRect:
-      m_X: 727
-      m_Y: 285
-      m_Width: 71
-      m_Height: 79
-    m_Scale: 1
-    m_AtlasIndex: 0
   m_CharacterTable:
   - m_ElementType: 1
     m_Unicode: 10
@@ -831,6 +831,10 @@ MonoBehaviour:
   - m_ElementType: 1
     m_Unicode: 71
     m_GlyphIndex: 43
+    m_Scale: 1
+  - m_ElementType: 1
+    m_Unicode: 72
+    m_GlyphIndex: 44
     m_Scale: 1
   - m_ElementType: 1
     m_Unicode: 73
@@ -967,10 +971,6 @@ MonoBehaviour:
   - m_ElementType: 1
     m_Unicode: 120
     m_GlyphIndex: 90
-    m_Scale: 1
-  - m_ElementType: 1
-    m_Unicode: 72
-    m_GlyphIndex: 44
     m_Scale: 1
   m_AtlasTextures:
   - {fileID: -546933419540207607}
@@ -4520,7 +4520,7 @@ Material:
     - _ColorMask: 15
     - _CullMode: 0
     - _Diffuse: 0.5
-    - _FaceDilate: 0.33
+    - _FaceDilate: 0.02
     - _FaceUVSpeedX: 0
     - _FaceUVSpeedY: 0
     - _GlowInner: 0.05
@@ -4534,12 +4534,12 @@ Material:
     - _OutlineSoftness: 0
     - _OutlineUVSpeedX: 0
     - _OutlineUVSpeedY: 0
-    - _OutlineWidth: 0.689
+    - _OutlineWidth: 0.502
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
-    - _ScaleRatioA: 0.74595934
-    - _ScaleRatioB: 0.43424997
-    - _ScaleRatioC: 0.43424997
+    - _ScaleRatioA: 0.9
+    - _ScaleRatioB: 0.71325004
+    - _ScaleRatioC: 0.71325004
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0
@@ -4553,7 +4553,7 @@ Material:
     - _TextureHeight: 1024
     - _TextureWidth: 1024
     - _UnderlayDilate: 0
-    - _UnderlayOffsetX: 0
+    - _UnderlayOffsetX: -1
     - _UnderlayOffsetY: 0
     - _UnderlaySoftness: 0
     - _VertexOffsetX: 0
