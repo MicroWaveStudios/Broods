@@ -16,6 +16,8 @@ public class GameController : MonoBehaviour
     Image healthBarPlayer2;
     public float distance;
     public bool value;
+    public bool TrocouLado;
+    
 
     private void Update()
     {
@@ -45,11 +47,15 @@ public class GameController : MonoBehaviour
     {
         if (Player1.transform.position.x < Player2.transform.position.x)
         {
+            //Esta na esquerda (posicao inicial)
+            TrocouLado = false;
             PlayerLeft = Player1.transform;
             PlayerRight = Player2.transform;
         }
         else
         {
+            //Esta na direita (posicao modificada)
+            TrocouLado = true;
             PlayerLeft = Player2.transform;
             PlayerRight = Player1.transform;
         }

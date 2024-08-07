@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class Damage : MonoBehaviour
 {
-    [SerializeField] float damage = 10f;
+    public float damage;
 
     private void Start()
     {
-        Debug.Log("nasci");
+        
     }
 
     private void OnTriggerEnter(Collider collision)
     {
-        Debug.Log(collision.name);
+        
         if (collision != null)
         {
             PlayerStats stats = collision.gameObject.GetComponent<PlayerStats>();

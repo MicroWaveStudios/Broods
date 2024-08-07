@@ -16,7 +16,8 @@ public class PlayerMoveRigidbody : MonoBehaviour
     private Rigidbody rb;
     float directionX;
     [SerializeField] float moveForce;
-
+    [SerializeField] GameController gameController;
+    [SerializeField] PlayerStats playerStats;
     [SerializeField] float jumpForce;
     bool InJump = false;
     [SerializeField] Transform GroundCheck;
@@ -24,13 +25,20 @@ public class PlayerMoveRigidbody : MonoBehaviour
 
     [SerializeField] bool InAttack = false;
 
+    float isPlayer2 = 1;
+
+    [SerializeField] float forcaEmpurrar;
+    [SerializeField] float forcaEmpurrarAtacar;
+
+
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         anim = transform.GetChild(0).GetComponent<Animator>();
         playerInputs = new PlayerInputs();
         player1 = GameObject.FindGameObjectWithTag("Player1");
-        if (player1 != null)
+        /*if (player1 != null)
         {
             gameObject.tag = "Player2";
         }
@@ -38,22 +46,45 @@ public class PlayerMoveRigidbody : MonoBehaviour
         {
             gameObject.tag = "Player1";
         }
+        */
     }
-    //private void OnEnable()
-    //{
-    //    playerInputs.Player.Jump.started += OnJump;
-    //    //playerInputs.Player.AttackButtonWest.started += Punch0;
-    //    //playerInputs.Player.AttackButtonEast.started += Punch1;
-    //    move = playerInputs.Player.Move;
-    //    playerInputs.Player.Enable();
-    //}
-    //private void OnDisable()
-    //{
-    //    playerInputs.Player.Jump.started -= OnJump;
-    //    //playerInputs.Player.AttackButtonWest.started -= Punch0;
-    //    //playerInputs.Player.AttackButtonEast.started -= Punch1;
-    //    playerInputs.Player.Disable();
-    //}
+
+    private void Update()
+    {
+        if (this.gameObject.CompareTag("Player2"))
+        {
+            isPlayer2 = -1;
+        }
+        else
+        {
+            isPlayer2 = 1;
+        }
+
+        if (gameController.TrocouLado == true)
+        {
+            if (directionX * isPlayer2 >= 1 )
+            {
+                playerStats.defendendo = true;
+                Debug.Log("Defendendo");
+            }
+            else
+            {
+                playerStats.defendendo = false;
+            }
+        }
+        else
+        {
+            if (directionX * isPlayer2 <= -1 )
+            {
+                playerStats.defendendo = true;
+                Debug.Log("Defendendo");
+            }
+            else
+            {
+                playerStats.defendendo = false;
+            }
+        }
+    }
     private void FixedUpdate()
     {
         if (IsGrounded() && !InAttack)
@@ -94,6 +125,50 @@ public class PlayerMoveRigidbody : MonoBehaviour
     { 
         InAttack = value;
     }
+
+    
+
+    public void MoverAoLevarDano()
+    {
+        if (gameController.TrocouLado == false)
+        {
+            rb.AddForce(Vector3.right * forcaEmpurrar * isPlayer2 * -1);
+        }
+        else
+        {
+            rb.AddForce(Vector3.left * forcaEmpurrar * isPlayer2 * -1);
+        }
+    }
+
+    public void MoverAoAtacar()
+    {
+        if (gameController.TrocouLado == false)
+        {
+            rb.AddForce(Vector3.right * forcaEmpurrarAtacar * isPlayer2);
+        }
+        else
+        {
+            rb.AddForce(Vector3.left * forcaEmpurrarAtacar * isPlayer2);
+        }
+    }
+
+    //private void OnEnable()
+    //{
+    //    playerInputs.Player.Jump.started += OnJump;
+    //    //playerInputs.Player.AttackButtonWest.started += Punch0;
+    //    //playerInputs.Player.AttackButtonEast.started += Punch1;
+    //    move = playerInputs.Player.Move;
+    //    playerInputs.Player.Enable();
+    //}
+    //private void OnDisable()
+    //{
+    //    playerInputs.Player.Jump.started -= OnJump;
+    //    //playerInputs.Player.AttackButtonWest.started -= Punch0;
+    //    //playerInputs.Player.AttackButtonEast.started -= Punch1;
+    //    playerInputs.Player.Disable();
+    //}
+
+    //----------------------------------------------------------------//
 
     //private void Punch0(InputAction.CallbackContext context)
     //{

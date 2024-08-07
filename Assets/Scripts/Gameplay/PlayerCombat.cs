@@ -10,7 +10,6 @@ public class PlayerCombat : MonoBehaviour
     PlayerMoveRigidbody playerMove;
     public bool InAttack = false;
     public bool InCombo = false;
-    bool continued;
 
     [SerializeField] InputAction[] action;
     
@@ -19,6 +18,9 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] int actualNumber = 0;
     float timer = 0f;
     [SerializeField] float delayAtaques;
+    [SerializeField] int[] ordemCombo;
+    int x;
+    [SerializeField] PlayerMoveRigidbody moveRigidbody;
 
     private void Awake()
     {
@@ -92,7 +94,7 @@ public class PlayerCombat : MonoBehaviour
     {
         anim.SetTrigger("Punch0");
         ActiveBooleanInAttack(true);
-        yield return new WaitForSeconds(0.6f);
+        yield return new WaitForSeconds(0.3f);
     }
     IEnumerator SecondAttack()
     {
@@ -116,11 +118,11 @@ public class PlayerCombat : MonoBehaviour
         InCombo = true;
         anim.SetBool("InCombo", InCombo);
         //yield return new WaitForSeconds(1f);
-        yield return Continued(0.2f, 2);
-        yield return new WaitForSeconds(1f);
-        yield return Continued(0.2f, 1);
+        yield return Continued(0.2f, ordemCombo[x]);
+        yield return new WaitForSeconds(0.5f);
+        yield return Continued(0.2f, ordemCombo[x]);
         yield return new WaitForSeconds(1.3f);
-
+        Debug.Log("fez");
         yield return ResetCombo();
         yield break;
     }
@@ -130,11 +132,13 @@ public class PlayerCombat : MonoBehaviour
         while (timer < delay - 0.05f)
         {
             timer += 1 * Time.deltaTime;
-            Debug.Log(timer.ToString());
+
             if (actualNumber == number)
             {
+                moveRigidbody.MoverAoAtacar();
+                x++;
                 timer = 0f;
-                Debug.Log("Continuou");
+
                 anim.SetTrigger("Continued");
                 yield break;
             }
@@ -152,6 +156,7 @@ public class PlayerCombat : MonoBehaviour
 
     IEnumerator ResetCombo()
     {
+        x = 0;
         anim.SetTrigger("NotContinued");
         timer = 0f;
         actualNumber = -1;

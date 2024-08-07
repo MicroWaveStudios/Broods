@@ -7,6 +7,8 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] public float life;
     [SerializeField] public float maxLife;
     [SerializeField] float damageMultiplier;
+    [SerializeField] PlayerMoveRigidbody moveRigidbody;
+    public bool defendendo;
 
     private void Start()
     {
@@ -21,6 +23,11 @@ public class PlayerStats : MonoBehaviour
 
     public void SufferDamage(float damage)
     {
-        life -= damage;
+        if (defendendo == false)
+        {
+            life -= damage;
+            moveRigidbody.MoverAoLevarDano();
+        }
+        
     }
 }

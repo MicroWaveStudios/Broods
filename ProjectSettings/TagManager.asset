@@ -7,6 +7,8 @@ TagManager:
   - Canvas
   - Player2
   - Player1
+  - Defense
+  - Attack
   layers:
   - Default
   - TransparentFX

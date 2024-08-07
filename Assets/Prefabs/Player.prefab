@@ -41,7 +41,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3953280824080172344}
   - component: {fileID: 3953280824080172347}
-  - component: {fileID: 6202294345751267429}
   - component: {fileID: 1968786103}
   - component: {fileID: 1968786111}
   - component: {fileID: 1256922631}
@@ -50,7 +49,7 @@ GameObject:
   - component: {fileID: 1256922643}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Player
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -191,24 +190,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!143 &6202294345751267429
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3953280824080172342}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Height: 1.7
-  m_Radius: 0.3
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &1968786103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,6 +217,7 @@ MonoBehaviour:
   life: 0
   maxLife: 100
   damageMultiplier: 0
+  defendendo: 0
 --- !u!54 &1256922631
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -279,6 +261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveForce: 2
+  gameController: {fileID: 0}
   jumpForce: 100
   GroundCheck: {fileID: 3953280824637603789}
   ground:
@@ -326,6 +309,7 @@ MonoBehaviour:
     m_Flags: 0
   actualNumber: -1
   delayAtaques: 0.2
+  ordemCombo: 0000000000000000
 --- !u!1 &3953280824637603788
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,6 +355,10 @@ PrefabInstance:
     - target: {fileID: 3490172286117366309, guid: e62b5f0c1de4f744fb579cc712f9a54e, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3490172286117366309, guid: e62b5f0c1de4f744fb579cc712f9a54e, type: 3}
+      propertyPath: m_TagString
+      value: Attack
       objectReference: {fileID: 0}
     - target: {fileID: 3523215515632134677, guid: e62b5f0c1de4f744fb579cc712f9a54e, type: 3}
       propertyPath: m_RootOrder
@@ -800,6 +788,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: acf940dd9007bdf43a32f0ef13d3f0d8, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: acf940dd9007bdf43a32f0ef13d3f0d8, type: 3}
+      propertyPath: m_TagString
+      value: Player1
       objectReference: {fileID: 0}
     - target: {fileID: 1092408308860062549, guid: acf940dd9007bdf43a32f0ef13d3f0d8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
