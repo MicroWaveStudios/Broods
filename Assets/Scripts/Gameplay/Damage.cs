@@ -20,7 +20,6 @@ public class Damage : MonoBehaviour
             if (stats != null)
             {
                 stats.SufferDamage(damage);
-                Debug.Log("Player tomou dano");
             }
         }
     }

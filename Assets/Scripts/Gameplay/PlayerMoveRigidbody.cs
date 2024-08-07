@@ -31,7 +31,6 @@ public class PlayerMoveRigidbody : MonoBehaviour
     [SerializeField] float forcaEmpurrarAtacar;
 
 
-
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -42,17 +41,17 @@ public class PlayerMoveRigidbody : MonoBehaviour
         gameController = GameController.GetComponent<GameController>();
         playerStats = GetComponent<PlayerStats>();
     }
-    private void Start()
-    {
-        if (player1 != null)
-        {
-            gameObject.tag = "Player2";
-        }
-        else
-        {
-            gameObject.tag = "Player1";
-        }
-    }
+    //private void Start()
+    //{
+    //    if (player1 != null)
+    //    {
+    //        gameObject.tag = "Player2";
+    //    }
+    //    else
+    //    {
+    //        gameObject.tag = "Player1";
+    //    }
+    //}
     private void Update()
     {
         if (this.gameObject.CompareTag("Player2"))
@@ -144,15 +143,15 @@ public class PlayerMoveRigidbody : MonoBehaviour
         }
     }
 
-    public void MoverAoAtacar()
+    public void MoverAoAtacar(float intensidade)
     {
         if (gameController.TrocouLado == false)
         {
-            rb.AddForce(Vector3.right * forcaEmpurrarAtacar * isPlayer2);
+            rb.AddForce(Vector3.right * forcaEmpurrarAtacar * isPlayer2 * intensidade);
         }
         else
         {
-            rb.AddForce(Vector3.left * forcaEmpurrarAtacar * isPlayer2);
+            rb.AddForce(Vector3.left * forcaEmpurrarAtacar * isPlayer2 * intensidade);
         }
     }
 

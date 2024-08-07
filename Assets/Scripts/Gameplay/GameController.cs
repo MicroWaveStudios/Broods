@@ -21,6 +21,7 @@ public class GameController : MonoBehaviour
     public bool value;
     public bool TrocouLado;
 
+    int x = 0;
     PlayerInputManager playerInputManager;
 
     private void Awake()
@@ -51,20 +52,6 @@ public class GameController : MonoBehaviour
         healthBarPlayer2.fillAmount = lifePlayer2;
     }
 
-    public void JoinPlayer()
-    {
-        Player1 = GameObject.FindGameObjectWithTag("Player1");
-        if (Player1 != null)
-        { 
-            PrefabPlayer[0].GetComponent<Transform>().position = InstancePosition[0].position;
-            playerInputManager.playerPrefab = PrefabPlayer[0];
-        }
-        else
-        {
-            PrefabPlayer[1].GetComponent<Transform>().position = InstancePosition[1].position;
-            playerInputManager.playerPrefab = PrefabPlayer[1];
-        }
-    }
 
     void ChangePlayer()
     {

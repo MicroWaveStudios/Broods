@@ -31,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3953280824080172342}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -8.66, y: 0.032, z: 0}
+  m_LocalPosition: {x: -5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -235,8 +235,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   InAttack: 0
-  forcaEmpurrar: 0
-  forcaEmpurrarAtacar: 0
+  forcaEmpurrar: 150
+  forcaEmpurrarAtacar: 150
 --- !u!114 &1256922643
 MonoBehaviour:
   m_ObjectHideFlags: 0
