@@ -16,8 +16,8 @@ public class PlayerMoveRigidbody : MonoBehaviour
     private Rigidbody rb;
     float directionX;
     [SerializeField] float moveForce;
-    [SerializeField] GameController gameController;
-    [SerializeField] PlayerStats playerStats;
+    GameController gameController;
+    PlayerStats playerStats;
     [SerializeField] float jumpForce;
     bool InJump = false;
     [SerializeField] Transform GroundCheck;
@@ -38,7 +38,13 @@ public class PlayerMoveRigidbody : MonoBehaviour
         anim = transform.GetChild(0).GetComponent<Animator>();
         playerInputs = new PlayerInputs();
         player1 = GameObject.FindGameObjectWithTag("Player1");
-        /*if (player1 != null)
+        GameObject GameController = GameObject.FindGameObjectWithTag("GameController");
+        gameController = GameController.GetComponent<GameController>();
+        playerStats = GetComponent<PlayerStats>();
+    }
+    private void Start()
+    {
+        if (player1 != null)
         {
             gameObject.tag = "Player2";
         }
@@ -46,9 +52,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
         {
             gameObject.tag = "Player1";
         }
-        */
     }
-
     private void Update()
     {
         if (this.gameObject.CompareTag("Player2"))

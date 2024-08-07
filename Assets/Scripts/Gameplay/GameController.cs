@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class GameController : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class GameController : MonoBehaviour
     GameObject Player2;
     Transform PlayerLeft;
     Transform PlayerRight;
+    [SerializeField] GameObject[] PrefabPlayer;
+    [SerializeField] Transform[] InstancePosition;
     [SerializeField] Transform mid;
     GameObject Canvas;
     Image healthBarPlayer1;
@@ -17,7 +20,13 @@ public class GameController : MonoBehaviour
     public float distance;
     public bool value;
     public bool TrocouLado;
-    
+
+    PlayerInputManager playerInputManager;
+
+    private void Awake()
+    {
+        playerInputManager = GetComponent<PlayerInputManager>();
+    }
 
     private void Update()
     {
@@ -42,6 +51,20 @@ public class GameController : MonoBehaviour
         healthBarPlayer2.fillAmount = lifePlayer2;
     }
 
+    public void JoinPlayer()
+    {
+        Player1 = GameObject.FindGameObjectWithTag("Player1");
+        if (Player1 != null)
+        { 
+            PrefabPlayer[0].GetComponent<Transform>().position = InstancePosition[0].position;
+            playerInputManager.playerPrefab = PrefabPlayer[0];
+        }
+        else
+        {
+            PrefabPlayer[1].GetComponent<Transform>().position = InstancePosition[1].position;
+            playerInputManager.playerPrefab = PrefabPlayer[1];
+        }
+    }
 
     void ChangePlayer()
     {

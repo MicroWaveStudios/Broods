@@ -10,8 +10,6 @@ public class PlayerCombat : MonoBehaviour
     PlayerMoveRigidbody playerMove;
     public bool InAttack = false;
     public bool InCombo = false;
-
-    [SerializeField] InputAction[] action;
     
     Animator anim;
 
@@ -20,37 +18,15 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] float delayAtaques;
     [SerializeField] int[] ordemCombo;
     int x;
-    [SerializeField] PlayerMoveRigidbody moveRigidbody;
+    PlayerMoveRigidbody moveRigidbody;
 
     private void Awake()
     {
         anim = transform.GetChild(0).GetComponent<Animator>();
         playerMove = GetComponent<PlayerMoveRigidbody>();
         playerInputs = new PlayerInputs();
-        //SyncActions();
+        moveRigidbody = GetComponent<PlayerMoveRigidbody>();
     }
-
-    void SyncActions()
-    {
-        action[0] = playerInputs.Player.AttackButtonWest;
-        action[1] = playerInputs.Player.AttackButtonEast;
-        action[2] = playerInputs.Player.AttackButtonNorth;
-    }
-
-    //private void OnEnable()
-    //{
-    //    playerInputs.Player.AttackButtonWest.started += Punch0;
-    //    playerInputs.Player.AttackButtonEast.started += Punch1;
-    //    playerInputs.Player.AttackButtonNorth.started += Punch2;
-    //    playerInputs.Player.Enable();
-    //}
-    //private void OnDisable()
-    //{
-    //    playerInputs.Player.AttackButtonWest.started -= Punch0;
-    //    playerInputs.Player.AttackButtonEast.started -= Punch1;
-    //    playerInputs.Player.AttackButtonNorth.started -= Punch2;
-    //    playerInputs.Player.Disable();
-    //}
 
     void ActiveBooleanInAttack(bool value)
     { 
@@ -117,7 +93,6 @@ public class PlayerCombat : MonoBehaviour
         yield return FirstAttack();
         InCombo = true;
         anim.SetBool("InCombo", InCombo);
-        //yield return new WaitForSeconds(1f);
         yield return Continued(0.2f, ordemCombo[x]);
         yield return new WaitForSeconds(0.5f);
         yield return Continued(0.2f, ordemCombo[x]);
