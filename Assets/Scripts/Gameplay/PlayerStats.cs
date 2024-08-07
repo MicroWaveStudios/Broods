@@ -7,8 +7,13 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] public float life;
     [SerializeField] public float maxLife;
     [SerializeField] float damageMultiplier;
-    [SerializeField] PlayerMoveRigidbody moveRigidbody;
+    PlayerMoveRigidbody moveRigidbody;
     public bool defendendo;
+
+    private void Awake()
+    {
+        moveRigidbody = GetComponent<PlayerMoveRigidbody>();
+    }
 
     private void Start()
     {
