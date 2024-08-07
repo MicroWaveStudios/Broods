@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class conectarJogadores : MonoBehaviour
+public class piscarTextoJogadores : MonoBehaviour
 {
     public estado EstadoAtual;
     public float valorMinimo;
