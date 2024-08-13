@@ -14,8 +14,12 @@ public class conectarJogadores : MonoBehaviour
     [SerializeField] GameObject texto1;
     [SerializeField] GameObject texto2;
     [SerializeField] GameObject Continuar;
+#pragma warning disable CS0649 // Campo "conectarJogadores.conectou1" nunca é atribuído e sempre terá seu valor padrão false
     bool conectou1;
+#pragma warning restore CS0649 // Campo "conectarJogadores.conectou1" nunca é atribuído e sempre terá seu valor padrão false
+#pragma warning disable CS0649 // Campo "conectarJogadores.conectou2" nunca é atribuído e sempre terá seu valor padrão false
     bool conectou2;
+#pragma warning restore CS0649 // Campo "conectarJogadores.conectou2" nunca é atribuído e sempre terá seu valor padrão false
 
     void Update()
     {

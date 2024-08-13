@@ -21,7 +21,9 @@ public class GameController : MonoBehaviour
     public bool value;
     public bool TrocouLado;
 
+#pragma warning disable CS0414 // O campo "GameController.x" é atribuído, mas seu valor nunca é usado
     int x = 0;
+#pragma warning restore CS0414 // O campo "GameController.x" é atribuído, mas seu valor nunca é usado
     PlayerInputManager playerInputManager;
 
     private void Awake()
