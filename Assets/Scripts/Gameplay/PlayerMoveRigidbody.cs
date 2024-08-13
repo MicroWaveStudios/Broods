@@ -14,7 +14,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
     GameObject player1;
 
     private Rigidbody rb;
-    float directionX;
+    public float directionX;
     [SerializeField] float moveForce;
     GameController gameController;
     PlayerStats playerStats;
@@ -25,7 +25,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
 
     [SerializeField] bool InAttack = false;
 
-    float isPlayer2 = 1;
+    public float isPlayer2 = 1;
 
     [SerializeField] float forcaEmpurrar;
     [SerializeField] float forcaEmpurrarAtacar;
@@ -56,36 +56,35 @@ public class PlayerMoveRigidbody : MonoBehaviour
     {
         if (this.gameObject.CompareTag("Player2"))
         {
-            isPlayer2 = -1;
+            if (gameController.TrocouLado == true)
+            {
+                isPlayer2 = 1;
+            }
+            else
+            {
+                isPlayer2 = -1;
+            }            
         }
         else
         {
-            isPlayer2 = 1;
+            if (gameController.TrocouLado == true)
+            {
+                isPlayer2 = -1;
+            }
+            else
+            {
+                isPlayer2 = 1;
+            }
         }
 
-        if (gameController.TrocouLado == true)
+        if (directionX * isPlayer2 <= -1)
         {
-            if (directionX * isPlayer2 >= 1 )
-            {
-                playerStats.defendendo = true;
-                Debug.Log("Defendendo");
-            }
-            else
-            {
-                playerStats.defendendo = false;
-            }
+            playerStats.defendendo = true;
+            Debug.Log("Defendendo");
         }
         else
         {
-            if (directionX * isPlayer2 <= -1 )
-            {
-                playerStats.defendendo = true;
-                Debug.Log("Defendendo");
-            }
-            else
-            {
-                playerStats.defendendo = false;
-            }
+            playerStats.defendendo = false;
         }
     }
     private void FixedUpdate()

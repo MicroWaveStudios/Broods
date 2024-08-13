@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1256922629}
   - component: {fileID: 1256922630}
   - component: {fileID: 1256922643}
+  - component: {fileID: 6582643444607593352}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player1
@@ -79,6 +80,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 6582643444607593352}
+        m_TargetAssemblyTypeName: NaraSkills, Assembly-CSharp
+        m_MethodName: MeiaLuaFinal
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 6e690807-efbc-44fe-9c62-3d6be9d30dcc
     m_ActionName: Player/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
@@ -102,6 +115,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1256922643}
         m_TargetAssemblyTypeName: PlayerCombat, Assembly-CSharp
         m_MethodName: Punch0
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6582643444607593352}
+        m_TargetAssemblyTypeName: NaraSkills, Assembly-CSharp
+        m_MethodName: MeiaLuaAtaque
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -146,7 +171,19 @@ MonoBehaviour:
     m_ActionId: dfd61c39-1f2a-4dd8-9949-492189415aa4
     m_ActionName: Player/Jump[/Keyboard/w]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6582643444607593352}
+        m_TargetAssemblyTypeName: NaraSkills, Assembly-CSharp
+        m_MethodName: MeiaLuaStart
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 33ce5a8e-5a9d-4d65-8612-af9a0c743bc9
     m_ActionName: Player/Crounched[/Keyboard/s]
   - m_PersistentCalls:
@@ -228,6 +265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca8049ff7646d72458a94f906cb11d7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  directionX: 0
   moveForce: 2
   jumpForce: 100
   GroundCheck: {fileID: 3953280824637603789}
@@ -235,6 +273,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   InAttack: 0
+  isPlayer2: 1
   forcaEmpurrar: 150
   forcaEmpurrarAtacar: 150
 --- !u!114 &1256922643
@@ -254,6 +293,20 @@ MonoBehaviour:
   actualNumber: -1
   delayAtaques: 0.2
   ordemCombo: 0000000000000000
+--- !u!114 &6582643444607593352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3953280824080172342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0d9baa1edab92649b496ee3f6ff11b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actualNumber: 0
+  ordemCombo: 0100000002000000
 --- !u!1 &3953280824637603788
 GameObject:
   m_ObjectHideFlags: 0
