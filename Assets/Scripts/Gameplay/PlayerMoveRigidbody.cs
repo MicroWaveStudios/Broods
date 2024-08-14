@@ -19,7 +19,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
     GameController gameController;
     PlayerStats playerStats;
     [SerializeField] float jumpForce;
-    bool InJump = false;
+    public bool InJump = false;
     [SerializeField] Transform GroundCheck;
     [SerializeField] LayerMask ground;
 
@@ -52,22 +52,23 @@ public class PlayerMoveRigidbody : MonoBehaviour
     //        gameObject.tag = "Player1";
     //    }
     //}
+
     private void Update()
     {
         if (this.gameObject.CompareTag("Player2"))
         {
-            if (gameController.TrocouLado == true)
+            if (gameController.TrocouLado)
             {
                 isPlayer2 = 1;
             }
             else
             {
                 isPlayer2 = -1;
-            }            
+            }
         }
         else
         {
-            if (gameController.TrocouLado == true)
+            if (gameController.TrocouLado)
             {
                 isPlayer2 = -1;
             }
@@ -130,28 +131,38 @@ public class PlayerMoveRigidbody : MonoBehaviour
 
     
 
-    public void MoverAoLevarDano()
-    {
-        if (gameController.TrocouLado == false)
-        {
-            rb.AddForce(Vector3.right * forcaEmpurrar * isPlayer2 * -1);
-        }
-        else
-        {
-            rb.AddForce(Vector3.left * forcaEmpurrar * isPlayer2 * -1);
-        }
-    }
+    //public void MoverAoLevarDano()
+    //{
+    //    float intensidade = 1f;
+    //    if (this.gameObject.CompareTag("Player1"))
+    //    {
+    //        intensidade = -1f;
+    //    }
+    //    rb.AddForce(Vector3.left * forcaEmpurrar * isPlayer2 * intensidade);
+    //}
 
-    public void MoverAoAtacar(float intensidade)
+    //public void MoverAoAtacar()
+    //{
+    //    if (gameController.TrocouLado == false)
+    //    {
+    //        rb.AddForce(Vector3.right * forcaEmpurrarAtacar * isPlayer2);
+    //    }
+    //    else
+    //    {
+    //        rb.AddForce(Vector3.right * forcaEmpurrarAtacar * isPlayer2);
+    //    }
+    //}
+
+    public void MoveForce(bool Attacked)
     {
-        if (gameController.TrocouLado == false)
-        {
-            rb.AddForce(Vector3.right * forcaEmpurrarAtacar * isPlayer2 * intensidade);
-        }
+        float intensidade = 1f;
+        if (this.gameObject.CompareTag("Player1"))
+            intensidade = -1f;
+
+        if (Attacked)
+            rb.AddForce(Vector3.right * forcaEmpurrarAtacar * isPlayer2);
         else
-        {
-            rb.AddForce(Vector3.left * forcaEmpurrarAtacar * isPlayer2 * intensidade);
-        }
+            rb.AddForce(Vector3.left * forcaEmpurrar * isPlayer2 * intensidade);
     }
 
     //private void OnEnable()

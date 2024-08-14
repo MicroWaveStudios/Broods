@@ -30,7 +30,7 @@ public class PlayerAnimator : MonoBehaviour
     }
     private void Update()
     {
-        anim.SetFloat("Move", rb.velocity.x);
+        anim.SetFloat("Move", rb.velocity.x * playerMove.isPlayer2);
         //anim.SetFloat("Move", move.ReadValue<Vector2>().x);
         //anim.SetBool("InAttack", transform.GetComponent<PlayerMove>().InAttack);
         //anim.SetBool("IsGrounded", transform.GetComponent<PlayerMove>().IsGrounded());

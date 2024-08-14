@@ -110,7 +110,8 @@ public class PlayerCombat : MonoBehaviour
 
             if (actualNumber == number)
             {
-                moveRigidbody.MoverAoAtacar(1f);
+                //moveRigidbody.MoverAoAtacar();
+                moveRigidbody.MoveForce(true);
                 x++;
                 timer = 0f;
 

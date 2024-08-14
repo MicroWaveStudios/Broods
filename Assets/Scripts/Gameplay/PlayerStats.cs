@@ -31,7 +31,8 @@ public class PlayerStats : MonoBehaviour
         if (defendendo == false)
         {
             life -= damage;
-            moveRigidbody.MoverAoLevarDano();
+            //moveRigidbody.MoverAoLevarDano();
+            moveRigidbody.MoveForce(false);
         }
         
     }

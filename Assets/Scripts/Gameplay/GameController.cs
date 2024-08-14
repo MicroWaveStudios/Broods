@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using Unity.VisualScripting;
 
 public class GameController : MonoBehaviour
 {
@@ -21,6 +23,10 @@ public class GameController : MonoBehaviour
     public bool value;
     public bool TrocouLado;
 
+    float countdownTime = 3;
+    [SerializeField] TMP_Text countdownText;
+    bool FinishTimer = false;
+
 #pragma warning disable CS0414 // O campo "GameController.x" é atribuído, mas seu valor nunca é usado
     int x = 0;
 #pragma warning restore CS0414 // O campo "GameController.x" é atribuído, mas seu valor nunca é usado
@@ -33,11 +39,17 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
+
         Canvas = GameObject.FindGameObjectWithTag("Canvas");
         Player1 = GameObject.FindGameObjectWithTag("Player1");
         Player2 = GameObject.FindGameObjectWithTag("Player2");
         if (Player1 != null && Player2 != null)
         {
+            //if (!FinishTimer)
+            //{ 
+            //    StartCoroutine(CountdownStart());
+            //}
+            
             ChangePlayer();
             MidPosition();
             PlayerLife();
@@ -71,8 +83,8 @@ public class GameController : MonoBehaviour
             PlayerLeft = Player2.transform;
             PlayerRight = Player1.transform;
         }
-        PlayerLeft.rotation = Quaternion.Euler(0f, 90f, 0f);
-        PlayerRight.rotation = Quaternion.Euler(0f, -90f, 0f);
+        PlayerLeft.localScale = new Vector3(1f, 1f, 1f);
+        PlayerRight.localScale = new Vector3(1f, 1f, -1f);
     }
 
     void MidPosition()
@@ -81,4 +93,34 @@ public class GameController : MonoBehaviour
         mid.position = new Vector3(PlayerLeft.position.x + distance, 1f, mid.position.z);
     }
 
+    //IEnumerator CountdownStart()
+    //{
+    //    while (Player1 != null && Player2 != null) 
+
+    //    Debug.Log("START GAME");
+    //    Player1.transform.position = InstancePosition[0].position;
+    //    Player2.transform.position = InstancePosition[1].position;
+    //    Player1.GetComponent<PlayerMoveRigidbody>().enabled = false;
+    //    Player2.GetComponent<PlayerMoveRigidbody>().enabled = false;
+    //    Player1.GetComponent<PlayerCombat>().enabled = false;
+    //    Player2.GetComponent<PlayerCombat>().enabled = false;
+
+    //    countdownText.transform.gameObject.SetActive(true);
+    //    while (countdownTime > 0f)
+    //    {
+    //        Debug.Log(countdownTime);
+    //        countdownText.text = countdownTime.ToString();
+    //        yield return new WaitForSeconds(1f);
+    //        countdownTime--;
+    //    }
+    //    countdownText.text = "FIGHT!";
+    //    yield return new WaitForSeconds(1f);
+    //    countdownText.transform.gameObject.SetActive(false);
+    //    FinishTimer = true;
+
+    //    Player1.GetComponent<PlayerMoveRigidbody>().enabled = true;
+    //    Player2.GetComponent<PlayerMoveRigidbody>().enabled = true;
+    //    Player1.GetComponent<PlayerCombat>().enabled = true;
+    //    Player2.GetComponent<PlayerCombat>().enabled = true;
+    //}
 }

@@ -267,7 +267,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   directionX: 0
   moveForce: 2
-  jumpForce: 100
+  jumpForce: 300
+  InJump: 0
   GroundCheck: {fileID: 3953280824637603789}
   ground:
     serializedVersion: 2

@@ -231,15 +231,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   directionX: 0
   moveForce: 2
-  jumpForce: 100
+  jumpForce: 300
+  InJump: 0
   GroundCheck: {fileID: 6784768561954261714}
   ground:
     serializedVersion: 2
     m_Bits: 64
   InAttack: 0
   isPlayer2: 1
-  forcaEmpurrar: 0
-  forcaEmpurrarAtacar: 0
+  forcaEmpurrar: 150
+  forcaEmpurrarAtacar: 150
 --- !u!114 &6784768562247092741
 MonoBehaviour:
   m_ObjectHideFlags: 0
