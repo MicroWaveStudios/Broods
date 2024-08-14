@@ -2,27 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Audio;
 using TMPro;
 
 public class menuSettings : MonoBehaviour
 {
     public TMP_Dropdown graphicsDropdown;
-    public TMP_Dropdown resolutionDropdown;
+    public TMP_Text resAtual;
+    public Slider sliderBrilho;
 
+    public TMP_Dropdown resolutionDropdown;
     private Resolution[] resolutions;
     private List<Resolution> filteredResolutions;
     private float currentRefreshRate;
     private int resolucaoAtual_index = 0;
 
-    public Slider volumeGeral;
-    public Slider BG;
-    public AudioMixer audioMixer;
-
     private void Start()
     {
         resolutions = Screen.resolutions;
+        filteredResolutions = new List<Resolution>();
         resolutionDropdown.ClearOptions();
+        currentRefreshRate = Screen.currentResolution.refreshRate;
 
         for (int i = 0; i < resolutions.Length; i++)
         {
@@ -61,13 +60,7 @@ public class menuSettings : MonoBehaviour
         QualitySettings.SetQualityLevel(graphicsDropdown.value);
     }
 
-    public void mudarVolumeGeral()
+    public void mudarBrilho()
     {
-        audioMixer.SetFloat("VolumeGeral", volumeGeral.value);
-    }
-
-    public void mudarBG()
-    {
-        audioMixer.SetFloat("BG", BG.value);
     }
 }
