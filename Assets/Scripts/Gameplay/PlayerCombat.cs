@@ -17,7 +17,7 @@ public class PlayerCombat : MonoBehaviour
     float timer = 0f;
     [SerializeField] float delayAtaques;
     [SerializeField] int[] ordemCombo;
-    int x;
+    public int ordem;
     PlayerMoveRigidbody moveRigidbody;
 
     private void Awake()
@@ -58,7 +58,7 @@ public class PlayerCombat : MonoBehaviour
 
 
 
-    IEnumerator ChangeActualNumber(int number)
+    public IEnumerator ChangeActualNumber(int number)
     {
         actualNumber = number;
         yield return new WaitForSeconds(0.02f);
@@ -93,11 +93,10 @@ public class PlayerCombat : MonoBehaviour
         yield return FirstAttack();
         InCombo = true;
         anim.SetBool("InCombo", InCombo);
-        yield return Continued(0.2f, ordemCombo[x]);
+        yield return Continued(0.2f, ordemCombo[ordem]);
         yield return new WaitForSeconds(0.5f);
-        yield return Continued(0.2f, ordemCombo[x]);
-        yield return new WaitForSeconds(1.3f);
-        Debug.Log("fez");
+        yield return Continued(0.2f, ordemCombo[ordem]);
+        yield return new WaitForSeconds(0.9f);
         yield return ResetCombo();
         yield break;
     }
@@ -110,9 +109,8 @@ public class PlayerCombat : MonoBehaviour
 
             if (actualNumber == number)
             {
-                //moveRigidbody.MoverAoAtacar();
-                moveRigidbody.MoveForce(true);
-                x++;
+                moveRigidbody.MoverAoAtacar();
+                ordem++;
                 timer = 0f;
 
                 anim.SetTrigger("Continued");
@@ -123,23 +121,36 @@ public class PlayerCombat : MonoBehaviour
                 yield return null;
             }
         }
-        Debug.Log("acabou");
-
         yield return ResetCombo();
-        Debug.Log("resetou");
         yield break;
     }
 
-    IEnumerator ResetCombo()
+    public IEnumerator ResetCombo()
     {
-        x = 0;
-        anim.SetTrigger("NotContinued");
+        ActiveBooleanInAttack(false);
+        anim.SetTrigger("NotContinued");      
+        ordem = 0;
         timer = 0f;
         actualNumber = -1;
         InCombo = false;
         anim.SetBool("InCombo", InCombo);
-        ActiveBooleanInAttack(false);
         StopAllCoroutines();
         yield break;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

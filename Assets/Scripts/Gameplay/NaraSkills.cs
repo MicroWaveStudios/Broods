@@ -17,8 +17,7 @@ public class NaraSkills : MonoBehaviour
     }
 
     public void MeiaLuaStart(InputAction.CallbackContext context)
-    {
-        StartCoroutine(ChangeActualNumber(0));    
+    {   
         StartCoroutine(MeiaLua());
     }
     public void MeiaLuaFinal(InputAction.CallbackContext context)
@@ -41,7 +40,6 @@ public class NaraSkills : MonoBehaviour
 
     IEnumerator MeiaLua()
     {
-        x++;
         Debug.Log("Baixo");
         yield return Continued(0.5f, ordemCombo[x]);
         Debug.Log("Esquerda");

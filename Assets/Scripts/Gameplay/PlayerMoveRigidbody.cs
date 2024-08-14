@@ -28,7 +28,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
     public float isPlayer2 = 1;
 
     [SerializeField] float forcaEmpurrar;
-    [SerializeField] float forcaEmpurrarAtacar;
+    //[SerializeField] float forcaEmpurrarAtacar;
 
 
     private void Awake()
@@ -129,31 +129,18 @@ public class PlayerMoveRigidbody : MonoBehaviour
         InAttack = value;
     }
 
-    
 
-    //public void MoverAoLevarDano()
-    //{
-    //    float intensidade = 1f;
-    //    if (this.gameObject.CompareTag("Player1"))
-    //    {
-    //        intensidade = -1f;
-    //    }
-    //    rb.AddForce(Vector3.left * forcaEmpurrar * isPlayer2 * intensidade);
-    //}
+    public void MoverAoAtacar()
+    {
+        rb.AddForce(Vector3.right * forcaEmpurrar * isPlayer2);
+    }
 
-    //public void MoverAoAtacar()
-    //{
-    //    if (gameController.TrocouLado == false)
-    //    {
-    //        rb.AddForce(Vector3.right * forcaEmpurrarAtacar * isPlayer2);
-    //    }
-    //    else
-    //    {
-    //        rb.AddForce(Vector3.right * forcaEmpurrarAtacar * isPlayer2);
-    //    }
-    //}
+    public void MoverAoLevarDano()
+    {
+        rb.AddForce(Vector3.left * forcaEmpurrar * isPlayer2);
+    }
 
-    public void MoveForce(bool Attacked)
+    /*public void MoveForce(bool Attacked)
     {
         float intensidade = 1f;
         if (this.gameObject.CompareTag("Player1"))
@@ -163,7 +150,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
             rb.AddForce(Vector3.right * forcaEmpurrarAtacar * isPlayer2);
         else
             rb.AddForce(Vector3.left * forcaEmpurrar * isPlayer2 * intensidade);
-    }
+    }*/
 
     //private void OnEnable()
     //{

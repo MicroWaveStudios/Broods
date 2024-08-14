@@ -7,12 +7,14 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] public float life;
     [SerializeField] public float maxLife;
     [SerializeField] float damageMultiplier;
-    PlayerMoveRigidbody moveRigidbody;
+    PlayerMoveRigidbody scrpMoveRigidbody;
+    PlayerCombat scrpPlayerCombat;
     public bool defendendo;
 
     private void Awake()
     {
-        moveRigidbody = GetComponent<PlayerMoveRigidbody>();
+        scrpMoveRigidbody = this.GetComponent<PlayerMoveRigidbody>();
+        scrpPlayerCombat = this.GetComponent<PlayerCombat>();
     }
 
     private void Start()
@@ -30,10 +32,25 @@ public class PlayerStats : MonoBehaviour
     {
         if (defendendo == false)
         {
-            life -= damage;
-            //moveRigidbody.MoverAoLevarDano();
-            moveRigidbody.MoveForce(false);
+            scrpPlayerCombat.ResetCombo();
+            life -= damage;    
+            if (scrpPlayerCombat.ordem > 0)
+            {
+                scrpMoveRigidbody.MoverAoLevarDano();
+            }          
+            ResetScripts();
         }
         
+    }
+
+    IEnumerator ResetScripts()
+    {
+        scrpMoveRigidbody.enabled = false;
+        scrpPlayerCombat.enabled = false;
+        Debug.Log("Parou");
+        yield return new WaitForSeconds(0.5f);
+        scrpMoveRigidbody.enabled = true;
+        scrpPlayerCombat.enabled = true;
+        yield break;
     }
 }

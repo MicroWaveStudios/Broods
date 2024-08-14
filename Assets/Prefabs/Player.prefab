@@ -32,7 +32,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3953280824080172342}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -5, y: 0, z: 0}
+  m_LocalPosition: {x: -5, y: 0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -276,7 +276,6 @@ MonoBehaviour:
   InAttack: 0
   isPlayer2: 1
   forcaEmpurrar: 150
-  forcaEmpurrarAtacar: 150
 --- !u!114 &1256922643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,6 +293,7 @@ MonoBehaviour:
   actualNumber: -1
   delayAtaques: 0.2
   ordemCombo: 0000000000000000
+  ordem: 0
 --- !u!114 &6582643444607593352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,7 +306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0d9baa1edab92649b496ee3f6ff11b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actualNumber: 0
+  actualNumber: -1
   ordemCombo: 0100000002000000
 --- !u!1 &3953280824637603788
 GameObject:

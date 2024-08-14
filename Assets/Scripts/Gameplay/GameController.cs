@@ -90,7 +90,7 @@ public class GameController : MonoBehaviour
     void MidPosition()
     {
         distance = Vector3.Distance(PlayerLeft.position, PlayerRight.position)/2f;
-        mid.position = new Vector3(PlayerLeft.position.x + distance, 1f, mid.position.z);
+        mid.position = new Vector3(PlayerLeft.position.x + distance, 1.5f, mid.position.z);
     }
 
     //IEnumerator CountdownStart()
