@@ -239,7 +239,7 @@ MonoBehaviour:
     m_Bits: 64
   InAttack: 0
   isPlayer2: 1
-  forcaEmpurrar: 150
+  forcaEmpurrar: 0
 --- !u!114 &6784768562247092741
 MonoBehaviour:
   m_ObjectHideFlags: 0

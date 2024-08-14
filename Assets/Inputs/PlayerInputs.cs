@@ -80,6 +80,15 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""meialua"",
+                    ""type"": ""Button"",
+                    ""id"": ""0d2cc449-0fac-4185-9b74-185aec9a925c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -251,11 +260,22 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""4a61f51e-0b89-448e-97f8-2c364216aa4c"",
-                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""path"": ""<Gamepad>/dpad/down"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Crounched"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""18742981-9edf-436c-a07f-7206f30d0909"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""meialua"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -334,6 +354,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         m_Player_AttackButtonEast = m_Player.FindAction("Attack/ButtonEast", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Crounched = m_Player.FindAction("Crounched", throwIfNotFound: true);
+        m_Player_meialua = m_Player.FindAction("meialua", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Resume = m_UI.FindAction("Resume", throwIfNotFound: true);
@@ -402,6 +423,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_AttackButtonEast;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Crounched;
+    private readonly InputAction m_Player_meialua;
     public struct PlayerActions
     {
         private @PlayerInputs m_Wrapper;
@@ -412,6 +434,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         public InputAction @AttackButtonEast => m_Wrapper.m_Player_AttackButtonEast;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Crounched => m_Wrapper.m_Player_Crounched;
+        public InputAction @meialua => m_Wrapper.m_Player_meialua;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -439,6 +462,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @Crounched.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCrounched;
                 @Crounched.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCrounched;
                 @Crounched.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCrounched;
+                @meialua.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMeialua;
+                @meialua.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMeialua;
+                @meialua.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMeialua;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -461,6 +487,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @Crounched.started += instance.OnCrounched;
                 @Crounched.performed += instance.OnCrounched;
                 @Crounched.canceled += instance.OnCrounched;
+                @meialua.started += instance.OnMeialua;
+                @meialua.performed += instance.OnMeialua;
+                @meialua.canceled += instance.OnMeialua;
             }
         }
     }
@@ -524,6 +553,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         void OnAttackButtonEast(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnCrounched(InputAction.CallbackContext context);
+        void OnMeialua(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
