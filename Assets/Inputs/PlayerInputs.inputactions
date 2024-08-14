@@ -58,6 +58,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "meialua",
+                    "type": "Button",
+                    "id": "0d2cc449-0fac-4185-9b74-185aec9a925c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -229,11 +238,22 @@
                 {
                     "name": "",
                     "id": "4a61f51e-0b89-448e-97f8-2c364216aa4c",
-                    "path": "<Gamepad>/leftStick/down",
+                    "path": "<Gamepad>/dpad/down",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Crounched",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "18742981-9edf-436c-a07f-7206f30d0909",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "meialua",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

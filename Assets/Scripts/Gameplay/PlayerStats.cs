@@ -37,14 +37,15 @@ public class PlayerStats : MonoBehaviour
             if (scrpPlayerCombat.ordem > 0)
             {
                 scrpMoveRigidbody.MoverAoLevarDano();
-            }          
-            ResetScripts();
+            }
+            StartCoroutine(ResetScripts());
         }
         
     }
 
     IEnumerator ResetScripts()
     {
+        scrpPlayerCombat.BreakAnimation();
         scrpMoveRigidbody.enabled = false;
         scrpPlayerCombat.enabled = false;
         Debug.Log("Parou");

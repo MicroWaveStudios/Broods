@@ -96,7 +96,7 @@ public class PlayerCombat : MonoBehaviour
         yield return Continued(0.2f, ordemCombo[ordem]);
         yield return new WaitForSeconds(0.5f);
         yield return Continued(0.2f, ordemCombo[ordem]);
-        yield return new WaitForSeconds(0.9f);
+        yield return new WaitForSeconds(1.05f);
         yield return ResetCombo();
         yield break;
     }
@@ -138,7 +138,10 @@ public class PlayerCombat : MonoBehaviour
         yield break;
     }
 
-
+    public void BreakAnimation()
+    {
+        anim.SetTrigger("NotContinued");
+    }
 
 
 
