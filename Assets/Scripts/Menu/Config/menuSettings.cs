@@ -7,6 +7,7 @@ using TMPro;
 public class menuSettings : MonoBehaviour
 {
     public TMP_Dropdown graphicsDropdown;
+    public Toggle VSyncButton;
     public TMP_Text resAtual;
     public Slider sliderBrilho;
 
@@ -62,5 +63,18 @@ public class menuSettings : MonoBehaviour
 
     public void mudarBrilho()
     {
+        Screen.brightness = sliderBrilho.value;
     }
+
+    public void VSync()
+    {
+        if (VSyncButton.isOn)
+        {
+            QualitySettings.vSyncCount = 2;
+        }
+        else
+        {
+            QualitySettings.vSyncCount = 0;
+        }
+    }        
 }
