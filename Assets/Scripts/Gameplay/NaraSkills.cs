@@ -8,22 +8,55 @@ public class NaraSkills : MonoBehaviour
     [SerializeField] int actualNumber = 0;
     [SerializeField] int[] ordemCombo;
     PlayerMoveRigidbody scrpRigidbody;
+    GameObject outroPlayer;
     float timer;
-    int x = 0;
+    int ordem = 0;
+    bool InMeiaLua = false;
+    [SerializeField] float danoLaser;
+    Vector3 posicaoRaycast;
+    Vector3 posicaoRaycastPlayer2;
 
     private void Awake()
     {
-        scrpRigidbody = GetComponent<PlayerMoveRigidbody>();
+        scrpRigidbody = GetComponent<PlayerMoveRigidbody>();       
+    }
+
+    private void Update()
+    {
+        
+
+        if (this.gameObject.CompareTag("Player1"))
+        {
+            outroPlayer = GameObject.FindGameObjectWithTag("Player2");
+        }
+        else
+        {
+            outroPlayer = GameObject.FindGameObjectWithTag("Player1");
+        }
+
+        posicaoRaycast = new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z);
+
+        posicaoRaycastPlayer2 = new Vector3(outroPlayer.transform.position.x, outroPlayer.transform.position.y + 1.5f, outroPlayer.transform.position.z);
+
+        
     }
 
     public void MeiaLuaStart(InputAction.CallbackContext context)
-    {   
-        StartCoroutine(MeiaLua());
+    {
+        if (!InMeiaLua)
+            StartCoroutine(MeiaLua());
+            InMeiaLua = true;
     }
-    public void MeiaLuaFinal(InputAction.CallbackContext context)
+    public void MeiaLuaEsquerda(InputAction.CallbackContext context)
     {
         if (context.ReadValue<Vector2>().x * scrpRigidbody.isPlayer2 < 0)
             StartCoroutine(ChangeActualNumber(1));
+    }
+
+    public void MeiaLuaDireita(InputAction.CallbackContext context)
+    {
+        if (context.ReadValue<Vector2>().x * scrpRigidbody.isPlayer2 > 0)
+            StartCoroutine(ChangeActualNumber(3));
     }
     public void MeiaLuaAtaque(InputAction.CallbackContext context)
     {
@@ -41,11 +74,10 @@ public class NaraSkills : MonoBehaviour
     IEnumerator MeiaLua()
     {
         Debug.Log("Baixo");
-        yield return Continued(0.5f, ordemCombo[x]);
+        yield return Continued(0.5f, ordemCombo[ordem]);
         Debug.Log("Esquerda");
-        yield return Continued(0.5f, ordemCombo[x]);
+        yield return Continued(0.5f, ordemCombo[ordem]);
         Debug.Log("Hit");
-        yield return new WaitForSeconds(1f);
         yield return FirstSkill();
         yield return ResetCombo();
         yield break;
@@ -58,7 +90,10 @@ public class NaraSkills : MonoBehaviour
 
             if (actualNumber == number)
             {
-                x++;
+                if (ordem != ordemCombo.Length)
+                {
+                    ordem++;
+                }              
                 timer = 0f;
                 yield break;
             }
@@ -76,13 +111,27 @@ public class NaraSkills : MonoBehaviour
 
     IEnumerator FirstSkill()
     {
-        Debug.Log("LASER LASER LASER");
+        RaycastHit hit;
+        
+        Physics.Raycast(transform.position, outroPlayer.transform.position, out hit, 20f);
+
+        GameObject Player2 = hit.collider.gameObject;
+
+        Debug.DrawLine(posicaoRaycast, posicaoRaycastPlayer2, Color.magenta);
+        Debug.Log("Laser");
+        if (Player2.GetComponent<PlayerStats>() != null)
+        {
+            Player2.GetComponent<PlayerStats>().SufferDamage(danoLaser);
+        }
+
+        yield return new WaitForSeconds(1f);
         yield break;
     }
 
     IEnumerator ResetCombo()
     {
-        x = 0;
+        InMeiaLua = false;
+        ordem = 0;
         timer = 0f;
         actualNumber = -1;
         StopAllCoroutines();
