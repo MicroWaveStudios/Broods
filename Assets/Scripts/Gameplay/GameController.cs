@@ -23,9 +23,7 @@ public class GameController : MonoBehaviour
     public bool value;
     public bool TrocouLado;
 
-    float countdownTime = 3;
     [SerializeField] TMP_Text countdownText;
-    bool FinishTimer = false;
 
 #pragma warning disable CS0414 // O campo "GameController.x" é atribuído, mas seu valor nunca é usado
     int x = 0;
