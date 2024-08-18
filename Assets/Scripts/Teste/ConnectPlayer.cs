@@ -26,10 +26,8 @@ public class ConnectPlayer : MonoBehaviour
 
     void DevicePlayer()
     {
-        deviceName = deviceDisplaySettings.GetDeviceName(playerInput); //Nome do dispositivo conectado
+        //deviceName = deviceDisplaySettings.GetDeviceName(playerInput); //Nome do dispositivo conectado
 
-        //deviceName = playerInput.GetComponent<PlayerInput>().currentControlScheme.ToString(); //Nome do controlScheme sendo usado pelo player
-
-        Debug.Log(deviceDisplaySettings.GetDeviceName(playerInput));
+        deviceName = playerInput.GetComponent<PlayerInput>().currentControlScheme.ToString(); //Nome do controlScheme sendo usado pelo player
     }
 }

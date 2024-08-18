@@ -13,14 +13,17 @@ public class PlayerController : MonoBehaviour
 
     [Header("Input Settings")]
     public PlayerInput playerInput;
-
-    private string actionMapPlayer = "Player";
+    //Mapas de ação PlayerInputs
+    private string actionMapPlayer = "Player"; 
     private string actionMapUI = "UI";
+
+
+    GameObject gameManager;
 
     private void Start()
     {
-        GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
-        gameController.GetComponent<GameManager>().SetupPlayer(this.gameObject);
+        gameManager = GameObject.FindGameObjectWithTag("GameController");
+        gameManager.GetComponent<GameManager>().SetupPlayer(this.gameObject);
     }
 
     public void SetupPlayer(int newPlayerID)
@@ -28,5 +31,20 @@ public class PlayerController : MonoBehaviour
         playerID = newPlayerID;
 
         ConnectPlayer.SetupPlayer(playerID, playerInput);
+    }
+
+    public void OnTogglePause(InputAction.CallbackContext value)
+    {
+        if (value.started)
+            gameManager.GetComponent<GameManager>().TogglePauseState(this);
+    }
+
+    public void EnableMapActionPlayer()
+    {
+        playerInput.SwitchCurrentActionMap(actionMapPlayer);
+    }
+    public void EnableMapActionUI()
+    {
+        playerInput.SwitchCurrentActionMap(actionMapUI);
     }
 }

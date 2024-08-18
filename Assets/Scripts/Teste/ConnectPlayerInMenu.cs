@@ -17,7 +17,7 @@ public class ConnectPlayerInMenu : MonoBehaviour
 
         PlayerMenu[playerID].SetActive(true);
 
-        if (deviceName == "Xbox" || deviceName == "Playstation" || deviceName == "NintendoSwitch")
+        if (deviceName == "Gamepad")
             GamepadMenu[playerID].SetActive(true);
         else
             KeyboardMenu[playerID].SetActive(true);

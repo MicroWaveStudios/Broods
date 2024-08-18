@@ -7,8 +7,15 @@ public class GameManager : MonoBehaviour
 {
     public int limitPlayer;
     [SerializeField] int playerInScene;
+    PlayerController playerController;
+    bool isPaused;
 
     [SerializeField] GameObject ContinueButton;
+
+    private void Start()
+    {
+        isPaused = false;
+    }
 
     public void SetupPlayer(GameObject spawnedPlayer)
     {
@@ -22,5 +29,33 @@ public class GameManager : MonoBehaviour
             ContinueButton.SetActive(true);
     }
 
+    public void TogglePauseState(PlayerController newFocusedPlayerController)
+    {
+        playerController = newFocusedPlayerController;
+
+        isPaused = !isPaused;
+
+        //ToggleTimeScale();
+
+        //UpdateActivePlayerInputs();
+
+        SwitchFocusedPlayerControlScheme();
+
+        //UpdateUIMenu();
+
+    }
+
+    void SwitchFocusedPlayerControlScheme()
+    {
+        switch (isPaused)
+        {
+            case true:
+                playerController.EnableMapActionUI();
+                break;
+            case false:
+                playerController.EnableMapActionPlayer();
+                break;
+        }
+    }
 }
 
