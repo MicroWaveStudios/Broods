@@ -37,7 +37,6 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
-
         Canvas = GameObject.FindGameObjectWithTag("Canvas");
         Player1 = GameObject.FindGameObjectWithTag("Player1");
         Player2 = GameObject.FindGameObjectWithTag("Player2");
@@ -90,35 +89,4 @@ public class GameController : MonoBehaviour
         distance = Vector3.Distance(PlayerLeft.position, PlayerRight.position)/2f;
         mid.position = new Vector3(PlayerLeft.position.x + distance, 1.5f, mid.position.z);
     }
-
-    //IEnumerator CountdownStart()
-    //{
-    //    while (Player1 != null && Player2 != null) 
-
-    //    Debug.Log("START GAME");
-    //    Player1.transform.position = InstancePosition[0].position;
-    //    Player2.transform.position = InstancePosition[1].position;
-    //    Player1.GetComponent<PlayerMoveRigidbody>().enabled = false;
-    //    Player2.GetComponent<PlayerMoveRigidbody>().enabled = false;
-    //    Player1.GetComponent<PlayerCombat>().enabled = false;
-    //    Player2.GetComponent<PlayerCombat>().enabled = false;
-
-    //    countdownText.transform.gameObject.SetActive(true);
-    //    while (countdownTime > 0f)
-    //    {
-    //        Debug.Log(countdownTime);
-    //        countdownText.text = countdownTime.ToString();
-    //        yield return new WaitForSeconds(1f);
-    //        countdownTime--;
-    //    }
-    //    countdownText.text = "FIGHT!";
-    //    yield return new WaitForSeconds(1f);
-    //    countdownText.transform.gameObject.SetActive(false);
-    //    FinishTimer = true;
-
-    //    Player1.GetComponent<PlayerMoveRigidbody>().enabled = true;
-    //    Player2.GetComponent<PlayerMoveRigidbody>().enabled = true;
-    //    Player1.GetComponent<PlayerCombat>().enabled = true;
-    //    Player2.GetComponent<PlayerCombat>().enabled = true;
-    //}
 }

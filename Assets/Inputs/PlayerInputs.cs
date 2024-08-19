@@ -82,9 +82,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""meialua"",
+                    ""name"": ""EnterGame"",
                     ""type"": ""Button"",
-                    ""id"": ""0d2cc449-0fac-4185-9b74-185aec9a925c"",
+                    ""id"": ""3cc34bc1-876f-4d6c-9c9a-3e63c75bcd04"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -95,10 +95,10 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""6e12ac03-47d9-49ce-b472-10dd292a52ea"",
-                    ""path"": ""<Keyboard>/u"",
+                    ""path"": ""<Keyboard>/t"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard"",
+                    ""groups"": ""KeyboardLeft"",
                     ""action"": ""Attack/ButtonNorth"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -110,6 +110,17 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
+                    ""action"": ""Attack/ButtonNorth"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""22e51b39-0087-4f63-99ec-0a164943b98a"",
+                    ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardRight;Keyboard"",
                     ""action"": ""Attack/ButtonNorth"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -131,7 +142,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard"",
+                    ""groups"": ""KeyboardLeft;Keyboard"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -142,7 +153,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard"",
+                    ""groups"": ""KeyboardLeft;Keyboard"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -181,6 +192,39 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
+                    ""name"": ""Arrows"",
+                    ""id"": ""14905b72-6134-428c-9fb2-0bf30b9b8c76"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""e945b456-e8fd-4e0b-92be-d65417be9bcc"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardRight"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""be69b9c5-0855-4614-92ae-37aefde06254"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardRight"",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
                     ""name"": """",
                     ""id"": ""2e6de4da-871a-41da-aaa0-39b58d7bef26"",
                     ""path"": ""<Gamepad>/buttonWest"",
@@ -194,10 +238,21 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""d348c378-ae9e-4c17-9733-a157b74b95f4"",
-                    ""path"": ""<Keyboard>/h"",
+                    ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard"",
+                    ""groups"": ""KeyboardLeft"",
+                    ""action"": ""Attack/ButtonWest"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""df65c9cb-3ff1-4b36-aaae-d1bf3e217aeb"",
+                    ""path"": ""<Keyboard>/j"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardRight;Keyboard"",
                     ""action"": ""Attack/ButtonWest"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -216,10 +271,21 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""4036e912-fd68-4f73-a3e5-c0fdf4d78ed1"",
-                    ""path"": ""<Keyboard>/k"",
+                    ""path"": ""<Keyboard>/h"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard"",
+                    ""groups"": ""KeyboardLeft"",
+                    ""action"": ""Attack/ButtonEast"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0c8e4403-f890-42d0-b545-6b88bcfb8396"",
+                    ""path"": ""<Keyboard>/l"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardRight;Keyboard"",
                     ""action"": ""Attack/ButtonEast"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -230,7 +296,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": ""Tap"",
                     ""processors"": """",
-                    ""groups"": ""Keyboard"",
+                    ""groups"": ""KeyboardLeft;Keyboard"",
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -248,11 +314,22 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""44cafe83-dd09-4002-a14b-9171ae22ac18"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardRight"",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""f09739a2-99bb-484e-8798-1f1e0213bfa3"",
                     ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard"",
+                    ""groups"": ""KeyboardLeft;Keyboard"",
                     ""action"": ""Crounched"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -270,12 +347,78 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""18742981-9edf-436c-a07f-7206f30d0909"",
-                    ""path"": """",
+                    ""id"": ""a42231c5-223b-4822-8809-b99a57726058"",
+                    ""path"": ""<Keyboard>/downArrow"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""meialua"",
+                    ""groups"": ""KeyboardRight"",
+                    ""action"": ""Crounched"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f19abc8f-cba8-4995-beb9-67c8d0b363f6"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardLeft"",
+                    ""action"": ""EnterGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""eacda1fc-2f4d-485e-a67d-2c3e6c5eccfa"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardLeft"",
+                    ""action"": ""EnterGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""532415ed-fb5c-4326-95de-7504559d7b90"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardLeft"",
+                    ""action"": ""EnterGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8be8323c-b3c1-46b9-8a52-189c19c14176"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardLeft"",
+                    ""action"": ""EnterGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""db4aedae-e95f-4494-b173-4623458df174"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardRight"",
+                    ""action"": ""EnterGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6ff579d4-6999-4de2-8514-fb61b0d0a014"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""EnterGame"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -601,6 +744,28 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""isOR"": false
                 }
             ]
+        },
+        {
+            ""name"": ""KeyboardLeft"",
+            ""bindingGroup"": ""KeyboardLeft"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Keyboard>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""KeyboardRight"",
+            ""bindingGroup"": ""KeyboardRight"",
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Keyboard>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
         }
     ]
 }");
@@ -612,7 +777,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         m_Player_AttackButtonEast = m_Player.FindAction("Attack/ButtonEast", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Crounched = m_Player.FindAction("Crounched", throwIfNotFound: true);
-        m_Player_meialua = m_Player.FindAction("meialua", throwIfNotFound: true);
+        m_Player_EnterGame = m_Player.FindAction("EnterGame", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Click = m_UI.FindAction("Click", throwIfNotFound: true);
@@ -684,7 +849,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_AttackButtonEast;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Crounched;
-    private readonly InputAction m_Player_meialua;
+    private readonly InputAction m_Player_EnterGame;
     public struct PlayerActions
     {
         private @PlayerInputs m_Wrapper;
@@ -695,7 +860,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         public InputAction @AttackButtonEast => m_Wrapper.m_Player_AttackButtonEast;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Crounched => m_Wrapper.m_Player_Crounched;
-        public InputAction @meialua => m_Wrapper.m_Player_meialua;
+        public InputAction @EnterGame => m_Wrapper.m_Player_EnterGame;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -723,9 +888,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @Crounched.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCrounched;
                 @Crounched.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCrounched;
                 @Crounched.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCrounched;
-                @meialua.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMeialua;
-                @meialua.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMeialua;
-                @meialua.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMeialua;
+                @EnterGame.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEnterGame;
+                @EnterGame.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEnterGame;
+                @EnterGame.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnEnterGame;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -748,9 +913,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @Crounched.started += instance.OnCrounched;
                 @Crounched.performed += instance.OnCrounched;
                 @Crounched.canceled += instance.OnCrounched;
-                @meialua.started += instance.OnMeialua;
-                @meialua.performed += instance.OnMeialua;
-                @meialua.canceled += instance.OnMeialua;
+                @EnterGame.started += instance.OnEnterGame;
+                @EnterGame.performed += instance.OnEnterGame;
+                @EnterGame.canceled += instance.OnEnterGame;
             }
         }
     }
@@ -830,6 +995,24 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
             return asset.controlSchemes[m_GamepadSchemeIndex];
         }
     }
+    private int m_KeyboardLeftSchemeIndex = -1;
+    public InputControlScheme KeyboardLeftScheme
+    {
+        get
+        {
+            if (m_KeyboardLeftSchemeIndex == -1) m_KeyboardLeftSchemeIndex = asset.FindControlSchemeIndex("KeyboardLeft");
+            return asset.controlSchemes[m_KeyboardLeftSchemeIndex];
+        }
+    }
+    private int m_KeyboardRightSchemeIndex = -1;
+    public InputControlScheme KeyboardRightScheme
+    {
+        get
+        {
+            if (m_KeyboardRightSchemeIndex == -1) m_KeyboardRightSchemeIndex = asset.FindControlSchemeIndex("KeyboardRight");
+            return asset.controlSchemes[m_KeyboardRightSchemeIndex];
+        }
+    }
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
@@ -838,7 +1021,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         void OnAttackButtonEast(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnCrounched(InputAction.CallbackContext context);
-        void OnMeialua(InputAction.CallbackContext context);
+        void OnEnterGame(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
