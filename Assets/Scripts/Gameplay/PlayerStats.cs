@@ -7,9 +7,12 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] public float life;
     [SerializeField] public float maxLife;
     [SerializeField] float damageMultiplier;
+    [SerializeField] public float maxEnergy;
+    [SerializeField] public float energy;
     PlayerMoveRigidbody scrpMoveRigidbody;
     PlayerCombat scrpPlayerCombat;
     public bool defendendo;
+    
 
     private void Awake()
     {
@@ -20,6 +23,7 @@ public class PlayerStats : MonoBehaviour
     private void Start()
     {
         life = maxLife;
+        energy = maxEnergy;
     }
 
     private void Update()
@@ -37,21 +41,29 @@ public class PlayerStats : MonoBehaviour
             if (scrpPlayerCombat.ordem > 0)
             {
                 scrpMoveRigidbody.MoverAoLevarDano();
+                StartCoroutine(ResetScripts(true, 0.5f));
             }
-            StartCoroutine(ResetScripts());
+            
         }
         
     }
 
-    IEnumerator ResetScripts()
+    public IEnumerator ResetScripts(bool damage, float delay)
     {
-        scrpPlayerCombat.BreakAnimation();
+        if(damage == true)
+        {
+            scrpPlayerCombat.BreakAnimation();
+        }       
         scrpMoveRigidbody.enabled = false;
         scrpPlayerCombat.enabled = false;
-        Debug.Log("Parou");
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(delay);
         scrpMoveRigidbody.enabled = true;
         scrpPlayerCombat.enabled = true;
         yield break;
+    }
+
+    public void UsouSkill(float custoSkill)
+    {
+        energy -= custoSkill;
     }
 }

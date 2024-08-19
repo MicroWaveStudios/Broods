@@ -328,6 +328,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1968786111, guid: 5a5b253942b6c714c8e2982915649c27, type: 3}
+      propertyPath: maxEnergy
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 3953280824080172342, guid: 5a5b253942b6c714c8e2982915649c27, type: 3}
       propertyPath: m_Name
       value: Player
@@ -411,6 +415,18 @@ PrefabInstance:
     - target: {fileID: 6582643444607593352, guid: 5a5b253942b6c714c8e2982915649c27, type: 3}
       propertyPath: danoLaser
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6582643444607593352, guid: 5a5b253942b6c714c8e2982915649c27, type: 3}
+      propertyPath: custoLaser
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6582643444607593352, guid: 5a5b253942b6c714c8e2982915649c27, type: 3}
+      propertyPath: ordemCombo.Array.data[0]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6582643444607593352, guid: 5a5b253942b6c714c8e2982915649c27, type: 3}
+      propertyPath: ordemCombo.Array.data[1]
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a5b253942b6c714c8e2982915649c27, type: 3}

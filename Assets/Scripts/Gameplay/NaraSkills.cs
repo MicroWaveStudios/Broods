@@ -5,26 +5,35 @@ using UnityEngine.InputSystem;
 
 public class NaraSkills : MonoBehaviour
 {
-    [SerializeField] int actualNumber = 0;
+    int actualNumber = -1;
     [SerializeField] int[] ordemCombo;
     PlayerMoveRigidbody scrpRigidbody;
+    PlayerStats scrpPlayerStats;
     GameObject outroPlayer;
     float timer;
     int ordem = 0;
     bool InMeiaLua = false;
-    [SerializeField] float danoLaser;
     Vector3 posicaoRaycast;
     Vector3 posicaoRaycastPlayer2;
+    
+    
+
+    [Header("Skill Laser")]
+    [SerializeField] float custoLaser;
+    [SerializeField] float danoLaser;
+    ParticleSystem laser;
 
     private void Awake()
     {
         scrpRigidbody = GetComponent<PlayerMoveRigidbody>();       
+        laser = GameObject.FindGameObjectWithTag("Laser").GetComponent<ParticleSystem>();
+        scrpPlayerStats = GetComponent<PlayerStats>();
     }
 
     private void Update()
     {
         
-
+        
         if (this.gameObject.CompareTag("Player1"))
         {
             outroPlayer = GameObject.FindGameObjectWithTag("Player2");
@@ -34,11 +43,14 @@ public class NaraSkills : MonoBehaviour
             outroPlayer = GameObject.FindGameObjectWithTag("Player1");
         }
 
-        posicaoRaycast = new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z);
+        posicaoRaycast = new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z);
 
-        posicaoRaycastPlayer2 = new Vector3(outroPlayer.transform.position.x, outroPlayer.transform.position.y + 1.5f, outroPlayer.transform.position.z);
+        if (outroPlayer != null)
+        {
+            posicaoRaycastPlayer2 = new Vector3(outroPlayer.transform.position.x + 0.5f, outroPlayer.transform.position.y + 1f, outroPlayer.transform.position.z);
+        }
 
-        
+        Debug.DrawLine(transform.position, outroPlayer.transform.position, Color.magenta);
     }
 
     public void MeiaLuaStart(InputAction.CallbackContext context)
@@ -56,11 +68,11 @@ public class NaraSkills : MonoBehaviour
     public void MeiaLuaDireita(InputAction.CallbackContext context)
     {
         if (context.ReadValue<Vector2>().x * scrpRigidbody.isPlayer2 > 0)
-            StartCoroutine(ChangeActualNumber(3));
+            StartCoroutine(ChangeActualNumber(2));
     }
     public void MeiaLuaAtaque(InputAction.CallbackContext context)
     {
-        StartCoroutine(ChangeActualNumber(2));
+        StartCoroutine(ChangeActualNumber(3));
     }
 
     IEnumerator ChangeActualNumber(int number)
@@ -74,9 +86,9 @@ public class NaraSkills : MonoBehaviour
     IEnumerator MeiaLua()
     {
         Debug.Log("Baixo");
-        yield return Continued(0.5f, ordemCombo[ordem]);
-        Debug.Log("Esquerda");
-        yield return Continued(0.5f, ordemCombo[ordem]);
+        yield return Continued(0.2f, ordemCombo[ordem]);
+        Debug.Log("Lado");
+        yield return Continued(0.2f, ordemCombo[ordem]);
         Debug.Log("Hit");
         yield return FirstSkill();
         yield return ResetCombo();
@@ -111,18 +123,37 @@ public class NaraSkills : MonoBehaviour
 
     IEnumerator FirstSkill()
     {
-        RaycastHit hit;
-        
-        Physics.Raycast(transform.position, outroPlayer.transform.position, out hit, 20f);
-
-        GameObject Player2 = hit.collider.gameObject;
-
-        Debug.DrawLine(posicaoRaycast, posicaoRaycastPlayer2, Color.magenta);
-        Debug.Log("Laser");
-        if (Player2.GetComponent<PlayerStats>() != null)
+        if (scrpPlayerStats.energy < custoLaser)
         {
-            Player2.GetComponent<PlayerStats>().SufferDamage(danoLaser);
+            Debug.Log("Sem Energia");
+            yield break;
+        }     
+
+        yield return new WaitForSeconds(0.2f);
+
+        RaycastHit hit;
+
+        //Vector3 posicaoAtualPlayer2 = posicaoRaycastPlayer2;
+        StartCoroutine(scrpPlayerStats.ResetScripts(false, 0.7f));
+        laser.Play();
+        Physics.Raycast(transform.position, outroPlayer.transform.position, out hit, 4f);
+        scrpPlayerStats.UsouSkill(custoLaser);
+
+        if (hit.collider != null)
+        {
+            GameObject Player2 = hit.collider.gameObject;
+
+            if (Player2.GetComponent<PlayerStats>() != null && Player2.name != this.gameObject.name)
+            {             
+                Player2.GetComponent<PlayerStats>().SufferDamage(danoLaser);              
+            }
+                        
         }
+        else
+        {
+            Debug.Log("Não foi");
+        }
+
 
         yield return new WaitForSeconds(1f);
         yield break;
