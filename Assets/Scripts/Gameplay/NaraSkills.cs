@@ -48,9 +48,11 @@ public class NaraSkills : MonoBehaviour
         if (outroPlayer != null)
         {
             posicaoRaycastPlayer2 = new Vector3(outroPlayer.transform.position.x + 0.5f, outroPlayer.transform.position.y + 1f, outroPlayer.transform.position.z);
+
+            //Debug.DrawLine(transform.position, outroPlayer.transform.position, Color.magenta);
         }
 
-        Debug.DrawLine(transform.position, outroPlayer.transform.position, Color.magenta);
+        
     }
 
     public void MeiaLuaStart(InputAction.CallbackContext context)
