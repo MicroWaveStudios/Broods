@@ -7,15 +7,10 @@ public class GameManager : MonoBehaviour
 {
     public int limitPlayer;
     [SerializeField] int playerInScene;
-    PlayerController playerController;
-    bool isPaused;
+    PlayerController focusedPlayerController;
+    private bool isPaused;
 
     [SerializeField] GameObject ContinueButton;
-
-    private void Start()
-    {
-        isPaused = false;
-    }
 
     public void SetupPlayer(GameObject spawnedPlayer)
     {
@@ -31,18 +26,37 @@ public class GameManager : MonoBehaviour
 
     public void TogglePauseState(PlayerController newFocusedPlayerController)
     {
-        playerController = newFocusedPlayerController;
+        focusedPlayerController = newFocusedPlayerController;
+        isPaused = true;
 
-        isPaused = !isPaused;
-
-        //ToggleTimeScale();
-
-        //UpdateActivePlayerInputs();
+        UpdateActivePlayerInputs(focusedPlayerController);
 
         SwitchFocusedPlayerControlScheme();
 
-        //UpdateUIMenu();
+        UIPause();
+        Debug.Log(isPaused);
+    }
 
+    public void IsPaused()
+    {
+        isPaused = !isPaused;
+    }
+
+    void UpdateActivePlayerInputs(PlayerController focusedPlayer)
+    {
+        GameObject notFocusedPlayer;
+        switch (focusedPlayer.gameObject.tag) 
+        {
+            case "Player1":
+                notFocusedPlayer = GameObject.FindGameObjectWithTag("Player2");
+                notFocusedPlayer.GetComponent<PlayerController>().SetInputActive(isPaused);
+                break;
+            case "Player2":
+                notFocusedPlayer = GameObject.FindGameObjectWithTag("Player1");
+                notFocusedPlayer.GetComponent<PlayerController>().SetInputActive(isPaused);
+                break;
+
+        }
     }
 
     void SwitchFocusedPlayerControlScheme()
@@ -50,12 +64,18 @@ public class GameManager : MonoBehaviour
         switch (isPaused)
         {
             case true:
-                playerController.EnableMapActionUI();
+                focusedPlayerController.EnableMapActionUI();
                 break;
             case false:
-                playerController.EnableMapActionPlayer();
+                focusedPlayerController.EnableMapActionPlayer();
                 break;
         }
+    }
+
+    public void UIPause()
+    {
+        GameObject UIManager = GameObject.FindGameObjectWithTag("UIManager");
+        UIManager.GetComponent<UIManager>().UIStatePause(isPaused);
     }
 }
 

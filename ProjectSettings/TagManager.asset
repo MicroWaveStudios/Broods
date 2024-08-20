@@ -9,6 +9,8 @@ TagManager:
   - Player1
   - Defense
   - Attack
+  - Laser
+  - UIManager
   layers:
   - Default
   - TransparentFX

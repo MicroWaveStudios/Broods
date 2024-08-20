@@ -17,13 +17,19 @@ public class PlayerController : MonoBehaviour
     private string actionMapPlayer = "Player"; 
     private string actionMapUI = "UI";
 
+    bool isPaused = false;
 
     GameObject gameManager;
 
-    private void Start()
+    private void Awake()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameController");
-        gameManager.GetComponent<GameManager>().SetupPlayer(this.gameObject);
+    }
+
+    private void Start()
+    {
+        //comentei a linha pois estou editando possiveis erros
+        //gameManager.GetComponent<GameManager>().SetupPlayer(this.gameObject);
     }
 
     public void SetupPlayer(int newPlayerID)
@@ -33,10 +39,32 @@ public class PlayerController : MonoBehaviour
         ConnectPlayer.SetupPlayer(playerID, playerInput);
     }
 
-    public void OnTogglePause(InputAction.CallbackContext value)
+    public void OnTogglePause(InputAction.CallbackContext context)
     {
-        if (value.started)
-            gameManager.GetComponent<GameManager>().TogglePauseState(this);
+        //gameManager.GetComponent<GameManager>().IsPaused();
+        //gameManager.GetComponent<GameManager>().TogglePauseState(this);
+
+        StartCoroutine(Pause());
+    }
+
+    public void SetInputActive(bool value)
+    { 
+        switch (value) 
+        { 
+            case true:
+                playerInput.DeactivateInput();
+                break;
+            case false:
+                playerInput.ActivateInput();
+                break;
+        }
+    }
+
+    IEnumerator Pause()
+    {
+        gameManager.GetComponent<GameManager>().IsPaused();
+        yield return new WaitForSeconds(0.02f);
+        gameManager.GetComponent<GameManager>().TogglePauseState(this);
     }
 
     public void EnableMapActionPlayer()

@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using static UnityEditor.Experimental.GraphView.GraphView;
 using Unity.VisualScripting;
+using UnityEngine.InputSystem;
 
 public class CountdownTimer : MonoBehaviour
 {
@@ -27,9 +28,9 @@ public class CountdownTimer : MonoBehaviour
     }
     private IEnumerator CountdownStart()
     {
+        //EnablePlayerInputs(false);
         Player1.transform.position = InstancePosition[0].position;
         Player2.transform.position = InstancePosition[1].position;
-        EnablePlayerScripts(false);
 
         countdownText.transform.gameObject.SetActive(true);
 
@@ -44,12 +45,16 @@ public class CountdownTimer : MonoBehaviour
         yield return new WaitForSeconds(1f);
         countdownText.transform.gameObject.SetActive(false);
 
-        EnablePlayerScripts(true);
+        //EnablePlayerInputs(true);
         yield break;
     }
 
-    void EnablePlayerScripts(bool value)
+    void EnablePlayerInputs(bool value)
     {
+        Player1.GetComponent<PlayerInput>().enabled = value;
+        Player2.GetComponent<PlayerInput>().enabled = value;
+        Player1.GetComponent<PlayerController>().enabled = value;
+        Player2.GetComponent<PlayerController>().enabled = value;
         Player1.GetComponent<PlayerMoveRigidbody>().enabled = value;
         Player2.GetComponent<PlayerMoveRigidbody>().enabled = value;
         Player1.GetComponent<PlayerCombat>().enabled = value;
