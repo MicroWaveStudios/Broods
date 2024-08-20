@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        gameManager = GameObject.FindGameObjectWithTag("GameController");
+        gameManager = GameObject.FindGameObjectWithTag("GameManager");
     }
 
     private void Start()
@@ -43,7 +43,6 @@ public class PlayerController : MonoBehaviour
     {
         //gameManager.GetComponent<GameManager>().IsPaused();
         //gameManager.GetComponent<GameManager>().TogglePauseState(this);
-
         StartCoroutine(Pause());
     }
 
@@ -62,9 +61,8 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator Pause()
     {
-        gameManager.GetComponent<GameManager>().IsPaused();
-        yield return new WaitForSeconds(0.02f);
-        gameManager.GetComponent<GameManager>().TogglePauseState(this);
+        gameManager.GetComponent<GameManager>().TogglePauseState(this.gameObject);
+        yield break;
     }
 
     public void EnableMapActionPlayer()

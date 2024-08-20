@@ -24,17 +24,17 @@ public class GameManager : MonoBehaviour
             ContinueButton.SetActive(true);
     }
 
-    public void TogglePauseState(PlayerController newFocusedPlayerController)
+    public void TogglePauseState(GameObject newFocusedPlayerController)
     {
-        focusedPlayerController = newFocusedPlayerController;
-        isPaused = true;
+        focusedPlayerController = newFocusedPlayerController.GetComponent<PlayerController>();
+
+        isPaused = !isPaused;
 
         UpdateActivePlayerInputs(focusedPlayerController);
 
         SwitchFocusedPlayerControlScheme();
 
         UIPause();
-        Debug.Log(isPaused);
     }
 
     public void IsPaused()

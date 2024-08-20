@@ -4956,7 +4956,19 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 6582643444607593352}
         m_TargetAssemblyTypeName: NaraSkills, Assembly-CSharp
-        m_MethodName: MeiaLuaFinal
+        m_MethodName: MeiaLuaEsquerda
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6582643444607593352}
+        m_TargetAssemblyTypeName: NaraSkills, Assembly-CSharp
+        m_MethodName: MeiaLuaDireita
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5128,7 +5140,7 @@ MonoBehaviour:
   life: 0
   maxLife: 100
   damageMultiplier: 0
-  maxEnergy: 0
+  maxEnergy: 100
   energy: 0
   defendendo: 0
 --- !u!54 &1256922631
@@ -5214,9 +5226,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0d9baa1edab92649b496ee3f6ff11b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ordemCombo: 0100000002000000
-  custoLaser: 0
-  danoLaser: 0
+  ordemCombo: 0200000003000000
+  custoLaser: 10
+  danoLaser: 10
 --- !u!114 &1713043217670130895
 MonoBehaviour:
   m_ObjectHideFlags: 0
