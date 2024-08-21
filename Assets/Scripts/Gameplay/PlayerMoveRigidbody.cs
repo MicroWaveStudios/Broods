@@ -22,6 +22,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
     public bool InJump = false;
     [SerializeField] Transform GroundCheck;
     [SerializeField] LayerMask ground;
+    PlayerInput playerInput;
 
     [SerializeField] bool InAttack = false;
 
@@ -30,9 +31,11 @@ public class PlayerMoveRigidbody : MonoBehaviour
     [SerializeField] float forcaEmpurrar;
     //[SerializeField] float forcaEmpurrarAtacar;
 
+    GameObject gameManager;
 
     private void Awake()
     {
+        gameManager = GameObject.FindGameObjectWithTag("GameController");
         rb = GetComponent<Rigidbody>();
         anim = transform.GetChild(0).GetComponent<Animator>();
         playerInputs = new PlayerInputs();
@@ -40,6 +43,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
         GameObject GameController = GameObject.FindGameObjectWithTag("GameController");
         gameController = GameController.GetComponent<GameController>();
         playerStats = GetComponent<PlayerStats>();
+        playerInput = GetComponent<PlayerInput>();
     }
     //private void Start()
     //{
@@ -116,6 +120,28 @@ public class PlayerMoveRigidbody : MonoBehaviour
             rb.AddForce(Vector3.up * jumpForce);
         }
     }
+
+    public void OnTogglePause(InputAction.CallbackContext context)
+    {
+        if (!gameManager.GetComponent<GameManager>().GetBooleanIsPaused())
+            gameManager.GetComponent<GameManager>().Pause(this.gameObject, true);
+        else
+            gameManager.GetComponent<GameManager>().Pause(this.gameObject, false);
+    }
+
+    public void SetInputActive(bool value)
+    {
+        switch (value)
+        {
+            case true:
+                playerInput.DeactivateInput();
+                break;
+            case false:
+                playerInput.ActivateInput();
+                break;
+        }
+    }
+
     public bool IsGrounded()
     {
         if (Physics.CheckSphere(GroundCheck.position, 0.1f, ground))

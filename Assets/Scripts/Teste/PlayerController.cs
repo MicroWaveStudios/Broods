@@ -39,18 +39,18 @@ public class PlayerController : MonoBehaviour
         ConnectPlayer.SetupPlayer(playerID, playerInput);
     }
 
-    public void OnTogglePause(InputAction.CallbackContext context)
-    {
-        //gameManager.GetComponent<GameManager>().IsPaused();
-        //gameManager.GetComponent<GameManager>().TogglePauseState(this);
+    //public void OnTogglePause(InputAction.CallbackContext context)
+    //{
+    //    //gameManager.GetComponent<GameManager>().IsPaused();
+    //    //gameManager.GetComponent<GameManager>().TogglePauseState(this);
 
-        StartCoroutine(Pause());
-    }
+    //    StartCoroutine(Pause());
+    //}
 
     public void SetInputActive(bool value)
-    { 
-        switch (value) 
-        { 
+    {
+        switch (value)
+        {
             case true:
                 playerInput.DeactivateInput();
                 break;
@@ -60,12 +60,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    IEnumerator Pause()
-    {
-        gameManager.GetComponent<GameManager>().IsPaused();
-        yield return new WaitForSeconds(0.02f);
-        gameManager.GetComponent<GameManager>().TogglePauseState(this);
-    }
+    //IEnumerator Pause()
+    //{
+    //    gameManager.GetComponent<GameManager>().IsPaused();
+    //    yield return new WaitForSeconds(0.02f);
+    //    gameManager.GetComponent<GameManager>().TogglePauseState(this);
+    //}
 
     public void EnableMapActionPlayer()
     {

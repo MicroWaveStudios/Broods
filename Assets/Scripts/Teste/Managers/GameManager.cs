@@ -7,10 +7,89 @@ public class GameManager : MonoBehaviour
 {
     public int limitPlayer;
     [SerializeField] int playerInScene;
-    PlayerController focusedPlayerController;
-    private bool isPaused;
+    public GameObject focusedPlayer;
+    private bool isPaused = false;
 
-    [SerializeField] GameObject ContinueButton;
+    //[SerializeField] GameObject ContinueButton;
+
+    public void Pause(GameObject newFocusedPlayer, bool value)
+    {
+        if (focusedPlayer == null)
+            focusedPlayer = newFocusedPlayer;
+        if (focusedPlayer.tag == newFocusedPlayer.tag)
+        {
+            isPaused = value;
+            SetActiveInputNotFocusedPlayer();
+            SwitchControlScheme();
+            UIPause(value);
+        }
+    }
+
+
+    void SwitchControlScheme()
+    {
+        switch (isPaused)
+        {
+            case true:
+                focusedPlayer.GetComponent<PlayerController>().EnableMapActionUI();
+                break;
+            case false:
+                focusedPlayer.GetComponent<PlayerController>().EnableMapActionPlayer();
+                focusedPlayer = null;
+                break;
+        }
+    }
+    void SetActiveInputNotFocusedPlayer()
+    {
+        GameObject notFocusedPlayer;
+        switch (focusedPlayer.CompareTag("Player1"))
+        {
+            case true:
+                notFocusedPlayer = GameObject.FindGameObjectWithTag("Player2");
+                notFocusedPlayer.GetComponent<PlayerController>().SetInputActive(isPaused);
+                break;
+            case false:
+                notFocusedPlayer = GameObject.FindGameObjectWithTag("Player1");
+                notFocusedPlayer.GetComponent<PlayerController>().SetInputActive(isPaused);
+                break;
+        }
+    }
+    public void UIPause(bool value)
+    {
+        GameObject UIManager = GameObject.FindGameObjectWithTag("UIManager");
+        UIManager.GetComponent<UIManager>().UIStatePause(value);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public void SetupPlayer(GameObject spawnedPlayer)
     {
@@ -20,62 +99,90 @@ public class GameManager : MonoBehaviour
 
             playerInScene++;
         }
-        if (playerInScene == limitPlayer)
-            ContinueButton.SetActive(true);
+        //if (playerInScene == limitPlayer)
+        //ContinueButton.SetActive(true);
     }
 
-    public void TogglePauseState(PlayerController newFocusedPlayerController)
+    //public void OnPause(GameObject newFocusedPlayer, bool value)
+    //{
+    //    if (focusedPlayer == null && value)
+    //        focusedPlayer = newFocusedPlayer;
+    //    else
+    //        focusedPlayer = null;
+    //    StartCoroutine(Pause(value));
+    //}
+
+    //IEnumerator Pause(bool value)
+    //{
+    //    isPaused = value;
+    //    yield return new WaitForSeconds(0.02f);
+    //    SetInputActiveNotFocusedPlayer(focusedPlayer);
+    //    SwitchFocusedPlayerControlScheme();
+    //    UIPause(value);
+    //}
+
+    public bool GetBooleanIsPaused()
     {
-        focusedPlayerController = newFocusedPlayerController;
-        isPaused = true;
-
-        UpdateActivePlayerInputs(focusedPlayerController);
-
-        SwitchFocusedPlayerControlScheme();
-
-        UIPause();
-        Debug.Log(isPaused);
+        return isPaused;
     }
 
-    public void IsPaused()
-    {
-        isPaused = !isPaused;
-    }
+    //void SetInputActiveNotFocusedPlayer(GameObject FocusedPlayer)
+    //{
+    //    GameObject notFocusedPlayer;
+    //    if (FocusedPlayer.tag == "Player1")
+    //    {
+    //        notFocusedPlayer = GameObject.FindGameObjectWithTag("Player2");
+    //        notFocusedPlayer.GetComponent<PlayerController>().SetInputActive(isPaused);
+    //    }
+    //    else
+    //    {
+    //        notFocusedPlayer = GameObject.FindGameObjectWithTag("Player1");
+    //        notFocusedPlayer.GetComponent<PlayerController>().SetInputActive(isPaused);
+    //    }
+    //}
 
-    void UpdateActivePlayerInputs(PlayerController focusedPlayer)
-    {
-        GameObject notFocusedPlayer;
-        switch (focusedPlayer.gameObject.tag) 
-        {
-            case "Player1":
-                notFocusedPlayer = GameObject.FindGameObjectWithTag("Player2");
-                notFocusedPlayer.GetComponent<PlayerController>().SetInputActive(isPaused);
-                break;
-            case "Player2":
-                notFocusedPlayer = GameObject.FindGameObjectWithTag("Player1");
-                notFocusedPlayer.GetComponent<PlayerController>().SetInputActive(isPaused);
-                break;
+    //void SwitchFocusedPlayerControlScheme()
+    //{
+    //    switch (isPaused)
+    //    {
+    //        case true:
+    //            focusedPlayer.GetComponent<PlayerController>().EnableMapActionUI();
+    //            break;
+    //        case false:
+    //            focusedPlayer.GetComponent<PlayerController>().EnableMapActionPlayer();
+    //            break;
+    //    }
+    //}
 
-        }
-    }
+    //public void UIPause(bool value)
+    //{
+    //    GameObject UIManager = GameObject.FindGameObjectWithTag("UIManager");
+    //    UIManager.GetComponent<UIManager>().UIStatePause(value);
+    //}
 
-    void SwitchFocusedPlayerControlScheme()
-    {
-        switch (isPaused)
-        {
-            case true:
-                focusedPlayerController.EnableMapActionUI();
-                break;
-            case false:
-                focusedPlayerController.EnableMapActionPlayer();
-                break;
-        }
-    }
 
-    public void UIPause()
-    {
-        GameObject UIManager = GameObject.FindGameObjectWithTag("UIManager");
-        UIManager.GetComponent<UIManager>().UIStatePause(isPaused);
-    }
+
+
+
+
+
+
+
+
+
+
+
+    //public void TogglePauseState(GameObject newFocusedPlayerController)
+    //{
+    //    focusedPlayerController = newFocusedPlayerController.GetComponent<PlayerController>();
+    //    isPaused = true;
+
+    //    SetInputActiveNotFocusedPlayer(focusedPlayerController);
+
+    //    SwitchFocusedPlayerControlScheme();
+
+    //    UIPause(isPaused);
+    //    Debug.Log(isPaused);
+    //}
 }
 

@@ -14,6 +14,7 @@ public class CountdownTimer : MonoBehaviour
     [SerializeField] TMP_Text countdownText;
     float countdownTime = 3f;
     bool FinishedStart = false;
+    bool isPaused;
 
     private void Update()
     {
@@ -28,7 +29,8 @@ public class CountdownTimer : MonoBehaviour
     }
     private IEnumerator CountdownStart()
     {
-        //EnablePlayerInputs(false);
+        isPaused = true;
+        EnablePlayerInputs(false);
         Player1.transform.position = InstancePosition[0].position;
         Player2.transform.position = InstancePosition[1].position;
 
@@ -45,16 +47,18 @@ public class CountdownTimer : MonoBehaviour
         yield return new WaitForSeconds(1f);
         countdownText.transform.gameObject.SetActive(false);
 
-        //EnablePlayerInputs(true);
+        EnablePlayerInputs(true);
+        isPaused = false;
         yield break;
+    }
+
+    public bool GetBooleanIsPaused()
+    {
+        return isPaused;
     }
 
     void EnablePlayerInputs(bool value)
     {
-        Player1.GetComponent<PlayerInput>().enabled = value;
-        Player2.GetComponent<PlayerInput>().enabled = value;
-        Player1.GetComponent<PlayerController>().enabled = value;
-        Player2.GetComponent<PlayerController>().enabled = value;
         Player1.GetComponent<PlayerMoveRigidbody>().enabled = value;
         Player2.GetComponent<PlayerMoveRigidbody>().enabled = value;
         Player1.GetComponent<PlayerCombat>().enabled = value;

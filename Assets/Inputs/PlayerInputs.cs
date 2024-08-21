@@ -491,6 +491,15 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""ExitPause"",
+                    ""type"": ""Button"",
+                    ""id"": ""e6bf868c-58ec-4120-a517-f9f9775358f7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Navigate"",
                     ""type"": ""PassThrough"",
                     ""id"": ""12b3ce11-f3f0-4b84-9718-552e17344d9d"",
@@ -771,6 +780,50 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""action"": ""Cancel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f2eaf63f-4c0e-48d0-99e2-e1caa09434ea"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardRight"",
+                    ""action"": ""ExitPause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e1721f3f-572e-4a39-910a-152e6cda77b1"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""ExitPause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bf8638a6-7c0f-4ed5-8f12-2219755d384c"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardLeft"",
+                    ""action"": ""ExitPause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d04d89d8-4885-4261-be52-0623de9de2ed"",
+                    ""path"": ""<Keyboard>/v"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""ExitPause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -835,6 +888,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Click = m_UI.FindAction("Click", throwIfNotFound: true);
+        m_UI_ExitPause = m_UI.FindAction("ExitPause", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
         m_UI_Submit = m_UI.FindAction("Submit", throwIfNotFound: true);
         m_UI_Cancel = m_UI.FindAction("Cancel", throwIfNotFound: true);
@@ -987,6 +1041,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_UI;
     private IUIActions m_UIActionsCallbackInterface;
     private readonly InputAction m_UI_Click;
+    private readonly InputAction m_UI_ExitPause;
     private readonly InputAction m_UI_Navigate;
     private readonly InputAction m_UI_Submit;
     private readonly InputAction m_UI_Cancel;
@@ -995,6 +1050,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         private @PlayerInputs m_Wrapper;
         public UIActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
         public InputAction @Click => m_Wrapper.m_UI_Click;
+        public InputAction @ExitPause => m_Wrapper.m_UI_ExitPause;
         public InputAction @Navigate => m_Wrapper.m_UI_Navigate;
         public InputAction @Submit => m_Wrapper.m_UI_Submit;
         public InputAction @Cancel => m_Wrapper.m_UI_Cancel;
@@ -1010,6 +1066,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @Click.started -= m_Wrapper.m_UIActionsCallbackInterface.OnClick;
                 @Click.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnClick;
                 @Click.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnClick;
+                @ExitPause.started -= m_Wrapper.m_UIActionsCallbackInterface.OnExitPause;
+                @ExitPause.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnExitPause;
+                @ExitPause.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnExitPause;
                 @Navigate.started -= m_Wrapper.m_UIActionsCallbackInterface.OnNavigate;
                 @Navigate.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnNavigate;
                 @Navigate.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnNavigate;
@@ -1026,6 +1085,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @Click.started += instance.OnClick;
                 @Click.performed += instance.OnClick;
                 @Click.canceled += instance.OnClick;
+                @ExitPause.started += instance.OnExitPause;
+                @ExitPause.performed += instance.OnExitPause;
+                @ExitPause.canceled += instance.OnExitPause;
                 @Navigate.started += instance.OnNavigate;
                 @Navigate.performed += instance.OnNavigate;
                 @Navigate.canceled += instance.OnNavigate;
@@ -1089,6 +1151,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
     public interface IUIActions
     {
         void OnClick(InputAction.CallbackContext context);
+        void OnExitPause(InputAction.CallbackContext context);
         void OnNavigate(InputAction.CallbackContext context);
         void OnSubmit(InputAction.CallbackContext context);
         void OnCancel(InputAction.CallbackContext context);

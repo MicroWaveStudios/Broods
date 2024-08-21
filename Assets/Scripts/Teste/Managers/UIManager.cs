@@ -9,10 +9,7 @@ public class UIManager : MonoBehaviour
 
     public void UIStatePause(bool value)
     {
-        if (value)
-        {
-            SetActiveMenuButton(value);
-        }
+        SetActiveMenuButton(value);
     }
 
     void SetActiveMenuButton(bool value)

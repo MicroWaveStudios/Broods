@@ -204,8 +204,8 @@ MonoBehaviour:
     m_ActionName: Player/EnterGame[/Keyboard/w,/Keyboard/a,/Keyboard/s,/Keyboard/d,/Keyboard/upArrow,/Keyboard/space]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3846265462607288018}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+      - m_Target: {fileID: 6784768562247092740}
+        m_TargetAssemblyTypeName: PlayerMoveRigidbody, Assembly-CSharp
         m_MethodName: OnTogglePause
         m_Mode: 0
         m_Arguments:
@@ -218,6 +218,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: f6f4ec5c-6ace-4510-bb73-4e31a4f14799
     m_ActionName: Player/Pause[/Keyboard/p]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6784768562247092740}
+        m_TargetAssemblyTypeName: PlayerMoveRigidbody, Assembly-CSharp
+        m_MethodName: OnTogglePause
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e6bf868c-58ec-4120-a517-f9f9775358f7
+    m_ActionName: UI/ExitPause[/Keyboard/p,/Keyboard/q,/Keyboard/v]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

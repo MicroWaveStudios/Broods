@@ -469,6 +469,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "ExitPause",
+                    "type": "Button",
+                    "id": "e6bf868c-58ec-4120-a517-f9f9775358f7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Navigate",
                     "type": "PassThrough",
                     "id": "12b3ce11-f3f0-4b84-9718-552e17344d9d",
@@ -747,6 +756,50 @@
                     "processors": "",
                     "groups": "Gamepad;Keyboard",
                     "action": "Cancel",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f2eaf63f-4c0e-48d0-99e2-e1caa09434ea",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardRight",
+                    "action": "ExitPause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e1721f3f-572e-4a39-910a-152e6cda77b1",
+                    "path": "<Gamepad>/start",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "ExitPause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bf8638a6-7c0f-4ed5-8f12-2219755d384c",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardLeft",
+                    "action": "ExitPause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d04d89d8-4885-4261-be52-0623de9de2ed",
+                    "path": "<Keyboard>/v",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "ExitPause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

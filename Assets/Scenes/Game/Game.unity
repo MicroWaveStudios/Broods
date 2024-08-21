@@ -1476,6 +1476,7 @@ GameObject:
   - component: {fileID: 1140325868}
   - component: {fileID: 1140325870}
   - component: {fileID: 1140325871}
+  - component: {fileID: 1140325872}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -1553,9 +1554,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5716d61feeaa513449f155743fbfeb5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  limitPlayer: 0
+  limitPlayer: 2
   playerInScene: 0
-  ContinueButton: {fileID: 0}
+  focusedPlayer: {fileID: 0}
+--- !u!114 &1140325872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140325867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373ea7367aa87254ab7bfcd66bb340e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1144048965
 GameObject:
   m_ObjectHideFlags: 0
@@ -2204,7 +2217,7 @@ GameObject:
   - component: {fileID: 1541366968}
   m_Layer: 0
   m_Name: PlayerManager
-  m_TagString: GameController
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
