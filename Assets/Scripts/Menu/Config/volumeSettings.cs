@@ -26,6 +26,12 @@ public class volumeSettings : MonoBehaviour
     public GameObject JanelaSom;
     public GameObject JanelaConfigs;
 
+    private void Start()
+    {
+        volumeGeral.value = PlayerPrefs.GetFloat("volumeGeral");
+        BG.value = PlayerPrefs.GetFloat("volumeBG");
+        VFX.value = PlayerPrefs.GetFloat("volumeVFX");
+    }
     public void mudarVolumeGeral()
     {
         audioMixer.SetFloat("VolumeGeral", volumeGeral.value);
@@ -55,15 +61,15 @@ public class volumeSettings : MonoBehaviour
     {
         audioMixer.SetFloat("volumeGeral", defaultAudio);
         volumeGeral.value = defaultAudio;
-        volumeGeralText.text = defaultAudio.ToString();
+        volumeGeralText.text = "1,0";
 
         audioMixer.SetFloat("BG", defaultAudio);
         BG.value = defaultAudio;
-        BGText.text = defaultAudio.ToString();
+        BGText.text = "1,0";
 
         audioMixer.SetFloat("VFX", defaultAudio);
         VFX.value = defaultAudio;
-        VFXText.text = defaultAudio.ToString();
+        VFXText.text = "1,0";
 
         AplicarVolume();
     }
@@ -84,8 +90,17 @@ public class volumeSettings : MonoBehaviour
         }
     }
 
+    public void NaoSalvou()
+    {
+        volumeGeral.value = PlayerPrefs.GetFloat("volumeGeral");
+        BG.value = PlayerPrefs.GetFloat("volumeBG");
+        VFX.value = PlayerPrefs.GetFloat("volumeVFX");
+    }
+
     private void Update()
     {
-        Debug.Log(PlayerPrefs.GetFloat("volumeGeral"));
+        Debug.Log("Geral " + PlayerPrefs.GetFloat("volumeGeral"));
+        Debug.Log("BG " + PlayerPrefs.GetFloat("volumeBG"));
+        Debug.Log("VFX " + PlayerPrefs.GetFloat("volumeVFX"));
     }
 }
