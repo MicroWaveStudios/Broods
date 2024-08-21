@@ -12,6 +12,8 @@ public class PlayerStats : MonoBehaviour
     PlayerMoveRigidbody scrpMoveRigidbody;
     PlayerCombat scrpPlayerCombat;
     public bool defendendo;
+
+    [SerializeField] bool teste;
     
 
     private void Awake()
@@ -30,6 +32,12 @@ public class PlayerStats : MonoBehaviour
     {
         if (life <= 0f)
             Destroy(gameObject);
+
+        if (teste == true)
+        {
+            InvokeRepeating("Regen", 0.5f, 0.5f);
+            teste = false;
+        }
     }
 
     public void SufferDamage(float damage)
@@ -65,5 +73,18 @@ public class PlayerStats : MonoBehaviour
     public void UsouSkill(float custoSkill)
     {
         energy -= custoSkill;
+    }
+
+    void Regen()
+    {
+        if (life < maxLife)
+        {
+            life += 1f;
+        }        
+    }
+
+    public void AddEnergy(float qtdEnergia)
+    {
+        energy += qtdEnergia;
     }
 }

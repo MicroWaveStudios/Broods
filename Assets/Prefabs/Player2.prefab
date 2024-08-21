@@ -266,9 +266,10 @@ MonoBehaviour:
   life: 0
   maxLife: 100
   damageMultiplier: 0
-  maxEnergy: 0
+  maxEnergy: 100
   energy: 0
   defendendo: 0
+  teste: 1
 --- !u!114 &6784768562247092740
 MonoBehaviour:
   m_ObjectHideFlags: 0

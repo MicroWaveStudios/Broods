@@ -21,12 +21,14 @@ public class NaraSkills : MonoBehaviour
     [Header("Skill Laser")]
     [SerializeField] float custoLaser;
     [SerializeField] float danoLaser;
+    GameObject objLaser;
     ParticleSystem laser;
 
     private void Awake()
     {
-        scrpRigidbody = GetComponent<PlayerMoveRigidbody>();       
-        laser = GameObject.FindGameObjectWithTag("Laser").GetComponent<ParticleSystem>();
+        scrpRigidbody = GetComponent<PlayerMoveRigidbody>();
+        objLaser = GameObject.FindGameObjectWithTag("Laser");
+        laser = objLaser.GetComponent<ParticleSystem>();
         scrpPlayerStats = GetComponent<PlayerStats>();
     }
 
@@ -43,13 +45,9 @@ public class NaraSkills : MonoBehaviour
             outroPlayer = GameObject.FindGameObjectWithTag("Player1");
         }
 
-        posicaoRaycast = new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z);
-
         if (outroPlayer != null)
         {
-            posicaoRaycastPlayer2 = new Vector3(outroPlayer.transform.position.x + 0.5f, outroPlayer.transform.position.y + 1f, outroPlayer.transform.position.z);
-
-            //Debug.DrawLine(transform.position, outroPlayer.transform.position, Color.magenta);
+            posicaoRaycastPlayer2 = new Vector3(outroPlayer.transform.position.x + 0.5f, outroPlayer.transform.position.y + 1.3f, outroPlayer.transform.position.z);
         }
 
         
@@ -87,11 +85,8 @@ public class NaraSkills : MonoBehaviour
 
     IEnumerator MeiaLua()
     {
-        Debug.Log("Baixo");
         yield return Continued(0.2f, ordemCombo[ordem]);
-        Debug.Log("Lado");
         yield return Continued(0.2f, ordemCombo[ordem]);
-        Debug.Log("Hit");
         yield return FirstSkill();
         yield return ResetCombo();
         yield break;
@@ -129,27 +124,37 @@ public class NaraSkills : MonoBehaviour
         {
             Debug.Log("Sem Energia");
             yield break;
-        }     
+        }
 
-        yield return new WaitForSeconds(0.2f);
+        Vector3 NovaPosicaoOutroPlayer = outroPlayer.transform.position;
+
+        objLaser.transform.LookAt(posicaoRaycastPlayer2);
+
+        yield return new WaitForSeconds(0.2f);     
 
         RaycastHit hit;
 
-        //Vector3 posicaoAtualPlayer2 = posicaoRaycastPlayer2;
-        StartCoroutine(scrpPlayerStats.ResetScripts(false, 0.7f));
+        StartCoroutine(scrpPlayerStats.ResetScripts(false, 0.5f));
+
         laser.Play();
-        Physics.Raycast(transform.position, outroPlayer.transform.position, out hit, 4f);
+
+        Physics.Raycast(objLaser.transform.position, NovaPosicaoOutroPlayer, out hit, 4f);
+
         scrpPlayerStats.UsouSkill(custoLaser);
 
         if (hit.collider != null)
         {
+            
+
             GameObject Player2 = hit.collider.gameObject;
 
-            if (Player2.GetComponent<PlayerStats>() != null && Player2.name != this.gameObject.name)
-            {             
-                Player2.GetComponent<PlayerStats>().SufferDamage(danoLaser);              
-            }
-                        
+            Debug.Log(Player2.name);
+
+            if (Player2.GetComponent<PlayerStats>() != null)
+            {
+                Player2.GetComponent<PlayerStats>().SufferDamage(danoLaser);
+                Player2.GetComponent<PlayerStats>().AddEnergy(danoLaser/2);
+            }                    
         }
         else
         {

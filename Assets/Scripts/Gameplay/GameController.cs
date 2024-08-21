@@ -19,6 +19,8 @@ public class GameController : MonoBehaviour
     GameObject Canvas;
     Image healthBarPlayer1;
     Image healthBarPlayer2;
+    [SerializeField] Slider energyBarPlayer1;
+    [SerializeField] Slider energyBarPlayer2;
     public float distance;
     public bool value;
     public bool TrocouLado;
@@ -50,6 +52,7 @@ public class GameController : MonoBehaviour
             ChangePlayer();
             MidPosition();
             PlayerLife();
+            PlayerEnergy();
         }
     }
 
@@ -61,6 +64,12 @@ public class GameController : MonoBehaviour
         healthBarPlayer2 = Canvas.transform.GetChild(1).GetChild(0).GetComponent<Image>();
         healthBarPlayer1.fillAmount = lifePlayer1;
         healthBarPlayer2.fillAmount = lifePlayer2;
+    }
+
+    void PlayerEnergy()
+    {
+        energyBarPlayer1.value = Player1.GetComponent<PlayerStats>().energy;
+        energyBarPlayer2.value = Player2.GetComponent<PlayerStats>().energy;
     }
 
 

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5097230049342959016}
   - component: {fileID: 2424229955502138312}
   - component: {fileID: 5111736986447485231}
+  - component: {fileID: 8625123360471925425}
   m_Layer: 0
   m_Name: Laser
   m_TagString: Laser
@@ -4871,6 +4872,18 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &8625123360471925425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712336574403798333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25ad60df009b3364386612cd7aeb16b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3953280824080172342
 GameObject:
   m_ObjectHideFlags: 0
@@ -5159,6 +5172,7 @@ MonoBehaviour:
   maxEnergy: 100
   energy: 0
   defendendo: 0
+  teste: 0
 --- !u!54 &1256922631
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5243,7 +5257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ordemCombo: 0200000003000000
-  custoLaser: 10
+  custoLaser: 25
   danoLaser: 10
 --- !u!114 &1713043217670130895
 MonoBehaviour:
