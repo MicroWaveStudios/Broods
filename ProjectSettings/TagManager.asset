@@ -12,6 +12,7 @@ TagManager:
   - Laser
   - UIManager
   - GameManager
+  - Ground
   layers:
   - Default
   - TransparentFX

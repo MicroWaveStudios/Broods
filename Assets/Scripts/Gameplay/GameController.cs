@@ -23,13 +23,9 @@ public class GameController : MonoBehaviour
     [SerializeField] Slider energyBarPlayer2;
     public float distance;
     public bool value;
-    public bool TrocouLado;
+    public bool ChangedSide;
 
-    [SerializeField] TMP_Text countdownText;
-
-#pragma warning disable CS0414 // O campo "GameController.x" é atribuído, mas seu valor nunca é usado
     int x = 0;
-#pragma warning restore CS0414 // O campo "GameController.x" é atribuído, mas seu valor nunca é usado
     PlayerInputManager playerInputManager;
 
     private void Awake()
@@ -78,14 +74,14 @@ public class GameController : MonoBehaviour
         if (Player1.transform.position.x < Player2.transform.position.x)
         {
             //Esta na esquerda (posicao inicial)
-            TrocouLado = false;
+            ChangedSide = false;
             PlayerLeft = Player1.transform;
             PlayerRight = Player2.transform;
         }
         else
         {
             //Esta na direita (posicao modificada)
-            TrocouLado = true;
+            ChangedSide = true;
             PlayerLeft = Player2.transform;
             PlayerRight = Player1.transform;
         }

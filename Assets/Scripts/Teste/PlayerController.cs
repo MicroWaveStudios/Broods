@@ -13,12 +13,12 @@ public class PlayerController : MonoBehaviour
 
     [Header("Input Settings")]
     public PlayerInput playerInput;
-    //Mapas de acao PlayerInputs
+
+    [Header("Input Action Maps")]
     private string actionMapPlayer = "Player"; 
     private string actionMapUI = "UI";
 
     bool isPaused = false;
-
     GameObject gameManager;
 
     private void Awake()

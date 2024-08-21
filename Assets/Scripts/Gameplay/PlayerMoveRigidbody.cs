@@ -27,6 +27,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
     [SerializeField] bool InAttack = false;
 
     public float isPlayer2 = 1;
+    int jumpCount;
 
     [SerializeField] float forcaEmpurrar;
     //[SerializeField] float forcaEmpurrarAtacar;
@@ -61,25 +62,17 @@ public class PlayerMoveRigidbody : MonoBehaviour
     {
         if (this.gameObject.CompareTag("Player2"))
         {
-            if (gameController.TrocouLado)
-            {
+            if (gameController.ChangedSide)
                 isPlayer2 = 1;
-            }
             else
-            {
                 isPlayer2 = -1;
-            }
         }
         else
         {
-            if (gameController.TrocouLado)
-            {
+            if (gameController.ChangedSide)
                 isPlayer2 = -1;
-            }
             else
-            {
                 isPlayer2 = 1;
-            }
         }
 
         if (directionX * isPlayer2 <= -1)
@@ -115,10 +108,13 @@ public class PlayerMoveRigidbody : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (IsGrounded() && !InAttack)
-        {
-            rb.AddForce(Vector3.up * jumpForce);
-        }
+        //if (IsGrounded() && !InAttack)
+        //{
+        //    rb.AddForce(Vector3.up * jumpForce);
+        //}
+        if (jumpCount > 0)
+        rb.AddForce(Vector3.up * jumpForce);
+        jumpCount--;
     }
 
     public void OnTogglePause(InputAction.CallbackContext context)
@@ -164,6 +160,12 @@ public class PlayerMoveRigidbody : MonoBehaviour
     public void MoverAoLevarDano()
     {
         rb.AddForce(Vector3.left * forcaEmpurrar * isPlayer2);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+            jumpCount = 1;
     }
 
     /*public void MoveForce(bool Attacked)

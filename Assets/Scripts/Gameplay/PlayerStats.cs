@@ -61,7 +61,7 @@ public class PlayerStats : MonoBehaviour
         if(damage == true)
         {
             scrpPlayerCombat.BreakAnimation();
-        }       
+        }
         scrpMoveRigidbody.enabled = false;
         scrpPlayerCombat.enabled = false;
         yield return new WaitForSeconds(delay);
