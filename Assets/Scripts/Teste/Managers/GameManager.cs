@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public GameObject focusedPlayer;
     private bool isPaused = false;
 
-    //[SerializeField] GameObject ContinueButton;
+    [SerializeField] GameObject ContinueButton;
 
     public void Pause(GameObject newFocusedPlayer, bool value)
     {
@@ -24,8 +24,6 @@ public class GameManager : MonoBehaviour
             UIPause(value);
         }
     }
-
-
     void SwitchControlScheme()
     {
         switch (isPaused)
@@ -59,38 +57,6 @@ public class GameManager : MonoBehaviour
         GameObject UIManager = GameObject.FindGameObjectWithTag("UIManager");
         UIManager.GetComponent<UIManager>().UIStatePause(value);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public void SetupPlayer(GameObject spawnedPlayer)
     {
         if (playerInScene < limitPlayer)
@@ -103,86 +69,9 @@ public class GameManager : MonoBehaviour
         //ContinueButton.SetActive(true);
     }
 
-    //public void OnPause(GameObject newFocusedPlayer, bool value)
-    //{
-    //    if (focusedPlayer == null && value)
-    //        focusedPlayer = newFocusedPlayer;
-    //    else
-    //        focusedPlayer = null;
-    //    StartCoroutine(Pause(value));
-    //}
-
-    //IEnumerator Pause(bool value)
-    //{
-    //    isPaused = value;
-    //    yield return new WaitForSeconds(0.02f);
-    //    SetInputActiveNotFocusedPlayer(focusedPlayer);
-    //    SwitchFocusedPlayerControlScheme();
-    //    UIPause(value);
-    //}
-
     public bool GetBooleanIsPaused()
     {
         return isPaused;
     }
-
-    //void SetInputActiveNotFocusedPlayer(GameObject FocusedPlayer)
-    //{
-    //    GameObject notFocusedPlayer;
-    //    if (FocusedPlayer.tag == "Player1")
-    //    {
-    //        notFocusedPlayer = GameObject.FindGameObjectWithTag("Player2");
-    //        notFocusedPlayer.GetComponent<PlayerController>().SetInputActive(isPaused);
-    //    }
-    //    else
-    //    {
-    //        notFocusedPlayer = GameObject.FindGameObjectWithTag("Player1");
-    //        notFocusedPlayer.GetComponent<PlayerController>().SetInputActive(isPaused);
-    //    }
-    //}
-
-    //void SwitchFocusedPlayerControlScheme()
-    //{
-    //    switch (isPaused)
-    //    {
-    //        case true:
-    //            focusedPlayer.GetComponent<PlayerController>().EnableMapActionUI();
-    //            break;
-    //        case false:
-    //            focusedPlayer.GetComponent<PlayerController>().EnableMapActionPlayer();
-    //            break;
-    //    }
-    //}
-
-    //public void UIPause(bool value)
-    //{
-    //    GameObject UIManager = GameObject.FindGameObjectWithTag("UIManager");
-    //    UIManager.GetComponent<UIManager>().UIStatePause(value);
-    //}
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //public void TogglePauseState(GameObject newFocusedPlayerController)
-    //{
-    //    focusedPlayerController = newFocusedPlayerController.GetComponent<PlayerController>();
-    //    isPaused = true;
-
-    //    SetInputActiveNotFocusedPlayer(focusedPlayerController);
-
-    //    SwitchFocusedPlayerControlScheme();
-
-    //    UIPause(isPaused);
-    //    Debug.Log(isPaused);
-    //}
 }
 

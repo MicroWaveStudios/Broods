@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Input Settings")]
     public PlayerInput playerInput;
-    //Mapas de ação PlayerInputs
+    //Mapas de aï¿½ï¿½o PlayerInputs
     private string actionMapPlayer = "Player"; 
     private string actionMapUI = "UI";
 
@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        gameManager = GameObject.FindGameObjectWithTag("GameController");
+        gameManager = GameObject.FindGameObjectWithTag("GameManager");
     }
 
     private void Start()
@@ -39,14 +39,13 @@ public class PlayerController : MonoBehaviour
         ConnectPlayer.SetupPlayer(playerID, playerInput);
     }
 
-    //public void OnTogglePause(InputAction.CallbackContext context)
-    //{
-    //    //gameManager.GetComponent<GameManager>().IsPaused();
-    //    //gameManager.GetComponent<GameManager>().TogglePauseState(this);
-
-    //    StartCoroutine(Pause());
-    //}
-
+    public void OnTogglePause(InputAction.CallbackContext context)
+    {
+        if (!gameManager.GetComponent<GameManager>().GetBooleanIsPaused())
+            gameManager.GetComponent<GameManager>().Pause(this.gameObject, true);
+        else
+            gameManager.GetComponent<GameManager>().Pause(this.gameObject, false);
+    }
     public void SetInputActive(bool value)
     {
         switch (value)
@@ -59,14 +58,6 @@ public class PlayerController : MonoBehaviour
                 break;
         }
     }
-
-    //IEnumerator Pause()
-    //{
-    //    gameManager.GetComponent<GameManager>().IsPaused();
-    //    yield return new WaitForSeconds(0.02f);
-    //    gameManager.GetComponent<GameManager>().TogglePauseState(this);
-    //}
-
     public void EnableMapActionPlayer()
     {
         playerInput.SwitchCurrentActionMap(actionMapPlayer);
