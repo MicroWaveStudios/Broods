@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public int limitPlayer;
     [SerializeField] int playerInScene;
-    public GameObject focusedPlayer;
+    GameObject focusedPlayer;
     private bool isPaused = false;
 
     [SerializeField] GameObject ContinueButton;
@@ -62,11 +62,12 @@ public class GameManager : MonoBehaviour
         if (playerInScene < limitPlayer)
         {
             spawnedPlayer.GetComponent<PlayerController>().SetupPlayer(playerInScene);
+            
 
             playerInScene++;
         }
-        //if (playerInScene == limitPlayer)
-        //ContinueButton.SetActive(true);
+        if (playerInScene == limitPlayer)
+            ContinueButton.SetActive(true);
     }
 
     public bool GetBooleanIsPaused()

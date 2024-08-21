@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Input Settings")]
     public PlayerInput playerInput;
-    //Mapas de a��o PlayerInputs
+    //Mapas de acao PlayerInputs
     private string actionMapPlayer = "Player"; 
     private string actionMapUI = "UI";
 
@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         //comentei a linha pois estou editando possiveis erros
-        //gameManager.GetComponent<GameManager>().SetupPlayer(this.gameObject);
+        gameManager.GetComponent<GameManager>().SetupPlayer(this.gameObject);
     }
 
     public void SetupPlayer(int newPlayerID)

@@ -20,7 +20,7 @@ public class ConnectPlayer : MonoBehaviour
 
         DevicePlayer();
 
-        GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
+        GameObject gameController = GameObject.FindGameObjectWithTag("GameManager");
         gameController.GetComponent<ConnectPlayerInMenu>().ConnectPlayer(playerID, deviceName);
     }
 
