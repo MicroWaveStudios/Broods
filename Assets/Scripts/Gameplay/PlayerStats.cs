@@ -60,7 +60,7 @@ public class PlayerStats : MonoBehaviour
     {
         if(damage == true)
         {
-            scrpPlayerCombat.BreakAnimation();
+            scrpPlayerCombat.HitAnimation();
         }
         scrpMoveRigidbody.enabled = false;
         scrpPlayerCombat.enabled = false;

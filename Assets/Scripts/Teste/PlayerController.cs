@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,36 +8,22 @@ public class PlayerController : MonoBehaviour
 {
     //Player ID
     private int playerID;
-
-    [Header("Sub Behaviors")]
-    public ConnectPlayer ConnectPlayer;
+    private string controlScheme;
+    private string deviceName;
 
     [Header("Input Settings")]
     public PlayerInput playerInput;
 
     [Header("Input Action Maps")]
-    private string actionMapPlayer = "Player"; 
+    private string actionMapPlayer = "Player";
     private string actionMapUI = "UI";
 
-    bool isPaused = false;
+    //bool isPaused = false;
     GameObject gameManager;
 
     private void Awake()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager");
-    }
-
-    private void Start()
-    {
-        //comentei a linha pois estou editando possiveis erros
-        gameManager.GetComponent<GameManager>().SetupPlayer(this.gameObject);
-    }
-
-    public void SetupPlayer(int newPlayerID)
-    {
-        playerID = newPlayerID;
-
-        ConnectPlayer.SetupPlayer(playerID, playerInput);
     }
 
     public void OnTogglePause(InputAction.CallbackContext context)

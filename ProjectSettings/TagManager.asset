@@ -13,6 +13,7 @@ TagManager:
   - UIManager
   - GameManager
   - Ground
+  - ConnectManager
   layers:
   - Default
   - TransparentFX

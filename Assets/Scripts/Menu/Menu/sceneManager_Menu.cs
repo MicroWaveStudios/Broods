@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class sceneManager_Menu : MonoBehaviour
 {
+    public void Game()
+    {
+        SceneManager.LoadScene(12);
+    }
     public void Sair()
     {
         Application.Quit();

@@ -25,14 +25,6 @@ public class GameController : MonoBehaviour
     public bool value;
     public bool ChangedSide;
 
-    int x = 0;
-    PlayerInputManager playerInputManager;
-
-    private void Awake()
-    {
-        playerInputManager = GetComponent<PlayerInputManager>();
-    }
-
     private void Update()
     {
         Canvas = GameObject.FindGameObjectWithTag("Canvas");
@@ -40,11 +32,6 @@ public class GameController : MonoBehaviour
         Player2 = GameObject.FindGameObjectWithTag("Player2");
         if (Player1 != null && Player2 != null)
         {
-            //if (!FinishTimer)
-            //{ 
-            //    StartCoroutine(CountdownStart());
-            //}
-            
             ChangePlayer();
             MidPosition();
             PlayerLife();

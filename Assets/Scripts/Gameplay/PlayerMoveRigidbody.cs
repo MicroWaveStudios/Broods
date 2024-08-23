@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Net.Mime;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerMoveRigidbody : MonoBehaviour
 {
@@ -36,49 +37,39 @@ public class PlayerMoveRigidbody : MonoBehaviour
 
     private void Awake()
     {
-        gameManager = GameObject.FindGameObjectWithTag("GameController");
         rb = GetComponent<Rigidbody>();
         anim = transform.GetChild(0).GetComponent<Animator>();
-        playerInputs = new PlayerInputs();
         player1 = GameObject.FindGameObjectWithTag("Player1");
-        GameObject GameController = GameObject.FindGameObjectWithTag("GameController");
-        gameController = GameController.GetComponent<GameController>();
         playerStats = GetComponent<PlayerStats>();
         playerInput = GetComponent<PlayerInput>();
     }
-    //private void Start()
-    //{
-    //    if (player1 != null)
-    //    {
-    //        gameObject.tag = "Player2";
-    //    }
-    //    else
-    //    {
-    //        gameObject.tag = "Player1";
-    //    }
-    //}
 
     private void Update()
     {
-        if (this.gameObject.CompareTag("Player2"))
+        gameManager = GameObject.FindGameObjectWithTag("GameManager");
+        if (gameManager != null)
         {
-            if (gameController.ChangedSide)
-                isPlayer2 = 1;
+            gameController = gameManager.GetComponent<GameController>();
+            if (this.gameObject.CompareTag("Player2"))
+            {
+                if (gameController.ChangedSide)
+                    isPlayer2 = 1;
+                else
+                    isPlayer2 = -1;
+            }
             else
-                isPlayer2 = -1;
-        }
-        else
-        {
-            if (gameController.ChangedSide)
-                isPlayer2 = -1;
-            else
-                isPlayer2 = 1;
+            {
+                if (gameController.ChangedSide)
+                    isPlayer2 = -1;
+                else
+                    isPlayer2 = 1;
+            }
         }
 
         if (directionX * isPlayer2 <= -1)
         {
             playerStats.defendendo = true;
-            Debug.Log("Defendendo");
+            //Debug.Log("Defendendo");
         }
         else
         {

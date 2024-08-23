@@ -5137,6 +5137,30 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: e6bf868c-58ec-4120-a517-f9f9775358f7
     m_ActionName: UI/ExitPause[/Keyboard/p,/Keyboard/q,/Keyboard/v]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: add53a49-bbee-478d-bedf-0b6c61797cb2
+    m_ActionName: UI/Point[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: dc01d4d4-901e-4fb3-9a01-24a04cb73652
+    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d222f8a4-3684-442a-ad2f-950d6ac29e19
+    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4c43df50-ef5f-4089-a23b-821afd73694d
+    m_ActionName: UI/RightClick[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 02d26a38-6fec-447b-8480-1bf41666495b
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b44b5a01-36f6-4f56-87de-c49757cb07db
+    m_ActionName: UI/TrackedDeviceOrientation
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -5271,7 +5295,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffe29875eb187c84280515d4d5cdd278, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ConnectPlayer: {fileID: 2010808265419501808}
   playerInput: {fileID: 3953280824080172347}
 --- !u!114 &2010808265419501808
 MonoBehaviour:

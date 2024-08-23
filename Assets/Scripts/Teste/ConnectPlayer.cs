@@ -1,33 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class ConnectPlayer : MonoBehaviour
 {
     //PlayerID
-    int playerID; //numero do player
+    private int playerID; //numero do player
     PlayerInput playerInput;
-    string deviceName; //dispositivo do player
+    private string controlScheme; //Mapa de ação utilizado pelo player
+    private string deviceName; //dispositivo do player
 
     [Header("Device Display Settings")]
     public DeviceDisplayConfigurator deviceDisplaySettings;
 
-    public void SetupPlayer(int newPlayerID, PlayerInput newPlayerInput)
+    GameObject connectManager;
+
+    private void Awake()
+    {
+        connectManager = GameObject.FindGameObjectWithTag("ConnectManager");
+        playerInput = this.gameObject.GetComponent<PlayerInput>();
+    }
+    private void Start()
+    {
+        connectManager.GetComponent<ConnectPlayerInMenu>().SetupPlayer(this.gameObject);
+        DontDestroyOnLoad(this.gameObject);
+    }
+
+    public void SetupPlayer(int newPlayerID)
     { 
         playerID = newPlayerID;
-        playerInput = newPlayerInput;
-
         DevicePlayer();
-
-        GameObject gameController = GameObject.FindGameObjectWithTag("GameManager");
-        gameController.GetComponent<ConnectPlayerInMenu>().ConnectPlayer(playerID, deviceName);
+        connectManager.GetComponent<ConnectPlayerInMenu>().ConnectPlayer(playerID, controlScheme);
     }
 
     void DevicePlayer()
     {
-        //deviceName = deviceDisplaySettings.GetDeviceName(playerInput); //Nome do dispositivo conectado
+        deviceName = deviceDisplaySettings.GetDeviceName(playerInput); //Nome do dispositivo conectado
 
-        deviceName = playerInput.GetComponent<PlayerInput>().currentControlScheme.ToString(); //Nome do controlScheme sendo usado pelo player
+        controlScheme = playerInput.GetComponent<PlayerInput>().currentControlScheme.ToString(); //Nome do controlScheme sendo usado pelo player
     }
 }

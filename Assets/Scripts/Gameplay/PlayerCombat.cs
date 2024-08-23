@@ -10,7 +10,7 @@ public class PlayerCombat : MonoBehaviour
     PlayerMoveRigidbody playerMove;
     public bool InAttack = false;
     public bool InCombo = false;
-    
+
     Animator anim;
 
     [SerializeField] int actualNumber = 0;
@@ -24,18 +24,15 @@ public class PlayerCombat : MonoBehaviour
     {
         anim = transform.GetChild(0).GetComponent<Animator>();
         playerMove = GetComponent<PlayerMoveRigidbody>();
-        playerInputs = new PlayerInputs();
         moveRigidbody = GetComponent<PlayerMoveRigidbody>();
     }
 
     void ActiveBooleanInAttack(bool value)
-    { 
+    {
         InAttack = value;
         playerMove.inAttack(value);
         anim.SetBool("InAttack", value);
     }
-
-
 
     public void Punch0(InputAction.CallbackContext context)
     {
@@ -128,7 +125,7 @@ public class PlayerCombat : MonoBehaviour
     public IEnumerator ResetCombo()
     {
         ActiveBooleanInAttack(false);
-        anim.SetTrigger("NotContinued");      
+        anim.SetTrigger("NotContinued");
         ordem = 0;
         timer = 0f;
         actualNumber = -1;
@@ -143,17 +140,8 @@ public class PlayerCombat : MonoBehaviour
         anim.SetTrigger("NotContinued");
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    public void HitAnimation()
+    {
+        anim.SetTrigger("Hit");
+    }
 }

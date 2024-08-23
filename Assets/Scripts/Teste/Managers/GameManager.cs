@@ -5,12 +5,8 @@ using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
-    public int limitPlayer;
-    [SerializeField] int playerInScene;
     GameObject focusedPlayer;
     private bool isPaused = false;
-
-    [SerializeField] GameObject ContinueButton;
 
     public void Pause(GameObject newFocusedPlayer, bool value)
     {
@@ -57,19 +53,6 @@ public class GameManager : MonoBehaviour
         GameObject UIManager = GameObject.FindGameObjectWithTag("UIManager");
         UIManager.GetComponent<UIManager>().UIStatePause(value);
     }
-    public void SetupPlayer(GameObject spawnedPlayer)
-    {
-        if (playerInScene < limitPlayer)
-        {
-            spawnedPlayer.GetComponent<PlayerController>().SetupPlayer(playerInScene);
-            
-
-            playerInScene++;
-        }
-        if (playerInScene == limitPlayer)
-            ContinueButton.SetActive(true);
-    }
-
     public bool GetBooleanIsPaused()
     {
         return isPaused;

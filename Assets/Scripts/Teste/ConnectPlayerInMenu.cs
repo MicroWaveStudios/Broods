@@ -2,22 +2,42 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ConnectPlayerInMenu : MonoBehaviour
 {
+    [Header("TextInCanvas")]
     [SerializeField] GameObject[] PlayerMenu;
     [SerializeField] GameObject[] KeyboardMenu;
     [SerializeField] GameObject[] GamepadMenu;
 
-    [SerializeField] GameObject[] EnterMesage;
+    [SerializeField] GameObject[] EnterMessage;
+    [SerializeField] GameObject ContinueButton;
 
-    public void ConnectPlayer(int playerID, string deviceName)
+    public int limitPlayer;
+    int playerInScene;
+
+    public void SetupPlayer(GameObject spawnedPlayer)
     {
-        EnterMesage[playerID].SetActive(false);
+        if (playerInScene < limitPlayer)
+        {
+            int numberTag = playerInScene + 1;
+            spawnedPlayer.tag = "Player" + numberTag;
+            spawnedPlayer.GetComponent<ConnectPlayer>().SetupPlayer(playerInScene);
 
+            playerInScene++;
+        }
+        if (playerInScene == limitPlayer)
+            ContinueButton.SetActive(true);
+    }
+
+    public void ConnectPlayer(int playerID, string controlScheme)
+    {
+
+        EnterMessage[playerID].SetActive(false);
         PlayerMenu[playerID].SetActive(true);
 
-        if (deviceName == "Gamepad")
+        if (controlScheme == "Gamepad")
             GamepadMenu[playerID].SetActive(true);
         else
             KeyboardMenu[playerID].SetActive(true);

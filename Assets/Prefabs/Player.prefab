@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5720445876560989043}
   - component: {fileID: 5720445876560989040}
   - component: {fileID: 5720445876560989041}
-  - component: {fileID: 1716074421560578909}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -85,12 +84,32 @@ MonoBehaviour:
     m_ActionName: Player/Crounched[/Keyboard/s]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 0d2cc449-0fac-4185-9b74-185aec9a925c
-    m_ActionName: Player/meialua
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: 8c163228-c904-43e6-8ef2-f0ff7e22f789
     m_ActionName: UI/Resume[/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3cc34bc1-876f-4d6c-9c9a-3e63c75bcd04
+    m_ActionName: Player/EnterGame[/Keyboard/w,/Keyboard/a,/Keyboard/s,/Keyboard/d,/Keyboard/upArrow,/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f6f4ec5c-6ace-4510-bb73-4e31a4f14799
+    m_ActionName: Player/Pause[/Keyboard/p,/XInputControllerWindows/start,/Keyboard/q,/Keyboard/v]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e6bf868c-58ec-4120-a517-f9f9775358f7
+    m_ActionName: UI/ExitPause[/Keyboard/p,/XInputControllerWindows/start,/Keyboard/q,/Keyboard/v]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 12b3ce11-f3f0-4b84-9718-552e17344d9d
+    m_ActionName: UI/Navigate[/XInputControllerWindows/leftStick/up,/XInputControllerWindows/rightStick/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/rightStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/rightStick/left,/XInputControllerWindows/leftStick/right,/XInputControllerWindows/rightStick/right,/XInputControllerWindows/dpad,/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: dfc39033-5be7-4685-b814-8684753479e8
+    m_ActionName: UI/Submit[/Keyboard/enter,/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9c27497b-30a5-44b4-873f-443a68e07ee1
+    m_ActionName: UI/Cancel[/Keyboard/escape,/XInputControllerWindows/buttonEast]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: UI
@@ -108,18 +127,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 622b94c502dd85d4aa154782f7a8e9f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deviceDisplaySettings: {fileID: 11400000, guid: ae4dd2681874e9143b30ad6ec3def16e, type: 2}
---- !u!114 &1716074421560578909
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5720445876560989046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffe29875eb187c84280515d4d5cdd278, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ConnectPlayer: {fileID: 5720445876560989041}
   playerInput: {fileID: 5720445876560989040}
+  deviceDisplaySettings: {fileID: 11400000, guid: ae4dd2681874e9143b30ad6ec3def16e, type: 2}
