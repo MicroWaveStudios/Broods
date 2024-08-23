@@ -2,9 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using static UnityEditor.Experimental.GraphView.GraphView;
-using Unity.VisualScripting;
-using UnityEngine.InputSystem;
 
 public class CountdownTimer : MonoBehaviour
 {

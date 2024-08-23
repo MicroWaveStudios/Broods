@@ -1,11 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
-using TMPro;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
-using Unity.VisualScripting;
 
 public class GameController : MonoBehaviour
 {
@@ -25,10 +22,6 @@ public class GameController : MonoBehaviour
     public bool value;
     public bool ChangedSide;
 
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
     PlayerInputManager playerInputManager;
 
     private void Awake()
@@ -36,11 +29,6 @@ public class GameController : MonoBehaviour
         playerInputManager = GetComponent<PlayerInputManager>();
     }
 
-=======
->>>>>>> 3fadf95f0a1a3c1d57610a31cbfcb46ce1c8cc6a
-=======
->>>>>>> 3fadf95f0a1a3c1d57610a31cbfcb46ce1c8cc6a
->>>>>>> Stashed changes
     private void Update()
     {
         Canvas = GameObject.FindGameObjectWithTag("Canvas");

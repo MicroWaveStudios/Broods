@@ -1,18 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Net.Mime;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
 public class PlayerMoveRigidbody : MonoBehaviour
 {
-    private PlayerInputs playerInputs;
-    private InputAction move;
+    //private PlayerInputs playerInputs;
+    //private InputAction move;
 
-    Animator anim;
+    //Animator anim;
 
-    GameObject player1;
+    //GameObject player1;
 
     private Rigidbody rb;
     public float directionX;
@@ -38,8 +36,8 @@ public class PlayerMoveRigidbody : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        anim = transform.GetChild(0).GetComponent<Animator>();
-        player1 = GameObject.FindGameObjectWithTag("Player1");
+        //anim = transform.GetChild(0).GetComponent<Animator>();
+        //player1 = GameObject.FindGameObjectWithTag("Player1");
         playerStats = GetComponent<PlayerStats>();
         playerInput = GetComponent<PlayerInput>();
     }
