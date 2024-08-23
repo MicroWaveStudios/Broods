@@ -25,6 +25,22 @@ public class GameController : MonoBehaviour
     public bool value;
     public bool ChangedSide;
 
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+    PlayerInputManager playerInputManager;
+
+    private void Awake()
+    {
+        playerInputManager = GetComponent<PlayerInputManager>();
+    }
+
+=======
+>>>>>>> 3fadf95f0a1a3c1d57610a31cbfcb46ce1c8cc6a
+=======
+>>>>>>> 3fadf95f0a1a3c1d57610a31cbfcb46ce1c8cc6a
+>>>>>>> Stashed changes
     private void Update()
     {
         Canvas = GameObject.FindGameObjectWithTag("Canvas");
@@ -54,7 +70,6 @@ public class GameController : MonoBehaviour
         energyBarPlayer1.value = Player1.GetComponent<PlayerStats>().energy;
         energyBarPlayer2.value = Player2.GetComponent<PlayerStats>().energy;
     }
-
 
     void ChangePlayer()
     {

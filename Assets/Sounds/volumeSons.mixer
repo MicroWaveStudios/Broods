@@ -33,9 +33,9 @@ AudioMixerController:
   - guid: 539b3ff5ca5e7c246b4bcec6902ff28b
     name: BG
   - guid: 628724224c7e4b241b6b30b7ae3a378b
-    name: VolumeGeral
+    name: volumeGeral
   - guid: 709cbf91078a5f04aa3483a36b3cb5a1
-    name: SFX
+    name: VFX
   m_AudioMixerGroupViews:
   - guids:
     - 8ffe0e32011ea304a8d3129dd7585f2b
@@ -88,7 +88,8 @@ AudioMixerSnapshotController:
   m_Name: Snapshot
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 94297383c73340340ba708e3465a13e1
-  m_FloatValues: {}
+  m_FloatValues:
+    628724224c7e4b241b6b30b7ae3a378b: 0
   m_TransitionOverrides: {}
 --- !u!243 &4517697327000267489
 AudioMixerGroupController:
