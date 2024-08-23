@@ -28,7 +28,7 @@ public class GameController : MonoBehaviour
     {
         playerInputManager = GetComponent<PlayerInputManager>();
     }
-
+    
     private void Update()
     {
         Canvas = GameObject.FindGameObjectWithTag("Canvas");
