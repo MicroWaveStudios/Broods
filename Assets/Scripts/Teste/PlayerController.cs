@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+enum Scene
+{ 
+    Connect,
+    Game
+}
+
 public class PlayerController : MonoBehaviour
 {
     //Player ID
@@ -20,30 +26,28 @@ public class PlayerController : MonoBehaviour
     //bool isPaused = false;
     GameObject gameManager;
 
+    Scene scene;
+
     private void Awake()
     {
-        gameManager = GameObject.FindGameObjectWithTag("GameManager");
+        scene = Scene.Connect;
     }
 
-    public void OnTogglePause(InputAction.CallbackContext context)
+    private void Update()
     {
-        if (!gameManager.GetComponent<GameManager>().GetBooleanIsPaused())
-            gameManager.GetComponent<GameManager>().Pause(this.gameObject, true);
-        else
-            gameManager.GetComponent<GameManager>().Pause(this.gameObject, false);
-    }
-    public void SetInputActive(bool value)
-    {
-        switch (value)
-        {
-            case true:
-                playerInput.DeactivateInput();
+        switch (scene)
+        { 
+            case Scene.Connect:
+
                 break;
-            case false:
-                playerInput.ActivateInput();
+            case Scene.Game:
+                gameManager = GameObject.FindGameObjectWithTag("GameManager");
+
                 break;
         }
     }
+
+
     public void EnableMapActionPlayer()
     {
         playerInput.SwitchCurrentActionMap(actionMapPlayer);
@@ -51,5 +55,20 @@ public class PlayerController : MonoBehaviour
     public void EnableMapActionUI()
     {
         playerInput.SwitchCurrentActionMap(actionMapUI);
+    }
+    public void PauseOn(InputAction.CallbackContext context)
+    {
+        if (scene == Scene.Game)
+            gameManager.GetComponent<GameController>().Pause(this.gameObject, true);
+    }
+    public void PauseOff(InputAction.CallbackContext context)
+    {
+        if (scene == Scene.Game)
+            gameManager.GetComponent<GameController>().Pause(this.gameObject, false);
+    }
+    public void DisconnectPlayer(InputAction.CallbackContext context)
+    {
+        if (scene == Scene.Connect)
+            Destroy(gameObject);
     }
 }

@@ -76,18 +76,13 @@ public class PlayerMoveRigidbody : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (IsGrounded() && !InAttack)
+        if (jumpCount == 1 && !InAttack)
         { 
             rb.velocity = new Vector3(directionX * moveForce, rb.velocity.y, rb.velocity.z);
         }
         else
             rb.velocity = new Vector3(rb.velocity.x ,rb.velocity.y ,rb.velocity.z);
         //WasPressedThisFrame() pesquisar em casa
-        if (InJump)
-        {
-            rb.AddForce(Vector3.up * jumpForce);
-            InJump = false;
-        }
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -105,15 +100,6 @@ public class PlayerMoveRigidbody : MonoBehaviour
         rb.AddForce(Vector3.up * jumpForce);
         jumpCount--;
     }
-
-    public void OnTogglePause(InputAction.CallbackContext context)
-    {
-        if (!gameManager.GetComponent<GameManager>().GetBooleanIsPaused())
-            gameManager.GetComponent<GameManager>().Pause(this.gameObject, true);
-        else
-            gameManager.GetComponent<GameManager>().Pause(this.gameObject, false);
-    }
-
     public void SetInputActive(bool value)
     {
         switch (value)

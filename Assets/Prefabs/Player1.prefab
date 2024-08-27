@@ -4918,7 +4918,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3953280824080172342}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -5, y: 0.1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5098,7 +5098,31 @@ MonoBehaviour:
     m_ActionId: dfc39033-5be7-4685-b814-8684753479e8
     m_ActionName: UI/Submit[/Keyboard/enter,/DualShock4GamepadHID/buttonSouth]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1256922630}
+        m_TargetAssemblyTypeName: PlayerMoveRigidbody, Assembly-CSharp
+        m_MethodName: PauseOff
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1713043217670130895}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: DisconnectPlayer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 9c27497b-30a5-44b4-873f-443a68e07ee1
     m_ActionName: UI/Cancel[/Keyboard/escape,/DualShock4GamepadHID/buttonEast]
   - m_PersistentCalls:
@@ -5109,7 +5133,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1256922630}
         m_TargetAssemblyTypeName: PlayerMoveRigidbody, Assembly-CSharp
-        m_MethodName: OnTogglePause
+        m_MethodName: PauseOn
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5122,19 +5146,7 @@ MonoBehaviour:
     m_ActionId: f6f4ec5c-6ace-4510-bb73-4e31a4f14799
     m_ActionName: Player/Pause[/Keyboard/p]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1256922630}
-        m_TargetAssemblyTypeName: PlayerMoveRigidbody, Assembly-CSharp
-        m_MethodName: OnTogglePause
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: e6bf868c-58ec-4120-a517-f9f9775358f7
     m_ActionName: UI/ExitPause[/Keyboard/p,/Keyboard/q,/Keyboard/v]
   - m_PersistentCalls:
@@ -5161,9 +5173,13 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: b44b5a01-36f6-4f56-87de-c49757cb07db
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9fb908e3-dbc7-47b0-bb89-af040754d50f
+    m_ActionName: UI/Exit[/Keyboard/escape,/XInputControllerWindows/buttonEast]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
+  m_DefaultActionMap: UI
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &1968786103
@@ -5283,6 +5299,7 @@ MonoBehaviour:
   ordemCombo: 0200000003000000
   custoLaser: 25
   danoLaser: 10
+  objLaser: {fileID: 712336574403798333}
 --- !u!114 &1713043217670130895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5308,6 +5325,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 622b94c502dd85d4aa154782f7a8e9f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerID: 0
+  controlScheme: 
+  deviceName: 
   deviceDisplaySettings: {fileID: 11400000, guid: ae4dd2681874e9143b30ad6ec3def16e, type: 2}
 --- !u!1 &3953280824637603788
 GameObject:

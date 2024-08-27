@@ -19,8 +19,12 @@ public class GameController : MonoBehaviour
     [SerializeField] Slider energyBarPlayer1;
     [SerializeField] Slider energyBarPlayer2;
     public float distance;
-    public bool value;
     public bool ChangedSide;
+
+    GameObject focusedPlayer;
+    GameObject notFocusedPlayer;
+    private bool isPaused = false;
+
 
     PlayerInputManager playerInputManager;
 
@@ -83,5 +87,55 @@ public class GameController : MonoBehaviour
     {
         distance = Vector3.Distance(PlayerLeft.position, PlayerRight.position)/2f;
         mid.position = new Vector3(PlayerLeft.position.x + distance, 1.5f, mid.position.z);
+    }
+
+    public void Pause(GameObject newFocusedPlayer, bool value)
+    {
+        if (focusedPlayer == null)
+            focusedPlayer = newFocusedPlayer;
+        if (focusedPlayer.tag == newFocusedPlayer.tag)
+        {
+            isPaused = value;
+            SetActiveInputNotFocusedPlayer(focusedPlayer.tag, value);
+            SwitchControlScheme(value);
+            UIPause(value);
+        }
+    }
+    void SwitchControlScheme(bool value)
+    {
+        switch (value)
+        {
+            case true:
+                focusedPlayer.GetComponent<PlayerController>().EnableMapActionUI();
+                break;
+            case false:
+                focusedPlayer.GetComponent<PlayerController>().EnableMapActionPlayer();
+                focusedPlayer = null;
+                break;
+        }
+    }
+    void SetActiveInputNotFocusedPlayer(string tag, bool value)
+    {
+        switch (tag)
+        {
+            case "Player1":
+                notFocusedPlayer = GameObject.FindGameObjectWithTag("Player2");
+                notFocusedPlayer.GetComponent<PlayerMoveRigidbody>().SetInputActive(value);
+                break;
+            case "Player2":
+                notFocusedPlayer = GameObject.FindGameObjectWithTag("Player1");
+                notFocusedPlayer.GetComponent<PlayerMoveRigidbody>().SetInputActive(value);
+                break;
+        }
+        Debug.Log(notFocusedPlayer.tag);
+    }
+    public void UIPause(bool value)
+    {
+        GameObject UIManager = GameObject.FindGameObjectWithTag("UIManager");
+        UIManager.GetComponent<UIManager>().UIStatePause(value);
+    }
+    public bool GetBooleanIsPaused()
+    {
+        return isPaused;
     }
 }

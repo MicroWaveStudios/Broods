@@ -6,6 +6,8 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] GameObject PausePanel;
     [SerializeField] GameObject[] ButtonPanel;
+    [SerializeField] GameObject DefaultButtonSelected;
+    [SerializeField] GameObject EventSystemManager;
 
     public void UIStatePause(bool value)
     {
@@ -15,6 +17,7 @@ public class UIManager : MonoBehaviour
     void SetActiveMenuButton(bool value)
     { 
         PausePanel.SetActive(value);
+        EventSystemManager.GetComponent<EventSystemManager>().SetCurrentSelectedButton(DefaultButtonSelected);
     }
 
     public void ButtonPressed(int numberButton)

@@ -10,7 +10,7 @@ public struct CustomInputContextIcon
     public Sprite customInputContextIcon;
 }
 [CreateAssetMenu(fileName = "Device Display Settings", menuName = "Scriptable Objects/Device Display Settings", order = 1)]
-public class DeviceDisplaySettings : MonoBehaviour
+public class DeviceDisplaySettings : ScriptableObject
 {
     public string deviceDisplayName;
 

@@ -21,13 +21,13 @@ public class NaraSkills : MonoBehaviour
     [Header("Skill Laser")]
     [SerializeField] float custoLaser;
     [SerializeField] float danoLaser;
-    GameObject objLaser;
+    [SerializeField] GameObject objLaser;
     ParticleSystem laser;
 
     private void Awake()
     {
         scrpRigidbody = GetComponent<PlayerMoveRigidbody>();
-        objLaser = GameObject.FindGameObjectWithTag("Laser");
+        //objLaser = GameObject.FindGameObjectWithTag("Laser");
         laser = objLaser.GetComponent<ParticleSystem>();
         scrpPlayerStats = GetComponent<PlayerStats>();
     }
