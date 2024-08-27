@@ -11,10 +11,9 @@ GameObject:
   - component: {fileID: 3654487994593228320}
   - component: {fileID: 1000361053371998410}
   - component: {fileID: 8767201156204526499}
-  - component: {fileID: 4570452587340905662}
   m_Layer: 0
   m_Name: Laser (1)
-  m_TagString: Laser
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,14 +25,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 153646348961694953}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5840518, y: 0.5840517, z: 0.5840518}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 404780818862684937}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &1000361053371998410
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -117,7 +116,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.2
+      scalar: 0.1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -286,7 +285,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.5
+      scalar: 0.2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4872,18 +4871,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &4570452587340905662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 153646348961694953}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25ad60df009b3364386612cd7aeb16b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &375687328786147976
 GameObject:
   m_ObjectHideFlags: 0
@@ -4895,10 +4882,9 @@ GameObject:
   - component: {fileID: 3578454806861005199}
   - component: {fileID: 5122388824713227967}
   - component: {fileID: 7091559863373188324}
-  - component: {fileID: 841970797127259046}
   m_Layer: 0
   m_Name: Laser (1)
-  m_TagString: Laser
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4910,14 +4896,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 375687328786147976}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5840518, y: 0.5840517, z: 0.5840518}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2099610392187357861}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &5122388824713227967
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -5001,7 +4987,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.2
+      scalar: 0.1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -5170,7 +5156,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.5
+      scalar: 0.2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -9756,18 +9742,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &841970797127259046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 375687328786147976}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25ad60df009b3364386612cd7aeb16b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &712336574403798333
 GameObject:
   m_ObjectHideFlags: 0
@@ -9779,7 +9753,6 @@ GameObject:
   - component: {fileID: 5097230049342959016}
   - component: {fileID: 2424229955502138312}
   - component: {fileID: 5111736986447485231}
-  - component: {fileID: 8625123360471925425}
   m_Layer: 0
   m_Name: Laser
   m_TagString: Laser
@@ -14640,18 +14613,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &8625123360471925425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 712336574403798333}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25ad60df009b3364386612cd7aeb16b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &716047741341142899
 GameObject:
   m_ObjectHideFlags: 0
@@ -14664,8 +14625,9 @@ GameObject:
   - component: {fileID: 7991605955963965054}
   - component: {fileID: 8924959884499600443}
   - component: {fileID: 3393996029706804683}
+  - component: {fileID: 5737058006161634947}
   m_Layer: 0
-  m_Name: Tartico (2)
+  m_Name: Tartico4
   m_TagString: Tartico
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14750,6 +14712,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.50000024
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5737058006161634947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 716047741341142899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed6a5358e021e074c850ae069c54543e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laser: {fileID: 0}
 --- !u!1 &932454759193200051
 GameObject:
   m_ObjectHideFlags: 0
@@ -14762,8 +14737,9 @@ GameObject:
   - component: {fileID: 38061638998756773}
   - component: {fileID: 8014119563203342057}
   - component: {fileID: 128010460102166381}
+  - component: {fileID: 2342850768603696031}
   m_Layer: 0
-  m_Name: Tartico
+  m_Name: Tartico1
   m_TagString: Tartico
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14776,7 +14752,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 932454759193200051}
-  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.298, y: 1.737, z: -0.174}
   m_LocalScale: {x: 0.168545, y: 0.168545, z: 0.168545}
   m_ConstrainProportionsScale: 0
@@ -14848,6 +14824,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.50000024
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2342850768603696031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 932454759193200051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed6a5358e021e074c850ae069c54543e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laser: {fileID: 0}
 --- !u!1 &2264026272707138686
 GameObject:
   m_ObjectHideFlags: 0
@@ -14860,8 +14849,9 @@ GameObject:
   - component: {fileID: 7698206675992985775}
   - component: {fileID: 2668133158490224502}
   - component: {fileID: 7197377892881597156}
+  - component: {fileID: 740621580626341762}
   m_Layer: 0
-  m_Name: Tartico (4)
+  m_Name: Tartico3
   m_TagString: Tartico
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14946,6 +14936,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.50000024
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &740621580626341762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2264026272707138686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed6a5358e021e074c850ae069c54543e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laser: {fileID: 0}
 --- !u!1 &2304207010140753865
 GameObject:
   m_ObjectHideFlags: 0
@@ -14957,10 +14960,9 @@ GameObject:
   - component: {fileID: 206242185944093048}
   - component: {fileID: 2941148583861994521}
   - component: {fileID: 4307159206850490987}
-  - component: {fileID: 6046560157709576197}
   m_Layer: 0
   m_Name: Laser (1)
-  m_TagString: Laser
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14972,14 +14974,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2304207010140753865}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5840518, y: 0.5840517, z: 0.5840518}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2019459432997369919}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &2941148583861994521
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -15063,7 +15065,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.2
+      scalar: 0.1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -15232,7 +15234,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.5
+      scalar: 0.2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -19818,18 +19820,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &6046560157709576197
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2304207010140753865}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25ad60df009b3364386612cd7aeb16b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &3953280824080172342
 GameObject:
   m_ObjectHideFlags: 0
@@ -19946,9 +19936,9 @@ MonoBehaviour:
     m_ActionName: Player/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1256922643}
-        m_TargetAssemblyTypeName: PlayerCombat, Assembly-CSharp
-        m_MethodName: Punch2
+      - m_Target: {fileID: 6582643444607593352}
+        m_TargetAssemblyTypeName: NaraSkills, Assembly-CSharp
+        m_MethodName: Tartico
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -20247,10 +20237,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0d9baa1edab92649b496ee3f6ff11b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ordemCombo: 0200000003000000
-  custoLaser: 25
+  custoLaser: 5
   danoLaser: 10
-  objLaser: {fileID: 712336574403798333}
+  ordemComboLaser: 0200000003000000
+  tarticos:
+  - {fileID: 932454759193200051}
+  - {fileID: 4735395901380986495}
+  - {fileID: 2264026272707138686}
+  - {fileID: 716047741341142899}
+  - {fileID: 4075424056259763360}
+  custoTartico: 15
+  ordemComboTarticos: 0100000003000000
 --- !u!114 &1713043217670130895
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20323,8 +20320,9 @@ GameObject:
   - component: {fileID: 1004968600811209820}
   - component: {fileID: 1324704104829573328}
   - component: {fileID: 9214338416607946939}
+  - component: {fileID: 942775544971577988}
   m_Layer: 0
-  m_Name: Tartico (1)
+  m_Name: Tartico5
   m_TagString: Tartico
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20409,6 +20407,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.50000024
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &942775544971577988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4075424056259763360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed6a5358e021e074c850ae069c54543e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laser: {fileID: 0}
 --- !u!1 &4735395901380986495
 GameObject:
   m_ObjectHideFlags: 0
@@ -20421,8 +20432,9 @@ GameObject:
   - component: {fileID: 7160528652014954676}
   - component: {fileID: 6595656684570209985}
   - component: {fileID: 2993908205513112619}
+  - component: {fileID: 7488052918409019111}
   m_Layer: 0
-  m_Name: Tartico (3)
+  m_Name: Tartico2
   m_TagString: Tartico
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20507,6 +20519,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.50000024
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7488052918409019111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4735395901380986495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed6a5358e021e074c850ae069c54543e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  laser: {fileID: 0}
 --- !u!1 &7070228111326229322
 GameObject:
   m_ObjectHideFlags: 0
@@ -20518,10 +20543,9 @@ GameObject:
   - component: {fileID: 8139247555251943186}
   - component: {fileID: 3798120930323880419}
   - component: {fileID: 3647272531227012333}
-  - component: {fileID: 2263496047082598118}
   m_Layer: 0
   m_Name: Laser (1)
-  m_TagString: Laser
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20533,14 +20557,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7070228111326229322}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5840518, y: 0.5840517, z: 0.5840518}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4256061527011241758}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &3798120930323880419
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -20624,7 +20648,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.2
+      scalar: 0.1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -20793,7 +20817,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.5
+      scalar: 0.2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -25379,18 +25403,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &2263496047082598118
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7070228111326229322}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25ad60df009b3364386612cd7aeb16b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8505104720087962014
 GameObject:
   m_ObjectHideFlags: 0
@@ -25402,10 +25414,9 @@ GameObject:
   - component: {fileID: 2346147370530399309}
   - component: {fileID: 6056425353235127931}
   - component: {fileID: 7344582122544377466}
-  - component: {fileID: 4952372546117082749}
   m_Layer: 0
   m_Name: Laser (1)
-  m_TagString: Laser
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25417,14 +25428,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8505104720087962014}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.5840518, y: 0.5840517, z: 0.5840518}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 148545812686030934}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!198 &6056425353235127931
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -25508,7 +25519,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.2
+      scalar: 0.1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -25677,7 +25688,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.5
+      scalar: 0.2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -30263,18 +30274,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!114 &4952372546117082749
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8505104720087962014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25ad60df009b3364386612cd7aeb16b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1004667078
 PrefabInstance:
   m_ObjectHideFlags: 0

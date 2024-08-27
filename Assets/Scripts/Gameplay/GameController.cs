@@ -3,9 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
+    float pontos1 = 0;
+    float pontos2 = 0;
+
+
     GameObject Player1;
     GameObject Player2;
     Transform PlayerLeft;
@@ -38,12 +43,35 @@ public class GameController : MonoBehaviour
         Canvas = GameObject.FindGameObjectWithTag("Canvas");
         Player1 = GameObject.FindGameObjectWithTag("Player1");
         Player2 = GameObject.FindGameObjectWithTag("Player2");
+
         if (Player1 != null && Player2 != null)
         {
             ChangePlayer();
             MidPosition();
             PlayerLife();
             PlayerEnergy();
+        }
+
+        if (Player1 == null || Player2 == null)
+        {
+            if (Player1 == null)
+            {
+                pontos2++;
+                PlayerPrefs.SetFloat("pontosPlayer2", pontos2);
+            }
+
+            if (Player2 == null)
+            {
+                pontos1++;
+                PlayerPrefs.SetFloat("pontosPlayer1", pontos1);
+            }
+
+            MudarRodada();
+        }
+
+        if (PlayerPrefs.GetFloat("pontosPlayer1") == 2f || PlayerPrefs.GetFloat("pontosPlayer2") == 2f)
+        {
+            Acabou();
         }
     }
 
@@ -137,5 +165,18 @@ public class GameController : MonoBehaviour
     public bool GetBooleanIsPaused()
     {
         return isPaused;
+    }
+
+    public void MudarRodada()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+        Debug.Log(PlayerPrefs.GetFloat("pontosPlayer1"));
+        Debug.Log(PlayerPrefs.GetFloat("pontosPlayer2"));
+    }
+
+    public void Acabou()
+    {
+        SceneManager.LoadScene(1);
     }
 }
