@@ -24,12 +24,18 @@ public class NaraSkills : MonoBehaviour
     [SerializeField] GameObject objLaser;
     ParticleSystem laser;
 
+    [Header("Tarticos")]
+    [SerializeField] GameObject[] tarticos;
+    [SerializeField] float custoTartico;
+    int tarticosContagem;
+
     private void Awake()
     {
         scrpRigidbody = GetComponent<PlayerMoveRigidbody>();
         //objLaser = GameObject.FindGameObjectWithTag("Laser");
         laser = objLaser.GetComponent<ParticleSystem>();
         scrpPlayerStats = GetComponent<PlayerStats>();
+        //tarticos = GameObject.FindGameObjectsWithTag("Tartico");
     }
 
     private void Update()
@@ -88,7 +94,7 @@ public class NaraSkills : MonoBehaviour
     {
         yield return Continued(0.2f, ordemCombo[ordem]);
         yield return Continued(0.2f, ordemCombo[ordem]);
-        yield return FirstSkill();
+        yield return SkillLaser();
         yield return ResetCombo();
         yield break;
     }
@@ -103,12 +109,18 @@ public class NaraSkills : MonoBehaviour
                 if (ordem != ordemCombo.Length)
                 {
                     ordem++;
-                }              
+                }             
+                
                 timer = 0f;
                 yield break;
             }
             else
             {
+                //if (actualNumber == number2)
+                //{
+
+                //}
+
                 yield return null;
             }
         }
@@ -119,7 +131,7 @@ public class NaraSkills : MonoBehaviour
 
     
 
-    IEnumerator FirstSkill()
+    IEnumerator SkillLaser()
     {
         if (scrpPlayerStats.energy < custoLaser)
         {
@@ -138,6 +150,14 @@ public class NaraSkills : MonoBehaviour
         StartCoroutine(scrpPlayerStats.ResetScripts(false, 0.5f));
 
         laser.Play();
+
+        //for (int i = 0; i <= tarticos.Length; i++)
+        //{
+        //    if (tarticos[i].activeSelf == true)
+        //    {
+        //        tarticos[i].transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Play();
+        //    }           
+        //}
 
         Physics.Raycast(objLaser.transform.position, NovaPosicaoOutroPlayer, out hit, 4f);
 
@@ -164,9 +184,22 @@ public class NaraSkills : MonoBehaviour
 
 
         yield return new WaitForSeconds(1f);
+
         yield break;
     }
 
+    IEnumerator SkillTartico()
+    {
+        if (scrpPlayerStats.energy < custoTartico)
+        {
+            Debug.Log("Sem Energia");
+            yield break;
+        }
+
+        tarticos[tarticosContagem].SetActive(true);
+
+        tarticosContagem++;
+    }
     IEnumerator ResetCombo()
     {
         InMeiaLua = false;

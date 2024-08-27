@@ -14,6 +14,7 @@ TagManager:
   - GameManager
   - Ground
   - ConnectManager
+  - Tartico
   layers:
   - Default
   - TransparentFX
