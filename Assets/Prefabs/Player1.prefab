@@ -20238,7 +20238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   custoLaser: 5
-  danoLaser: 10
+  danoLaser: 20
   ordemComboLaser: 0200000003000000
   tarticos:
   - {fileID: 932454759193200051}

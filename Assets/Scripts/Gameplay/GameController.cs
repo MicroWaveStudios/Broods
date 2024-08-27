@@ -52,27 +52,27 @@ public class GameController : MonoBehaviour
             PlayerEnergy();
         }
 
-        if (Player1 == null || Player2 == null)
-        {
-            if (Player1 == null)
-            {
-                pontos2++;
-                PlayerPrefs.SetFloat("pontosPlayer2", pontos2);
-            }
+        //if (Player1 == null || Player2 == null)
+        //{
+        //    if (Player1 == null)
+        //    {
+        //        pontos2++;
+        //        PlayerPrefs.SetFloat("pontosPlayer2", pontos2);
+        //    }
 
-            if (Player2 == null)
-            {
-                pontos1++;
-                PlayerPrefs.SetFloat("pontosPlayer1", pontos1);
-            }
+        //    if (Player2 == null)
+        //    {
+        //        pontos1++;
+        //        PlayerPrefs.SetFloat("pontosPlayer1", pontos1);
+        //    }
 
-            MudarRodada();
-        }
+        //    MudarRodada();
+        //}
 
-        if (PlayerPrefs.GetFloat("pontosPlayer1") == 2f || PlayerPrefs.GetFloat("pontosPlayer2") == 2f)
-        {
-            Acabou();
-        }
+        //if (PlayerPrefs.GetFloat("pontosPlayer1") == 2f || PlayerPrefs.GetFloat("pontosPlayer2") == 2f)
+        //{
+        //    Acabou();
+        //}
     }
 
     void PlayerLife()
@@ -169,10 +169,10 @@ public class GameController : MonoBehaviour
 
     public void MudarRodada()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(12);
 
-        Debug.Log(PlayerPrefs.GetFloat("pontosPlayer1"));
-        Debug.Log(PlayerPrefs.GetFloat("pontosPlayer2"));
+        Debug.Log(PlayerPrefs.GetFloat("A " + "pontosPlayer1"));
+        Debug.Log(PlayerPrefs.GetFloat("B " + "pontosPlayer2"));
     }
 
     public void Acabou()
