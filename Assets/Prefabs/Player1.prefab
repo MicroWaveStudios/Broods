@@ -19936,9 +19936,9 @@ MonoBehaviour:
     m_ActionName: Player/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6582643444607593352}
-        m_TargetAssemblyTypeName: NaraSkills, Assembly-CSharp
-        m_MethodName: Tartico
+      - m_Target: {fileID: 1256922643}
+        m_TargetAssemblyTypeName: PlayerCombat, Assembly-CSharp
+        m_MethodName: Punch2
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

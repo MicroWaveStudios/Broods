@@ -32,7 +32,7 @@ public class NaraSkills : MonoBehaviour
     [SerializeField] float custoTartico;
     [SerializeField] int[] ordemComboTarticos;
     int tarticosContagem = 0;
-    int ordemTartico = 0;
+    int ordemTarticos = 0;
 
     private void Awake()
     {
@@ -69,10 +69,10 @@ public class NaraSkills : MonoBehaviour
     {
         if (!InMeiaLua)
         {
-            StartCoroutine(MeiaLuaLaser());
-            //StartCoroutine(MeiaLuaTarticos());
+            StartCoroutine(ConfirmacaoSkill(0.2f, 10));
             InMeiaLua = true;
         }
+        
             
     }
     public void MeiaLuaEsquerda(InputAction.CallbackContext context)
@@ -91,12 +91,12 @@ public class NaraSkills : MonoBehaviour
         StartCoroutine(ChangeActualNumber(3));
     }
 
-    public void Tartico(InputAction.CallbackContext context)
-    {
-        if (!InMeiaLua)
-            StartCoroutine(SkillTartico());
-            InMeiaLua = true;
-    }
+    //public void Tartico(InputAction.CallbackContext context)
+    //{
+    //    if (!InMeiaLua)
+    //        StartCoroutine(SkillTartico());
+    //        InMeiaLua = true;
+    //}
 
     IEnumerator ChangeActualNumber(int number)
     {
@@ -109,20 +109,22 @@ public class NaraSkills : MonoBehaviour
     IEnumerator MeiaLuaLaser()
     {
         yield return Continued(0.2f, ordemComboLaser[ordemLaser]);
+        ordemLaser++;
         yield return Continued(0.2f, ordemComboLaser[ordemLaser]);
         yield return SkillLaser();
         yield return ResetCombo();
         yield break;
     }
 
-    //IEnumerator MeiaLuaTarticos()
-    //{
-    //    yield return Continued(0.2f, ordemComboTarticos[ordemTartico]);
-    //    yield return Continued(0.2f, ordemComboTarticos[ordemTartico]);
-    //    yield return SkillTartico();
-    //    yield return ResetCombo();
-    //    yield break;
-    //}
+    IEnumerator MeiaLuaTarticos()
+    {
+        yield return Continued(0.2f, ordemComboTarticos[ordemTarticos]);
+        ordemTarticos++;
+        yield return Continued(0.2f, ordemComboTarticos[ordemTarticos]);
+        yield return SkillTartico();
+        yield return ResetCombo();
+        yield break;
+    }
 
     IEnumerator Continued(float delay, int number)
     {
@@ -132,11 +134,6 @@ public class NaraSkills : MonoBehaviour
 
             if (actualNumber == number)
             {
-                if (ordemLaser != ordemComboLaser.Length)
-                {
-                    ordemLaser++;
-                }             
-                
                 timer = 0f;
                 yield break;
             }
@@ -150,7 +147,10 @@ public class NaraSkills : MonoBehaviour
         yield break;
     }
 
-    
+    //void Meditar()
+    //{
+    //    scrpPlayerStats.AddEnergy(10);
+    //}
 
     IEnumerator SkillLaser()
     {
@@ -219,6 +219,12 @@ public class NaraSkills : MonoBehaviour
             yield break;
         }
 
+        if (tarticosContagem >= 5)
+        {
+            Debug.Log("Transcendido");
+            yield break;
+        }
+
         tarticos[tarticosContagem].SetActive(true);
 
         tarticosContagem++;
@@ -232,12 +238,40 @@ public class NaraSkills : MonoBehaviour
     }
     IEnumerator ResetCombo()
     {
-        InMeiaLua = false;
         ordemLaser = 0;
-        ordemTartico = 0;
+        ordemTarticos = 0;     
         timer = 0f;
+        InMeiaLua = false;
         actualNumber = -1;
         StopAllCoroutines();
+        yield break;
+    }
+
+    IEnumerator ConfirmacaoSkill(float delay, int number)
+    {
+        while (timer < delay - 0.05f)
+        {
+            timer += 1 * Time.deltaTime;
+
+            if (actualNumber == ordemComboLaser[ordemLaser])
+            {
+                StartCoroutine(MeiaLuaLaser());
+                timer = 0f;
+                yield break;
+            }
+            else
+            {
+                if (actualNumber == ordemComboTarticos[ordemTarticos])
+                {
+                    StartCoroutine(MeiaLuaTarticos());
+                    timer = 0f;
+                    yield break;
+                }
+                yield return null;
+            }
+        }
+
+        yield return ResetCombo();
         yield break;
     }
 }
