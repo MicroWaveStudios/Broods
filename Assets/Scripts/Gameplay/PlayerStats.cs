@@ -35,9 +35,11 @@ public class PlayerStats : MonoBehaviour
 
         if (teste == true)
         {
-            InvokeRepeating("Regen", 0.5f, 0.5f);
+            InvokeRepeating("Regen", 3f, 3f);
             teste = false;
         }
+
+        
     }
 
     public void SufferDamage(float damage)
@@ -77,14 +79,21 @@ public class PlayerStats : MonoBehaviour
 
     void Regen()
     {
-        if (life < maxLife)
+        life += 100f;
+
+        if (life > maxLife)
         {
-            life += 1f;
-        }        
+           life = maxLife;
+        }    
     }
 
     public void AddEnergy(float qtdEnergia)
     {
+        
         energy += qtdEnergia;
+        if (energy > maxEnergy)
+        {
+            energy = maxEnergy;
+        }
     }
 }
