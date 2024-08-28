@@ -31,7 +31,7 @@ public class NaraSkills : MonoBehaviour
     [SerializeField] GameObject[] tarticos;
     [SerializeField] float custoTartico;
     [SerializeField] int[] ordemComboTarticos;
-    int tarticosContagem = 0;
+    public int tarticosContagem = 0;
     int ordemTarticos = 0;
 
     private void Awake()
@@ -147,10 +147,10 @@ public class NaraSkills : MonoBehaviour
         yield break;
     }
 
-    //void Meditar()
-    //{
-    //    scrpPlayerStats.AddEnergy(10);
-    //}
+    void Meditar()
+    {
+        scrpPlayerStats.AddEnergy(15);
+    }
 
     IEnumerator SkillLaser()
     {
@@ -192,8 +192,6 @@ public class NaraSkills : MonoBehaviour
 
             GameObject Player2 = hit.collider.gameObject;
 
-            Debug.Log(Player2.name);
-
             if (Player2.GetComponent<PlayerStats>() != null)
             {
                 Player2.GetComponent<PlayerStats>().SufferDamage(danoLaser);
@@ -228,6 +226,10 @@ public class NaraSkills : MonoBehaviour
         tarticos[tarticosContagem].SetActive(true);
 
         tarticosContagem++;
+
+        danoLaser += (tarticosContagem * 1.2f);
+
+        Debug.Log(danoLaser);
 
         scrpPlayerStats.UsouSkill(custoTartico);
 
@@ -267,10 +269,12 @@ public class NaraSkills : MonoBehaviour
                     timer = 0f;
                     yield break;
                 }
+
                 yield return null;
             }
         }
 
+        Meditar();
         yield return ResetCombo();
         yield break;
     }

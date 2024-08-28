@@ -20150,10 +20150,10 @@ MonoBehaviour:
   life: 0
   maxLife: 100
   damageMultiplier: 0
-  maxEnergy: 100
+  maxEnergy: 15
   energy: 0
   defendendo: 0
-  teste: 0
+  teste: 1
 --- !u!54 &1256922631
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -20238,7 +20238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   custoLaser: 5
-  danoLaser: 20
+  danoLaser: 5
   ordemComboLaser: 0200000003000000
   tarticos:
   - {fileID: 932454759193200051}
@@ -20246,8 +20246,9 @@ MonoBehaviour:
   - {fileID: 2264026272707138686}
   - {fileID: 716047741341142899}
   - {fileID: 4075424056259763360}
-  custoTartico: 15
+  custoTartico: 10
   ordemComboTarticos: 0100000003000000
+  tarticosContagem: 0
 --- !u!114 &1713043217670130895
 MonoBehaviour:
   m_ObjectHideFlags: 0
