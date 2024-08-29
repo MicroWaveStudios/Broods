@@ -18,6 +18,7 @@ public class ConnectPlayerInMenu : MonoBehaviour
     [SerializeField] GameObject SplitKeyboardPanel;
 
     [SerializeField] GameObject[] player;
+    [SerializeField] Transform[] spawn; //Variavel para nn bugar os players ao ir para a cena jogar
 
     [SerializeField] GameObject PanelsManager;
     public int limitPlayer;
@@ -45,6 +46,7 @@ public class ConnectPlayerInMenu : MonoBehaviour
         newPlayer.tag = "Player" + numberTag;
         newPlayer.GetComponent<ConnectPlayer>().SetupPlayer(numberPlayer);
         player[numberPlayer] = newPlayer;
+        player[numberPlayer].transform.position = spawn[numberPlayer].transform.position;
         playerInScene++;
     }
 
@@ -64,19 +66,6 @@ public class ConnectPlayerInMenu : MonoBehaviour
             KeyboardMenu[playerID].SetActive(value);
     }
 
-    IEnumerator InstantiateSplitKeyboardPlayers()
-    {
-        var p1 = PlayerInput.Instantiate(playerInputManager.playerPrefab, playerIndex: 0, controlScheme: "KeyboardLeft", pairWithDevice: Keyboard.current);
-        yield return new WaitForSeconds(1f);
-        var p2 = PlayerInput.Instantiate(playerInputManager.playerPrefab, playerIndex: 1, controlScheme: "KeyboardRight", pairWithDevice: Keyboard.current);
-        yield break;
-    }
-
-    public void ChangeEnum()
-    {
-        player[0].GetComponent<PlayerController>().EnableMapActionPlayer();
-        player[1].GetComponent<PlayerController>().EnableMapActionPlayer();
-    }
 
     #region FunctionsButton
     public void EnablePairControls()
@@ -92,6 +81,11 @@ public class ConnectPlayerInMenu : MonoBehaviour
         //var p2 = PlayerInput.Instantiate(playerInputManager.playerPrefab, playerIndex: 1, controlScheme: "KeyboardRight", pairWithDevice: Keyboard.current);
         PlayerInput.Instantiate(playerInputManager.playerPrefab, 0, "KeyboardLeft", -1, Keyboard.current, Mouse.current);
         PlayerInput.Instantiate(playerInputManager.playerPrefab, 1, "KeyboardRight", -1, Keyboard.current, Mouse.current);
+    }
+    public void ChangeActionMap()
+    {
+        player[0].GetComponent<PlayerController>().EnableMapActionPlayer();
+        player[1].GetComponent<PlayerController>().EnableMapActionPlayer();
     }
     #endregion
 }
