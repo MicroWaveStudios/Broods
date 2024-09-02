@@ -69,16 +69,16 @@ public class volumeSettings : MonoBehaviour
 
     public void RestaurarVolume()
     {
-        audioMixer.SetFloat("volumeGeral", -20f);
-        volumeGeral.value = -20f;
+        audioMixer.SetFloat("volumeGeral", 0f);
+        volumeGeral.value = 0f;
         AtualizarTextoVolumeGeral();
 
-        audioMixer.SetFloat("BG", -20f);
-        BG.value = -20f;
+        audioMixer.SetFloat("BG", 0f);
+        BG.value = 0f;
         AtualizarTextoBG();
 
-        audioMixer.SetFloat("VFX", -20f);
-        VFX.value = -20f;
+        audioMixer.SetFloat("VFX", 0f);
+        VFX.value = 0f;
         AtualizarTextoVFX();
 
         AplicarVolume();

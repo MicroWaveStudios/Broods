@@ -3,22 +3,48 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
+using UnityEngine.Audio;
 
 public class menuSettings : MonoBehaviour
 {
-    public TMP_Dropdown graphicsDropdown;
-    public Toggle VSyncButton;
-    public TMP_Text resAtual;
-    public Slider sliderBrilho;
+    [Header("Brilho")]
+    [SerializeField] private Slider sliderBrilho;
+    [SerializeField] private TMP_Text textBrilho;
+    
+    private float valorBrilho;
+    [SerializeField] private bool isFullScreen;
+    [SerializeField] private int qualidadeAtual;
+    [SerializeField] private int resolucaoIndex;
 
-    public TMP_Dropdown resolutionDropdown;
+    [Header("Resolução")]
     private Resolution[] resolutions;
     private List<Resolution> filteredResolutions;
     private float currentRefreshRate;
     private int resolucaoAtual_index = 0;
 
+    [Header("PopUps")]
+    [SerializeField] private GameObject PopUpGraficos;
+    [SerializeField] private GameObject PopUpConfigs;
+    [SerializeField] private GameObject PopUpNaoSalvouGraficos;
+
+    [Header("Botões")]
+    [SerializeField] private TMP_Dropdown QualityDropdown;
+    [SerializeField] private Toggle FullscreenToggle;
+    [SerializeField] private TMP_Dropdown resolutionDropdown;
+
     private void Start()
     {
+        QualityDropdown.value = PlayerPrefs.GetInt("quality");
+    
+        isFullScreen = (PlayerPrefs.GetInt("fullscreen") != 0);
+        FullscreenToggle.isOn = isFullScreen;
+
+        sliderBrilho.value = PlayerPrefs.GetFloat("brightness");
+        textBrilho.text = sliderBrilho.value.ToString();
+
+        resolutionDropdown.value = PlayerPrefs.GetInt("resolution");
+
         resolutions = Screen.resolutions;
         filteredResolutions = new List<Resolution>();
         resolutionDropdown.ClearOptions();
@@ -54,27 +80,98 @@ public class menuSettings : MonoBehaviour
     {
         Resolution resolucao = filteredResolutions[ResolutionIndex];
         Screen.SetResolution(resolucao.width, resolucao.height, true);
+        resolucaoIndex = ResolutionIndex;
     }
 
     public void mudarGraficos()
     {
-        QualitySettings.SetQualityLevel(graphicsDropdown.value);
+        qualidadeAtual = QualityDropdown.value;
     }
 
     public void mudarBrilho()
     {
-        Screen.brightness = sliderBrilho.value;
+        valorBrilho = sliderBrilho.value;
+        textBrilho.text = sliderBrilho.value.ToString();
     }
 
-    public void VSync()
+    public void mudarFullScreen(bool isFullscreen)
     {
-        if (VSyncButton.isOn)
+        this.isFullScreen = isFullscreen;
+    }
+    
+    public void AplicarGraficos()
+    {
+        PlayerPrefs.SetInt("quality", qualidadeAtual);
+        QualitySettings.SetQualityLevel(qualidadeAtual);
+
+        PlayerPrefs.SetFloat("brightness", valorBrilho);
+
+        PlayerPrefs.SetInt("fullscreen", isFullScreen ? 1:0);
+
+        PlayerPrefs.SetInt("resolution", resolucaoIndex);
+    }
+
+    public void BotaoSairSemSalvarGraficos()
+    {
+        sliderBrilho.value = PlayerPrefs.GetFloat("brightness");
+
+        qualidadeAtual = PlayerPrefs.GetInt("quality");
+        QualityDropdown.value = qualidadeAtual;
+
+        isFullScreen = (PlayerPrefs.GetInt("fullscreen") != 0);
+        FullscreenToggle.isOn = isFullScreen;
+    }
+
+    public void BotaoVoltar()
+    {
+        if (sliderBrilho.value != PlayerPrefs.GetFloat("brightness") ||
+            qualidadeAtual != PlayerPrefs.GetInt("quality") ||
+            isFullScreen != (PlayerPrefs.GetInt("fullscreen") != 0))
         {
-            QualitySettings.vSyncCount = 2;
+            PopUpNaoSalvouGraficos.SetActive(true);
+            PopUpGraficos.SetActive(false);
         }
         else
         {
-            QualitySettings.vSyncCount = 0;
+            PopUpConfigs.SetActive(true);
+            PopUpGraficos.SetActive(false);
         }
-    }        
+    }
+
+    public void BotaoRestaurarGraficos()
+    {
+        valorBrilho = 50f;
+        sliderBrilho.value = 50f;
+        textBrilho.text = valorBrilho.ToString();
+
+        qualidadeAtual = 1;
+        QualityDropdown.value = 1;
+        QualitySettings.SetQualityLevel(1); //nao sei se funciona
+
+        isFullScreen = true;
+        FullscreenToggle.isOn = true;
+        Screen.fullScreen = true; // idem
+
+        Resolution resolucaoAtual = Screen.currentResolution;
+        Screen.SetResolution(resolucaoAtual.width, resolucaoAtual.height, Screen.fullScreen);
+        resolutionDropdown.value = resolutions.Length;
+
+        AplicarGraficos();
+    }
+
+    public void TestarPP()
+    {
+        Debug.Log("Brilho " + PlayerPrefs.GetFloat("brightness"));
+        Debug.Log("Tela Cheia " + PlayerPrefs.GetInt("fullscreen")); 
+        Debug.Log("Qualidade " + PlayerPrefs.GetInt("quality"));
+        Debug.Log("Resolução " + PlayerPrefs.GetInt("resolution"));
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            TestarPP();
+        }
+    }
 }
