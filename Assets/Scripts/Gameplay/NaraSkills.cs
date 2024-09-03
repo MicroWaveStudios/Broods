@@ -24,7 +24,7 @@ public class NaraSkills : MonoBehaviour
     [SerializeField] float danoLaser;
     GameObject objLaser;
     [SerializeField] int[] ordemComboLaser;
-    ParticleSystem laser;
+    LaserPosition laser;
     int ordemLaser = 0;
 
     [Header("Tarticos")]
@@ -38,7 +38,7 @@ public class NaraSkills : MonoBehaviour
     {
         scrpRigidbody = GetComponent<PlayerMoveRigidbody>();
         objLaser = GameObject.FindGameObjectWithTag("Laser");
-        laser = objLaser.GetComponent<ParticleSystem>();
+        laser = objLaser.GetComponent<LaserPosition>();
         scrpPlayerStats = GetComponent<PlayerStats>();
         //tarticos = GameObject.FindGameObjectsWithTag("Tartico");
     }
@@ -171,7 +171,7 @@ public class NaraSkills : MonoBehaviour
 
         StartCoroutine(scrpPlayerStats.ResetScripts(false, 0.5f));
 
-        laser.Play();
+        laser.AtirarLaser();
 
         for (int i = 0; i < tarticos.Length; i++)
         {
