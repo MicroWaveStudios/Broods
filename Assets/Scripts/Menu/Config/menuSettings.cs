@@ -34,17 +34,6 @@ public class menuSettings : MonoBehaviour
 
     private void Start()
     {
-        QualityDropdown.value = PlayerPrefs.GetInt("quality");
-    
-        isFullScreen = (PlayerPrefs.GetInt("fullscreen") != 0);
-        FullscreenToggle.isOn = isFullScreen;
-
-        sliderBrilho.value = PlayerPrefs.GetFloat("brightness");
-        textBrilho.text = sliderBrilho.value.ToString();
-
-        resolutionDropdown.value = PlayerPrefs.GetInt("resolution");
-        resolucaoAtual_index = resolutionDropdown.value;
-
         resolutions = Screen.resolutions;
         filteredResolutions = new List<Resolution>();
         resolutionDropdown.ClearOptions();
@@ -74,6 +63,17 @@ public class menuSettings : MonoBehaviour
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.value = resolucaoAtual_index;
         resolutionDropdown.RefreshShownValue();
+
+        QualityDropdown.value = PlayerPrefs.GetInt("quality");
+
+        resolutionDropdown.value = PlayerPrefs.GetInt("resolution");
+        resolucaoAtual_index = resolutionDropdown.value;
+
+        sliderBrilho.value = PlayerPrefs.GetFloat("brightness");
+        textBrilho.text = sliderBrilho.value.ToString();
+
+        isFullScreen = (PlayerPrefs.GetInt("fullscreen") != 0);
+        FullscreenToggle.isOn = isFullScreen; //https://www.youtube.com/watch?v=qXbjyzBlduY
     }
 
     public void mudarResolucao(int ResolutionIndex)

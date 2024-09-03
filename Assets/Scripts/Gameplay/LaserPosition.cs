@@ -33,13 +33,13 @@ public class LaserPosition : MonoBehaviour
 
     public void AtirarLaser()
     {
-        particula.emission.rateOverDistance = 0f; 
+        //particula.emission.rateOverDistance = 0f; 
         rb.velocity = outroPlayer.transform.position * speed;
     }
 
     public void ResetPosition()
     {
-        particula.startSize = 0f;
+        //particula.startSize = 0f;
         outroPlayer.transform.position = posicaoInicial;
     }
 }
