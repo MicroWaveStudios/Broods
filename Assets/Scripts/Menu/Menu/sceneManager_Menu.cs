@@ -5,10 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class sceneManager_Menu : MonoBehaviour
 {
-    public void Game()
-    {
-        SceneManager.LoadScene(12);
-    }
     public void Sair()
     {
         Application.Quit();
@@ -37,38 +33,8 @@ public class sceneManager_Menu : MonoBehaviour
         SceneManager.LoadScene(4);
     }
 
-    public void Ajustes()
+    public void Gameplay()
     {
         SceneManager.LoadScene(5);
-    }
-
-    public void Jogar_Configuracoes()
-    {
-        SceneManager.LoadScene(6);
-    }
-
-    public void Jogar_Mapa()
-    {
-        SceneManager.LoadScene(7);
-    }
-
-    public void Jogar_Personagens()
-    {
-        SceneManager.LoadScene(8);
-    }
-
-    public void Ajustes_Som()
-    {
-        SceneManager.LoadScene(9);
-    }
-
-    public void Ajustes_Controles()
-    {
-        SceneManager.LoadScene(10);
-    }
-
-    public void Ajustes_Video()
-    {
-        SceneManager.LoadScene(11);
     }
 }

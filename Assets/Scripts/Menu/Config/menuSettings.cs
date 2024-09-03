@@ -13,16 +13,15 @@ public class menuSettings : MonoBehaviour
     [SerializeField] private TMP_Text textBrilho;
     
     private float valorBrilho;
-    [SerializeField] private bool isFullScreen;
-    [SerializeField] private int qualidadeAtual;
-    [SerializeField] private int resolucaoIndex;
+    private bool isFullScreen;
+    private int qualidadeAtual;
 
     [Header("Resolução")]
     private Resolution[] resolutions;
     private List<Resolution> filteredResolutions;
     private float currentRefreshRate;
-    private int resolucaoAtual_index = 0;
-
+    [SerializeField] private int resolucaoAtual_index = 0;
+    
     [Header("PopUps")]
     [SerializeField] private GameObject PopUpGraficos;
     [SerializeField] private GameObject PopUpConfigs;
@@ -44,6 +43,7 @@ public class menuSettings : MonoBehaviour
         textBrilho.text = sliderBrilho.value.ToString();
 
         resolutionDropdown.value = PlayerPrefs.GetInt("resolution");
+        resolucaoAtual_index = resolutionDropdown.value;
 
         resolutions = Screen.resolutions;
         filteredResolutions = new List<Resolution>();
@@ -80,7 +80,8 @@ public class menuSettings : MonoBehaviour
     {
         Resolution resolucao = filteredResolutions[ResolutionIndex];
         Screen.SetResolution(resolucao.width, resolucao.height, true);
-        resolucaoIndex = ResolutionIndex;
+        resolucaoAtual_index = ResolutionIndex;
+        resolucaoAtual_index = resolutionDropdown.value;
     }
 
     public void mudarGraficos()
@@ -108,7 +109,7 @@ public class menuSettings : MonoBehaviour
 
         PlayerPrefs.SetInt("fullscreen", isFullScreen ? 1:0);
 
-        PlayerPrefs.SetInt("resolution", resolucaoIndex);
+        PlayerPrefs.SetInt("resolution", resolucaoAtual_index);
     }
 
     public void BotaoSairSemSalvarGraficos()
@@ -120,13 +121,16 @@ public class menuSettings : MonoBehaviour
 
         isFullScreen = (PlayerPrefs.GetInt("fullscreen") != 0);
         FullscreenToggle.isOn = isFullScreen;
+
+        resolutionDropdown.value = PlayerPrefs.GetInt("resolution");
     }
 
     public void BotaoVoltar()
     {
         if (sliderBrilho.value != PlayerPrefs.GetFloat("brightness") ||
             qualidadeAtual != PlayerPrefs.GetInt("quality") ||
-            isFullScreen != (PlayerPrefs.GetInt("fullscreen") != 0))
+            isFullScreen != (PlayerPrefs.GetInt("fullscreen") != 0) ||
+            resolucaoAtual_index != PlayerPrefs.GetInt("resolution"))
         {
             PopUpNaoSalvouGraficos.SetActive(true);
             PopUpGraficos.SetActive(false);
@@ -155,23 +159,8 @@ public class menuSettings : MonoBehaviour
         Resolution resolucaoAtual = Screen.currentResolution;
         Screen.SetResolution(resolucaoAtual.width, resolucaoAtual.height, Screen.fullScreen);
         resolutionDropdown.value = resolutions.Length;
+        resolucaoAtual_index = resolutionDropdown.value;
 
         AplicarGraficos();
-    }
-
-    public void TestarPP()
-    {
-        Debug.Log("Brilho " + PlayerPrefs.GetFloat("brightness"));
-        Debug.Log("Tela Cheia " + PlayerPrefs.GetInt("fullscreen")); 
-        Debug.Log("Qualidade " + PlayerPrefs.GetInt("quality"));
-        Debug.Log("Resolução " + PlayerPrefs.GetInt("resolution"));
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            TestarPP();
-        }
     }
 }
