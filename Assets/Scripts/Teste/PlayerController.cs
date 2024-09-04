@@ -47,10 +47,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public bool SceneGame()
+    {
+        if (scene == Scene.Game)
+            return true;
+        else 
+            return false;
+    }
 
     public void EnableMapActionPlayer()
     {
         playerInput.SwitchCurrentActionMap(actionMapPlayer);
+        scene = Scene.Game;
     }
     public void EnableMapActionUI()
     {
@@ -65,10 +73,5 @@ public class PlayerController : MonoBehaviour
     {
         if (scene == Scene.Game)
             gameManager.GetComponent<GameController>().Pause(this.gameObject, false);
-    }
-    public void DisconnectPlayer(InputAction.CallbackContext context)
-    {
-        if (scene == Scene.Connect)
-            Destroy(gameObject);
     }
 }

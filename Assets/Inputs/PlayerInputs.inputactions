@@ -621,6 +621,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Connect",
+                    "type": "Button",
+                    "id": "772c0d3d-819b-4929-a0f8-f3e16370640e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Tap",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -861,7 +870,7 @@
                     "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard",
+                    "groups": "Keyboard;KeyboardLeft",
                     "action": "Navigate",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -872,7 +881,7 @@
                     "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard",
+                    "groups": "Keyboard;KeyboardRight",
                     "action": "Navigate",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -883,7 +892,7 @@
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard",
+                    "groups": "Keyboard;KeyboardLeft",
                     "action": "Navigate",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -894,7 +903,7 @@
                     "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard",
+                    "groups": "Keyboard;KeyboardRight",
                     "action": "Navigate",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -905,7 +914,7 @@
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard",
+                    "groups": "Keyboard;KeyboardLeft",
                     "action": "Navigate",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -916,7 +925,7 @@
                     "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard",
+                    "groups": "Keyboard;KeyboardRight",
                     "action": "Navigate",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -927,7 +936,7 @@
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard",
+                    "groups": "Keyboard;KeyboardLeft",
                     "action": "Navigate",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -938,7 +947,7 @@
                     "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard",
+                    "groups": "Keyboard;KeyboardRight",
                     "action": "Navigate",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -1041,6 +1050,28 @@
                     "action": "Exit",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2be06417-53a1-4b3c-9dd6-31cf4d9a7dc6",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Connect",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0574e426-abcb-400c-9db0-e7fc0b2476f4",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Connect",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
@@ -1095,11 +1126,6 @@
             "devices": [
                 {
                     "devicePath": "<Keyboard>",
-                    "isOptional": false,
-                    "isOR": false
-                },
-                {
-                    "devicePath": "<Mouse>",
                     "isOptional": false,
                     "isOR": false
                 }
