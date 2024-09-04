@@ -165,20 +165,25 @@ public class NaraSkills : MonoBehaviour
 
         objLaser.transform.LookAt(posicaoRaycastPlayer2);
 
+        laser.particula.Play();
+
         yield return new WaitForSeconds(0.2f);     
 
         RaycastHit hit;
 
         StartCoroutine(scrpPlayerStats.ResetScripts(false, 0.5f));
 
+        
         laser.AtirarLaser();
+
+        
 
         for (int i = 0; i < tarticos.Length; i++)
         {
             if (tarticos[i].activeSelf == true)
             {
                 tarticos[i].transform.LookAt(posicaoRaycastPlayer2);
-                tarticos[i].GetComponent<Tarticos>().Laser();             
+                StartCoroutine(tarticos[i].GetComponent<Tarticos>().Laser());             
             }           
         }
 
@@ -201,10 +206,11 @@ public class NaraSkills : MonoBehaviour
         else
         {
             Debug.Log("Não foi");
-        }
-
+        }      
 
         yield return new WaitForSeconds(1f);
+
+        laser.ResetPosition(this.gameObject);
 
         yield break;
     }
@@ -227,7 +233,7 @@ public class NaraSkills : MonoBehaviour
 
         tarticosContagem++;
 
-        danoLaser += (tarticosContagem * 1.2f);
+        danoLaser += tarticosContagem;
 
         Debug.Log(danoLaser);
 
