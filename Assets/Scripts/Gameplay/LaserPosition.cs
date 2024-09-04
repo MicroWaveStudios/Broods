@@ -4,42 +4,51 @@ using UnityEngine;
 
 public class LaserPosition : MonoBehaviour
 {
-    Rigidbody rb;
     GameObject outroPlayer;
-    [SerializeField] float speed;
-    Vector3 posicaoInicial;
-    ParticleSystem particula;
+    [SerializeField] Transform posicaoInicial;
+    Vector3 posicaoLaser;
+    public ParticleSystem particula;
+    [SerializeField] bool ligado = false;
 
     private void Awake()
     {
-        rb = this.gameObject.GetComponent<Rigidbody>();
-
         particula = this.gameObject.GetComponent<ParticleSystem>();
 
-        if (this.gameObject.CompareTag("Player1"))
+        if (ligado != true)
+        {
+            particula.Stop();
+        }
+        
+
+        if (transform.parent.CompareTag("Player1"))
         {
             outroPlayer = GameObject.FindGameObjectWithTag("Player2");
-        }        
+        }
         else
         {
             outroPlayer = GameObject.FindGameObjectWithTag("Player1");
         }
     }
 
-    private void Start()
+    private void Update()
     {
-        posicaoInicial = this.transform.position;
+        if (outroPlayer != null)
+        {
+            posicaoLaser = new Vector3(outroPlayer.transform.position.x, outroPlayer.transform.position.y + 10f, outroPlayer.transform.position.z);
+        }      
     }
 
     public void AtirarLaser()
     {
-        //particula.emission.rateOverDistance = 0f; 
-        rb.velocity = outroPlayer.transform.position * speed;
+        transform.parent = null;
+        transform.position = posicaoLaser;
     }
 
-    public void ResetPosition()
+    public void ResetPosition(GameObject player)
     {
-        //particula.startSize = 0f;
-        outroPlayer.transform.position = posicaoInicial;
+        particula.Stop();
+
+        transform.position = posicaoInicial.position;
+        transform.parent = player.transform;
     }
 }
