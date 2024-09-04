@@ -26,10 +26,12 @@ public class GameController : MonoBehaviour
     public float distance;
     public bool ChangedSide;
 
-    GameObject focusedPlayer;
-    GameObject notFocusedPlayer;
+    public GameObject focusedPlayer;
+    public GameObject notFocusedPlayer;
     private bool isPaused = false;
 
+    [SerializeField] GameObject eventSystemManager;
+    [SerializeField] GameObject PanelManager;
 
     PlayerInputManager playerInputManager;
 
@@ -123,6 +125,7 @@ public class GameController : MonoBehaviour
             focusedPlayer = newFocusedPlayer;
         if (focusedPlayer.tag == newFocusedPlayer.tag)
         {
+            PanelManager.GetComponent<PanelsManager>().ChangePanel(0);
             isPaused = value;
             SetActiveInputNotFocusedPlayer(focusedPlayer.tag, value);
             SwitchControlScheme(value);
@@ -139,6 +142,7 @@ public class GameController : MonoBehaviour
             case false:
                 focusedPlayer.GetComponent<PlayerController>().EnableMapActionPlayer();
                 focusedPlayer = null;
+                notFocusedPlayer = null;
                 break;
         }
     }
@@ -155,7 +159,6 @@ public class GameController : MonoBehaviour
                 notFocusedPlayer.GetComponent<PlayerMoveRigidbody>().SetInputActive(value);
                 break;
         }
-        Debug.Log(notFocusedPlayer.tag);
     }
     public void UIPause(bool value)
     {

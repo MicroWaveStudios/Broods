@@ -16,24 +16,24 @@ public class ConnectPlayer : MonoBehaviour
     public DeviceDisplayConfigurator deviceDisplaySettings;
 
     GameObject connectManager;
-    bool CanDisconnect = false;
+    bool CanDoIt = false;
 
     private void Awake()
     {
-        StartCoroutine(PlayerCanDisconnect());
+        StartCoroutine(PlayerCanDoIt());
         connectManager = GameObject.FindGameObjectWithTag("ConnectManager");
         playerInput = this.gameObject.GetComponent<PlayerInput>();
     }
     private void Start()
     {
-        connectManager.GetComponent<ConnectPlayerInMenu>().SetupNewPlayer(this.gameObject);
+        connectManager.GetComponent<ConnectPlayerInMenu>().JoinPlayer(this.gameObject);
         DontDestroyOnLoad(this.gameObject);
     }
     public void SetupPlayer(int newPlayerID)
     { 
         playerID = newPlayerID;
         DevicePlayer();
-        connectManager.GetComponent<ConnectPlayerInMenu>().ConnectDisconnectPlayer(playerID, controlScheme, true);
+        connectManager.GetComponent<ConnectPlayerInMenu>().ConnectDisconnectPlayer(this.gameObject, playerID, controlScheme, true);
     }
     void DevicePlayer()
     {
@@ -43,17 +43,22 @@ public class ConnectPlayer : MonoBehaviour
     }
     public void DisconnectPlayer(InputAction.CallbackContext context)
     {
-        if (CanDisconnect)
-        { 
-            connectManager.GetComponent<ConnectPlayerInMenu>().ConnectDisconnectPlayer(playerID, controlScheme, false);
-            Destroy(gameObject);
+        if (CanDoIt && this.gameObject.GetComponent<PlayerController>().SceneGame())
+        {
+            connectManager.GetComponent<ConnectPlayerInMenu>().ConnectDisconnectPlayer(this.gameObject, playerID, controlScheme, false);
         }
     }
-
-    IEnumerator PlayerCanDisconnect()
+    public void ConnectSplitKeyboard(InputAction.CallbackContext context)
     {
-        yield return new WaitForSeconds(1f);
-        CanDisconnect = true;
+        if (CanDoIt && controlScheme == "Keyboard" && context.started)
+        {
+            connectManager.GetComponent<ConnectPlayerInMenu>().EnableSplitKeyboard();
+        }
+    }
+    IEnumerator PlayerCanDoIt()
+    {
+        yield return new WaitForSeconds(0.1f);
+        CanDoIt = true;
         yield break;
     }
 }

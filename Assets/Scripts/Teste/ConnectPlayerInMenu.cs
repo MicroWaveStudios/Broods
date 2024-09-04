@@ -15,48 +15,27 @@ public class ConnectPlayerInMenu : MonoBehaviour
 
     [SerializeField] GameObject[] EnterMessage;
     [SerializeField] GameObject ContinueButton;
-    [SerializeField] GameObject SplitKeyboardPanel;
+    [SerializeField] GameObject BackButton;
 
     [SerializeField] GameObject[] player;
-    [SerializeField] Transform[] spawn; //Variavel para nn bugar os players ao ir para a cena jogar
+    [SerializeField] Transform[] spawn; //Variavel para nn bugar os players ao ir para a cena game
 
-    [SerializeField] GameObject PanelsManager;
+    [SerializeField] GameObject eventSystemManager;
+    [SerializeField] GameObject PanelManager;
+
     public int limitPlayer;
-    int playerInScene;
+    public int playerInScene;
 
-    public void SetupNewPlayer(GameObject spawnedPlayer)
+    public void ConnectDisconnectPlayer(GameObject Player, int playerID, string controlScheme, bool value)
     {
-        if (playerInScene < limitPlayer) 
-        { 
-            if (player[0] == null)
-                SetupPlayer(spawnedPlayer, 0);
-            else
-                SetupPlayer (spawnedPlayer, 1);
-        }
-        if (player[0] != null && player[1] != null)
-        { 
-            ContinueButton.SetActive(true);
-            PanelsManager.GetComponent<PanelsManager>().ChangePanel(1);
-        }
-    }
-
-    public void SetupPlayer(GameObject newPlayer, int numberPlayer)
-    {
-        int numberTag = numberPlayer + 1;
-        newPlayer.tag = "Player" + numberTag;
-        newPlayer.GetComponent<ConnectPlayer>().SetupPlayer(numberPlayer);
-        player[numberPlayer] = newPlayer;
-        player[numberPlayer].transform.position = spawn[numberPlayer].transform.position;
-        playerInScene++;
-    }
-
-    public void ConnectDisconnectPlayer(int playerID, string controlScheme, bool value)
-    {
+        DesactivePlayerText(playerID);
         if (!value)
         { 
             player[playerID] = null;
             playerInScene--;
-            ContinueButton.SetActive(false);
+            ContinueButton.SetActive(value);
+            eventSystemManager.GetComponent<EventSystemManager>().SetCurrentSelectedButton(BackButton);
+            Destroy(Player);
         }
         EnterMessage[playerID].SetActive(!value);
         PlayerMenu[playerID].SetActive(value);
@@ -66,23 +45,51 @@ public class ConnectPlayerInMenu : MonoBehaviour
             KeyboardMenu[playerID].SetActive(value);
     }
 
-
-    #region FunctionsButton
-    public void EnablePairControls()
+    void DesactivePlayerText(int playerID)
     {
-        SplitKeyboardPanel.SetActive(false);
-        playerInputManager.EnableJoining();
+        PlayerMenu[playerID].SetActive(false);
+        GamepadMenu[playerID].SetActive(false);
+        KeyboardMenu[playerID].SetActive(false);
     }
+
+    public void JoinPlayer(GameObject spawnedPlayer)
+    {
+        int playerNumber;
+        if (player[0] == null)
+            playerNumber = 0;
+        else
+            playerNumber = 1;
+        player[playerNumber] = spawnedPlayer;
+
+        int tagNumber = playerNumber + 1;
+        spawnedPlayer.tag = "Player" + tagNumber;
+        spawnedPlayer.GetComponent<ConnectPlayer>().SetupPlayer(playerNumber);
+
+        spawnedPlayer.transform.position = spawn[playerNumber].transform.position;
+
+        playerInScene++;
+        if (player[0] != null && player[1] != null)
+        {
+            ContinueButton.SetActive(true);
+            eventSystemManager.GetComponent<EventSystemManager>().SetCurrentSelectedButton(ContinueButton);
+        }
+    }
+
     public void EnableSplitKeyboard()
     {
-        SplitKeyboardPanel.SetActive(false);
-        //StartCoroutine(InstantiateSplitKeyboardPlayers());
-        //var p1 = PlayerInput.Instantiate(playerInputManager.playerPrefab, playerIndex: 0, controlScheme: "KeyboardLeft", pairWithDevice: Keyboard.current);
-        //var p2 = PlayerInput.Instantiate(playerInputManager.playerPrefab, playerIndex: 1, controlScheme: "KeyboardRight", pairWithDevice: Keyboard.current);
-        PlayerInput.Instantiate(playerInputManager.playerPrefab, 0, "KeyboardLeft", -1, Keyboard.current, Mouse.current);
-        PlayerInput.Instantiate(playerInputManager.playerPrefab, 1, "KeyboardRight", -1, Keyboard.current, Mouse.current);
+        DestroyPlayersInScene();
+        var p1 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 0, "KeyboardLeft", -1, Keyboard.current, Mouse.current);
+        var p2 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 1, "KeyboardRight", -1, Keyboard.current);
     }
-    public void ChangeActionMap()
+    #region FunctionsButton
+    public void DestroyPlayersInScene()
+    {
+        Destroy(player[0]);
+        player[0] = null;
+        Destroy(player[1]);
+        player[1] = null;
+    }
+    public void ChangeMapAction()
     {
         player[0].GetComponent<PlayerController>().EnableMapActionPlayer();
         player[1].GetComponent<PlayerController>().EnableMapActionPlayer();
