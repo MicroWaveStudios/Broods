@@ -310,6 +310,54 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3840164913029830530, guid: 8d4d75442401b004a983f7b838e6c95d, type: 3}
+      propertyPath: m_MoveAction
+      value: 
+      objectReference: {fileID: 1324957391881800489, guid: 52b818f2dd13c7849abc50fddb44c4c1, type: 3}
+    - target: {fileID: 3840164913029830530, guid: 8d4d75442401b004a983f7b838e6c95d, type: 3}
+      propertyPath: m_PointAction
+      value: 
+      objectReference: {fileID: 7402071282661683648, guid: 52b818f2dd13c7849abc50fddb44c4c1, type: 3}
+    - target: {fileID: 3840164913029830530, guid: 8d4d75442401b004a983f7b838e6c95d, type: 3}
+      propertyPath: m_ActionsAsset
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: 52b818f2dd13c7849abc50fddb44c4c1, type: 3}
+    - target: {fileID: 3840164913029830530, guid: 8d4d75442401b004a983f7b838e6c95d, type: 3}
+      propertyPath: m_CancelAction
+      value: 
+      objectReference: {fileID: 8618092758530054375, guid: 52b818f2dd13c7849abc50fddb44c4c1, type: 3}
+    - target: {fileID: 3840164913029830530, guid: 8d4d75442401b004a983f7b838e6c95d, type: 3}
+      propertyPath: m_SubmitAction
+      value: 
+      objectReference: {fileID: 5259077280625372038, guid: 52b818f2dd13c7849abc50fddb44c4c1, type: 3}
+    - target: {fileID: 3840164913029830530, guid: 8d4d75442401b004a983f7b838e6c95d, type: 3}
+      propertyPath: m_LeftClickAction
+      value: 
+      objectReference: {fileID: 3018283134455328310, guid: 52b818f2dd13c7849abc50fddb44c4c1, type: 3}
+    - target: {fileID: 3840164913029830530, guid: 8d4d75442401b004a983f7b838e6c95d, type: 3}
+      propertyPath: m_RightClickAction
+      value: 
+      objectReference: {fileID: -7750720979855722575, guid: 52b818f2dd13c7849abc50fddb44c4c1, type: 3}
+    - target: {fileID: 3840164913029830530, guid: 8d4d75442401b004a983f7b838e6c95d, type: 3}
+      propertyPath: m_MiddleClickAction
+      value: 
+      objectReference: {fileID: 1974770984079680336, guid: 52b818f2dd13c7849abc50fddb44c4c1, type: 3}
+    - target: {fileID: 3840164913029830530, guid: 8d4d75442401b004a983f7b838e6c95d, type: 3}
+      propertyPath: m_ScrollWheelAction
+      value: 
+      objectReference: {fileID: -6522121286058950097, guid: 52b818f2dd13c7849abc50fddb44c4c1, type: 3}
+    - target: {fileID: 3840164913029830530, guid: 8d4d75442401b004a983f7b838e6c95d, type: 3}
+      propertyPath: m_TrackedDevicePositionAction
+      value: 
+      objectReference: {fileID: -1811065514717273552, guid: 52b818f2dd13c7849abc50fddb44c4c1, type: 3}
+    - target: {fileID: 3840164913029830530, guid: 8d4d75442401b004a983f7b838e6c95d, type: 3}
+      propertyPath: m_TrackedDeviceOrientationAction
+      value: 
+      objectReference: {fileID: -1165097552391448210, guid: 52b818f2dd13c7849abc50fddb44c4c1, type: 3}
+    - target: {fileID: 3840164913029830532, guid: 8d4d75442401b004a983f7b838e6c95d, type: 3}
+      propertyPath: m_FirstSelected
+      value: 
+      objectReference: {fileID: 1465493846}
     - target: {fileID: 4857887592929309117, guid: 8d4d75442401b004a983f7b838e6c95d, type: 3}
       propertyPath: m_Name
       value: EventSystemManager
@@ -2941,7 +2989,7 @@ MonoBehaviour:
   m_text: CAMPO DE TREINAMENTO
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c08d2beccd65cc24898f2568477464f6, type: 2}
-  m_sharedMaterial: {fileID: 11227433642789244, guid: c08d2beccd65cc24898f2568477464f6, type: 2}
+  m_sharedMaterial: {fileID: -3573398107632926605, guid: c08d2beccd65cc24898f2568477464f6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3828,7 +3876,7 @@ MonoBehaviour:
   m_text: PERSONAGENS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c08d2beccd65cc24898f2568477464f6, type: 2}
-  m_sharedMaterial: {fileID: 11227433642789244, guid: c08d2beccd65cc24898f2568477464f6, type: 2}
+  m_sharedMaterial: {fileID: -3573398107632926605, guid: c08d2beccd65cc24898f2568477464f6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7286,7 +7334,7 @@ MonoBehaviour:
   m_text: "OP\xC7\xD5ES"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c08d2beccd65cc24898f2568477464f6, type: 2}
-  m_sharedMaterial: {fileID: 11227433642789244, guid: c08d2beccd65cc24898f2568477464f6, type: 2}
+  m_sharedMaterial: {fileID: -3573398107632926605, guid: c08d2beccd65cc24898f2568477464f6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7566,7 +7614,7 @@ MonoBehaviour:
   m_text: JOGAR
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c08d2beccd65cc24898f2568477464f6, type: 2}
-  m_sharedMaterial: {fileID: 11227433642789244, guid: c08d2beccd65cc24898f2568477464f6, type: 2}
+  m_sharedMaterial: {fileID: -3573398107632926605, guid: c08d2beccd65cc24898f2568477464f6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -9647,7 +9695,7 @@ MonoBehaviour:
   m_text: SAIR
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c08d2beccd65cc24898f2568477464f6, type: 2}
-  m_sharedMaterial: {fileID: 11227433642789244, guid: c08d2beccd65cc24898f2568477464f6, type: 2}
+  m_sharedMaterial: {fileID: -3573398107632926605, guid: c08d2beccd65cc24898f2568477464f6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -10473,7 +10521,7 @@ MonoBehaviour:
   m_text: TUTORIAL
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c08d2beccd65cc24898f2568477464f6, type: 2}
-  m_sharedMaterial: {fileID: 11227433642789244, guid: c08d2beccd65cc24898f2568477464f6, type: 2}
+  m_sharedMaterial: {fileID: -3573398107632926605, guid: c08d2beccd65cc24898f2568477464f6, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

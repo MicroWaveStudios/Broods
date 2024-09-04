@@ -43,7 +43,7 @@ public class ConnectPlayer : MonoBehaviour
     }
     public void DisconnectPlayer(InputAction.CallbackContext context)
     {
-        if (CanDoIt && this.gameObject.GetComponent<PlayerController>().SceneGame())
+        if (CanDoIt && !this.gameObject.GetComponent<PlayerController>().SceneGame())
         {
             connectManager.GetComponent<ConnectPlayerInMenu>().ConnectDisconnectPlayer(this.gameObject, playerID, controlScheme, false);
         }
@@ -61,4 +61,5 @@ public class ConnectPlayer : MonoBehaviour
         CanDoIt = true;
         yield break;
     }
+
 }

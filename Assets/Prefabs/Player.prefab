@@ -113,10 +113,6 @@ MonoBehaviour:
     m_ActionName: UI/Cancel[/Keyboard/escape,/DualShock4GamepadHID/buttonEast]
   - m_PersistentCalls:
       m_Calls: []
-    m_ActionId: 3cc34bc1-876f-4d6c-9c9a-3e63c75bcd04
-    m_ActionName: Player/EnterGame[/Keyboard/w,/Keyboard/a,/Keyboard/s,/Keyboard/d,/Keyboard/upArrow,/Keyboard/space]
-  - m_PersistentCalls:
-      m_Calls: []
     m_ActionId: f6f4ec5c-6ace-4510-bb73-4e31a4f14799
     m_ActionName: Player/Pause[/Keyboard/p]
   - m_PersistentCalls:
@@ -163,6 +159,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 9fb908e3-dbc7-47b0-bb89-af040754d50f
     m_ActionName: UI/Exit[/Keyboard/escape,/XInputControllerWindows/buttonEast]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6713973963200268976}
+        m_TargetAssemblyTypeName: ConnectPlayer, Assembly-CSharp
+        m_MethodName: ConnectGame
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 37dc106c-2112-4426-b6ed-1c87a3210dbc
+    m_ActionName: UI/Connect[/Keyboard/space,/XInputControllerWindows/buttonSouth]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: UI

@@ -182,4 +182,12 @@ public class GameController : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
+
+    public void DestroyPlayers()
+    {
+        Destroy(Player1);
+        Player1 = null;
+        Destroy(Player2);
+        Player2 = null;
+    }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -18,11 +19,9 @@ public class ConnectPlayerInMenu : MonoBehaviour
     [SerializeField] GameObject BackButton;
 
     [SerializeField] GameObject[] player;
-    [SerializeField] Transform[] spawn; //Variavel para nn bugar os players ao ir para a cena game
+    [SerializeField] Transform[] spawn; //Variavel para nn bugar os players ao ir para a cena jogar
 
     [SerializeField] GameObject eventSystemManager;
-    [SerializeField] GameObject PanelManager;
-
     public int limitPlayer;
     public int playerInScene;
 
@@ -30,7 +29,7 @@ public class ConnectPlayerInMenu : MonoBehaviour
     {
         DesactivePlayerText(playerID);
         if (!value)
-        { 
+        {
             player[playerID] = null;
             playerInScene--;
             ContinueButton.SetActive(value);
@@ -81,7 +80,6 @@ public class ConnectPlayerInMenu : MonoBehaviour
         var p1 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 0, "KeyboardLeft", -1, Keyboard.current, Mouse.current);
         var p2 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 1, "KeyboardRight", -1, Keyboard.current);
     }
-    #region FunctionsButton
     public void DestroyPlayersInScene()
     {
         Destroy(player[0]);
@@ -94,5 +92,4 @@ public class ConnectPlayerInMenu : MonoBehaviour
         player[0].GetComponent<PlayerController>().EnableMapActionPlayer();
         player[1].GetComponent<PlayerController>().EnableMapActionPlayer();
     }
-    #endregion
 }

@@ -9,6 +9,11 @@ public class PanelsManager : MonoBehaviour
     [SerializeField] GameObject[] defaultPanelButton;
     int currentPanel;
 
+    private void Start()
+    {
+        //ChangePanel(0);
+    }
+
     public void ChangePanel(int numberPanel)
     {
         panel[currentPanel].SetActive(false);
