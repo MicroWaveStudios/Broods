@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class LaserPosition : MonoBehaviour
 {
-    GameObject outroPlayer;
-    [SerializeField] Transform posicaoInicial;
+    public GameObject outroPlayer;
+    Vector3 posicaoInicial;
     Vector3 posicaoLaser;
     public ParticleSystem particula;
     [SerializeField] bool ligado = false;
@@ -18,9 +19,12 @@ public class LaserPosition : MonoBehaviour
         {
             particula.Stop();
         }
-        
+    }
 
-        if (transform.parent.CompareTag("Player1"))
+    private void Update()
+    {
+
+        if (transform.parent.gameObject.CompareTag("Player1"))
         {
             outroPlayer = GameObject.FindGameObjectWithTag("Player2");
         }
@@ -28,27 +32,41 @@ public class LaserPosition : MonoBehaviour
         {
             outroPlayer = GameObject.FindGameObjectWithTag("Player1");
         }
-    }
 
-    private void Update()
-    {
         if (outroPlayer != null)
         {
-            posicaoLaser = new Vector3(outroPlayer.transform.position.x, outroPlayer.transform.position.y + 10f, outroPlayer.transform.position.z);
-        }      
+            posicaoLaser = new Vector3(outroPlayer.transform.position.x, outroPlayer.transform.position.y + 1.2f, outroPlayer.transform.position.z);
+        }
     }
 
-    public void AtirarLaser()
+    public void StartLaser(GameObject player)
     {
+        StartCoroutine(Laser(player));
+    }
+    private IEnumerator Laser(GameObject player)
+    {
+        particula.Play();
+        yield return null;
+        yield return AtirarLaser();
+        yield return ResetPosition(player);
+        yield break;
+    }
+
+    private IEnumerator AtirarLaser()
+    {
+        
+        posicaoInicial = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+
         transform.parent = null;
         transform.position = posicaoLaser;
+        yield break;
     }
 
-    public void ResetPosition(GameObject player)
+    private IEnumerator ResetPosition(GameObject player)
     {
         particula.Stop();
-
-        transform.position = posicaoInicial.position;
         transform.parent = player.transform;
+        transform.position = posicaoInicial;
+        yield break;
     }
 }
