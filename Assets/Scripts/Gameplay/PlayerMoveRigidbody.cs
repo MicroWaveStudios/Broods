@@ -24,6 +24,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
     PlayerInput playerInput;
 
     [SerializeField] bool InAttack = false;
+    public bool crouched = false;
 
     public float isPlayer2 = 1;
     int jumpCount;
@@ -76,7 +77,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (jumpCount == 1 && !InAttack)
+        if (jumpCount == 1 && !InAttack && !crouched)
         { 
             rb.velocity = new Vector3(directionX * moveForce, rb.velocity.y, rb.velocity.z);
         }
@@ -90,6 +91,13 @@ public class PlayerMoveRigidbody : MonoBehaviour
         directionX = context.ReadValue<Vector2>().x;
     }
 
+    public void OnCrouch(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+            crouched = true;
+        if (context.canceled)
+            crouched = false;
+    }
     public void OnJump(InputAction.CallbackContext context)
     {
         //if (IsGrounded() && !InAttack)
@@ -97,8 +105,11 @@ public class PlayerMoveRigidbody : MonoBehaviour
         //    rb.AddForce(Vector3.up * jumpForce);
         //}
         if (jumpCount > 0)
-        rb.AddForce(Vector3.up * jumpForce);
-        jumpCount--;
+        { 
+            rb.AddForce(Vector3.up * jumpForce);
+            GetComponent<PlayerAnimator>().Jump();
+            jumpCount--;
+        }
     }
     public void SetInputActive(bool value)
     {

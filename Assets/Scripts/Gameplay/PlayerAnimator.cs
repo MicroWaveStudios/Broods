@@ -34,7 +34,12 @@ public class PlayerAnimator : MonoBehaviour
         //anim.SetFloat("Move", move.ReadValue<Vector2>().x);
         //anim.SetBool("InAttack", transform.GetComponent<PlayerMove>().InAttack);
         //anim.SetBool("IsGrounded", transform.GetComponent<PlayerMove>().IsGrounded());
-        anim.SetBool("IsGrounded", transform.GetComponent<PlayerMoveRigidbody>().IsGrounded());
+        anim.SetBool("IsGrounded", playerMove.IsGrounded());
+        anim.SetBool("Crouched", playerMove.crouched);
         //anim.SetBool("InCombo", transform.GetComponent<PlayerCombat>().InCombo);
+    }
+    public void Jump()
+    {
+        anim.SetTrigger("Jump");
     }
 }

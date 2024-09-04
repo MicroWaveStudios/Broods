@@ -26,7 +26,8 @@ public class ConnectPlayer : MonoBehaviour
     }
     private void Start()
     {
-        connectManager.GetComponent<ConnectPlayerInMenu>().JoinPlayer(this.gameObject);
+        if (this.gameObject.GetComponent<PlayerController>().SceneGame())
+            connectManager.GetComponent<ConnectPlayerInMenu>().JoinPlayer(this.gameObject);
         DontDestroyOnLoad(this.gameObject);
     }
     public void SetupPlayer(int newPlayerID)
