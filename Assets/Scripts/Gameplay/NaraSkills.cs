@@ -22,7 +22,7 @@ public class NaraSkills : MonoBehaviour
     [Header("Skill Laser")]
     [SerializeField] float custoLaser;
     [SerializeField] float danoLaser;
-    GameObject objLaser;
+    [SerializeField] GameObject objLaser;
     [SerializeField] int[] ordemComboLaser;
     LaserPosition laser;
     int ordemLaser = 0;
@@ -37,7 +37,7 @@ public class NaraSkills : MonoBehaviour
     private void Awake()
     {
         scrpRigidbody = GetComponent<PlayerMoveRigidbody>();
-        objLaser = GameObject.FindGameObjectWithTag("Laser");
+        //objLaser = GameObject.FindGameObjectWithTag("Laser");
         laser = objLaser.GetComponent<LaserPosition>();
         scrpPlayerStats = GetComponent<PlayerStats>();
         //tarticos = GameObject.FindGameObjectsWithTag("Tartico");
@@ -61,8 +61,10 @@ public class NaraSkills : MonoBehaviour
             posicaoRaycastPlayer2 = new Vector3(outroPlayer.transform.position.x + 0.5f, outroPlayer.transform.position.y + 1.3f, outroPlayer.transform.position.z);
         }
 
-        //Debug.DrawLine(transform.position, outroPlayer.transform.position, Color.red);
+
+        posicaoRaycast = new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z);
         
+        Debug.DrawLine(posicaoRaycast, outroPlayer.transform.position, Color.red);
     }
 
     public void MeiaLuaStart(InputAction.CallbackContext context)
@@ -161,11 +163,7 @@ public class NaraSkills : MonoBehaviour
             yield break;
         }
 
-        Vector3 NovaPosicaoOutroPlayer = outroPlayer.transform.position;
-
-        objLaser.transform.LookAt(posicaoRaycastPlayer2);
-
-        laser.particula.Play();
+        Vector3 NovaPosicaoOutroPlayer = outroPlayer.transform.position;       
 
         yield return new WaitForSeconds(0.2f);     
 
@@ -173,23 +171,22 @@ public class NaraSkills : MonoBehaviour
 
         StartCoroutine(scrpPlayerStats.ResetScripts(false, 0.5f));
 
-        
-        laser.AtirarLaser();
-
-        
+        laser.StartLaser(this.gameObject);
 
         for (int i = 0; i < tarticos.Length; i++)
         {
             if (tarticos[i].activeSelf == true)
             {
                 tarticos[i].transform.LookAt(posicaoRaycastPlayer2);
-                StartCoroutine(tarticos[i].GetComponent<Tarticos>().Laser());             
+                tarticos[i].GetComponent<Tarticos>().Laser();             
             }           
         }
 
-        Physics.Raycast(objLaser.transform.position, NovaPosicaoOutroPlayer, out hit, 4f);
+        Physics.Raycast(posicaoRaycast, NovaPosicaoOutroPlayer, out hit, 4f);
 
         scrpPlayerStats.UsouSkill(custoLaser);
+
+        
 
         if (hit.collider != null)
         {
@@ -206,12 +203,9 @@ public class NaraSkills : MonoBehaviour
         else
         {
             Debug.Log("Não foi");
-        }      
+        }
 
         yield return new WaitForSeconds(1f);
-
-        laser.ResetPosition(this.gameObject);
-
         yield break;
     }
 
@@ -244,6 +238,9 @@ public class NaraSkills : MonoBehaviour
         yield return ResetCombo();
         yield break;
     }
+
+
+
     IEnumerator ResetCombo()
     {
         ordemLaser = 0;

@@ -17,12 +17,32 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] int[] ordemCombo;
     public int ordem;
     PlayerMoveRigidbody moveRigidbody;
+    [SerializeField] ParticleSystem[] rastrosAtaque;
 
     private void Awake()
     {
         anim = transform.GetChild(0).GetComponent<Animator>();
         playerMove = GetComponent<PlayerMoveRigidbody>();
         moveRigidbody = GetComponent<PlayerMoveRigidbody>();
+    }
+
+    private void Update()
+    {
+
+        if (InAttack == true)
+        {
+            for (int i = 0; i < rastrosAtaque.Length; i++)
+            {
+                rastrosAtaque[i].Play();
+            }
+        }
+        else
+        {
+            for (int i = 0; i < rastrosAtaque.Length; i++)
+            {
+                rastrosAtaque[i].Stop();
+            }
+        }
     }
 
     void ActiveBooleanInAttack(bool value)

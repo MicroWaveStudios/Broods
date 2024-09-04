@@ -11,14 +11,8 @@ public class Tarticos : MonoBehaviour
         laser = this.gameObject.transform.GetChild(0).GetComponent<LaserPosition>();
     }
 
-    public IEnumerator Laser()
+    public void Laser()
     {
-        laser.AtirarLaser();
-
-        yield return new WaitForSeconds(1f);
-
-        laser.ResetPosition(this.gameObject);
-
-
+        laser.StartLaser(this.gameObject);
     }
 }
