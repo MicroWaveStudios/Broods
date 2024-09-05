@@ -6,8 +6,8 @@ public class PlayerCombat : MonoBehaviour
 {
     PlayerInputs playerInputs;
     PlayerMoveRigidbody playerMove;
-    public bool InAttack = false;
-    public bool InCombo = false;
+    bool _InAttack = false;
+    public bool _InCombo = false;
 
     Animator anim;
 
@@ -29,7 +29,7 @@ public class PlayerCombat : MonoBehaviour
     private void Update()
     {
 
-        if (InAttack == true)
+        if (_InAttack == true)
         {
             for (int i = 0; i < rastrosAtaque.Length; i++)
             {
@@ -45,29 +45,28 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
-    void ActiveBooleanInAttack(bool value)
-    {
-        InAttack = value;
-        playerMove.inAttack(value);
-        anim.SetBool("InAttack", value);
-    }
+    //void ActiveBooleanInAttack(bool value)
+    //{
+    //    _InAttack = value;
+    //    anim.SetBool("InAttack", value);
+    //}
 
     public void Punch0(InputAction.CallbackContext context)
     {
         StartCoroutine(ChangeActualNumber(0));
-        if (!InAttack && !InCombo)
+        if (!_InAttack && !_InCombo)
             StartCoroutine(FirstCombo());
     }
     public void Punch1(InputAction.CallbackContext context)
     {
         StartCoroutine(ChangeActualNumber(1));
-        if (!InAttack && !InCombo)
+        if (!_InAttack && !_InCombo)
             StartCoroutine(SecondAttack());
     }
     public void Punch2(InputAction.CallbackContext context)
     {
         StartCoroutine(ChangeActualNumber(2));
-        if (!InAttack && !InCombo)
+        if (!_InAttack && !_InCombo)
             StartCoroutine(ThirdAttack());
     }
 
@@ -84,30 +83,29 @@ public class PlayerCombat : MonoBehaviour
     IEnumerator FirstAttack()
     {
         anim.SetTrigger("Punch0");
-        ActiveBooleanInAttack(true);
+        _InAttack = true;
         yield return new WaitForSeconds(0.3f);
     }
     IEnumerator SecondAttack()
     {
-        ActiveBooleanInAttack(true);
+        _InAttack = true;
         anim.SetTrigger("Punch1");
         yield return new WaitForSeconds(1.28f);
-        ActiveBooleanInAttack(false);
+        _InAttack = false;
     }
 
     IEnumerator ThirdAttack()
     {
-        ActiveBooleanInAttack(true);
+        _InAttack = true;
         anim.SetTrigger("Punch2");
         yield return new WaitForSeconds(1.2f);
-        ActiveBooleanInAttack(false);
+        _InAttack = false;
     }
 
     IEnumerator FirstCombo()
     {
         yield return FirstAttack();
-        InCombo = true;
-        anim.SetBool("InCombo", InCombo);
+        _InCombo = true;
         yield return Continued(0.2f, ordemCombo[ordem]);
         yield return new WaitForSeconds(0.5f);
         yield return Continued(0.2f, ordemCombo[ordem]);
@@ -142,13 +140,12 @@ public class PlayerCombat : MonoBehaviour
 
     public IEnumerator ResetCombo()
     {
-        ActiveBooleanInAttack(false);
+        _InAttack = false;
         anim.SetTrigger("NotContinued");
         ordem = 0;
         timer = 0f;
         actualNumber = -1;
-        InCombo = false;
-        anim.SetBool("InCombo", InCombo);
+        _InCombo = false;
         StopAllCoroutines();
         yield break;
     }
@@ -156,6 +153,15 @@ public class PlayerCombat : MonoBehaviour
     public void BreakAnimation()
     {
         anim.SetTrigger("NotContinued");
+    }
+
+    public bool InAttack()
+    {
+        return _InAttack;
+    }
+    public bool InCombo()
+    {
+        return _InCombo;
     }
 
     public void HitAnimation()

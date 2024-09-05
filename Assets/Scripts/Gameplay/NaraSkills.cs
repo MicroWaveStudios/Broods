@@ -63,8 +63,6 @@ public class NaraSkills : MonoBehaviour
 
 
         posicaoRaycast = new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z);
-        
-        Debug.DrawLine(posicaoRaycast, outroPlayer.transform.position, Color.red);
     }
 
     public void MeiaLuaStart(InputAction.CallbackContext context)

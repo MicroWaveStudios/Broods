@@ -9,6 +9,7 @@ public class PlayerAnimator : MonoBehaviour
     private PlayerInputs playerInputs;
     private InputAction move;
     PlayerMoveRigidbody playerMove;
+    PlayerCombat playerCombat;
     Rigidbody rb;
     Animator anim;
 
@@ -16,6 +17,7 @@ public class PlayerAnimator : MonoBehaviour
     {
         anim = transform.GetChild(0).GetComponent<Animator>();
         playerMove = GetComponent<PlayerMoveRigidbody>();
+        playerCombat = GetComponent<PlayerCombat>();
         rb = GetComponent<Rigidbody>();
         playerInputs = new PlayerInputs();
     }
@@ -31,12 +33,10 @@ public class PlayerAnimator : MonoBehaviour
     private void Update()
     {
         anim.SetFloat("Move", rb.velocity.x * playerMove.isPlayer2);
-        //anim.SetFloat("Move", move.ReadValue<Vector2>().x);
-        //anim.SetBool("InAttack", transform.GetComponent<PlayerMove>().InAttack);
-        //anim.SetBool("IsGrounded", transform.GetComponent<PlayerMove>().IsGrounded());
         anim.SetBool("IsGrounded", playerMove.IsGrounded());
-        anim.SetBool("Crouched", playerMove.crouched);
-        //anim.SetBool("InCombo", transform.GetComponent<PlayerCombat>().InCombo);
+        anim.SetBool("Crouched", playerMove.IsCrouched());
+        anim.SetBool("InCombo", playerCombat.InCombo());
+        anim.SetBool("InAttack", playerCombat.InAttack());
     }
     public void Jump()
     {

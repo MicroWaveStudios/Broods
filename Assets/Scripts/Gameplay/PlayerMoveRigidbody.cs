@@ -17,14 +17,15 @@ public class PlayerMoveRigidbody : MonoBehaviour
     [SerializeField] float moveForce;
     GameController gameController;
     PlayerStats playerStats;
+    PlayerCombat playerCombat;
     [SerializeField] float jumpForce;
-    public bool InJump = false;
     [SerializeField] Transform GroundCheck;
     [SerializeField] LayerMask ground;
     PlayerInput playerInput;
 
     [SerializeField] bool InAttack = false;
-    public bool crouched = false;
+    bool _OnJump;
+    bool crouched = false;
 
     public float isPlayer2 = 1;
     int jumpCount;
@@ -37,8 +38,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        //anim = transform.GetChild(0).GetComponent<Animator>();
-        //player1 = GameObject.FindGameObjectWithTag("Player1");
+        playerCombat = GetComponent<PlayerCombat>();
         playerStats = GetComponent<PlayerStats>();
         playerInput = GetComponent<PlayerInput>();
     }
@@ -78,9 +78,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
     private void FixedUpdate()
     {
         if (jumpCount == 1 && !InAttack && !crouched)
-        { 
             rb.velocity = new Vector3(directionX * moveForce, rb.velocity.y, rb.velocity.z);
-        }
         else
             rb.velocity = new Vector3(rb.velocity.x ,rb.velocity.y ,rb.velocity.z);
         //WasPressedThisFrame() pesquisar em casa
@@ -93,18 +91,15 @@ public class PlayerMoveRigidbody : MonoBehaviour
 
     public void OnCrouch(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (jumpCount == 1 && context.performed && !playerCombat.InAttack())
             crouched = true;
-        if (context.canceled)
+        else if (jumpCount == 0 || context.canceled)
             crouched = false;
     }
+
     public void OnJump(InputAction.CallbackContext context)
     {
-        //if (IsGrounded() && !InAttack)
-        //{
-        //    rb.AddForce(Vector3.up * jumpForce);
-        //}
-        if (jumpCount > 0)
+        if (jumpCount > 0 && !playerCombat.InAttack())
         { 
             rb.AddForce(Vector3.up * jumpForce);
             GetComponent<PlayerAnimator>().Jump();
@@ -126,17 +121,12 @@ public class PlayerMoveRigidbody : MonoBehaviour
 
     public bool IsGrounded()
     {
-        if (Physics.CheckSphere(GroundCheck.position, 0.1f, ground))
-            return true;
-        else
-            return false;
+        return _OnJump;
     }
-
-    public void inAttack(bool value)
+    public bool IsCrouched()
     { 
-        InAttack = value;
+        return crouched;
     }
-
 
     public void MoverAoAtacar()
     {
@@ -151,7 +141,15 @@ public class PlayerMoveRigidbody : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
+        { 
+            _OnJump = true;
             jumpCount = 1;
+        }
+    }
+    private void OnCollisionExit(Collision collision) 
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+            _OnJump = false;
     }
 
     /*public void MoveForce(bool Attacked)
