@@ -49,6 +49,10 @@ public class DeviceDisplayConfigurator : ScriptableObject
 
         return newDisplayName;
     }
+    //public string GetDeviceDisplayName(PlayerInput playerInput) 
+    //{ 
+
+    //}
 
     public Sprite GetDeviceBindingIcon(PlayerInput playerInput, string playerInputDeviceInputBinding)
     {
@@ -62,10 +66,6 @@ public class DeviceDisplayConfigurator : ScriptableObject
             if (listDeviceSets[i].deviceRawPath == currentDeviceRawPath)
             {
                 displaySpriteIcon = FilterForDeviceInputBinding(listDeviceSets[i], playerInputDeviceInputBinding);
-                //if (listDeviceSets[i].deviceDisplaySettings.deviceHasContextIcons != null)
-                //{
-                //    displaySpriteIcon = FilterForDeviceInputBinding(listDeviceSets[i], playerInputDeviceInputBinding);
-                //}
             }
         }
 

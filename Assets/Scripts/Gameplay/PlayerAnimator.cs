@@ -1,34 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.HID;
 
 public class PlayerAnimator : MonoBehaviour
 {
-    private PlayerInputs playerInputs;
-    private InputAction move;
     PlayerMoveRigidbody playerMove;
     PlayerCombat playerCombat;
+
     Rigidbody rb;
     Animator anim;
-
     private void Awake()
     {
         anim = transform.GetChild(0).GetComponent<Animator>();
         playerMove = GetComponent<PlayerMoveRigidbody>();
         playerCombat = GetComponent<PlayerCombat>();
         rb = GetComponent<Rigidbody>();
-        playerInputs = new PlayerInputs();
-    }
-    private void OnEnable()
-    {
-        move = playerInputs.Player.Move;
-        playerInputs.Player.Enable();
-    }
-    private void OnDisable()
-    {
-        playerInputs.Player.Disable();
     }
     private void Update()
     {
@@ -38,8 +22,13 @@ public class PlayerAnimator : MonoBehaviour
         anim.SetBool("InCombo", playerCombat.InCombo());
         anim.SetBool("InAttack", playerCombat.InAttack());
     }
-    public void Jump()
+
+    public void TriggerAttack(string AttackName)
     {
-        anim.SetTrigger("Jump");
+        anim.SetTrigger("LightAttack");
+    }
+    public void ContinueCombo()
+    {
+        anim.SetTrigger("Continue");
     }
 }

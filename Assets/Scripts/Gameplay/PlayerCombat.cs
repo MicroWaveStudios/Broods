@@ -6,6 +6,7 @@ public class PlayerCombat : MonoBehaviour
 {
     PlayerInputs playerInputs;
     PlayerMoveRigidbody playerMove;
+    PlayerAnimator playerAnimator;
     bool _InAttack = false;
     public bool _InCombo = false;
 
@@ -16,19 +17,17 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] float delayAtaques;
     [SerializeField] int[] ordemCombo;
     public int ordem;
-    PlayerMoveRigidbody moveRigidbody;
     [SerializeField] ParticleSystem[] rastrosAtaque;
 
     private void Awake()
     {
         anim = transform.GetChild(0).GetComponent<Animator>();
         playerMove = GetComponent<PlayerMoveRigidbody>();
-        moveRigidbody = GetComponent<PlayerMoveRigidbody>();
+        playerAnimator = GetComponent<PlayerAnimator>();
     }
 
     private void Update()
     {
-
         if (_InAttack == true)
         {
             for (int i = 0; i < rastrosAtaque.Length; i++)
@@ -45,31 +44,47 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
-    //void ActiveBooleanInAttack(bool value)
-    //{
-    //    _InAttack = value;
-    //    anim.SetBool("InAttack", value);
-    //}
-
-    public void Punch0(InputAction.CallbackContext context)
+    // Botão X / Cross (Playstation) - A (Xbox) - K (Teclado/Teclado Direito) - G (Teclado Esquerdo) 
+    // Retornará o número 0
+    public void LowAttack(InputAction.CallbackContext context)
     {
         StartCoroutine(ChangeActualNumber(0));
         if (!_InAttack && !_InCombo)
-            StartCoroutine(FirstCombo());
+            playerAnimator.TriggerAttack("LowAttack");
+            //StartCoroutine(LowAttack());
     }
-    public void Punch1(InputAction.CallbackContext context)
+
+
+    // Botão Quadrado / Square (Playstation) - X (Xbox) - J (Teclado/Teclado Direito) - F (Teclado Esquerdo)
+    // Retornará o número 1
+    public void LightAttack(InputAction.CallbackContext context)
     {
         StartCoroutine(ChangeActualNumber(1));
         if (!_InAttack && !_InCombo)
-            StartCoroutine(SecondAttack());
+            playerAnimator.TriggerAttack("LightAttack");
+            //StartCoroutine(_LightAttack());
     }
-    public void Punch2(InputAction.CallbackContext context)
+
+
+    // Botão Triângulo / Triangle (Playstation) - Y (Xbox) - I (Teclado/Teclado Direito) - T (Teclado Esquerdo)
+    // Retornará o número 2
+    public void MediumAttack(InputAction.CallbackContext context)
     {
         StartCoroutine(ChangeActualNumber(2));
         if (!_InAttack && !_InCombo)
-            StartCoroutine(ThirdAttack());
+            playerAnimator.TriggerAttack("MediumAttack");
+            //StartCoroutine(_MediumAttack());
     }
 
+    // Botão O / Circle (Playstation) - B (Xbox) - L (Teclado/Teclado Direito) - H (Teclado Esquerdo)
+    // Retornará o número 3
+    public void HeavyAttack(InputAction.CallbackContext context)
+    {
+        StartCoroutine(ChangeActualNumber(3));
+        if (!_InAttack && !_InCombo)
+            playerAnimator.TriggerAttack("HeavyAttack");
+            //StartCoroutine(_HeavyAttack());
+    }
 
 
     public IEnumerator ChangeActualNumber(int number)
@@ -80,31 +95,36 @@ public class PlayerCombat : MonoBehaviour
         yield break;
     }
 
-    IEnumerator FirstAttack()
+    IEnumerator _LowAttack()
     {
-        anim.SetTrigger("Punch0");
         _InAttack = true;
+        anim.SetTrigger("Punch0");
         yield return new WaitForSeconds(0.3f);
     }
-    IEnumerator SecondAttack()
+    IEnumerator _LightAttack()
     {
         _InAttack = true;
         anim.SetTrigger("Punch1");
-        yield return new WaitForSeconds(1.28f);
-        _InAttack = false;
+        yield return new WaitForSeconds(0.3f);
     }
-
-    IEnumerator ThirdAttack()
+    IEnumerator _MediumAttack()
     {
         _InAttack = true;
         anim.SetTrigger("Punch2");
+        yield return new WaitForSeconds(1.28f);
+        _InAttack = false;
+    }
+    IEnumerator _HeavyAttack()
+    {
+        _InAttack = true;
+        anim.SetTrigger("Punch3");
         yield return new WaitForSeconds(1.2f);
         _InAttack = false;
     }
 
     IEnumerator FirstCombo()
     {
-        yield return FirstAttack();
+        yield return _LightAttack();
         _InCombo = true;
         yield return Continued(0.2f, ordemCombo[ordem]);
         yield return new WaitForSeconds(0.5f);
@@ -122,7 +142,7 @@ public class PlayerCombat : MonoBehaviour
 
             if (actualNumber == number)
             {
-                moveRigidbody.MoverAoAtacar();
+                playerMove.MoverAoAtacar();
                 ordem++;
                 timer = 0f;
 

@@ -9,14 +9,16 @@ public class ConnectPlayerInMenu : MonoBehaviour
     [Header("Player Input Manager")]
     [SerializeField] PlayerInputManager playerInputManager;
 
-    [Header("TextInCanvas")]
+    [Header("Connect Screen")]
     [SerializeField] GameObject[] PlayerMenu;
     [SerializeField] GameObject[] KeyboardMenu;
     [SerializeField] GameObject[] GamepadMenu;
-
     [SerializeField] GameObject[] EnterMessage;
     [SerializeField] GameObject ContinueButton;
     [SerializeField] GameObject BackButton;
+
+    [Header("Characters Screen")]
+
 
     [SerializeField] GameObject[] player;
     [SerializeField] Transform[] spawn; //Variavel para nn bugar os players ao ir para a cena jogar
