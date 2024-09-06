@@ -21,7 +21,8 @@ public class PlayerCombat : MonoBehaviour
 
     private void Awake()
     {
-        anim = transform.GetChild(0).GetComponent<Animator>();
+        //anim = transform.GetChild(0).GetComponent<Animator>();
+        anim = GetComponent<Animator>();
         playerMove = GetComponent<PlayerMoveRigidbody>();
         playerAnimator = GetComponent<PlayerAnimator>();
     }

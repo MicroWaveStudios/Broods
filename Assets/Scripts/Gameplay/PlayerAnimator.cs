@@ -29,6 +29,6 @@ public class PlayerAnimator : MonoBehaviour
     }
     public void ContinueCombo()
     {
-        anim.SetTrigger("Continue");
+        anim.SetTrigger("Continued");
     }
 }
