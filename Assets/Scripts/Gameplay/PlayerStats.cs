@@ -10,7 +10,7 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] public float maxEnergy;
     [SerializeField] public float energy;
     PlayerMoveRigidbody scrpMoveRigidbody;
-    PlayerCombat scrpPlayerCombat;
+    PlayerCombat playerCombat;
     public bool defendendo;
 
     [SerializeField] bool teste;
@@ -19,7 +19,7 @@ public class PlayerStats : MonoBehaviour
     private void Awake()
     {
         scrpMoveRigidbody = this.GetComponent<PlayerMoveRigidbody>();
-        scrpPlayerCombat = this.GetComponent<PlayerCombat>();
+        playerCombat = this.GetComponent<PlayerCombat>();
     }
 
     private void Start()
@@ -46,9 +46,9 @@ public class PlayerStats : MonoBehaviour
     {
         if (defendendo == false)
         {
-            scrpPlayerCombat.ResetCombo();
+            playerCombat.ResetCombo();
             life -= damage;    
-            if (scrpPlayerCombat.ordem > 0)
+            if (playerCombat.ordem > 0)
             {
                 scrpMoveRigidbody.MoverAoLevarDano();
                 StartCoroutine(ResetScripts(true, 0.5f));
@@ -62,13 +62,13 @@ public class PlayerStats : MonoBehaviour
     {
         if(damage == true)
         {
-            scrpPlayerCombat.HitAnimation();
+            //playerCombat.HitAnimation();
         }
         scrpMoveRigidbody.enabled = false;
-        scrpPlayerCombat.enabled = false;
+        playerCombat.enabled = false;
         yield return new WaitForSeconds(delay);
         scrpMoveRigidbody.enabled = true;
-        scrpPlayerCombat.enabled = true;
+        playerCombat.enabled = true;
         yield break;
     }
 

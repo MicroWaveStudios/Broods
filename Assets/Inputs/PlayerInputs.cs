@@ -64,6 +64,15 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Attack/ButtonSouth"",
+                    ""type"": ""Button"",
+                    ""id"": ""4cc1144d-4537-4383-bed0-d556c0c4ef81"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Tap"",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Jump"",
                     ""type"": ""PassThrough"",
                     ""id"": ""dfd61c39-1f2a-4dd8-9949-492189415aa4"",
@@ -527,6 +536,39 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
                     ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a944b10d-31ad-44ad-9f30-7ed017c92cb8"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Attack/ButtonSouth"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a66b5c2f-1b85-424a-997d-6dc208eed1ae"",
+                    ""path"": ""<Keyboard>/g"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardLeft"",
+                    ""action"": ""Attack/ButtonSouth"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b32b84ed-afc7-48fe-bbe9-3452133c1eef"",
+                    ""path"": ""<Keyboard>/k"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardRight;Keyboard"",
+                    ""action"": ""Attack/ButtonSouth"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1161,6 +1203,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         m_Player_AttackButtonNorth = m_Player.FindAction("Attack/ButtonNorth", throwIfNotFound: true);
         m_Player_AttackButtonWest = m_Player.FindAction("Attack/ButtonWest", throwIfNotFound: true);
         m_Player_AttackButtonEast = m_Player.FindAction("Attack/ButtonEast", throwIfNotFound: true);
+        m_Player_AttackButtonSouth = m_Player.FindAction("Attack/ButtonSouth", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Crounched = m_Player.FindAction("Crounched", throwIfNotFound: true);
         m_Player_EnterGame = m_Player.FindAction("EnterGame", throwIfNotFound: true);
@@ -1243,6 +1286,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_AttackButtonNorth;
     private readonly InputAction m_Player_AttackButtonWest;
     private readonly InputAction m_Player_AttackButtonEast;
+    private readonly InputAction m_Player_AttackButtonSouth;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Crounched;
     private readonly InputAction m_Player_EnterGame;
@@ -1255,6 +1299,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         public InputAction @AttackButtonNorth => m_Wrapper.m_Player_AttackButtonNorth;
         public InputAction @AttackButtonWest => m_Wrapper.m_Player_AttackButtonWest;
         public InputAction @AttackButtonEast => m_Wrapper.m_Player_AttackButtonEast;
+        public InputAction @AttackButtonSouth => m_Wrapper.m_Player_AttackButtonSouth;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Crounched => m_Wrapper.m_Player_Crounched;
         public InputAction @EnterGame => m_Wrapper.m_Player_EnterGame;
@@ -1280,6 +1325,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @AttackButtonEast.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttackButtonEast;
                 @AttackButtonEast.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttackButtonEast;
                 @AttackButtonEast.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttackButtonEast;
+                @AttackButtonSouth.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttackButtonSouth;
+                @AttackButtonSouth.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttackButtonSouth;
+                @AttackButtonSouth.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttackButtonSouth;
                 @Jump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
@@ -1308,6 +1356,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @AttackButtonEast.started += instance.OnAttackButtonEast;
                 @AttackButtonEast.performed += instance.OnAttackButtonEast;
                 @AttackButtonEast.canceled += instance.OnAttackButtonEast;
+                @AttackButtonSouth.started += instance.OnAttackButtonSouth;
+                @AttackButtonSouth.performed += instance.OnAttackButtonSouth;
+                @AttackButtonSouth.canceled += instance.OnAttackButtonSouth;
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
@@ -1495,6 +1546,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         void OnAttackButtonNorth(InputAction.CallbackContext context);
         void OnAttackButtonWest(InputAction.CallbackContext context);
         void OnAttackButtonEast(InputAction.CallbackContext context);
+        void OnAttackButtonSouth(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnCrounched(InputAction.CallbackContext context);
         void OnEnterGame(InputAction.CallbackContext context);

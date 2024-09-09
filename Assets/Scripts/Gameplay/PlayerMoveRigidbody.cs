@@ -67,7 +67,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (jumpCount == 1 && !GetComponent<PlayerCombat>().InAttack() && !crouched)
+        if (jumpCount == 1 && !GetComponent<PlayerCombat>().GetInAttack() && !crouched)
             rb.velocity = new Vector3(directionX * MoveForce, rb.velocity.y, rb.velocity.z);
         else
             rb.velocity = new Vector3(rb.velocity.x ,rb.velocity.y ,rb.velocity.z);
@@ -81,7 +81,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
 
     public void OnCrouch(InputAction.CallbackContext context)
     {
-        if (jumpCount == 1 && context.performed && !playerCombat.InAttack())
+        if (jumpCount == 1 && context.performed && !playerCombat.GetInAttack())
             crouched = true;
         else if (jumpCount == 0 || context.canceled)
             crouched = false;
@@ -89,7 +89,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (jumpCount > 0 && !playerCombat.InAttack())
+        if (jumpCount > 0 && !playerCombat.GetInAttack())
         { 
             rb.AddForce(Vector3.up * JumpForce);
             jumpCount--;
@@ -112,11 +112,14 @@ public class PlayerMoveRigidbody : MonoBehaviour
     {
         return _OnJump;
     }
-    public bool IsCrouched()
+    public bool GetCrouched()
     { 
         return crouched;
     }
-
+    public void SetCrouched(bool value)
+    {
+        crouched = value;
+    }
     public void MoverAoAtacar()
     {
         rb.AddForce(Vector3.right * ForcaEmpurrar * isPlayer2);

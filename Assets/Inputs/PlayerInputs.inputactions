@@ -42,6 +42,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Attack/ButtonSouth",
+                    "type": "Button",
+                    "id": "4cc1144d-4537-4383-bed0-d556c0c4ef81",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Tap",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Jump",
                     "type": "PassThrough",
                     "id": "dfd61c39-1f2a-4dd8-9949-492189415aa4",
@@ -505,6 +514,39 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a944b10d-31ad-44ad-9f30-7ed017c92cb8",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Attack/ButtonSouth",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a66b5c2f-1b85-424a-997d-6dc208eed1ae",
+                    "path": "<Keyboard>/g",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardLeft",
+                    "action": "Attack/ButtonSouth",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b32b84ed-afc7-48fe-bbe9-3452133c1eef",
+                    "path": "<Keyboard>/k",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardRight;Keyboard",
+                    "action": "Attack/ButtonSouth",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

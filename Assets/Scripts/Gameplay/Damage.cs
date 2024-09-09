@@ -6,6 +6,12 @@ public class Damage : MonoBehaviour
 {
     public float damage;
 
+    public void SetDamage(float newDamage)
+    {
+        damage = newDamage;
+    }
+
+
     private void OnTriggerEnter(Collider collision)
     {
         

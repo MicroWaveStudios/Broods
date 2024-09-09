@@ -15,6 +15,6 @@ public class EventSystemManager : MonoBehaviour
         eventSystem.SetSelectedGameObject(newSelectedButton);
         Button newSelectable = newSelectedButton.GetComponent<Button>();
         newSelectable.Select();
-        newSelectable.OnSelect(null);
+        //newSelectable.OnSelect(null);
     }
 }
