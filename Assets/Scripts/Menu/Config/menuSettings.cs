@@ -8,22 +8,20 @@ using UnityEngine.Audio;
 using UnityEngine.Rendering;
 
 public class menuSettings : MonoBehaviour
-{
-    [Header("Brilho")]
-    [SerializeField] private Slider sliderBrilho;
-    [SerializeField] private TMP_Text textBrilho;
-    
-    private float valorBrilho;
-    private bool isFullScreen;
+{    
     private int qualidadeAtual;
+    private bool isFullScreen;
+    private float TelaCheia;
+    [SerializeField] private bool onVsync;
+    [SerializeField] private float vSync;
 
     [Header("Resolução")]
-    [SerializeField] int width;
-    [SerializeField] int height;
+    int width;
+    int height;
+    private int resolucaoAtual_index = 0;
     private Resolution[] resolutions;
     private List<Resolution> filteredResolutions;
     private float currentRefreshRate;
-    [SerializeField] private int resolucaoAtual_index = 0;
     
     [Header("PopUps")]
     [SerializeField] private GameObject PopUpGraficos;
@@ -34,6 +32,7 @@ public class menuSettings : MonoBehaviour
     [SerializeField] private TMP_Dropdown QualityDropdown;
     [SerializeField] private Toggle FullscreenToggle;
     [SerializeField] private TMP_Dropdown resolutionDropdown;
+    [SerializeField] private Toggle vSyncToggle;
 
     private void Start()
     {
@@ -72,11 +71,19 @@ public class menuSettings : MonoBehaviour
         resolutionDropdown.value = PlayerPrefs.GetInt("resolution");
         resolucaoAtual_index = resolutionDropdown.value;
 
-        sliderBrilho.value = PlayerPrefs.GetFloat("brightness");
-        textBrilho.text = sliderBrilho.value.ToString();
+        vSync = PlayerPrefs.GetFloat("vSync");
+        CheckvSyncByFloat();
+        vSyncToggle.isOn = onVsync;
 
-        isFullScreen = (PlayerPrefs.GetInt("fullscreen") != 0);
-        FullscreenToggle.isOn = isFullScreen; //https://www.youtube.com/watch?v=qXbjyzBlduY
+        TelaCheia = PlayerPrefs.GetFloat("fullscreen");
+        CheckFullcreenByFloat();
+        FullscreenToggle.isOn = isFullScreen;
+        Screen.fullScreen = isFullScreen;
+    }
+    private void Update()
+    {
+        CheckFullscreenByBool();
+        CheckvSyncByBool();
     }
 
     public void mudarResolucao()
@@ -84,29 +91,33 @@ public class menuSettings : MonoBehaviour
         width = filteredResolutions[resolutionDropdown.value].width;
         height = filteredResolutions[resolutionDropdown.value].height;
         resolucaoAtual_index = resolutionDropdown.value;
-
         Screen.SetResolution(width, height, isFullScreen);
     }
 
     public void mudarGraficos()
     {
         qualidadeAtual = QualityDropdown.value;
-
         QualitySettings.SetQualityLevel(qualidadeAtual);
     }
-
-    public void mudarBrilho()
+    public void mudarvSync()
     {
-        valorBrilho = sliderBrilho.value;
-        textBrilho.text = sliderBrilho.value.ToString();
+        onVsync = vSyncToggle.isOn;
 
-        Screen.brightness = valorBrilho;
+        if (vSyncToggle.isOn)
+        {
+
+            QualitySettings.vSyncCount = 1;
+        }
+        else
+        {
+            QualitySettings.vSyncCount = 0;
+        }
+
+        isFullScreen = true;
     }
-
     public void mudarFullScreen()
     {
         isFullScreen = FullscreenToggle.isOn;
-
         Screen.fullScreen = isFullScreen;
     }
     
@@ -115,21 +126,24 @@ public class menuSettings : MonoBehaviour
         PlayerPrefs.SetInt("quality", qualidadeAtual);
         QualitySettings.SetQualityLevel(qualidadeAtual);
 
-        PlayerPrefs.SetFloat("brightness", valorBrilho);
+        PlayerPrefs.SetFloat("vSync", vSync);
 
-        PlayerPrefs.SetInt("fullscreen", isFullScreen ? 1:0);
+        PlayerPrefs.SetFloat("fullscreen", TelaCheia);
 
         PlayerPrefs.SetInt("resolution", resolucaoAtual_index);
     }
 
     public void BotaoSairSemSalvarGraficos()
     {
-        sliderBrilho.value = PlayerPrefs.GetFloat("brightness");
+        vSync = PlayerPrefs.GetFloat("vSync");
+        CheckvSyncByFloat();
+        vSyncToggle.isOn = onVsync;
 
         qualidadeAtual = PlayerPrefs.GetInt("quality");
         QualityDropdown.value = qualidadeAtual;
 
-        isFullScreen = (PlayerPrefs.GetInt("fullscreen") != 0);
+        TelaCheia = PlayerPrefs.GetFloat("fullscreen");
+        CheckFullcreenByFloat();
         FullscreenToggle.isOn = isFullScreen;
 
         resolutionDropdown.value = PlayerPrefs.GetInt("resolution");
@@ -137,9 +151,9 @@ public class menuSettings : MonoBehaviour
 
     public void BotaoVoltar()
     {
-        if (sliderBrilho.value != PlayerPrefs.GetFloat("brightness") ||
+        if (vSync != PlayerPrefs.GetFloat("vSync") ||
             qualidadeAtual != PlayerPrefs.GetInt("quality") ||
-            isFullScreen != (PlayerPrefs.GetInt("fullscreen") != 0) ||
+            TelaCheia != PlayerPrefs.GetFloat("fullscreen") ||
             resolucaoAtual_index != PlayerPrefs.GetInt("resolution"))
         {
             PopUpNaoSalvouGraficos.SetActive(true);
@@ -154,17 +168,19 @@ public class menuSettings : MonoBehaviour
 
     public void BotaoRestaurarGraficos()
     {
-        valorBrilho = 50f;
-        sliderBrilho.value = 50f;
-        textBrilho.text = valorBrilho.ToString();
+        vSync = 1;
+        vSyncToggle.isOn = true;
+        onVsync = true;
+        QualitySettings.vSyncCount = 1;
 
         qualidadeAtual = 1;
         QualityDropdown.value = 1;
-        QualitySettings.SetQualityLevel(1); //nao sei se funciona
+        QualitySettings.SetQualityLevel(1);
 
-        isFullScreen = true;
+        TelaCheia = 1;
         FullscreenToggle.isOn = true;
-        Screen.fullScreen = true; // idem
+        isFullScreen = true;
+        Screen.fullScreen = true;
 
         Resolution resolucaoAtual = Screen.currentResolution;
         Screen.SetResolution(1920, 1080, Screen.fullScreen);
@@ -172,5 +188,53 @@ public class menuSettings : MonoBehaviour
         resolucaoAtual_index = resolutionDropdown.value;
 
         AplicarGraficos();
+    }
+
+    public void CheckFullscreenByBool()
+    {
+        if (isFullScreen)
+        {
+            TelaCheia = 1;
+        }
+        else
+        {
+            TelaCheia = 0;
+        }
+    }
+
+    public void CheckFullcreenByFloat()
+    {
+        if (TelaCheia == 1)
+        {
+            isFullScreen = true;
+        }
+        else
+        {
+            isFullScreen = false;
+        }
+    }
+
+    public void CheckvSyncByBool()
+    {
+        if (onVsync)
+        {
+            vSync = 1;
+        }
+        else
+        {
+            vSync = 0;
+        }
+    }
+
+    public void CheckvSyncByFloat()
+    {
+        if (vSync == 1)
+        {
+            onVsync = true;
+        }
+        else
+        {
+            onVsync = false;
+        }
     }
 }
