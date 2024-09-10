@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine.Audio;
+using UnityEngine.Rendering;
 
 public class menuSettings : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class menuSettings : MonoBehaviour
     private int qualidadeAtual;
 
     [Header("Resolução")]
+    [SerializeField] int width;
+    [SerializeField] int height;
     private Resolution[] resolutions;
     private List<Resolution> filteredResolutions;
     private float currentRefreshRate;
@@ -76,28 +79,35 @@ public class menuSettings : MonoBehaviour
         FullscreenToggle.isOn = isFullScreen; //https://www.youtube.com/watch?v=qXbjyzBlduY
     }
 
-    public void mudarResolucao(int ResolutionIndex)
+    public void mudarResolucao()
     {
-        Resolution resolucao = filteredResolutions[ResolutionIndex];
-        Screen.SetResolution(resolucao.width, resolucao.height, true);
-        resolucaoAtual_index = ResolutionIndex;
+        width = filteredResolutions[resolutionDropdown.value].width;
+        height = filteredResolutions[resolutionDropdown.value].height;
         resolucaoAtual_index = resolutionDropdown.value;
+
+        Screen.SetResolution(width, height, isFullScreen);
     }
 
     public void mudarGraficos()
     {
         qualidadeAtual = QualityDropdown.value;
+
+        QualitySettings.SetQualityLevel(qualidadeAtual);
     }
 
     public void mudarBrilho()
     {
         valorBrilho = sliderBrilho.value;
         textBrilho.text = sliderBrilho.value.ToString();
+
+        Screen.brightness = valorBrilho;
     }
 
-    public void mudarFullScreen(bool isFullscreen)
+    public void mudarFullScreen()
     {
-        this.isFullScreen = isFullscreen;
+        isFullScreen = FullscreenToggle.isOn;
+
+        Screen.fullScreen = isFullScreen;
     }
     
     public void AplicarGraficos()
@@ -157,7 +167,7 @@ public class menuSettings : MonoBehaviour
         Screen.fullScreen = true; // idem
 
         Resolution resolucaoAtual = Screen.currentResolution;
-        Screen.SetResolution(resolucaoAtual.width, resolucaoAtual.height, Screen.fullScreen);
+        Screen.SetResolution(1920, 1080, Screen.fullScreen);
         resolutionDropdown.value = resolutions.Length;
         resolucaoAtual_index = resolutionDropdown.value;
 

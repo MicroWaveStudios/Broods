@@ -5,25 +5,35 @@ using UnityEngine.InputSystem;
 
 public class PlayerMoveRigidbody : MonoBehaviour
 {
-    Rigidbody rb;
-    float directionX;
+    //private PlayerInputs playerInputs;
+    //private InputAction move;
+
+    //Animator anim;
+
+    //GameObject player1;
+
+    private Rigidbody rb;
+    public float directionX;
+    [SerializeField] float moveForce;
+    GameController gameController;
     PlayerStats playerStats;
     PlayerCombat playerCombat;
+    [SerializeField] float jumpForce;
+    [SerializeField] Transform GroundCheck;
+    [SerializeField] LayerMask ground;
     PlayerInput playerInput;
 
+    [SerializeField] bool InAttack = false;
     bool _OnJump;
     bool crouched = false;
 
     public float isPlayer2 = 1;
     int jumpCount;
 
-    [Header("Forces")]
-    [SerializeField] float MoveForce;
-    [SerializeField] float JumpForce;
-    [SerializeField] float ForcaEmpurrar;
+    [SerializeField] float forcaEmpurrar;
+    //[SerializeField] float forcaEmpurrarAtacar;
 
     GameObject gameManager;
-    GameController gameController;
 
     private void Awake()
     {
@@ -67,8 +77,8 @@ public class PlayerMoveRigidbody : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (jumpCount == 1 && !GetComponent<PlayerCombat>().GetInAttack() && !crouched)
-            rb.velocity = new Vector3(directionX * MoveForce, rb.velocity.y, rb.velocity.z);
+        if (jumpCount == 1 && !InAttack && !crouched)
+            rb.velocity = new Vector3(directionX * moveForce, rb.velocity.y, rb.velocity.z);
         else
             rb.velocity = new Vector3(rb.velocity.x ,rb.velocity.y ,rb.velocity.z);
         //WasPressedThisFrame() pesquisar em casa
@@ -81,7 +91,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
 
     public void OnCrouch(InputAction.CallbackContext context)
     {
-        if (jumpCount == 1 && context.performed && !playerCombat.GetInAttack())
+        if (jumpCount == 1 && context.performed && !playerCombat.InAttack())
             crouched = true;
         else if (jumpCount == 0 || context.canceled)
             crouched = false;
@@ -89,9 +99,10 @@ public class PlayerMoveRigidbody : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (jumpCount > 0 && !playerCombat.GetInAttack())
+        if (jumpCount > 0 && !playerCombat.InAttack())
         { 
-            rb.AddForce(Vector3.up * JumpForce);
+            rb.AddForce(Vector3.up * jumpForce);
+            GetComponent<PlayerAnimator>().Jump();
             jumpCount--;
         }
     }
@@ -112,22 +123,19 @@ public class PlayerMoveRigidbody : MonoBehaviour
     {
         return _OnJump;
     }
-    public bool GetCrouched()
+    public bool IsCrouched()
     { 
         return crouched;
     }
-    public void SetCrouched(bool value)
-    {
-        crouched = value;
-    }
+
     public void MoverAoAtacar()
     {
-        rb.AddForce(Vector3.right * ForcaEmpurrar * isPlayer2);
+        rb.AddForce(Vector3.right * forcaEmpurrar * isPlayer2);
     }
 
     public void MoverAoLevarDano()
     {
-        rb.AddForce(Vector3.left * ForcaEmpurrar * isPlayer2);
+        rb.AddForce(Vector3.left * forcaEmpurrar * isPlayer2);
     }
 
     private void OnCollisionEnter(Collision collision)

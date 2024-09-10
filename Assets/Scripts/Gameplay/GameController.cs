@@ -16,7 +16,7 @@ public class GameController : MonoBehaviour
     Transform PlayerLeft;
     Transform PlayerRight;
     [SerializeField] GameObject[] PrefabPlayer;
-    [SerializeField] public Transform[] InstancePosition;
+    [SerializeField] Transform[] InstancePosition;
     [SerializeField] Transform mid;
     GameObject Canvas;
     Image healthBarPlayer1;
@@ -32,6 +32,14 @@ public class GameController : MonoBehaviour
 
     [SerializeField] GameObject eventSystemManager;
     [SerializeField] GameObject PanelManager;
+
+    PlayerInputManager playerInputManager;
+
+    private void Awake()
+    {
+        playerInputManager = GetComponent<PlayerInputManager>();
+    }
+    
     private void Update()
     {
         Canvas = GameObject.FindGameObjectWithTag("Canvas");

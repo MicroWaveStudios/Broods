@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 6784768562247092741}
   - component: {fileID: 6784768562247092742}
   - component: {fileID: 6784768562247092743}
+  - component: {fileID: 7764994341287185051}
   - component: {fileID: 3846265462607288018}
   m_Layer: 0
   m_Name: Player2
@@ -281,10 +282,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca8049ff7646d72458a94f906cb11d7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  directionX: 0
+  moveForce: 2
+  jumpForce: 300
+  InJump: 0
+  GroundCheck: {fileID: 6784768561954261714}
+  ground:
+    serializedVersion: 2
+    m_Bits: 64
+  InAttack: 0
   isPlayer2: 1
-  MoveForce: 0
-  JumpForce: 0
-  ForcaEmpurrar: 0
+  forcaEmpurrar: 150
 --- !u!114 &6784768562247092741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,14 +305,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8571736a66488c46ab95df44b83a587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMove: {fileID: 0}
-  playerAnimator: {fileID: 0}
-  anim: {fileID: 0}
+  InAttack: 0
+  InCombo: 0
+  actualNumber: -1
+  delayAtaques: 0.2
   ordemCombo: 0000000000000000
   ordem: 0
-  rastrosAtaque: []
-  _AttackList: []
-  _ComboList: []
 --- !u!54 &6784768562247092742
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -335,6 +341,19 @@ CapsuleCollider:
   m_Height: 1.7
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &7764994341287185051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6784768562247092856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 622b94c502dd85d4aa154782f7a8e9f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deviceDisplaySettings: {fileID: 11400000, guid: ae4dd2681874e9143b30ad6ec3def16e, type: 2}
 --- !u!114 &3846265462607288018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,6 +366,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffe29875eb187c84280515d4d5cdd278, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ConnectPlayer: {fileID: 7764994341287185051}
   playerInput: {fileID: 6784768562247092737}
 --- !u!1001 &6784768561097210814
 PrefabInstance:

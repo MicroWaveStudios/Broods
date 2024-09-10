@@ -1,69 +1,34 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-enum Character
-{
-    Nara,
-    Ximas
-}
-
 public class PlayerCombat : MonoBehaviour
 {
-    [SerializeField] PlayerMoveRigidbody playerMove;
-    [SerializeField] PlayerAnimator playerAnimator;
-
-    [SerializeField] Animator anim;
-    
+    PlayerInputs playerInputs;
+    PlayerMoveRigidbody playerMove;
     bool _InAttack = false;
-    bool InCombo = false;
-    int actualNumber = 0;
+    public bool _InCombo = false;
+
+    Animator anim;
+
+    [SerializeField] int actualNumber = 0;
     float timer = 0f;
-
-
+    [SerializeField] float delayAtaques;
     [SerializeField] int[] ordemCombo;
-    [SerializeField] public int ordem;
-
-    
+    public int ordem;
+    PlayerMoveRigidbody moveRigidbody;
     [SerializeField] ParticleSystem[] rastrosAtaque;
-
-    [System.Serializable]
-    public struct AttackList
-    {
-        public string AttackName;
-        public int AttackRange; // Variavel que definirá onde o ataque acontecerá | 0 = Parte Inferior / 1 = Parte Superior / 2 = Corpo Todo \\
-        public int Damage;
-    }
-    [System.Serializable]
-    public struct ComboList
-    {
-        public int QtdBotao;
-        public int OrdemCombo1;
-        public int OrdemCombo2;
-        public int OrdemCombo3;
-        public int OrdemCombo4;
-        public int OrdemCombo5;
-    }
-    [SerializeField] List<AttackList> _AttackList = new List<AttackList>();
-    [SerializeField] List<ComboList> _ComboList = new List<ComboList>();
 
     private void Awake()
     {
-        //Debug.Log(_ComboList[0].OrdemCombo1);
-        //Debug.Log(_ComboList[0].OrdemCombo2);
-        //Debug.Log(_ComboList[0].OrdemCombo3);
-        //Debug.Log(_ComboList[0].OrdemCombo4);
-        //Debug.Log(_ComboList[0].OrdemCombo5);
-        //anim = transform.GetChild(0).GetComponent<Animator>();
-        //anim = GetComponent<Animator>();
-        //playerMove = GetComponent<PlayerMoveRigidbody>();
-        //playerAnimator = GetComponent<PlayerAnimator>();
+        anim = transform.GetChild(0).GetComponent<Animator>();
+        playerMove = GetComponent<PlayerMoveRigidbody>();
+        moveRigidbody = GetComponent<PlayerMoveRigidbody>();
     }
 
     private void Update()
     {
+
         if (_InAttack == true)
         {
             for (int i = 0; i < rastrosAtaque.Length; i++)
@@ -80,50 +45,33 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
-    // Botão X / Cross (Playstation) - A (Xbox) - B (Nintendo Switch) - K (Teclado/Teclado Direito) - G (Teclado Esquerdo) 
-    // Retornará o número 0
-    public void LowAttack(InputAction.CallbackContext context)
+    //void ActiveBooleanInAttack(bool value)
+    //{
+    //    _InAttack = value;
+    //    anim.SetBool("InAttack", value);
+    //}
+
+    public void Punch0(InputAction.CallbackContext context)
     {
         StartCoroutine(ChangeActualNumber(0));
-        if (!_InAttack && !InCombo && playerMove.IsGrounded())
-            Attack(0);
-            //Attack("LowAttack");
+        if (!_InAttack && !_InCombo)
+            StartCoroutine(FirstCombo());
     }
-
-
-    // Botão Quadrado / Square (Playstation) - X (Xbox) - Y (Nintendo Switch) - J (Teclado/Teclado Direito) - F (Teclado Esquerdo)
-    // Retornará o número 1
-    public void LightAttack(InputAction.CallbackContext context)
+    public void Punch1(InputAction.CallbackContext context)
     {
         StartCoroutine(ChangeActualNumber(1));
-        if (!_InAttack && !InCombo)
-            Attack(1);
-            //Attack("LightAttack");
+        if (!_InAttack && !_InCombo)
+            StartCoroutine(SecondAttack());
     }
-
-
-    // Botão Triângulo / Triangle (Playstation) - Y (Xbox) - X (Nintendo Switch) - I (Teclado/Teclado Direito) - T (Teclado Esquerdo)
-    // Retornará o número 2
-    public void MediumAttack(InputAction.CallbackContext context)
+    public void Punch2(InputAction.CallbackContext context)
     {
         StartCoroutine(ChangeActualNumber(2));
-        if (!_InAttack && !InCombo && playerMove.IsGrounded())
-            Attack(2);
-            //Attack("MediumAttack");
+        if (!_InAttack && !_InCombo)
+            StartCoroutine(ThirdAttack());
     }
 
-    // Botão O / Circle (Playstation) - B (Xbox) - A (Nintendo Switch) - L (Teclado/Teclado Direito) - H (Teclado Esquerdo)
-    // Retornará o número 3
-    public void HeavyAttack(InputAction.CallbackContext context)
-    {
-        StartCoroutine(ChangeActualNumber(3));
-        if (!_InAttack && !InCombo && playerMove.IsGrounded())
-            Attack(3);
-            //Attack("HeavyAttack");
-    }
 
-    // Esse void identificará qual botão de golpe está sendo retornado
-    // 0 = SouthButton / 1 = WestButton / 2 = NorthButton / 3 = EastButton
+
     public IEnumerator ChangeActualNumber(int number)
     {
         actualNumber = number;
@@ -132,117 +80,92 @@ public class PlayerCombat : MonoBehaviour
         yield break;
     }
 
-    // Void de Ataque
-    //void Atack(string attackName)
-    //{
-    //    _InAttack = true;
-    //    playerMove.SetCrouched(false);
-    //    playerAnimator.TriggerAttack(attackName);
-    //}
-
-    void Attack(int numberAttack)
+    IEnumerator FirstAttack()
     {
-        string _AttackName = _AttackList[numberAttack].AttackName;
-        int _AttackRange = _AttackList[numberAttack].AttackRange;
-        int _Damage = _AttackList[numberAttack].Damage;
-
+        anim.SetTrigger("Punch0");
         _InAttack = true;
-        playerMove.SetCrouched(false);
-        playerAnimator.TriggerAttack(_AttackName);
+        yield return new WaitForSeconds(0.3f);
+    }
+    IEnumerator SecondAttack()
+    {
+        _InAttack = true;
+        anim.SetTrigger("Punch1");
+        yield return new WaitForSeconds(1.28f);
+        _InAttack = false;
     }
 
-    // Voids de Attack que foram utilizados para teste porém comentados por conta de repetição de código //
-
-    //void _LowAttack()
-    //{
-    //    _InAttack = true;
-    //    playerAnimator.TriggerAttack("LowAttack");
-    //}
-    //void _LightAttack()
-    //{
-    //    _InAttack = true;
-    //    playerAnimator.TriggerAttack("LightAttack");
-    //}
-    //void _MediumAttack()
-    //{
-    //    _InAttack = true;
-    //    anim.SetTrigger("MediumAttack");
-    //}
-    //void _HeavyAttack()
-    //{
-    //    _InAttack = true;
-    //    anim.SetTrigger("HeavyAttack");
-    //}
-
-    // ================================================================= //
-
-
-    // Mêcanica de Combo antiga
-
-    //IEnumerator FirstCombo()
-    //{
-    //    yield return _LightAttack();
-    //    _InCombo = true;
-    //    yield return Continued(0.2f, ordemCombo[ordem]);
-    //    yield return new WaitForSeconds(0.5f);
-    //    yield return Continued(0.2f, ordemCombo[ordem]);
-    //    yield return new WaitForSeconds(1.05f);
-    //    yield return ResetCombo();
-    //    yield break;
-    //}
-
-    // ================================================================= //
-
-    public void ContinueCombo(int number)
+    IEnumerator ThirdAttack()
     {
-        InCombo = true;
-        StartCoroutine(CoroutineContinue(0.05f, ordemCombo[number]));
+        _InAttack = true;
+        anim.SetTrigger("Punch2");
+        yield return new WaitForSeconds(1.2f);
+        _InAttack = false;
     }
 
-    IEnumerator CoroutineContinue(float delay, int number)
+    IEnumerator FirstCombo()
     {
-        while (timer < delay)
-        {
-            timer += 1 * Time.deltaTime;
-            if (actualNumber == number)
-            {
-                playerMove.MoverAoAtacar();
-                ordem++;
-                timer = 0;
-
-                playerAnimator.ConfirmedContinuedCombo();
-                yield break;
-            }
-            else
-                yield return null;
-        }
-        ResetCombo();
+        yield return FirstAttack();
+        _InCombo = true;
+        yield return Continued(0.2f, ordemCombo[ordem]);
+        yield return new WaitForSeconds(0.5f);
+        yield return Continued(0.2f, ordemCombo[ordem]);
+        yield return new WaitForSeconds(1.05f);
+        yield return ResetCombo();
         yield break;
     }
 
-    public void ResetCombo()
+    IEnumerator Continued(float delay, int number)
+    {
+        while (timer < delay - 0.05f)
+        {
+            timer += 1 * Time.deltaTime;
+
+            if (actualNumber == number)
+            {
+                moveRigidbody.MoverAoAtacar();
+                ordem++;
+                timer = 0f;
+
+                anim.SetTrigger("Continued");
+                yield break;
+            }
+            else
+            {
+                yield return null;
+            }
+        }
+        yield return ResetCombo();
+        yield break;
+    }
+
+    public IEnumerator ResetCombo()
     {
         _InAttack = false;
-        InCombo = false;
+        anim.SetTrigger("NotContinued");
         ordem = 0;
         timer = 0f;
         actualNumber = -1;
-        playerAnimator.ConfirmedNotContinued();
+        _InCombo = false;
         StopAllCoroutines();
+        yield break;
     }
 
+    public void BreakAnimation()
+    {
+        anim.SetTrigger("NotContinued");
+    }
 
-    // Voids para POO
-    public bool GetInAttack()
+    public bool InAttack()
     {
         return _InAttack;
     }
-    public void SetInCombo(bool value)
+    public bool InCombo()
     {
-        InCombo = value;
+        return _InCombo;
     }
-    public bool GetInCombo()
+
+    public void HitAnimation()
     {
-        return InCombo;
+        anim.SetTrigger("Hit");
     }
 }

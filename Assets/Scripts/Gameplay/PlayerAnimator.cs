@@ -1,56 +1,45 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.HID;
 
 public class PlayerAnimator : MonoBehaviour
 {
+    private PlayerInputs playerInputs;
+    private InputAction move;
     PlayerMoveRigidbody playerMove;
     PlayerCombat playerCombat;
-
     Rigidbody rb;
     Animator anim;
+
     private void Awake()
     {
-        //anim = transform.GetChild(0).GetComponent<Animator>();
-        anim = GetComponent<Animator>();
+        anim = transform.GetChild(0).GetComponent<Animator>();
         playerMove = GetComponent<PlayerMoveRigidbody>();
         playerCombat = GetComponent<PlayerCombat>();
         rb = GetComponent<Rigidbody>();
+        playerInputs = new PlayerInputs();
+    }
+    private void OnEnable()
+    {
+        move = playerInputs.Player.Move;
+        playerInputs.Player.Enable();
+    }
+    private void OnDisable()
+    {
+        playerInputs.Player.Disable();
     }
     private void Update()
     {
         anim.SetFloat("Move", rb.velocity.x * playerMove.isPlayer2);
         anim.SetBool("IsGrounded", playerMove.IsGrounded());
-        anim.SetBool("Crouched", playerMove.GetCrouched());
-        anim.SetBool("InCombo", playerCombat.GetInCombo());
-        anim.SetBool("InAttack", playerCombat.GetInAttack());
+        anim.SetBool("Crouched", playerMove.IsCrouched());
+        anim.SetBool("InCombo", playerCombat.InCombo());
+        anim.SetBool("InAttack", playerCombat.InAttack());
     }
-
-    public void TriggerAttack(string AttackName)
+    public void Jump()
     {
-        anim.SetTrigger(AttackName);
-    }
-    public void ContinueCombo(int number)
-    {
-        playerCombat.ContinueCombo(number);
-    }
-    public void ConfirmedContinuedCombo()
-    { 
-        anim.SetTrigger("Continued");
-    }
-    public void NotContinued()
-    {
-        playerCombat.ResetCombo();
-        anim.SetTrigger("NotContinued");
-    }
-    public void ConfirmedNotContinued()
-    {
-        if (!playerCombat.GetInCombo())
-        { 
-            anim.SetTrigger("NotContinued");
-        }
-    }
-    public void FinishedAttack()
-    {
-        anim.SetTrigger("NotContinued");
-        playerCombat.ResetCombo();
+        anim.SetTrigger("Jump");
     }
 }

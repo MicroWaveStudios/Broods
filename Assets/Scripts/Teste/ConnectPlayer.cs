@@ -11,7 +11,6 @@ public class ConnectPlayer : MonoBehaviour
     PlayerInput playerInput;
     public string controlScheme; //Mapa de ação utilizado pelo player
     public string deviceName; //dispositivo do player
-    public string rawPathName;
 
     [Header("Device Display Settings")]
     public DeviceDisplayConfigurator deviceDisplaySettings;
@@ -63,16 +62,4 @@ public class ConnectPlayer : MonoBehaviour
         yield break;
     }
 
-    public int GetPlayerID()
-    { 
-        return playerID;
-    }
-    public string GetControlScheme()
-    { 
-        return controlScheme;
-    }
-    public string GetDeviceName()
-    { 
-        return deviceName;
-    }
 }
