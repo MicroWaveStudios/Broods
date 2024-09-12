@@ -13,7 +13,7 @@ public class menuSettings : MonoBehaviour
     private bool isFullScreen;
     private float TelaCheia;
     [SerializeField] private bool onVsync;
-    [SerializeField] private int vSync;
+    [SerializeField] private float vSync;
 
     [Header("Resolução")]
     int width;
@@ -71,10 +71,9 @@ public class menuSettings : MonoBehaviour
         resolutionDropdown.value = PlayerPrefs.GetInt("resolution");
         resolucaoAtual_index = resolutionDropdown.value;
 
-        vSync = PlayerPrefs.GetInt("vSync");
+        vSync = PlayerPrefs.GetFloat("vSync");
         CheckvSyncByFloat();
         vSyncToggle.isOn = onVsync;
-        QualitySettings.vSyncCount = vSync;
 
         TelaCheia = PlayerPrefs.GetFloat("fullscreen");
         CheckFullcreenByFloat();
@@ -136,7 +135,7 @@ public class menuSettings : MonoBehaviour
 
     public void BotaoSairSemSalvarGraficos()
     {
-        vSync = PlayerPrefs.GetInt("vSync");
+        vSync = PlayerPrefs.GetFloat("vSync");
         CheckvSyncByFloat();
         vSyncToggle.isOn = onVsync;
 

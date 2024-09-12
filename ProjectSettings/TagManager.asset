@@ -4,17 +4,16 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Canvas
-  - Player2
   - Player1
-  - Defense
+  - Player2
   - Attack
   - Laser
+  - Tartico
+  - Ground
+  - Canvas
   - UIManager
   - GameManager
-  - Ground
   - ConnectManager
-  - Tartico
   layers:
   - Default
   - TransparentFX

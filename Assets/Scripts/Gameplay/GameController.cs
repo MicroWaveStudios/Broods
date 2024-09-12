@@ -33,13 +33,6 @@ public class GameController : MonoBehaviour
     [SerializeField] GameObject eventSystemManager;
     [SerializeField] GameObject PanelManager;
 
-    PlayerInputManager playerInputManager;
-
-    private void Awake()
-    {
-        playerInputManager = GetComponent<PlayerInputManager>();
-    }
-    
     private void Update()
     {
         Canvas = GameObject.FindGameObjectWithTag("Canvas");
@@ -116,7 +109,7 @@ public class GameController : MonoBehaviour
     void MidPosition()
     {
         distance = Vector3.Distance(PlayerLeft.position, PlayerRight.position)/2f;
-        mid.position = new Vector3(PlayerLeft.position.x + distance, 1.5f, mid.position.z);
+        mid.position = new Vector3(PlayerLeft.position.x + distance, 1.8f, mid.position.z);
     }
 
     public void Pause(GameObject newFocusedPlayer, bool value)

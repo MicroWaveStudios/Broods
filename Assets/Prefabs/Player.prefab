@@ -160,10 +160,14 @@ MonoBehaviour:
     m_ActionId: 9fb908e3-dbc7-47b0-bb89-af040754d50f
     m_ActionName: UI/Exit[/Keyboard/escape,/XInputControllerWindows/buttonEast]
   - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3cc34bc1-876f-4d6c-9c9a-3e63c75bcd04
+    m_ActionName: Player/EnterGame[/Keyboard/w,/Keyboard/a,/Keyboard/s,/Keyboard/d,/Keyboard/upArrow,/Keyboard/space]
+  - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 6713973963200268976}
         m_TargetAssemblyTypeName: ConnectPlayer, Assembly-CSharp
-        m_MethodName: ConnectGame
+        m_MethodName: ConnectSplitKeyboard
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -173,8 +177,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 37dc106c-2112-4426-b6ed-1c87a3210dbc
-    m_ActionName: UI/Connect[/Keyboard/space,/XInputControllerWindows/buttonSouth]
+    m_ActionId: 772c0d3d-819b-4929-a0f8-f3e16370640e
+    m_ActionName: UI/Connect[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: UI

@@ -47,7 +47,7 @@ Material:
     - _Shaders: 0.5
     - _Shades: -0.4
     m_Colors:
-    - _Color: {r: 0.1873031, g: 0.6603774, b: 0.109024554, a: 0}
+    - _Color: {r: 0.21086329, g: 0.8207547, b: 0, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &756729195028436674
 MonoBehaviour:
