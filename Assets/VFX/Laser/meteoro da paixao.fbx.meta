@@ -1,29 +1,9 @@
 fileFormatVersion: 2
-guid: 7a9a3da402ebf78408d862e7e8bbbda8
+guid: 41ede8d8e86ebde40906586c56dba875
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: corpo1
-    second: {fileID: 2100000, guid: 6dc0c8ff26bd0d440b58539df34a7133, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: foia
-    second: {fileID: 2100000, guid: 41206ac5654b94343b185b343d918f2f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: pupila1
-    second: {fileID: 2100000, guid: 0e292afd1091f004ab2f67d01fc006ba, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: zoio
-    second: {fileID: 2100000, guid: b70818b1e6edfa745b6c940b7493a610, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -55,7 +35,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 100
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1

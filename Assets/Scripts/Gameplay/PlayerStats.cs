@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class PlayerStats : MonoBehaviour
     bool defendendo;
 
     [SerializeField] bool teste;
+
+    VisualEffect vfxImpacto;
     
 
     private void Awake()
@@ -22,6 +25,8 @@ public class PlayerStats : MonoBehaviour
         playerMoveRigidbody = this.GetComponent<PlayerMoveRigidbody>();
         playerCombat = this.GetComponent<PlayerCombat>();
         playerAnimator = this.GetComponent<PlayerAnimator>();
+
+        vfxImpacto = transform.GetChild(0).GetComponent<VisualEffect>();
     }
 
     private void Start()
@@ -70,6 +75,9 @@ public class PlayerStats : MonoBehaviour
             playerMoveRigidbody.MoveUp();
             playerAnimator.TriggerAction("TomouDano");
             playerCombat.ResetCombo(0f);
+
+            vfxImpacto.Play();
+
             if (playerCombat.ordem > 0)
             {
                 StartCoroutine(ResetScripts(0.5f));
