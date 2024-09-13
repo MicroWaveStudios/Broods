@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.VFX;
 
 public class PlayerMoveRigidbody : MonoBehaviour
 {
@@ -27,12 +28,16 @@ public class PlayerMoveRigidbody : MonoBehaviour
     GameObject gameManager;
     GameController gameController;
 
+    [SerializeField] VisualEffect vfxFumaca;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         playerCombat = GetComponent<PlayerCombat>();
         playerStats = GetComponent<PlayerStats>();
         playerInput = GetComponent<PlayerInput>();
+
+        //vfxFumaca = transform.GetChild(3).gameObject.GetComponent<VisualEffect>();
     }
 
     private void Update()
@@ -96,6 +101,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
         if (jumpCount > 0 && !playerCombat.GetInAttack())
         {
             Jump(JumpForce);
+            vfxFumaca.Play();
         }
     }
     public void SetInputActive(bool value)
