@@ -2,15 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.VFX;
 
 public class NaraSkills : MonoBehaviour
 {
     int actualNumber = -1;
     
 
-    PlayerMoveRigidbody scrpRigidbody;
-    PlayerStats scrpPlayerStats;
+    [SerializeField] PlayerMoveRigidbody playerMoveRigidbody;
+    [SerializeField] PlayerStats playerStats;
     GameObject outroPlayer;
     float timer;
     
@@ -23,9 +22,9 @@ public class NaraSkills : MonoBehaviour
     [Header("Skill Laser")]
     [SerializeField] float custoLaser;
     [SerializeField] float danoLaser;
+    [SerializeField] GameObject objLaser;
     [SerializeField] int[] ordemComboLaser;
-    GameObject objLaser;
-    VisualEffect vfxLaser;
+    LaserPosition laser;
     int ordemLaser = 0;
 
     [Header("Tarticos")]
@@ -37,10 +36,11 @@ public class NaraSkills : MonoBehaviour
 
     private void Awake()
     {
-        scrpRigidbody = GetComponent<PlayerMoveRigidbody>();
-        objLaser = transform.GetChild(1).gameObject;
-        vfxLaser = objLaser.GetComponent<VisualEffect>();
-        scrpPlayerStats = GetComponent<PlayerStats>();
+        //scrpRigidbody = GetComponent<PlayerMoveRigidbody>();
+        //objLaser = GameObject.FindGameObjectWithTag("Laser");
+        laser = objLaser.GetComponent<LaserPosition>();
+        //scrpPlayerStats = GetComponent<PlayerStats>();
+        //tarticos = GameObject.FindGameObjectsWithTag("Tartico");
     }
 
     private void Update()
@@ -77,13 +77,13 @@ public class NaraSkills : MonoBehaviour
     }
     public void MeiaLuaEsquerda(InputAction.CallbackContext context)
     {
-        if (context.ReadValue<Vector2>().x * scrpRigidbody.isPlayer2 < 0)
+        if (context.ReadValue<Vector2>().x * playerMoveRigidbody.isPlayer2 < 0)
             StartCoroutine(ChangeActualNumber(1));
     }
 
     public void MeiaLuaDireita(InputAction.CallbackContext context)
     {
-        if (context.ReadValue<Vector2>().x * scrpRigidbody.isPlayer2 > 0)
+        if (context.ReadValue<Vector2>().x * playerMoveRigidbody.isPlayer2 > 0)
             StartCoroutine(ChangeActualNumber(2));
     }
     public void MeiaLuaAtaque(InputAction.CallbackContext context)
@@ -149,13 +149,13 @@ public class NaraSkills : MonoBehaviour
 
     void Meditar()
     {
-        scrpPlayerStats.AddEnergy(15);
+        playerStats.AddEnergy(15);
     }
 
     IEnumerator SkillLaser()
     {
         
-        if (scrpPlayerStats.energy < custoLaser)
+        if (playerStats.energy < custoLaser)
         {
             Debug.Log("Sem Energia");
             yield break;
@@ -167,9 +167,9 @@ public class NaraSkills : MonoBehaviour
 
         RaycastHit hit;
 
-        StartCoroutine(scrpPlayerStats.ResetScripts(0.5f));
+        StartCoroutine(playerStats.ResetScripts(0.5f));
 
-        vfxLaser.Play();
+        laser.StartLaser(this.gameObject);
 
         for (int i = 0; i < tarticos.Length; i++)
         {
@@ -182,7 +182,7 @@ public class NaraSkills : MonoBehaviour
 
         Physics.Raycast(posicaoRaycast, NovaPosicaoOutroPlayer, out hit, 4f);
 
-        scrpPlayerStats.UsouSkill(custoLaser);
+        playerStats.UsouSkill(custoLaser);
 
         
 
@@ -194,7 +194,7 @@ public class NaraSkills : MonoBehaviour
 
             if (Player2.GetComponent<PlayerStats>() != null)
             {
-                Player2.GetComponent<PlayerStats>().SufferDamage(danoLaser, 2);
+                Player2.GetComponent<PlayerStats>().SufferDamage(danoLaser, 2, this.transform.parent.gameObject);
                 Player2.GetComponent<PlayerStats>().AddEnergy(danoLaser/2);
             }                    
         }
@@ -209,7 +209,7 @@ public class NaraSkills : MonoBehaviour
 
     IEnumerator SkillTartico()
     {
-        if (scrpPlayerStats.energy < custoTartico)
+        if (playerStats.energy < custoTartico)
         {
             Debug.Log("Sem Energia");
             yield break;
@@ -229,7 +229,7 @@ public class NaraSkills : MonoBehaviour
 
         Debug.Log(danoLaser);
 
-        scrpPlayerStats.UsouSkill(custoTartico);
+        playerStats.UsouSkill(custoTartico);
 
         yield return new WaitForSeconds(1f);
 

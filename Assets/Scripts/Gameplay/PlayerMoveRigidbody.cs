@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.VFX;
 
 public class PlayerMoveRigidbody : MonoBehaviour
 {
@@ -28,16 +27,12 @@ public class PlayerMoveRigidbody : MonoBehaviour
     GameObject gameManager;
     GameController gameController;
 
-    [SerializeField] VisualEffect vfxFumaca;
-
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         playerCombat = GetComponent<PlayerCombat>();
         playerStats = GetComponent<PlayerStats>();
         playerInput = GetComponent<PlayerInput>();
-
-        //vfxFumaca = transform.GetChild(3).gameObject.GetComponent<VisualEffect>();
     }
 
     private void Update()
@@ -65,7 +60,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
         }
         
 
-        if (directionX * isPlayer2 <= -1)
+        if (directionX * isPlayer2 <= -1 && !playerCombat.GetInAttack() && !playerCombat.GetInCombo())
         {
             playerStats.SetDefendendo(true);
         }
@@ -76,7 +71,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (jumpCount == 1 && !GetComponent<PlayerCombat>().GetInAttack() && !crouched)
+        if (jumpCount == 1 && !GetComponent<PlayerCombat>().GetInAttack() && !crouched && !playerStats.GetDefendedOrSuffered())
             rb.velocity = new Vector3(directionX * MoveForce, rb.velocity.y, rb.velocity.z);
         else
             rb.velocity = new Vector3(rb.velocity.x ,rb.velocity.y ,rb.velocity.z);
@@ -101,7 +96,6 @@ public class PlayerMoveRigidbody : MonoBehaviour
         if (jumpCount > 0 && !playerCombat.GetInAttack())
         {
             Jump(JumpForce);
-            vfxFumaca.Play();
         }
     }
     public void SetInputActive(bool value)
@@ -119,6 +113,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
 
     public void Jump(float force)
     {
+        rb.AddForce(Vector3.zero);
         rb.AddForce(Vector3.up * force);
         jumpCount--;
     }
@@ -137,6 +132,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
     }
     public void MoverAoAtacar(float MoverAoAtacar_)
     {
+        rb.AddForce(Vector3.zero);
         rb.AddForce(Vector3.right * MoverAoAtacar_ * isPlayer2);
         SetOtherPlayerForce(MoverAoAtacar_);
     }
@@ -183,7 +179,10 @@ public class PlayerMoveRigidbody : MonoBehaviour
     public void MoverAoLevarDano()
     {
         if (!moveUp)
+        {
+            rb.AddForce(Vector3.zero);
             rb.AddForce(Vector3.left * MoveForceSufferAttack * 3 * isPlayer2);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)

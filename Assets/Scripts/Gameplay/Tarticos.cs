@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Tarticos : MonoBehaviour
 {
-    //LaserPosition laser;
+    LaserPosition laser;
 
     private void Awake()
     {
-        //laser = this.gameObject.transform.GetChild(0).GetComponent<LaserPosition>();
+        laser = this.gameObject.transform.GetChild(0).GetComponent<LaserPosition>();
     }
 
     public void Laser()
     {
-        //laser.StartLaser(this.gameObject);
+        laser.StartLaser(this.gameObject);
     }
 }

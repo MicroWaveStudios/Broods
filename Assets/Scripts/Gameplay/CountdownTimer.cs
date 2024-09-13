@@ -56,9 +56,11 @@ public class CountdownTimer : MonoBehaviour
         yield break;
     }
 
+
+    int i;
     IEnumerator TimerGame()
     {
-        for (int i = 99; i > 1; i--)
+        for (i = 99; i > 1; i--)
         {
             if (i >= 10)
                 TxtTimerGame.text = i.ToString();

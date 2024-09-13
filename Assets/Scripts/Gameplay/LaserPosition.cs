@@ -5,8 +5,21 @@ using UnityEngine;
 
 public class LaserPosition : MonoBehaviour
 {
-    GameObject outroPlayer;
+    public GameObject outroPlayer;
+    Vector3 posicaoInicial;
+    Vector3 posicaoLaser;
+    public ParticleSystem particula;
+    [SerializeField] bool ligado = false;
 
+    private void Awake()
+    {
+        particula = this.gameObject.GetComponent<ParticleSystem>();
+
+        if (ligado != true)
+        {
+            particula.Stop();
+        }
+    }
 
     private void Update()
     {
@@ -19,5 +32,41 @@ public class LaserPosition : MonoBehaviour
         {
             outroPlayer = GameObject.FindGameObjectWithTag("Player1");
         }
+
+        if (outroPlayer != null)
+        {
+            posicaoLaser = new Vector3(outroPlayer.transform.position.x, outroPlayer.transform.position.y + 1.2f, outroPlayer.transform.position.z);
+        }
+    }
+
+    public void StartLaser(GameObject player)
+    {
+        StartCoroutine(Laser(player));
+    }
+    private IEnumerator Laser(GameObject player)
+    {
+        particula.Play();
+        yield return null;
+        yield return AtirarLaser();
+        yield return ResetPosition(player);
+        yield break;
+    }
+
+    private IEnumerator AtirarLaser()
+    {
+        
+        posicaoInicial = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+
+        transform.parent = null;
+        transform.position = posicaoLaser;
+        yield break;
+    }
+
+    private IEnumerator ResetPosition(GameObject player)
+    {
+        particula.Stop();
+        transform.parent = player.transform;
+        transform.position = posicaoInicial;
+        yield break;
     }
 }

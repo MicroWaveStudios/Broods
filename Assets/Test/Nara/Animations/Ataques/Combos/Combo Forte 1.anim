@@ -132490,7 +132490,7 @@ AnimationClip:
     functionName: SetOtherPlayerForce
     data: 
     objectReferenceParameter: {fileID: 0}
-    floatParameter: 600
+    floatParameter: 200
     intParameter: 0
     messageOptions: 0
   - time: 1.6333333

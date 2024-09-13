@@ -14,6 +14,7 @@ public class PlayerCombat : MonoBehaviour
 {
     [SerializeField] PlayerMoveRigidbody playerMove;
     [SerializeField] PlayerAnimator playerAnimator;
+    [SerializeField] PlayerStats playerStats;
 
     [SerializeField] Animator anim;
     
@@ -76,7 +77,7 @@ public class PlayerCombat : MonoBehaviour
     public void LowAttack(InputAction.CallbackContext context)
     {
         StartCoroutine(ChangeActualNumber(0));
-        if (!_InAttack && !InCombo && playerMove.GetIsGrounded() && context.started)
+        if (!_InAttack && !InCombo && playerMove.GetIsGrounded() && context.started && !playerStats.GetDefendedOrSuffered())
             Attack(0);
             //Attack("LowAttack");
     }
@@ -87,7 +88,7 @@ public class PlayerCombat : MonoBehaviour
     public void LightAttack(InputAction.CallbackContext context)
     {
         StartCoroutine(ChangeActualNumber(1));
-        if (!_InAttack && !InCombo && playerMove.GetIsGrounded() && context.started)
+        if (!_InAttack && !InCombo && playerMove.GetIsGrounded() && context.started && !playerStats.GetDefendedOrSuffered())
             Attack(1);
             //Attack("LightAttack");
     }
@@ -98,7 +99,7 @@ public class PlayerCombat : MonoBehaviour
     public void MediumAttack(InputAction.CallbackContext context)
     {
         StartCoroutine(ChangeActualNumber(2));
-        if (!_InAttack && !InCombo && playerMove.GetIsGrounded() && context.started)
+        if (!_InAttack && !InCombo && playerMove.GetIsGrounded() && context.started && !playerStats.GetDefendedOrSuffered())
             Attack(2);
             //Attack("MediumAttack");
     }
@@ -108,7 +109,7 @@ public class PlayerCombat : MonoBehaviour
     public void HeavyAttack(InputAction.CallbackContext context)
     {
         StartCoroutine(ChangeActualNumber(3));
-        if (!_InAttack && !InCombo && playerMove.GetIsGrounded() && context.started)
+        if (!_InAttack && !InCombo && playerMove.GetIsGrounded() && context.started && !playerStats.GetDefendedOrSuffered())
             Attack(3);
             //Attack("HeavyAttack");
     }
@@ -186,6 +187,12 @@ public class PlayerCombat : MonoBehaviour
 
     // ================================================================= //
 
+
+    public int GetOrdem()
+    {
+        return ordem;
+    }
+
     public void ContinueCombo(int number)
     {
         InCombo = true;
@@ -224,7 +231,8 @@ public class PlayerCombat : MonoBehaviour
         timer = 0f;
         InCombo = false;
         actualNumber = -1;
-        playerAnimator.ConfirmedNotContinued();
+        if (!playerStats.GetDefendedOrSuffered())
+            playerAnimator.ConfirmedNotContinued();
         _InAttack = false;
         StopAllCoroutines();
     }

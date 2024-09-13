@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.VFX;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -16,8 +15,6 @@ public class PlayerStats : MonoBehaviour
     bool defendendo;
 
     [SerializeField] bool teste;
-
-    VisualEffect vfxImpacto;
     
 
     private void Awake()
@@ -25,8 +22,6 @@ public class PlayerStats : MonoBehaviour
         playerMoveRigidbody = this.GetComponent<PlayerMoveRigidbody>();
         playerCombat = this.GetComponent<PlayerCombat>();
         playerAnimator = this.GetComponent<PlayerAnimator>();
-
-        vfxImpacto = transform.GetChild(0).GetComponent<VisualEffect>();
     }
 
     private void Start()
@@ -53,7 +48,7 @@ public class PlayerStats : MonoBehaviour
     }
 
     public void SetDefendendo(bool value)
-    { 
+    {
         defendendo = value;
     }
 
@@ -62,27 +57,48 @@ public class PlayerStats : MonoBehaviour
         return defendendo;
     }
 
-    public void SufferDamage(float damage, float attackRange)
+    bool defended = false;
+
+    public bool GetDefendedOrSuffered()
     {
-        if (defendendo)
+        return defended;
+    }
+
+    public void MoveDamage()
+    {
+        playerMoveRigidbody.MoverAoLevarDano();
+        playerAnimator.TriggerAction("TomouDano");
+    }
+
+    public void SufferDamage(float damage, float attackRange, GameObject otherPlayer)
+    {
+        StartCoroutine(SetDefended());
+        if (playerCombat.GetInAttack() && playerCombat.GetInCombo())
         {
-            playerAnimator.TriggerAction("Defendeu");
+            if (playerCombat.GetOrdem() > otherPlayer.GetComponent<PlayerCombat>().GetOrdem())
+            {
+                MoveDamage();
+                otherPlayer.GetComponent<PlayerStats>().MoveDamage();
+            }
         }
         else
         {
-            life -= damage;
-            playerMoveRigidbody.MoverAoLevarDano();
-            playerMoveRigidbody.MoveUp();
-            playerAnimator.TriggerAction("TomouDano");
-            playerCombat.ResetCombo(0f);
-
-            vfxImpacto.Play();
-
-            if (playerCombat.ordem > 0)
+            if (defendendo)
             {
-                StartCoroutine(ResetScripts(0.5f));
+                playerAnimator.TriggerAction("Defendeu");
+            }
+            else
+            {
+                life -= damage;
+                playerMoveRigidbody.MoveUp();
+                MoveDamage();
+                if (playerCombat.ordem > 0)
+                {
+                    StartCoroutine(ResetScripts(0.5f));
+                }
             }
         }
+        playerCombat.ResetCombo(0f);
         GameObject GameManager = GameObject.FindGameObjectWithTag("GameManager");
         GameManager.GetComponent<GameController>().SetTimeScale();
     }
@@ -96,6 +112,13 @@ public class PlayerStats : MonoBehaviour
         playerMoveRigidbody.enabled = true;
         playerCombat.enabled = true;
         yield break;
+    }
+
+    IEnumerator SetDefended()
+    {
+        defended = true;
+        yield return new WaitForSeconds(0.3f);
+        defended = false;
     }
 
     public void UsouSkill(float custoSkill)
