@@ -166,7 +166,7 @@ public class GameController : MonoBehaviour
         }
         if (lifePlayer1 > lifePlayer2)
             pontos1++;
-        else
+        else if (lifePlayer2 > lifePlayer1)
             pontos2++;
 
         SceneManager.LoadScene("Game");

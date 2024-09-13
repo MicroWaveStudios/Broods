@@ -104529,3 +104529,17 @@ AnimationClip:
     floatParameter: 150
     intParameter: 0
     messageOptions: 0
+  - time: 0.125
+    functionName: MoverAoAtacar
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 150
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.16666667
+    functionName: MoverAoAtacar
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 150
+    intParameter: 0
+    messageOptions: 0

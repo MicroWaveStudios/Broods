@@ -65,11 +65,11 @@ public class PlayerStats : MonoBehaviour
         }
         else
         {
-            playerCombat.ResetCombo(0f);
             life -= damage;
             playerMoveRigidbody.MoverAoLevarDano();
             playerMoveRigidbody.MoveUp();
             playerAnimator.TriggerAction("TomouDano");
+            playerCombat.ResetCombo(0f);
             if (playerCombat.ordem > 0)
             {
                 StartCoroutine(ResetScripts(0.5f));
