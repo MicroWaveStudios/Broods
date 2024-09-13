@@ -14,6 +14,8 @@ public class PlayerMoveRigidbody : MonoBehaviour
     bool _OnJump;
     bool crouched = false;
 
+    string otherPlayerTag;
+
     public float isPlayer2 = 1;
     int jumpCount;
 
@@ -41,6 +43,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
             gameController = gameManager.GetComponent<GameController>();
             if (this.gameObject.CompareTag("Player2"))
             {
+                otherPlayerTag = "Player1";
                 if (gameController.ChangedSide)
                     isPlayer2 = 1;
                 else
@@ -48,21 +51,22 @@ public class PlayerMoveRigidbody : MonoBehaviour
             }
             else
             {
+                otherPlayerTag = "Player2";
                 if (gameController.ChangedSide)
                     isPlayer2 = -1;
                 else
                     isPlayer2 = 1;
             }
         }
+        
 
         if (directionX * isPlayer2 <= -1)
         {
-            playerStats.defendendo = true;
-            //Debug.Log("Defendendo");
+            playerStats.SetDefendendo(true);
         }
         else
         {
-            playerStats.defendendo = false;
+            playerStats.SetDefendendo(false);
         }
     }
     private void FixedUpdate()
@@ -90,9 +94,8 @@ public class PlayerMoveRigidbody : MonoBehaviour
     public void OnJump(InputAction.CallbackContext context)
     {
         if (jumpCount > 0 && !playerCombat.GetInAttack())
-        { 
-            rb.AddForce(Vector3.up * JumpForce);
-            jumpCount--;
+        {
+            Jump(JumpForce);
         }
     }
     public void SetInputActive(bool value)
@@ -108,6 +111,12 @@ public class PlayerMoveRigidbody : MonoBehaviour
         }
     }
 
+    public void Jump(float force)
+    {
+        rb.AddForce(Vector3.up * force);
+        jumpCount--;
+    }
+
     public bool GetIsGrounded()
     {
         return _OnJump;
@@ -120,14 +129,55 @@ public class PlayerMoveRigidbody : MonoBehaviour
     {
         crouched = value;
     }
-    public void MoverAoAtacar()
+    public void MoverAoAtacar(float MoverAoAtacar_)
     {
-        rb.AddForce(Vector3.right * ForcaEmpurrar * isPlayer2);
+        rb.AddForce(Vector3.right * MoverAoAtacar_ * isPlayer2);
+        SetOtherPlayerForce(MoverAoAtacar_);
+    }
+
+    GameObject otherPlayer;
+
+    [SerializeField] float MoveForceSufferAttack;
+
+    [SerializeField] bool moveUp = false;
+
+    public void SetOtherPlayerForce(float force)
+    {
+        otherPlayer = GameObject.FindGameObjectWithTag(otherPlayerTag);
+        otherPlayer.GetComponent<PlayerMoveRigidbody>().SetForce(force);
+    }
+    public void SetForce(float force)
+    { 
+        MoveForceSufferAttack = force;
+    }
+
+    public void SetMoveUp(bool value)
+    {
+        moveUp = value;
+    }
+
+    public void MoveUpOtherPlayer(int i)
+    {
+        bool value;
+        if (i == 1)
+            value = true;
+        else 
+            value = false;
+
+        otherPlayer = GameObject.FindGameObjectWithTag(otherPlayerTag);
+        otherPlayer.GetComponent<PlayerMoveRigidbody>().SetMoveUp(value);
+    }
+
+    public void MoveUp()
+    {
+        if (moveUp)
+            Jump(MoveForceSufferAttack);
     }
 
     public void MoverAoLevarDano()
     {
-        rb.AddForce(Vector3.left * ForcaEmpurrar * isPlayer2);
+        if (!moveUp)
+            rb.AddForce(Vector3.left * MoveForceSufferAttack * 3 * isPlayer2);
     }
 
     private void OnCollisionEnter(Collision collision)

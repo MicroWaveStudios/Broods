@@ -2,16 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.InputSystem;
 
 public class CountdownTimer : MonoBehaviour
 {
+    [SerializeField] GameController gameController;
+
     GameObject Player1;
     GameObject Player2;
     [SerializeField] Transform[] InstancePosition;
     [SerializeField] TMP_Text countdownText;
+    [SerializeField] TMP_Text TxtTimerGame;
     float countdownTime = 3f;
     bool FinishedStart = false;
     bool isPaused;
+    bool gameFinished;
 
     private void Update()
     {
@@ -24,6 +29,7 @@ public class CountdownTimer : MonoBehaviour
             FinishedStart = true;
         }
     }
+
     private IEnumerator CountdownStart()
     {
         isPaused = true;
@@ -46,8 +52,24 @@ public class CountdownTimer : MonoBehaviour
 
         EnablePlayerInputs(true);
         isPaused = false;
+        StartCoroutine(TimerGame());
         yield break;
     }
+
+    IEnumerator TimerGame()
+    {
+        for (int i = 99; i > 1; i--)
+        {
+            if (i >= 10)
+                TxtTimerGame.text = i.ToString();
+            else
+                TxtTimerGame.text = "0" + i.ToString();
+            yield return new WaitForSeconds(1f);
+        }
+        gameController.GameFinished();
+    }
+
+
 
     public bool GetBooleanIsPaused()
     {
@@ -56,10 +78,8 @@ public class CountdownTimer : MonoBehaviour
 
     void EnablePlayerInputs(bool value)
     {
-        Player1.GetComponent<PlayerMoveRigidbody>().enabled = value;
-        Player2.GetComponent<PlayerMoveRigidbody>().enabled = value;
-        Player1.GetComponent<PlayerCombat>().enabled = value;
-        Player2.GetComponent<PlayerCombat>().enabled = value;
+        Player1.GetComponent<PlayerInput>().enabled = value;
+        Player2.GetComponent<PlayerInput>().enabled = value;
     }
 
 }

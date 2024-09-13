@@ -28,6 +28,7 @@ public class PlayerCombat : MonoBehaviour
 
     
     [SerializeField] ParticleSystem[] rastrosAtaque;
+    [SerializeField] GameObject attackGameObject;
 
     [System.Serializable]
     public struct AttackList
@@ -35,19 +36,9 @@ public class PlayerCombat : MonoBehaviour
         public string AttackName;
         public int AttackRange; // Variavel que definirá onde o ataque acontecerá | 0 = Parte Inferior / 1 = Parte Superior / 2 = Corpo Todo \\
         public int Damage;
-    }
-    [System.Serializable]
-    public struct ComboList
-    {
-        public int QtdBotao;
-        public int OrdemCombo1;
-        public int OrdemCombo2;
-        public int OrdemCombo3;
-        public int OrdemCombo4;
-        public int OrdemCombo5;
+        public bool MoveDamage;
     }
     [SerializeField] List<AttackList> _AttackList = new List<AttackList>();
-    [SerializeField] List<ComboList> _ComboList = new List<ComboList>();
 
     private void Awake()
     {
@@ -96,7 +87,7 @@ public class PlayerCombat : MonoBehaviour
     public void LightAttack(InputAction.CallbackContext context)
     {
         StartCoroutine(ChangeActualNumber(1));
-        if (!_InAttack && !InCombo && context.started)
+        if (!_InAttack && !InCombo && playerMove.GetIsGrounded() && context.started)
             Attack(1);
             //Attack("LightAttack");
     }
@@ -145,9 +136,12 @@ public class PlayerCombat : MonoBehaviour
         string _AttackName = _AttackList[numberAttack].AttackName;
         int _AttackRange = _AttackList[numberAttack].AttackRange;
         int _Damage = _AttackList[numberAttack].Damage;
+        bool _MoveDamage = _AttackList[numberAttack].MoveDamage;
 
+        attackGameObject.GetComponent<Damage>().SetAttack(_Damage, _AttackRange);
         _InAttack = true;
-        playerAnimator.TriggerAttack(_AttackName);
+
+        playerAnimator.TriggerAction(_AttackName);
     }
 
     // Voids de Attack que foram utilizados para teste porém comentados por conta de repetição de código \\
@@ -199,12 +193,12 @@ public class PlayerCombat : MonoBehaviour
     }
     IEnumerator CoroutineContinue(float delay, int number)
     {
+        yield return new WaitForSeconds(0.2f);
         while (timer < delay)
         {
             timer += 1 * Time.deltaTime;
             if (actualNumber == number)
             {
-                playerMove.MoverAoAtacar();
                 ordem++;
                 timer = 0;
 

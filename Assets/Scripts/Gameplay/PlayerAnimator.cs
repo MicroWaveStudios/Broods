@@ -4,15 +4,16 @@ public class PlayerAnimator : MonoBehaviour
 {
     PlayerMoveRigidbody playerMoveRigidbody;
     PlayerCombat playerCombat;
+    PlayerStats playerStats;
 
     Rigidbody rb;
     Animator anim;
     private void Awake()
     {
-        //anim = transform.GetChild(0).GetComponent<Animator>();
         anim = GetComponent<Animator>();
         playerMoveRigidbody = GetComponent<PlayerMoveRigidbody>();
         playerCombat = GetComponent<PlayerCombat>();
+        playerStats = GetComponent<PlayerStats>();
         rb = GetComponent<Rigidbody>();
     }
     private void Update()
@@ -24,14 +25,13 @@ public class PlayerAnimator : MonoBehaviour
         anim.SetBool("InAttack", playerCombat.GetInAttack());
     }
 
-    public void TriggerAttack(string AttackName)
+    public void TriggerAction(string AttackName)
     {
         anim.SetTrigger(AttackName);
     }
     public void ContinueCombo(int number)
     {
         playerCombat.ContinueCombo(number);
-        Debug.Log("Continue Combo Active");
     }
     public void ConfirmedContinuedCombo()
     { 

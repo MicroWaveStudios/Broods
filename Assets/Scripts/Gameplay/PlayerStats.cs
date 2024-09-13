@@ -11,7 +11,8 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] public float energy;
     PlayerMoveRigidbody playerMoveRigidbody;
     PlayerCombat playerCombat;
-    public bool defendendo;
+    PlayerAnimator playerAnimator;
+    bool defendendo;
 
     [SerializeField] bool teste;
     
@@ -20,6 +21,7 @@ public class PlayerStats : MonoBehaviour
     {
         playerMoveRigidbody = this.GetComponent<PlayerMoveRigidbody>();
         playerCombat = this.GetComponent<PlayerCombat>();
+        playerAnimator = this.GetComponent<PlayerAnimator>();
     }
 
     private void Start()
@@ -31,7 +33,10 @@ public class PlayerStats : MonoBehaviour
     private void Update()
     {
         if (life <= 0f)
-            Destroy(gameObject);
+        {
+            GameObject gameController = GameObject.FindGameObjectWithTag("GameManager");
+            gameController.GetComponent<GameController>().GameFinished();
+        }
 
         if (teste == true)
         {
@@ -42,28 +47,41 @@ public class PlayerStats : MonoBehaviour
         
     }
 
-    public void SufferDamage(float damage)
-    {
-        if (defendendo == false)
-        {
-            playerCombat.ResetCombo(0f);
-            life -= damage;    
-            if (playerCombat.ordem > 0)
-            {
-                playerMoveRigidbody.MoverAoLevarDano();
-                StartCoroutine(ResetScripts(true, 0.5f));
-            }
-            
-        }
-        
+    public void SetDefendendo(bool value)
+    { 
+        defendendo = value;
     }
 
-    public IEnumerator ResetScripts(bool damage, float delay)
+    public bool GetDefendendo()
     {
-        if(damage == true)
+        return defendendo;
+    }
+
+    public void SufferDamage(float damage, float attackRange)
+    {
+        if (defendendo)
         {
-            //scrpPlayerCombat.HitAnimation();
+            playerAnimator.TriggerAction("Defendeu");
         }
+        else
+        {
+            playerCombat.ResetCombo(0f);
+            life -= damage;
+            playerMoveRigidbody.MoverAoLevarDano();
+            playerMoveRigidbody.MoveUp();
+            playerAnimator.TriggerAction("TomouDano");
+            if (playerCombat.ordem > 0)
+            {
+                StartCoroutine(ResetScripts(0.5f));
+            }
+        }
+        GameObject GameManager = GameObject.FindGameObjectWithTag("GameManager");
+        GameManager.GetComponent<GameController>().SetTimeScale();
+    }
+
+    public IEnumerator ResetScripts(float delay)
+    {
+        yield return new WaitForSeconds(0.1f);
         playerMoveRigidbody.enabled = false;
         playerCombat.enabled = false;
         yield return new WaitForSeconds(delay);

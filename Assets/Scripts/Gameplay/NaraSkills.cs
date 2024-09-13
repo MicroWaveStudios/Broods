@@ -167,7 +167,7 @@ public class NaraSkills : MonoBehaviour
 
         RaycastHit hit;
 
-        StartCoroutine(playerStats.ResetScripts(false, 0.5f));
+        StartCoroutine(playerStats.ResetScripts(0.5f));
 
         laser.StartLaser(this.gameObject);
 
@@ -194,7 +194,7 @@ public class NaraSkills : MonoBehaviour
 
             if (Player2.GetComponent<PlayerStats>() != null)
             {
-                Player2.GetComponent<PlayerStats>().SufferDamage(danoLaser);
+                Player2.GetComponent<PlayerStats>().SufferDamage(danoLaser, 2);
                 Player2.GetComponent<PlayerStats>().AddEnergy(danoLaser/2);
             }                    
         }
