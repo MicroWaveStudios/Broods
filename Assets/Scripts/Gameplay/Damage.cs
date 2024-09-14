@@ -20,6 +20,11 @@ public class Damage : MonoBehaviour
         attackRange = newAttackRange;
     }
 
+    public void SetDamage(float newDamage)
+    {
+        damage = newDamage;
+    }
+
     private void OnTriggerEnter(Collider collision)
     {
         PlayerStats otherPlayerStats = collision.gameObject.GetComponent<PlayerStats>();

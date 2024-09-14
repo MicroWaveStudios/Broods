@@ -58973,6 +58973,20 @@ AnimationClip:
     floatParameter: 25
     intParameter: 0
     messageOptions: 0
+  - time: 0.033333335
+    functionName: SetForce
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 2
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.033333335
+    functionName: SetActualDelay
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0.15
+    intParameter: 0
+    messageOptions: 0
   - time: 0.28333333
     functionName: ContinueCombo
     data: 

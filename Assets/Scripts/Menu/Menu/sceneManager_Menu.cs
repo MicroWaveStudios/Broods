@@ -7,7 +7,7 @@ public class sceneManager_Menu : MonoBehaviour
 {
     public void Game()
     {
-        SceneManager.LoadScene(8);
+        SceneManager.LoadScene("Game");
     }
     public void Sair()
     {
@@ -19,7 +19,7 @@ public class sceneManager_Menu : MonoBehaviour
     }
     public void Jogar()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("Jogar.Conectar_Jogadores");
     }
 
     public void Tutorial()
@@ -39,6 +39,6 @@ public class sceneManager_Menu : MonoBehaviour
 
     public void Gameplay()
     {
-        SceneManager.LoadScene(5);
+        SceneManager.LoadScene("Game");
     }
 }

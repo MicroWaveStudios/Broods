@@ -92,13 +92,14 @@ public class PlayerStats : MonoBehaviour
                 life -= damage;
                 playerMoveRigidbody.MoveUp();
                 MoveDamage();
+                playerCombat.ResetCombo(0f);
                 if (playerCombat.ordem > 0)
                 {
                     StartCoroutine(ResetScripts(0.5f));
                 }
             }
         }
-        playerCombat.ResetCombo(0f);
+       
         GameObject GameManager = GameObject.FindGameObjectWithTag("GameManager");
         GameManager.GetComponent<GameController>().SetTimeScale();
     }

@@ -53,5 +53,6 @@ public class PlayerAnimator : MonoBehaviour
     public void ResetAttack()
     {
         playerCombat.SetInAttack(false);
+        playerCombat.SetInCombo(false);
     }
 }

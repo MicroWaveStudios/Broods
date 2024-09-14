@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -93,5 +94,8 @@ public class ConnectPlayerInMenu : MonoBehaviour
     {
         player[0].GetComponent<PlayerController>().EnableMapActionPlayer();
         player[1].GetComponent<PlayerController>().EnableMapActionPlayer();
+
+        Debug.Log(player[0].GetComponent<PlayerInput>().currentActionMap);
+        Debug.Log(player[1].GetComponent<PlayerInput>().currentActionMap);
     }
 }

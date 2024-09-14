@@ -70,9 +70,6 @@ public class CountdownTimer : MonoBehaviour
         }
         gameController.GameFinished();
     }
-
-
-
     public bool GetBooleanIsPaused()
     {
         return isPaused;

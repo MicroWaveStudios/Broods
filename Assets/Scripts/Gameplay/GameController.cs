@@ -4,12 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameController : MonoBehaviour
 {
-    [SerializeField] float pontos1 = 0;
-    [SerializeField] float pontos2 = 0;
-
     float lifePlayer1;
     float lifePlayer2;
 
@@ -25,6 +23,8 @@ public class GameController : MonoBehaviour
     [SerializeField] Image healthBarPlayer2;
     [SerializeField] Slider energyBarPlayer1;
     [SerializeField] Slider energyBarPlayer2;
+    [SerializeField] GameObject winnerPanel;
+    [SerializeField] TMP_Text textPlayerWinner;
     public float distance;
     public bool ChangedSide;
 
@@ -34,11 +34,6 @@ public class GameController : MonoBehaviour
 
     [SerializeField] GameObject eventSystemManager;
     [SerializeField] GameObject PanelManager;
-
-    private void Start()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
 
     private void Update()
     {
@@ -164,12 +159,42 @@ public class GameController : MonoBehaviour
         {
             Debug.Log("EMPATE");
         }
-        if (lifePlayer1 > lifePlayer2)
-            pontos1++;
-        else if (lifePlayer2 > lifePlayer1)
-            pontos2++;
+        else
+        { 
+            if (lifePlayer1 > lifePlayer2)
+                Pontos.pontosP1++;
+            else if (lifePlayer2 > lifePlayer1)
+                Pontos.pontosP2++;
 
-        SceneManager.LoadScene("Game");
+            if (Pontos.pontosP1 > 1)
+            { 
+                textPlayerWinner.text = "Player 1 Ganhou!";
+                StartCoroutine(FinishGame());
+                finishGame = true;
+            }
+            if (Pontos.pontosP2 > 1)
+            { 
+                textPlayerWinner.text = "Player 2 Ganhou!";
+                StartCoroutine(FinishGame());
+                finishGame = true;
+            }
+        }
+        if (!finishGame)
+        {
+            SceneManager.LoadScene("Game");
+        }
+    }
+
+    bool finishGame = false;
+
+    IEnumerator FinishGame()
+    {
+        Pontos.pontosP1 = 0;
+        Pontos.pontosP2 = 0;
+        winnerPanel.SetActive(true);
+        yield return new WaitForSeconds(5f);
+        DestroyPlayers();
+        SceneManager.LoadScene("Menu");
     }
 
 

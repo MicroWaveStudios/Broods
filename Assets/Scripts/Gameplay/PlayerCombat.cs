@@ -221,7 +221,7 @@ public class PlayerCombat : MonoBehaviour
 
     public void ResetCombo(float delay)
     {
-        StartCoroutine(ResetCombo_(delay));
+        StartCoroutine(ResetCombo_(delay_));
     }
 
     IEnumerator ResetCombo_(float delay)
@@ -237,8 +237,17 @@ public class PlayerCombat : MonoBehaviour
         StopAllCoroutines();
     }
 
+    float delay_ = 0.2f;
 
     // Voids para POO
+    public void SetActualDelay(float value)
+    {
+        delay_ = value;
+    }
+    public void SetActualDamage(float damage)
+    {
+        attackGameObject.GetComponent<Damage>().SetDamage(damage);
+    }
     public bool GetInAttack()
     {
         return _InAttack;
