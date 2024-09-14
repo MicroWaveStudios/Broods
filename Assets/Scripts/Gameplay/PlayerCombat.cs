@@ -17,7 +17,7 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] PlayerStats playerStats;
 
     [SerializeField] Animator anim;
-    
+
     bool _InAttack = false;
     bool InCombo = false;
     int actualNumber = 0;
@@ -27,7 +27,7 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] int[] ordemCombo;
     [SerializeField] public int ordem;
 
-    
+
     [SerializeField] ParticleSystem[] rastrosAtaque;
     [SerializeField] GameObject attackGameObject;
 
@@ -79,7 +79,7 @@ public class PlayerCombat : MonoBehaviour
         StartCoroutine(ChangeActualNumber(0));
         if (!_InAttack && !InCombo && playerMove.GetIsGrounded() && context.started && !playerStats.GetDefendedOrSuffered())
             Attack(0);
-            //Attack("LowAttack");
+        //Attack("LowAttack");
     }
 
 
@@ -90,7 +90,7 @@ public class PlayerCombat : MonoBehaviour
         StartCoroutine(ChangeActualNumber(1));
         if (!_InAttack && !InCombo && playerMove.GetIsGrounded() && context.started && !playerStats.GetDefendedOrSuffered())
             Attack(1);
-            //Attack("LightAttack");
+        //Attack("LightAttack");
     }
 
 
@@ -101,7 +101,7 @@ public class PlayerCombat : MonoBehaviour
         StartCoroutine(ChangeActualNumber(2));
         if (!_InAttack && !InCombo && playerMove.GetIsGrounded() && context.started && !playerStats.GetDefendedOrSuffered())
             Attack(2);
-            //Attack("MediumAttack");
+        //Attack("MediumAttack");
     }
 
     // Botão O / Circle (Playstation) - B (Xbox) - A (Nintendo Switch) - L (Teclado/Teclado Direito) - H (Teclado Esquerdo)
@@ -111,7 +111,7 @@ public class PlayerCombat : MonoBehaviour
         StartCoroutine(ChangeActualNumber(3));
         if (!_InAttack && !InCombo && playerMove.GetIsGrounded() && context.started && !playerStats.GetDefendedOrSuffered())
             Attack(3);
-            //Attack("HeavyAttack");
+        //Attack("HeavyAttack");
     }
 
     // Esse void identificará qual botão de golpe está sendo retornado
@@ -225,7 +225,7 @@ public class PlayerCombat : MonoBehaviour
     }
 
     IEnumerator ResetCombo_(float delay)
-    { 
+    {
         yield return new WaitForSeconds(delay);
         ordem = 0;
         timer = 0f;
@@ -244,7 +244,7 @@ public class PlayerCombat : MonoBehaviour
         return _InAttack;
     }
     public void SetInAttack(bool value)
-    { 
+    {
         _InAttack = value;
     }
     public void SetInCombo(bool value)

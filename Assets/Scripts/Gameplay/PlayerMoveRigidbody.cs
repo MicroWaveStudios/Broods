@@ -1,7 +1,9 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.VFX;
 
 public class PlayerMoveRigidbody : MonoBehaviour
 {
@@ -10,6 +12,10 @@ public class PlayerMoveRigidbody : MonoBehaviour
     PlayerStats playerStats;
     PlayerCombat playerCombat;
     PlayerInput playerInput;
+
+    [SerializeField] GameObject objFumaca;
+    VisualEffect vfxFumaca;
+    FumacaChao scrpFumaca;
 
     bool _OnJump;
     bool crouched = false;
@@ -33,6 +39,9 @@ public class PlayerMoveRigidbody : MonoBehaviour
         playerCombat = GetComponent<PlayerCombat>();
         playerStats = GetComponent<PlayerStats>();
         playerInput = GetComponent<PlayerInput>();
+
+        vfxFumaca = objFumaca.GetComponent<VisualEffect>();
+        scrpFumaca = objFumaca.GetComponent<FumacaChao>();
     }
 
     private void Update()
@@ -58,7 +67,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
                     isPlayer2 = 1;
             }
         }
-        
+
 
         if (directionX * isPlayer2 <= -1 && !playerCombat.GetInAttack() && !playerCombat.GetInCombo())
         {
@@ -74,7 +83,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
         if (jumpCount == 1 && !GetComponent<PlayerCombat>().GetInAttack() && !crouched && !playerStats.GetDefendedOrSuffered())
             rb.velocity = new Vector3(directionX * MoveForce, rb.velocity.y, rb.velocity.z);
         else
-            rb.velocity = new Vector3(rb.velocity.x ,rb.velocity.y ,rb.velocity.z);
+            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, rb.velocity.z);
         //WasPressedThisFrame() pesquisar em casa
     }
 
@@ -96,6 +105,8 @@ public class PlayerMoveRigidbody : MonoBehaviour
         if (jumpCount > 0 && !playerCombat.GetInAttack())
         {
             Jump(JumpForce);
+
+            vfxFumaca.Play();
         }
     }
     public void SetInputActive(bool value)
@@ -123,7 +134,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
         return _OnJump;
     }
     public bool GetCrouched()
-    { 
+    {
         return crouched;
     }
     public void SetCrouched(bool value)
@@ -149,7 +160,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
         otherPlayer.GetComponent<PlayerMoveRigidbody>().SetForce(force);
     }
     public void SetForce(float force)
-    { 
+    {
         MoveForceSufferAttack = force;
     }
 
@@ -163,7 +174,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
         bool value;
         if (i == 1)
             value = true;
-        else 
+        else
             value = false;
 
         otherPlayer = GameObject.FindGameObjectWithTag(otherPlayerTag);
@@ -188,15 +199,19 @@ public class PlayerMoveRigidbody : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
-        { 
+        {
             _OnJump = true;
             jumpCount = 1;
+            vfxFumaca.Play();
         }
     }
-    private void OnCollisionExit(Collision collision) 
+    private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
+        {
             _OnJump = false;
+        }
+            
     }
 
     /*public void MoveForce(bool Attacked)

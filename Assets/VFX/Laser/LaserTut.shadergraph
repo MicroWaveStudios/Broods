@@ -472,10 +472,10 @@
                 "m_Id": "7ca9a1979cd94704a98bede4409bafc5"
             },
             {
-                "m_Id": "3f58025ef64c4ba5a717b98c754da5e7"
+                "m_Id": "e23ba9e77f1545838061e3e798fb05cd"
             },
             {
-                "m_Id": "e23ba9e77f1545838061e3e798fb05cd"
+                "m_Id": "3f58025ef64c4ba5a717b98c754da5e7"
             }
         ]
     },
@@ -1294,10 +1294,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": 0.0,
-            "y": 0.0,
-            "width": 0.0,
-            "height": 0.0
+            "x": 149.0,
+            "y": -56.99997329711914,
+            "width": 200.0,
+            "height": 41.0
         }
     },
     "m_Slots": [
@@ -2627,7 +2627,7 @@
     "m_Type": "UnityEditor.ShaderGraph.VFXTarget",
     "m_ObjectId": "afa96768908f42c5ac3dd3b974083177",
     "m_Lit": false,
-    "m_AlphaTest": true
+    "m_AlphaTest": false
 }
 
 {

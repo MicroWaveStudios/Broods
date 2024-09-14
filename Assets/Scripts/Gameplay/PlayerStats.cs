@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -15,13 +16,15 @@ public class PlayerStats : MonoBehaviour
     bool defendendo;
 
     [SerializeField] bool teste;
-    
 
+    VisualEffect vfxImpacto;
     private void Awake()
     {
         playerMoveRigidbody = this.GetComponent<PlayerMoveRigidbody>();
         playerCombat = this.GetComponent<PlayerCombat>();
         playerAnimator = this.GetComponent<PlayerAnimator>();
+
+        vfxImpacto = transform.GetChild(0).GetComponent<VisualEffect>();
     }
 
     private void Start()
@@ -44,7 +47,7 @@ public class PlayerStats : MonoBehaviour
             teste = false;
         }
 
-        
+
     }
 
     public void SetDefendendo(bool value)
@@ -92,6 +95,9 @@ public class PlayerStats : MonoBehaviour
                 life -= damage;
                 playerMoveRigidbody.MoveUp();
                 MoveDamage();
+
+                vfxImpacto.Play();
+
                 if (playerCombat.ordem > 0)
                 {
                     StartCoroutine(ResetScripts(0.5f));
@@ -132,13 +138,13 @@ public class PlayerStats : MonoBehaviour
 
         if (life > maxLife)
         {
-           life = maxLife;
-        }    
+            life = maxLife;
+        }
     }
 
     public void AddEnergy(float qtdEnergia)
     {
-        
+
         energy += qtdEnergia;
         if (energy > maxEnergy)
         {
