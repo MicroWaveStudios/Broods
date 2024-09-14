@@ -4,12 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameController : MonoBehaviour
 {
-    [SerializeField] float pontos1 = 0;
-    [SerializeField] float pontos2 = 0;
-
     float lifePlayer1;
     float lifePlayer2;
 
@@ -21,10 +19,15 @@ public class GameController : MonoBehaviour
     [SerializeField] Transform[] InstancePosition;
     [SerializeField] Transform mid;
     GameObject Canvas;
-    [SerializeField] Image healthBarPlayer1;
-    [SerializeField] Image healthBarPlayer2;
+    [SerializeField] Image greenBar1;
+    [SerializeField] Image redBar1;
+    [SerializeField] Image greenBar2;
+    [SerializeField] Image redBar2;
+
     [SerializeField] Slider energyBarPlayer1;
     [SerializeField] Slider energyBarPlayer2;
+    [SerializeField] GameObject winnerPanel;
+    [SerializeField] TMP_Text textPlayerWinner;
     public float distance;
     public bool ChangedSide;
 
@@ -34,11 +37,6 @@ public class GameController : MonoBehaviour
 
     [SerializeField] GameObject eventSystemManager;
     [SerializeField] GameObject PanelManager;
-
-    private void Start()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
 
     private void Update()
     {
@@ -58,9 +56,45 @@ public class GameController : MonoBehaviour
     void PlayerLife()
     {
         lifePlayer1 = Player1.GetComponent<PlayerStats>().life / Player1.GetComponent<PlayerStats>().maxLife;
+        greenBar1.fillAmount = lifePlayer1;
+        StartCoroutine(DecreaseRedBar1(lifePlayer1));
+
+
         lifePlayer2 = Player2.GetComponent<PlayerStats>().life / Player2.GetComponent<PlayerStats>().maxLife;
-        healthBarPlayer1.fillAmount = lifePlayer1;
-        healthBarPlayer2.fillAmount = lifePlayer2;
+        greenBar2.fillAmount = lifePlayer2;
+        StartCoroutine(DecreaseRedBar2(lifePlayer2));
+    }
+
+    IEnumerator DecreaseRedBar1(float lifePlayer)
+    {
+        yield return new WaitForSeconds(0.5f);
+        float redBar1Amount = redBar1.fillAmount;
+
+        while (redBar1.fillAmount > lifePlayer)
+        {
+            redBar1Amount -= Time.deltaTime * 0.25f;
+            redBar1.fillAmount = redBar1Amount;
+
+            yield return null;
+        }
+
+        redBar1.fillAmount = lifePlayer;
+    }
+
+    IEnumerator DecreaseRedBar2(float lifePlayer)
+    {
+        yield return new WaitForSeconds(0.5f);
+        float redBar2Amount = redBar2.fillAmount;
+
+        while (redBar2.fillAmount > lifePlayer)
+        {
+            redBar2Amount -= Time.deltaTime * 0.25f;
+            redBar2.fillAmount = redBar2Amount;
+
+            yield return null;
+        }
+
+        redBar2.fillAmount = lifePlayer;
     }
 
     void PlayerEnergy()
@@ -164,12 +198,42 @@ public class GameController : MonoBehaviour
         {
             Debug.Log("EMPATE");
         }
-        if (lifePlayer1 > lifePlayer2)
-            pontos1++;
-        else if (lifePlayer2 > lifePlayer1)
-            pontos2++;
+        else
+        { 
+            if (lifePlayer1 > lifePlayer2)
+                Pontos.pontosP1++;
+            else if (lifePlayer2 > lifePlayer1)
+                Pontos.pontosP2++;
 
-        SceneManager.LoadScene("Game");
+            if (Pontos.pontosP1 > 1)
+            { 
+                textPlayerWinner.text = "Player 1 Ganhou!";
+                StartCoroutine(FinishGame());
+                finishGame = true;
+            }
+            if (Pontos.pontosP2 > 1)
+            { 
+                textPlayerWinner.text = "Player 2 Ganhou!";
+                StartCoroutine(FinishGame());
+                finishGame = true;
+            }
+        }
+        if (!finishGame)
+        {
+            SceneManager.LoadScene("Game");
+        }
+    }
+
+    bool finishGame = false;
+
+    IEnumerator FinishGame()
+    {
+        Pontos.pontosP1 = 0;
+        Pontos.pontosP2 = 0;
+        winnerPanel.SetActive(true);
+        yield return new WaitForSeconds(5f);
+        DestroyPlayers();
+        SceneManager.LoadScene("Menu");
     }
 
 
