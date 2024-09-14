@@ -10887,7 +10887,7 @@ MonoBehaviour:
     m_ActionName: Player/Attack/ButtonSouth[/Keyboard/g,/Keyboard/k]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
-  m_DefaultActionMap: UI
+  m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &5825252824003833821
@@ -10903,7 +10903,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isPlayer2: 1
-  MoveForce: 2
+  MoveForce: 3
   JumpForce: 500
   ForcaEmpurrar: 120
   MoveForceSufferAttack: 0
@@ -10995,7 +10995,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6635523287152186700}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 622b94c502dd85d4aa154782f7a8e9f1, type: 3}
   m_Name: 

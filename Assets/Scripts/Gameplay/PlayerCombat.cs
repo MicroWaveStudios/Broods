@@ -233,7 +233,9 @@ public class PlayerCombat : MonoBehaviour
         actualNumber = -1;
         if (!playerStats.GetDefendedOrSuffered())
             playerAnimator.ConfirmedNotContinued();
+        yield return new WaitForSeconds(0.3f);
         _InAttack = false;
+
         StopAllCoroutines();
     }
 
