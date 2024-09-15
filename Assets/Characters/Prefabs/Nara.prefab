@@ -6834,7 +6834,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objFumaca: {fileID: 1782012500644077859}
   isPlayer2: 1
-  MoveForce: 2
+  MoveForce: 3
   JumpForce: 500
   ForcaEmpurrar: 120
   MoveForceSufferAttack: 0

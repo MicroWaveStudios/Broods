@@ -6,9 +6,10 @@ using UnityEngine.VFX;
 
 public class LaserSeguir : MonoBehaviour
 {
-    GameObject objSeguir;
-
+    public GameObject objSeguir;
+    Vector3 newPosition;
     GameObject outroPlayer;
+
 
     //[SerializeField] VisualEffect vfxLaser;
 
@@ -19,6 +20,12 @@ public class LaserSeguir : MonoBehaviour
 
     private void Awake()
     {
+
+        //vfxLaser = GetComponent<VisualEffect>();
+    }
+
+    private void Update()
+    {
         if (transform.parent.gameObject.CompareTag("Player1"))
         {
             outroPlayer = GameObject.FindGameObjectWithTag("Player2");
@@ -27,14 +34,11 @@ public class LaserSeguir : MonoBehaviour
         {
             outroPlayer = GameObject.FindGameObjectWithTag("Player1");
         }
+        if (outroPlayer != null)
+        {
 
-        //vfxLaser = GetComponent<VisualEffect>();
-
-        objSeguir = outroPlayer.transform.GetChild(2).gameObject;
-    }
-
-    private void Update()
-    {
+            objSeguir = outroPlayer.transform.GetChild(2).gameObject;
+        }
         if (transform.parent.gameObject.CompareTag("Player1"))
         {
             outroPlayer = GameObject.FindGameObjectWithTag("Player2");
@@ -52,6 +56,7 @@ public class LaserSeguir : MonoBehaviour
 
             //vfxLaser.SetFloat("Size", size);
 
+            newPosition = new Vector3(-1f, 1f, 1f);
             transform.LookAt(objSeguir.transform.position);
 
         }

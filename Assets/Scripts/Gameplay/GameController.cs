@@ -28,6 +28,10 @@ public class GameController : MonoBehaviour
     [SerializeField] Slider energyBarPlayer2;
     [SerializeField] GameObject winnerPanel;
     [SerializeField] TMP_Text textPlayerWinner;
+
+    [SerializeField] GameObject[] WinnerCountP1;
+    [SerializeField] GameObject[] WinnerCountP2;
+
     public float distance;
     public bool ChangedSide;
 
@@ -38,11 +42,29 @@ public class GameController : MonoBehaviour
     [SerializeField] GameObject eventSystemManager;
     [SerializeField] GameObject PanelManager;
 
+    PlayerInputManager playerInputManager;
+
+    private void Start()
+    {
+        playerInputManager = GetComponent<PlayerInputManager>();
+        //if (Pontos.pontosP1 != 0 || Pontos.pontosP2 != 0)
+        //{
+        //    playerInputManager.DisableJoining();
+        //}
+    }
+
     private void Update()
     {
         Canvas = GameObject.FindGameObjectWithTag("Canvas");
         Player1 = GameObject.FindGameObjectWithTag("Player1");
         Player2 = GameObject.FindGameObjectWithTag("Player2");
+
+        if (Player1 != null)
+        {
+            playerInputManager.playerPrefab = PrefabPlayer[0];
+        }
+
+
 
         if (Player1 != null && Player2 != null)
         {
@@ -50,6 +72,32 @@ public class GameController : MonoBehaviour
             MidPosition();
             PlayerLife();
             PlayerEnergy();
+        }
+        if (Pontos.pontosP1 >= 1)
+        {
+            WinnerCountP1[0].SetActive(true);
+            if (Pontos.pontosP1 == 2)
+            {
+                WinnerCountP1[1].SetActive(true);
+            }
+        }
+        if (Pontos.pontosP1 == 0)
+        {
+            WinnerCountP1[0].SetActive(false);
+            WinnerCountP1[1].SetActive(false);
+        }
+        if (Pontos.pontosP2 >= 1)
+        {
+            WinnerCountP2[0].SetActive(true);
+            if (Pontos.pontosP2 == 2)
+            {
+                WinnerCountP2[1].SetActive(true);
+            }
+        }
+        if (Pontos.pontosP2 == 0)
+        {
+            WinnerCountP2[0].SetActive(false);
+            WinnerCountP2[1].SetActive(false);
         }
     }
 
@@ -196,7 +244,7 @@ public class GameController : MonoBehaviour
     {
         if (lifePlayer1 == lifePlayer2)
         {
-            Debug.Log("EMPATE");
+            
         }
         else
         { 
@@ -232,8 +280,9 @@ public class GameController : MonoBehaviour
         Pontos.pontosP2 = 0;
         winnerPanel.SetActive(true);
         yield return new WaitForSeconds(5f);
-        DestroyPlayers();
-        SceneManager.LoadScene("Menu");
+        Pontos.pontosP1 = 0;
+        Pontos.pontosP2 = 0;
+        SceneManager.LoadScene("Game");
     }
 
 

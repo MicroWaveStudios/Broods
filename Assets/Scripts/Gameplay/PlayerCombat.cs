@@ -15,6 +15,7 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] PlayerMoveRigidbody playerMove;
     [SerializeField] PlayerAnimator playerAnimator;
     [SerializeField] PlayerStats playerStats;
+    [SerializeField] NaraSkills NaraSkills;
 
     [SerializeField] Animator anim;
 
@@ -77,7 +78,7 @@ public class PlayerCombat : MonoBehaviour
     public void LowAttack(InputAction.CallbackContext context)
     {
         StartCoroutine(ChangeActualNumber(0));
-        if (!_InAttack && !InCombo && playerMove.GetIsGrounded() && context.started && !playerStats.GetDefendedOrSuffered())
+        if (!_InAttack && !InCombo && playerMove.GetIsGrounded() && context.started && !playerStats.GetDefendedOrSuffered() && !NaraSkills.GetInMeiaLua())
             Attack(0);
         //Attack("LowAttack");
     }
@@ -88,7 +89,7 @@ public class PlayerCombat : MonoBehaviour
     public void LightAttack(InputAction.CallbackContext context)
     {
         StartCoroutine(ChangeActualNumber(1));
-        if (!_InAttack && !InCombo && playerMove.GetIsGrounded() && context.started && !playerStats.GetDefendedOrSuffered())
+        if (!_InAttack && !InCombo && playerMove.GetIsGrounded() && context.started && !playerStats.GetDefendedOrSuffered() && !NaraSkills.GetInMeiaLua())
             Attack(1);
         //Attack("LightAttack");
     }
@@ -99,7 +100,7 @@ public class PlayerCombat : MonoBehaviour
     public void MediumAttack(InputAction.CallbackContext context)
     {
         StartCoroutine(ChangeActualNumber(2));
-        if (!_InAttack && !InCombo && playerMove.GetIsGrounded() && context.started && !playerStats.GetDefendedOrSuffered())
+        if (!_InAttack && !InCombo && playerMove.GetIsGrounded() && context.started && !playerStats.GetDefendedOrSuffered() && !NaraSkills.GetInMeiaLua())
             Attack(2);
         //Attack("MediumAttack");
     }
@@ -109,7 +110,7 @@ public class PlayerCombat : MonoBehaviour
     public void HeavyAttack(InputAction.CallbackContext context)
     {
         StartCoroutine(ChangeActualNumber(3));
-        if (!_InAttack && !InCombo && playerMove.GetIsGrounded() && context.started && !playerStats.GetDefendedOrSuffered())
+        if (!_InAttack && !InCombo && playerMove.GetIsGrounded() && context.started && !playerStats.GetDefendedOrSuffered() && !NaraSkills.GetInMeiaLua())
             Attack(3);
         //Attack("HeavyAttack");
     }
@@ -221,7 +222,7 @@ public class PlayerCombat : MonoBehaviour
 
     public void ResetCombo(float delay)
     {
-        StartCoroutine(ResetCombo_(delay));
+        StartCoroutine(ResetCombo_(delay_));
     }
 
     IEnumerator ResetCombo_(float delay)
@@ -229,16 +230,33 @@ public class PlayerCombat : MonoBehaviour
         yield return new WaitForSeconds(delay);
         ordem = 0;
         timer = 0f;
-        InCombo = false;
         actualNumber = -1;
         if (!playerStats.GetDefendedOrSuffered())
             playerAnimator.ConfirmedNotContinued();
+        yield return new WaitForSeconds(0.3f);
+        InCombo = false;
         _InAttack = false;
         StopAllCoroutines();
     }
 
 
+    float delay_ = 0.2f;
+
     // Voids para POO
+    public void SetActualDelay(float value)
+    {
+        delay_ = value;
+    }
+    public void SetActualDamage(float damage)
+    {
+        attackGameObject.GetComponent<Damage>().SetDamage(damage);
+    }
+    public void SetInAttackInCombo()
+    {
+        InCombo = false;
+        _InAttack = false;
+    }
+
     public bool GetInAttack()
     {
         return _InAttack;

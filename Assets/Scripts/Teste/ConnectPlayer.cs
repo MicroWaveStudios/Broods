@@ -19,15 +19,24 @@ public class ConnectPlayer : MonoBehaviour
     GameObject connectManager;
     bool CanDoIt = false;
 
+    PlayerController controller;
+
     private void Awake()
     {
+        controller = GetComponent<PlayerController>();
         StartCoroutine(PlayerCanDoIt());
-        connectManager = GameObject.FindGameObjectWithTag("ConnectManager");
         playerInput = this.gameObject.GetComponent<PlayerInput>();
+        if (!controller.GetSceneGame())
+        { 
+            connectManager = GameObject.FindGameObjectWithTag("ConnectManager");
+        }
     }
     private void Start()
     {
-        connectManager.GetComponent<ConnectPlayerInMenu>().JoinPlayer(this.gameObject);
+        if (!controller.GetSceneGame())
+        {
+            connectManager.GetComponent<ConnectPlayerInMenu>().JoinPlayer(this.gameObject);
+        }
         DontDestroyOnLoad(this.gameObject);
     }
     public void SetupPlayer(int newPlayerID)
@@ -53,7 +62,7 @@ public class ConnectPlayer : MonoBehaviour
     {
         if (CanDoIt && controlScheme == "Keyboard" && context.started)
         {
-            connectManager.GetComponent<ConnectPlayerInMenu>().EnableSplitKeyboard();
+            //connectManager.GetComponent<ConnectPlayerInMenu>().EnableSplitKeyboard();
         }
     }
     IEnumerator PlayerCanDoIt()

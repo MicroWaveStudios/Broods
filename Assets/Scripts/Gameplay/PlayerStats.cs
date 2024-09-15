@@ -25,12 +25,13 @@ public class PlayerStats : MonoBehaviour
         playerAnimator = this.GetComponent<PlayerAnimator>();
 
         vfxImpacto = transform.GetChild(0).GetComponent<VisualEffect>();
+        //DontDestroyOnLoad(this.gameObject);
     }
 
     private void Start()
     {
         life = maxLife;
-        energy = maxEnergy;
+        energy = 0;
     }
 
     private void Update()
@@ -98,13 +99,13 @@ public class PlayerStats : MonoBehaviour
 
                 vfxImpacto.Play();
 
+                playerCombat.ResetCombo(0f);
                 if (playerCombat.ordem > 0)
                 {
                     StartCoroutine(ResetScripts(0.5f));
                 }
             }
         }
-        playerCombat.ResetCombo(0f);
         GameObject GameManager = GameObject.FindGameObjectWithTag("GameManager");
         GameManager.GetComponent<GameController>().SetTimeScale();
     }
@@ -144,7 +145,6 @@ public class PlayerStats : MonoBehaviour
 
     public void AddEnergy(float qtdEnergia)
     {
-
         energy += qtdEnergia;
         if (energy > maxEnergy)
         {

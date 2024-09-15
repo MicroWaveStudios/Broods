@@ -14,6 +14,7 @@ public class PlayerCombatEditor : Editor
     SerializedProperty playerMove;
     SerializedProperty playerAnimator;
     SerializedProperty playerStats;
+    SerializedProperty naraSkils;
 
     SerializedProperty anim;
 
@@ -31,6 +32,7 @@ public class PlayerCombatEditor : Editor
         playerMove = serializedObject.FindProperty("playerMove");
         playerAnimator = serializedObject.FindProperty("playerAnimator");
         playerStats = serializedObject.FindProperty("playerStats");
+        naraSkils = serializedObject.FindProperty("NaraSkills");
 
         anim = serializedObject.FindProperty("anim");
 
@@ -51,6 +53,7 @@ public class PlayerCombatEditor : Editor
         EditorGUILayout.PropertyField(playerMove);
         EditorGUILayout.PropertyField(playerAnimator);
         EditorGUILayout.PropertyField(playerStats);
+        EditorGUILayout.PropertyField(naraSkils);
         EditorGUILayout.PropertyField(anim);
         EditorGUILayout.PropertyField(ordemCombo);
         EditorGUILayout.PropertyField(ordem);

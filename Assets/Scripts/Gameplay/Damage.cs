@@ -15,9 +15,14 @@ public class Damage : MonoBehaviour
     }
 
     public void SetAttack(float newDamage, float newAttackRange)
-    { 
+    {
         damage = newDamage;
         attackRange = newAttackRange;
+    }
+
+    public void SetDamage(float newDamage)
+    {
+        damage = newDamage;
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -38,7 +43,7 @@ public class Damage : MonoBehaviour
             playerStats.AddEnergy(damage);
 
             otherPlayerStats.SufferDamage(damage, attackRange, this.transform.parent.gameObject);
-            otherPlayerStats.AddEnergy(damage/2);
+            otherPlayerStats.AddEnergy(damage / 2);
         }
     }
 

@@ -67,6 +67,7 @@ public class CountdownTimer : MonoBehaviour
             else
                 TxtTimerGame.text = "0" + i.ToString();
             yield return new WaitForSeconds(1f);
+            yield return new WaitUntil(() => !gameController.GetBooleanIsPaused());
         }
         gameController.GameFinished();
     }

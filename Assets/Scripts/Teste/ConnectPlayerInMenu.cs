@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class ConnectPlayerInMenu : MonoBehaviour
 {
     [Header("Player Input Manager")]
     [SerializeField] PlayerInputManager playerInputManager;
+    [SerializeField] sceneManager_Menu sceneManager;
 
     [Header("Connect Screen")]
     [SerializeField] GameObject[] PlayerMenu;
@@ -76,22 +78,28 @@ public class ConnectPlayerInMenu : MonoBehaviour
         }
     }
 
-    public void EnableSplitKeyboard()
-    {
-        DestroyPlayersInScene();
-        var p1 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 0, "KeyboardLeft", -1, Keyboard.current, Mouse.current);
-        var p2 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 1, "KeyboardRight", -1, Keyboard.current);
-    }
-    public void DestroyPlayersInScene()
-    {
-        Destroy(player[0]);
-        player[0] = null;
-        Destroy(player[1]);
-        player[1] = null;
-    }
+    //public void EnableSplitKeyboard()
+    //{
+    //    DestroyPlayersInScene();
+    //    var p1 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 0, "KeyboardLeft", -1, Keyboard.current, Mouse.current);
+    //    var p2 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 1, "KeyboardRight", -1, Keyboard.current);
+    //}
+    //public void DestroyPlayersInScene()
+    //{
+    //    Destroy(player[0]);
+    //    player[0] = null;
+    //    Destroy(player[1]);
+    //    player[1] = null;
+    //}
     public void ChangeMapAction()
     {
         player[0].GetComponent<PlayerController>().EnableMapActionPlayer();
         player[1].GetComponent<PlayerController>().EnableMapActionPlayer();
+        Invoke("ChangeScene", 1f);
+    }
+
+    void ChangeScene()
+    {
+        SceneManager.LoadScene("Game");
     }
 }
