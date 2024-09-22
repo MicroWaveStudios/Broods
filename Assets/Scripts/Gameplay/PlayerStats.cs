@@ -55,7 +55,33 @@ public class PlayerStats : MonoBehaviour
             }
             
         }
+<<<<<<< Updated upstream
         
+=======
+        else
+        {
+            if (defendendo)
+            {
+                playerAnimator.TriggerAction("Defendeu");
+            }
+            else
+            {
+                life -= damage;
+                playerMoveRigidbody.MoveUp();
+                MoveDamage();
+
+                vfxImpacto.Play();
+
+                playerCombat.ResetCombo();
+                if (playerCombat.ordem > 0)
+                {
+                    StartCoroutine(ResetScripts(0.5f));
+                }
+            }
+        }
+        GameObject GameManager = GameObject.FindGameObjectWithTag("GameManager");
+        GameManager.GetComponent<GameController>().SetTimeScale();
+>>>>>>> Stashed changes
     }
 
     public IEnumerator ResetScripts(bool damage, float delay)
