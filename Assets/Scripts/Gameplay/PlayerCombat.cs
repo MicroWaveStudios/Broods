@@ -1,49 +1,28 @@
 using System.Collections;
-<<<<<<< Updated upstream
-=======
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor.Rendering.LookDev;
->>>>>>> Stashed changes
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
-using static PlayerCombat;
 
 public class PlayerCombat : MonoBehaviour
 {
-    PlayerInputs playerInputs;
-    PlayerMoveRigidbody playerMove;
+    [SerializeField] PlayerMoveRigidbody playerMove;
+    [SerializeField] PlayerAnimator playerAnimator;
+    [SerializeField] PlayerStats playerStats;
+    [SerializeField] NaraSkills NaraSkills;
+
+    [SerializeField] Animator anim;
+
     bool _InAttack = false;
-    public bool _InCombo = false;
-
-    Animator anim;
-
-    [SerializeField] int actualNumber = 0;
+    bool InCombo = false;
+    int actualNumber = 0;
     float timer = 0f;
-<<<<<<< Updated upstream
-    [SerializeField] float delayAtaques;
-    [SerializeField] int[] ordemCombo;
-    public int ordem;
-    PlayerMoveRigidbody moveRigidbody;
-    [SerializeField] ParticleSystem[] rastrosAtaque;
 
-    private void Awake()
-    {
-        anim = transform.GetChild(0).GetComponent<Animator>();
-        playerMove = GetComponent<PlayerMoveRigidbody>();
-        moveRigidbody = GetComponent<PlayerMoveRigidbody>();
-    }
-
-=======
+    int ListaDeAtaqueAtual = -1;
+    int OrdemCombo;
 
     [SerializeField] public int ordem;
-    string actualAttackName;
-    int[] actualDamage = new int[5];
-    float[] actualAttackRange = new float[5];
-    float[] actualTimeToContinue = new float[5];
-    int[] actualOrderCombo = new int[5];
-
 
 
     [SerializeField] ParticleSystem[] rastrosAtaque;
@@ -52,19 +31,17 @@ public class PlayerCombat : MonoBehaviour
     [System.Serializable]
     public struct AttackList
     {
-        public string AttackName;
-        public int[] Damage;
-        public int[] ComboOrder;
-        public float[] TimeToContinue;
-        public int[] AttackRange; // Variavel que definirá onde o ataque acontecerá | 0 = Parte Inferior / 1 = Parte Superior / 2 = Corpo Todo \\
+        public string NomeDoAtaque;
+        public int[] AtaqueRange; // Variavel que definirá onde o ataque acontecerá | 0 = Parte Inferior / 1 = Parte Superior / 2 = Corpo Todo \\
+        public int[] Dano;
+        public int[] OrdemCombo;
+        public int[] FramesContinuar;
         public float[] MoveDamage;
     }
     [SerializeField] List<AttackList> _AttackList = new List<AttackList>();
 
->>>>>>> Stashed changes
     private void Update()
     {
-
         if (_InAttack == true)
         {
             for (int i = 0; i < rastrosAtaque.Length; i++)
@@ -81,49 +58,37 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
-    //void ActiveBooleanInAttack(bool value)
-    //{
-    //    _InAttack = value;
-    //    anim.SetBool("InAttack", value);
-    //}
-
-    public void Punch0(InputAction.CallbackContext context)
+    // Botão X / Cross (Playstation) - A (Xbox) - B (Nintendo Switch) - K (Teclado/Teclado Direito) - G (Teclado Esquerdo) 
+    // Retornará o número 0
+    public void LowAttack(InputAction.CallbackContext context)
     {
         StartCoroutine(ChangeActualNumber(0));
-<<<<<<< Updated upstream
-        if (!_InAttack && !_InCombo)
-            StartCoroutine(FirstCombo());
-=======
         if (context.started)
-        { 
+        {
             Attack(0);
         }
->>>>>>> Stashed changes
-    }
-    public void Punch1(InputAction.CallbackContext context)
-    {
-        StartCoroutine(ChangeActualNumber(1));
-<<<<<<< Updated upstream
-        if (!_InAttack && !_InCombo)
-            StartCoroutine(SecondAttack());
-=======
-        if (context.started)
-        { 
-            Attack(1);
-        }
->>>>>>> Stashed changes
-    }
-    public void Punch2(InputAction.CallbackContext context)
-    {
-        StartCoroutine(ChangeActualNumber(2));
-<<<<<<< Updated upstream
-        if (!_InAttack && !_InCombo)
-            StartCoroutine(ThirdAttack());
     }
 
-=======
+
+    // Botão Quadrado / Square (Playstation) - X (Xbox) - Y (Nintendo Switch) - J (Teclado/Teclado Direito) - F (Teclado Esquerdo)
+    // Retornará o número 1
+    public void LightAttack(InputAction.CallbackContext context)
+    {
+        StartCoroutine(ChangeActualNumber(1));
         if (context.started)
-        { 
+        {
+            Attack(1);
+        }
+    }
+
+
+    // Botão Triângulo / Triangle (Playstation) - Y (Xbox) - X (Nintendo Switch) - I (Teclado/Teclado Direito) - T (Teclado Esquerdo)
+    // Retornará o número 2
+    public void MediumAttack(InputAction.CallbackContext context)
+    {
+        StartCoroutine(ChangeActualNumber(2));
+        if (context.started)
+        {
             Attack(2);
         }
     }
@@ -134,13 +99,13 @@ public class PlayerCombat : MonoBehaviour
     {
         StartCoroutine(ChangeActualNumber(3));
         if (context.started)
-        { 
+        {
             Attack(3);
         }
     }
->>>>>>> Stashed changes
 
-
+    // Esse void identificará qual botão de golpe está sendo retornado
+    // 0 = SouthButton / 1 = WestButton / 2 = NorthButton / 3 = EastButton
     public IEnumerator ChangeActualNumber(int number)
     {
         actualNumber = number;
@@ -148,53 +113,30 @@ public class PlayerCombat : MonoBehaviour
         actualNumber = -1;
         yield break;
     }
-
-<<<<<<< Updated upstream
-    IEnumerator FirstAttack()
-    {
-        anim.SetTrigger("Punch0");
-        _InAttack = true;
-        yield return new WaitForSeconds(0.3f);
-    }
-    IEnumerator SecondAttack()
-    {
-        _InAttack = true;
-        anim.SetTrigger("Punch1");
-        yield return new WaitForSeconds(1.28f);
-        _InAttack = false;
-    }
-
-    IEnumerator ThirdAttack()
-=======
-
     void Attack(int numberAttack)
     {
-        if (!InCombo && !_InAttack && playerMove.GetIsGrounded() && !playerStats.GetDefendedOrSuffered() && !NaraSkills.GetInMeiaLua())
+        if (!_InAttack && !InCombo && playerMove.GetIsGrounded() && !playerStats.GetDefendedOrSuffered() && !NaraSkills.GetInMeiaLua() && ListaDeAtaqueAtual == -1)
         {
-            _InAttack = true;
-            actualAttackName = _AttackList[numberAttack].AttackName;
-            playerAnimator.TriggerAction(actualAttackName);
-            for (int i = 0; i < _AttackList[numberAttack].ComboOrder.Length; i++)
+            if (playerMove.GetCrouched())
             {
-                actualOrderCombo[i] = _AttackList[numberAttack].ComboOrder[i];
+                ListaDeAtaqueAtual = numberAttack + 4;
             }
-            for (int i = 0; i < _AttackList[numberAttack].Damage.Length; i++)
+            else
             {
-                actualDamage[i] = _AttackList[numberAttack].Damage[i];
+                ListaDeAtaqueAtual = numberAttack;
             }
-            for (int i = 0; i < _AttackList[numberAttack].AttackRange.Length; i++)
+            if (ListaDeAtaqueAtual < _AttackList.Count)
             {
-                actualAttackRange[i] = _AttackList[numberAttack].AttackRange[i];
-            }
-            for (int i = 0; i < _AttackList[numberAttack].TimeToContinue.Length; i++)
-            {
-                actualTimeToContinue[i] = _AttackList[numberAttack].TimeToContinue[i];
+                _InAttack = true;
+                playerAnimator.TriggerAction(_AttackList[ListaDeAtaqueAtual].NomeDoAtaque);
+
             }
             StartCoroutine(Combo());
         }
     }
 
-    // ================================================================= \\
+    // ================================================================= //
+
 
     // Mêcanica de Combo antiga \\
 
@@ -212,99 +154,51 @@ public class PlayerCombat : MonoBehaviour
 
     // ================================================================= //
 
-    public int GetOrdem()
->>>>>>> Stashed changes
-    {
-        _InAttack = true;
-        anim.SetTrigger("Punch2");
-        yield return new WaitForSeconds(1.2f);
-        _InAttack = false;
-    }
-
-<<<<<<< Updated upstream
-    IEnumerator FirstCombo()
-    {
-        yield return FirstAttack();
-        _InCombo = true;
-        yield return Continued(0.2f, ordemCombo[ordem]);
-        yield return new WaitForSeconds(0.5f);
-        yield return Continued(0.2f, ordemCombo[ordem]);
-        yield return new WaitForSeconds(1.05f);
-        yield return ResetCombo();
-        yield break;
-    }
-
-    IEnumerator Continued(float delay, int number)
-    {
-        while (timer < delay - 0.05f)
-        {
-            timer += 1 * Time.deltaTime;
-
-            if (actualNumber == number)
-            {
-                moveRigidbody.MoverAoAtacar();
-                ordem++;
-                timer = 0f;
-
-                anim.SetTrigger("Continued");
-                yield break;
-            }
-            else
-            {
-                yield return null;
-            }
-        }
-        yield return ResetCombo();
-        yield break;
-    }
-
-    public IEnumerator ResetCombo()
-    {
-        _InAttack = false;
-        anim.SetTrigger("NotContinued");
-        ordem = 0;
-        timer = 0f;
-        actualNumber = -1;
-        _InCombo = false;
-        StopAllCoroutines();
-        yield break;
-    }
-
-    public void BreakAnimation()
-    {
-        anim.SetTrigger("NotContinued");
-    }
-
-    public bool InAttack()
-=======
     IEnumerator Combo()
     {
-        yield return Continue(actualTimeToContinue[ordem]);
-    }
-
-    IEnumerator Continue(float delay)
-    {
-        yield return new WaitForSeconds(0.02f);
+        if (ListaDeAtaqueAtual >= _AttackList.Count)
+        {
+            ResetCombo();
+            yield break;
+        }
+        attackGameObject.GetComponent<Damage>().SetAttack(_AttackList[ListaDeAtaqueAtual].Dano[ordem], _AttackList[ListaDeAtaqueAtual].AtaqueRange[ordem], true);
+        yield return new WaitForSeconds(0.01f);
         InCombo = true;
-        yield return new WaitForSeconds(delay);
-        while (timer < 0.2 && !playerStats.GetDefendedOrSuffered() && ordem < actualOrderCombo.Length)
+        yield return StartCoroutine(WaitForFrames(_AttackList[ListaDeAtaqueAtual].FramesContinuar[ordem]));
+    }
+    IEnumerator ContinuarCombo()
+    {
+        while (timer < 0.2f && !playerStats.GetDefendedOrSuffered() && ordem < _AttackList[ListaDeAtaqueAtual].OrdemCombo.Length)
         {
             timer += 1 * Time.deltaTime;
-            if (actualNumber == actualOrderCombo[ordem])
+            if (actualNumber == _AttackList[ListaDeAtaqueAtual].OrdemCombo[ordem])
             {
                 ordem++;
                 timer = 0;
-                playerAnimator.ContinuedCombo();
                 StartCoroutine(Combo());
                 yield break;
             }
             else
+            {
                 yield return null;
+            }
         }
         ResetCombo();
         yield break;
     }
 
+    public int FrameAtual;
+
+    IEnumerator WaitForFrames(int frameCount)
+    { 
+        FrameAtual = frameCount;
+        while (FrameAtual > 0) 
+        {
+            FrameAtual--;
+            yield return new WaitForEndOfFrame();
+        }
+        StartCoroutine(ContinuarCombo());
+    }
     public void ResetCombo()
     {
         StartCoroutine(ResetCombo_());
@@ -312,46 +206,40 @@ public class PlayerCombat : MonoBehaviour
 
     IEnumerator ResetCombo_()
     {
-        actualAttackName = null;
+        ListaDeAtaqueAtual = -1;
         ordem = 0;
         timer = 0f;
         actualNumber = -1;
-        //if (!playerStats.GetDefendedOrSuffered())
-        //    playerAnimator.NotContinued();
         yield return new WaitForSeconds(0.3f);
         _InAttack = false;
         yield return new WaitForSeconds(0.2f);
         InCombo = false;
-        //StopAllCoroutines();
-        yield break;
     }
 
     // Voids para POO
-    public void SetActualDamage(float damage)
+    public float GetAtualOrdemCombo()
     {
-        attackGameObject.GetComponent<Damage>().SetDamage(damage);
+        return ordem;
     }
     public void SetInAttackInCombo()
     {
         InCombo = false;
         _InAttack = false;
     }
-    public float GetOrderCombo()
-    {
-        return ordem;
-    }
     public bool GetInAttack()
->>>>>>> Stashed changes
     {
         return _InAttack;
     }
-    public bool InCombo()
+    public void SetInAttack(bool value)
     {
-        return _InCombo;
+        _InAttack = value;
     }
-
-    public void HitAnimation()
+    public void SetInCombo(bool value)
     {
-        anim.SetTrigger("Hit");
+        InCombo = value;
+    }
+    public bool GetInCombo()
+    {
+        return InCombo;
     }
 }

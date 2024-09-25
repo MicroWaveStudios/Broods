@@ -2,14 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.VFX;
 
 public class NaraSkills : MonoBehaviour
 {
     int actualNumber = -1;
-    
+
+    [SerializeField] GameObject attackGameObject;
 
     PlayerMoveRigidbody scrpRigidbody;
     PlayerStats scrpPlayerStats;
+    PlayerAnimator playerAnimator;
+    PlayerCombat playerCombat;
     GameObject outroPlayer;
     float timer;
     
@@ -22,9 +26,9 @@ public class NaraSkills : MonoBehaviour
     [Header("Skill Laser")]
     [SerializeField] float custoLaser;
     [SerializeField] float danoLaser;
-    [SerializeField] GameObject objLaser;
     [SerializeField] int[] ordemComboLaser;
-    LaserPosition laser;
+    GameObject objLaser;
+    VisualEffect vfxLaser;
     int ordemLaser = 0;
 
     [Header("Tarticos")]
@@ -34,19 +38,26 @@ public class NaraSkills : MonoBehaviour
     public int tarticosContagem = 0;
     int ordemTarticos = 0;
 
+    [Header("Explosao")]
+    [SerializeField] float custoExplosao;
+    [SerializeField] float danoExplosao;
+    [SerializeField] int rangeExplosao;
+    //[SerializeField] int[] ordemComboExplosao;
+    [SerializeField] VisualEffect vfxExplosao;
+    //int ordemExplosao = 0;
+
     private void Awake()
     {
         scrpRigidbody = GetComponent<PlayerMoveRigidbody>();
-        //objLaser = GameObject.FindGameObjectWithTag("Laser");
-        laser = objLaser.GetComponent<LaserPosition>();
+        playerCombat = GetComponent<PlayerCombat>();
+        playerAnimator = GetComponent<PlayerAnimator>();
+        objLaser = transform.GetChild(1).gameObject;
+        vfxLaser = objLaser.GetComponent<VisualEffect>();
         scrpPlayerStats = GetComponent<PlayerStats>();
-        //tarticos = GameObject.FindGameObjectsWithTag("Tartico");
     }
 
     private void Update()
     {
-        
-        
         if (this.gameObject.CompareTag("Player1"))
         {
             outroPlayer = GameObject.FindGameObjectWithTag("Player2");
@@ -56,10 +67,14 @@ public class NaraSkills : MonoBehaviour
             outroPlayer = GameObject.FindGameObjectWithTag("Player1");
         }
 
+
         if (outroPlayer != null)
         {
             posicaoRaycastPlayer2 = new Vector3(outroPlayer.transform.position.x + 0.5f, outroPlayer.transform.position.y + 1.3f, outroPlayer.transform.position.z);
+
+            //Debug.DrawLine(posicaoRaycast, outroPlayer.transform.position, Color.red);
         }
+
 
 
         posicaoRaycast = new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z);
@@ -70,7 +85,6 @@ public class NaraSkills : MonoBehaviour
         if (!InMeiaLua)
         {
             StartCoroutine(ConfirmacaoSkill(0.2f, 10));
-            InMeiaLua = true;
         }
         
             
@@ -86,10 +100,21 @@ public class NaraSkills : MonoBehaviour
         if (context.ReadValue<Vector2>().x * scrpRigidbody.isPlayer2 > 0)
             StartCoroutine(ChangeActualNumber(2));
     }
-    public void MeiaLuaAtaque(InputAction.CallbackContext context)
+    public void MeiaLuaAtaqueLeve(InputAction.CallbackContext context)
     {
         StartCoroutine(ChangeActualNumber(3));
     }
+
+    public void PoderExplosao(InputAction.CallbackContext context)
+    {
+        if (context.started)
+            StartCoroutine(SkillExplosao());
+    }
+
+    //public void MeiaLuaAtaqueForte(InputAction.CallbackContext context)
+    //{
+    //    StartCoroutine(ChangeActualNumber(4));
+    //}
 
     //public void Tartico(InputAction.CallbackContext context)
     //{
@@ -109,7 +134,7 @@ public class NaraSkills : MonoBehaviour
     IEnumerator MeiaLuaLaser()
     {
         yield return Continued(0.2f, ordemComboLaser[ordemLaser]);
-        ordemLaser++;
+        ordemLaser = 1;
         yield return Continued(0.2f, ordemComboLaser[ordemLaser]);
         yield return SkillLaser();
         yield return ResetCombo();
@@ -119,12 +144,22 @@ public class NaraSkills : MonoBehaviour
     IEnumerator MeiaLuaTarticos()
     {
         yield return Continued(0.2f, ordemComboTarticos[ordemTarticos]);
-        ordemTarticos++;
+        ordemTarticos = 1;
         yield return Continued(0.2f, ordemComboTarticos[ordemTarticos]);
         yield return SkillTartico();
         yield return ResetCombo();
         yield break;
     }
+
+    //IEnumerator MeiaLuaExplosao()
+    //{
+    //    yield return Continued(0.2f, ordemComboExplosao[ordemExplosao]);
+    //    ordemTarticos++;
+    //    yield return Continued(0.2f, ordemComboExplosao[ordemExplosao]);
+    //    yield return SkillExplosao();
+    //    yield return ResetCombo();
+    //    yield break;
+    //}
 
     IEnumerator Continued(float delay, int number)
     {
@@ -147,63 +182,70 @@ public class NaraSkills : MonoBehaviour
         yield break;
     }
 
-    void Meditar()
-    {
-        scrpPlayerStats.AddEnergy(15);
-    }
+    //void Meditar()
+    //{
+    //    scrpPlayerStats.AddEnergy(15);
+    //}
 
     IEnumerator SkillLaser()
     {
         
         if (scrpPlayerStats.energy < custoLaser)
         {
-            Debug.Log("Sem Energia");
+            //Debug.Log("Sem Energia");
             yield break;
         }
 
-        Vector3 NovaPosicaoOutroPlayer = outroPlayer.transform.position;       
+        Vector3 NovaPosicaoOutroPlayer = outroPlayer.transform.position;
+
+        playerCombat.SetInAttack(true);
+
+        playerAnimator.TriggerAction("Laser");
 
         yield return new WaitForSeconds(0.2f);     
 
         RaycastHit hit;
 
-        StartCoroutine(scrpPlayerStats.ResetScripts(false, 0.5f));
+        StartCoroutine(scrpPlayerStats.ResetScripts(0.5f));
 
-        laser.StartLaser(this.gameObject);
+        vfxLaser.Play();
 
-        for (int i = 0; i < tarticos.Length; i++)
-        {
-            if (tarticos[i].activeSelf == true)
-            {
-                tarticos[i].transform.LookAt(posicaoRaycastPlayer2);
-                tarticos[i].GetComponent<Tarticos>().Laser();             
-            }           
-        }
+        //for (int i = 0; i < tarticos.Length; i++)
+        //{
+        //    if (tarticos[i].activeSelf == true)
+        //    {
+        //        tarticos[i].transform.LookAt(posicaoRaycastPlayer2);
+        //        tarticos[i].GetComponent<Tarticos>().Laser();             
+        //    }           
+        //}
 
-        Physics.Raycast(posicaoRaycast, NovaPosicaoOutroPlayer, out hit, 4f);
-
-        scrpPlayerStats.UsouSkill(custoLaser);
+        Physics.Raycast(posicaoRaycast, NovaPosicaoOutroPlayer, out hit, 7f);
 
         
 
+        scrpPlayerStats.UsouSkill(custoLaser);
+
         if (hit.collider != null)
         {
-            
 
             GameObject Player2 = hit.collider.gameObject;
 
             if (Player2.GetComponent<PlayerStats>() != null)
             {
-                Player2.GetComponent<PlayerStats>().SufferDamage(danoLaser);
-                Player2.GetComponent<PlayerStats>().AddEnergy(danoLaser/2);
+                
+                Player2.GetComponent<PlayerStats>().SufferDamage(danoLaser, 2, this.gameObject);
+                Player2.GetComponent<PlayerStats>().AddEnergy(danoLaser / 2);
             }                    
         }
         else
         {
-            Debug.Log("Não foi");
+            //Debug.Log("Não foi");
         }
 
         yield return new WaitForSeconds(1f);
+
+        playerCombat.SetInAttack(false);
+        yield return ResetCombo();
         yield break;
     }
 
@@ -211,28 +253,61 @@ public class NaraSkills : MonoBehaviour
     {
         if (scrpPlayerStats.energy < custoTartico)
         {
-            Debug.Log("Sem Energia");
+            //Debug.Log("Sem Energia");
             yield break;
         }
 
         if (tarticosContagem >= 5)
         {
-            Debug.Log("Transcendido");
+            //Debug.Log("Transcendido");
             yield break;
         }
 
+
         tarticos[tarticosContagem].SetActive(true);
+
+        playerCombat.SetInAttack(true);
 
         tarticosContagem++;
 
         danoLaser += tarticosContagem;
 
-        Debug.Log(danoLaser);
+        //Debug.Log(danoLaser);
 
         scrpPlayerStats.UsouSkill(custoTartico);
 
+        playerAnimator.TriggerAction("Tartico");
+
         yield return new WaitForSeconds(1f);
 
+        playerCombat.SetInAttack(false);
+        yield return ResetCombo();
+        yield break;
+    }
+
+    IEnumerator SkillExplosao()
+    {
+        if (scrpPlayerStats.energy < custoExplosao)
+        {
+            //Debug.Log("Sem Energia");
+            yield break;
+        }
+
+        playerCombat.SetInAttack(true);
+
+        attackGameObject.GetComponent<Damage>().SetAttack(danoExplosao, rangeExplosao, false);
+
+        scrpPlayerStats.UsouSkill(custoExplosao);
+
+        playerAnimator.TriggerAction("Kaboom");
+
+        yield return new WaitForSeconds(0.3f);
+
+        vfxExplosao.Play();
+
+        yield return new WaitForSeconds(0.5f);
+
+        playerCombat.SetInAttack(false);
         yield return ResetCombo();
         yield break;
     }
@@ -260,6 +335,7 @@ public class NaraSkills : MonoBehaviour
             {
                 StartCoroutine(MeiaLuaLaser());
                 timer = 0f;
+                InMeiaLua = true;
                 yield break;
             }
             else
@@ -268,6 +344,7 @@ public class NaraSkills : MonoBehaviour
                 {
                     StartCoroutine(MeiaLuaTarticos());
                     timer = 0f;
+                    InMeiaLua = true;
                     yield break;
                 }
 
@@ -275,8 +352,13 @@ public class NaraSkills : MonoBehaviour
             }
         }
 
-        Meditar();
+        //Meditar();
         yield return ResetCombo();
         yield break;
+    }
+
+    public bool GetInMeiaLua()
+    {
+        return InMeiaLua;
     }
 }

@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameController : MonoBehaviour
 {
-    float pontos1 = 0;
-    float pontos2 = 0;
-
+    float lifePlayer1;
+    float lifePlayer2;
 
     GameObject Player1;
     GameObject Player2;
@@ -19,10 +19,19 @@ public class GameController : MonoBehaviour
     [SerializeField] Transform[] InstancePosition;
     [SerializeField] Transform mid;
     GameObject Canvas;
-    Image healthBarPlayer1;
-    Image healthBarPlayer2;
+    [SerializeField] Image greenBar1;
+    [SerializeField] Image redBar1;
+    [SerializeField] Image greenBar2;
+    [SerializeField] Image redBar2;
+
     [SerializeField] Slider energyBarPlayer1;
     [SerializeField] Slider energyBarPlayer2;
+    [SerializeField] GameObject winnerPanel;
+    [SerializeField] TMP_Text textPlayerWinner;
+
+    [SerializeField] GameObject[] WinnerCountP1;
+    [SerializeField] GameObject[] WinnerCountP2;
+
     public float distance;
     public bool ChangedSide;
 
@@ -35,16 +44,27 @@ public class GameController : MonoBehaviour
 
     PlayerInputManager playerInputManager;
 
-    private void Awake()
+    private void Start()
     {
         playerInputManager = GetComponent<PlayerInputManager>();
+        //if (Pontos.pontosP1 != 0 || Pontos.pontosP2 != 0)
+        //{
+        //    playerInputManager.DisableJoining();
+        //}
     }
-    
+
     private void Update()
     {
         Canvas = GameObject.FindGameObjectWithTag("Canvas");
         Player1 = GameObject.FindGameObjectWithTag("Player1");
         Player2 = GameObject.FindGameObjectWithTag("Player2");
+
+        if (Player1 != null)
+        {
+            playerInputManager.playerPrefab = PrefabPlayer[0];
+        }
+
+
 
         if (Player1 != null && Player2 != null)
         {
@@ -53,38 +73,76 @@ public class GameController : MonoBehaviour
             PlayerLife();
             PlayerEnergy();
         }
-
-        //if (Player1 == null || Player2 == null)
-        //{
-        //    if (Player1 == null)
-        //    {
-        //        pontos2++;
-        //        PlayerPrefs.SetFloat("pontosPlayer2", pontos2);
-        //    }
-
-        //    if (Player2 == null)
-        //    {
-        //        pontos1++;
-        //        PlayerPrefs.SetFloat("pontosPlayer1", pontos1);
-        //    }
-
-        //    MudarRodada();
-        //}
-
-        //if (PlayerPrefs.GetFloat("pontosPlayer1") == 2f || PlayerPrefs.GetFloat("pontosPlayer2") == 2f)
-        //{
-        //    Acabou();
-        //}
+        if (Pontos.pontosP1 >= 1)
+        {
+            WinnerCountP1[0].SetActive(true);
+            if (Pontos.pontosP1 == 2)
+            {
+                WinnerCountP1[1].SetActive(true);
+            }
+        }
+        if (Pontos.pontosP1 == 0)
+        {
+            WinnerCountP1[0].SetActive(false);
+            WinnerCountP1[1].SetActive(false);
+        }
+        if (Pontos.pontosP2 >= 1)
+        {
+            WinnerCountP2[0].SetActive(true);
+            if (Pontos.pontosP2 == 2)
+            {
+                WinnerCountP2[1].SetActive(true);
+            }
+        }
+        if (Pontos.pontosP2 == 0)
+        {
+            WinnerCountP2[0].SetActive(false);
+            WinnerCountP2[1].SetActive(false);
+        }
     }
 
     void PlayerLife()
     {
-        float lifePlayer1 = Player1.GetComponent<PlayerStats>().life / Player1.GetComponent<PlayerStats>().maxLife;
-        float lifePlayer2 = Player2.GetComponent<PlayerStats>().life / Player2.GetComponent<PlayerStats>().maxLife;
-        healthBarPlayer1 = Canvas.transform.GetChild(0).GetChild(0).GetComponent<Image>();
-        healthBarPlayer2 = Canvas.transform.GetChild(1).GetChild(0).GetComponent<Image>();
-        healthBarPlayer1.fillAmount = lifePlayer1;
-        healthBarPlayer2.fillAmount = lifePlayer2;
+        lifePlayer1 = Player1.GetComponent<PlayerStats>().life / Player1.GetComponent<PlayerStats>().maxLife;
+        greenBar1.fillAmount = lifePlayer1;
+        StartCoroutine(DecreaseRedBar1(lifePlayer1));
+
+
+        lifePlayer2 = Player2.GetComponent<PlayerStats>().life / Player2.GetComponent<PlayerStats>().maxLife;
+        greenBar2.fillAmount = lifePlayer2;
+        StartCoroutine(DecreaseRedBar2(lifePlayer2));
+    }
+
+    IEnumerator DecreaseRedBar1(float lifePlayer)
+    {
+        yield return new WaitForSeconds(0.5f);
+        float redBar1Amount = redBar1.fillAmount;
+
+        while (redBar1.fillAmount > lifePlayer)
+        {
+            redBar1Amount -= Time.deltaTime * 0.25f;
+            redBar1.fillAmount = redBar1Amount;
+
+            yield return null;
+        }
+
+        redBar1.fillAmount = lifePlayer;
+    }
+
+    IEnumerator DecreaseRedBar2(float lifePlayer)
+    {
+        yield return new WaitForSeconds(0.5f);
+        float redBar2Amount = redBar2.fillAmount;
+
+        while (redBar2.fillAmount > lifePlayer)
+        {
+            redBar2Amount -= Time.deltaTime * 0.25f;
+            redBar2.fillAmount = redBar2Amount;
+
+            yield return null;
+        }
+
+        redBar2.fillAmount = lifePlayer;
     }
 
     void PlayerEnergy()
@@ -116,7 +174,7 @@ public class GameController : MonoBehaviour
     void MidPosition()
     {
         distance = Vector3.Distance(PlayerLeft.position, PlayerRight.position)/2f;
-        mid.position = new Vector3(PlayerLeft.position.x + distance, 1.5f, mid.position.z);
+        mid.position = new Vector3(PlayerLeft.position.x + distance, mid.position.y, mid.position.z);
     }
 
     public void Pause(GameObject newFocusedPlayer, bool value)
@@ -169,15 +227,6 @@ public class GameController : MonoBehaviour
     {
         return isPaused;
     }
-
-    public void MudarRodada()
-    {
-        SceneManager.LoadScene(12);
-
-        Debug.Log(PlayerPrefs.GetFloat("A " + "pontosPlayer1"));
-        Debug.Log(PlayerPrefs.GetFloat("B " + "pontosPlayer2"));
-    }
-
     public void Acabou()
     {
         SceneManager.LoadScene(1);
@@ -189,5 +238,69 @@ public class GameController : MonoBehaviour
         Player1 = null;
         Destroy(Player2);
         Player2 = null;
+    }
+
+    public void GameFinished()
+    {
+        if (lifePlayer1 == lifePlayer2)
+        {
+            
+        }
+        else
+        { 
+            if (lifePlayer1 > lifePlayer2)
+                Pontos.pontosP1++;
+            else if (lifePlayer2 > lifePlayer1)
+                Pontos.pontosP2++;
+
+            if (Pontos.pontosP1 > 1)
+            { 
+                textPlayerWinner.text = "Player 1 Ganhou!";
+                StartCoroutine(FinishGame());
+                finishGame = true;
+            }
+            if (Pontos.pontosP2 > 1)
+            { 
+                textPlayerWinner.text = "Player 2 Ganhou!";
+                StartCoroutine(FinishGame());
+                finishGame = true;
+            }
+        }
+        if (!finishGame)
+        {
+            SceneManager.LoadScene("Game");
+        }
+    }
+
+    bool finishGame = false;
+
+    IEnumerator FinishGame()
+    {
+        Pontos.pontosP1 = 0;
+        Pontos.pontosP2 = 0;
+        winnerPanel.SetActive(true);
+        yield return new WaitForSeconds(5f);
+        Pontos.pontosP1 = 0;
+        Pontos.pontosP2 = 0;
+        SceneManager.LoadScene("Game");
+    }
+
+
+
+    public void SetTimeScale()
+    {
+        //StartCoroutine(ChangeTimeScale());
+    }
+    IEnumerator ChangeTimeScale()
+    {
+        yield return new WaitForSeconds(0.1f);
+        float speedP1 = Player1.GetComponent<Animator>().speed;
+        float speedP2 = Player2.GetComponent<Animator>().speed;
+        Player1.GetComponent<Animator>().speed = 0f;
+        Player2.GetComponent<Animator>().speed = 0f;
+        yield return new WaitForSeconds(0.2f);
+        Player1.GetComponent<Animator>().speed = speedP1;
+        Player2.GetComponent<Animator>().speed = speedP2;
+        yield break;
     }
 }

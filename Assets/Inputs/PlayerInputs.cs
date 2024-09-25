@@ -46,6 +46,15 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Attack/ButtonSouth"",
+                    ""type"": ""Button"",
+                    ""id"": ""7a657395-28cb-4273-9ad5-f18655bf800e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Tap"",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Attack/ButtonWest"",
                     ""type"": ""Button"",
                     ""id"": ""807660a5-be81-455a-aef4-da9336548668"",
@@ -97,6 +106,15 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Special"",
+                    ""type"": ""Button"",
+                    ""id"": ""644fb18b-b04d-4c6c-9f15-fa5ec3ade69c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Tap"",
                     ""initialStateCheck"": false
                 }
             ],
@@ -422,66 +440,22 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""f19abc8f-cba8-4995-beb9-67c8d0b363f6"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""KeyboardLeft"",
-                    ""action"": ""EnterGame"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""eacda1fc-2f4d-485e-a67d-2c3e6c5eccfa"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""KeyboardLeft"",
-                    ""action"": ""EnterGame"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""532415ed-fb5c-4326-95de-7504559d7b90"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""KeyboardLeft"",
-                    ""action"": ""EnterGame"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""8be8323c-b3c1-46b9-8a52-189c19c14176"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""KeyboardLeft"",
-                    ""action"": ""EnterGame"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""db4aedae-e95f-4494-b173-4623458df174"",
-                    ""path"": ""<Keyboard>/upArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""KeyboardRight"",
-                    ""action"": ""EnterGame"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""6ff579d4-6999-4de2-8514-fb61b0d0a014"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
+                    ""action"": ""EnterGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c94d708e-8d17-4bce-9f85-2bc88f7b1fe1"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""EnterGame"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -522,13 +496,112 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""e8c1d0a1-ba95-45ba-b3f4-533a5cd69798"",
-                    ""path"": ""<Keyboard>/v"",
+                    ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5a6ca224-bfb5-4596-b9b5-10f3e6a4ccab"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Attack/ButtonSouth"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4660e8ee-2e15-4b08-9a1b-8d6d9fd5aedb"",
+                    ""path"": ""<Keyboard>/g"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardLeft"",
+                    ""action"": ""Attack/ButtonSouth"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4a35215f-8ba8-4526-a1b9-b371e28d1e56"",
+                    ""path"": ""<Keyboard>/k"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardRight;Keyboard"",
+                    ""action"": ""Attack/ButtonSouth"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Q / E"",
+                    ""id"": ""5dc86cd5-f9c5-4bd9-93e0-53165e410489"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Special"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""3b47eb0e-e5f7-406f-be01-77d416beb890"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Special"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""e4fd3a4a-9020-490a-ba08-cb2d0f6c8a9f"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Special"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""LB / RB"",
+                    ""id"": ""47a90923-ae3e-4cbb-b4c4-9c5a8be56a5c"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Special"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""5dd1e09b-7061-4391-b5f5-4b9af86bf972"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Special"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""04d27e5b-423a-4416-9d4f-74fbc7d9428d"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Special"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         },
@@ -691,7 +764,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""d04d89d8-4885-4261-be52-0623de9de2ed"",
-                    ""path"": ""<Keyboard>/v"",
+                    ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
@@ -1159,12 +1232,14 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_AttackButtonNorth = m_Player.FindAction("Attack/ButtonNorth", throwIfNotFound: true);
+        m_Player_AttackButtonSouth = m_Player.FindAction("Attack/ButtonSouth", throwIfNotFound: true);
         m_Player_AttackButtonWest = m_Player.FindAction("Attack/ButtonWest", throwIfNotFound: true);
         m_Player_AttackButtonEast = m_Player.FindAction("Attack/ButtonEast", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Crounched = m_Player.FindAction("Crounched", throwIfNotFound: true);
         m_Player_EnterGame = m_Player.FindAction("EnterGame", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
+        m_Player_Special = m_Player.FindAction("Special", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1241,24 +1316,28 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_AttackButtonNorth;
+    private readonly InputAction m_Player_AttackButtonSouth;
     private readonly InputAction m_Player_AttackButtonWest;
     private readonly InputAction m_Player_AttackButtonEast;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Crounched;
     private readonly InputAction m_Player_EnterGame;
     private readonly InputAction m_Player_Pause;
+    private readonly InputAction m_Player_Special;
     public struct PlayerActions
     {
         private @PlayerInputs m_Wrapper;
         public PlayerActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @AttackButtonNorth => m_Wrapper.m_Player_AttackButtonNorth;
+        public InputAction @AttackButtonSouth => m_Wrapper.m_Player_AttackButtonSouth;
         public InputAction @AttackButtonWest => m_Wrapper.m_Player_AttackButtonWest;
         public InputAction @AttackButtonEast => m_Wrapper.m_Player_AttackButtonEast;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Crounched => m_Wrapper.m_Player_Crounched;
         public InputAction @EnterGame => m_Wrapper.m_Player_EnterGame;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
+        public InputAction @Special => m_Wrapper.m_Player_Special;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1274,6 +1353,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @AttackButtonNorth.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttackButtonNorth;
                 @AttackButtonNorth.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttackButtonNorth;
                 @AttackButtonNorth.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttackButtonNorth;
+                @AttackButtonSouth.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttackButtonSouth;
+                @AttackButtonSouth.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttackButtonSouth;
+                @AttackButtonSouth.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttackButtonSouth;
                 @AttackButtonWest.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttackButtonWest;
                 @AttackButtonWest.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttackButtonWest;
                 @AttackButtonWest.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttackButtonWest;
@@ -1292,6 +1374,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @Special.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpecial;
+                @Special.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpecial;
+                @Special.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSpecial;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1302,6 +1387,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @AttackButtonNorth.started += instance.OnAttackButtonNorth;
                 @AttackButtonNorth.performed += instance.OnAttackButtonNorth;
                 @AttackButtonNorth.canceled += instance.OnAttackButtonNorth;
+                @AttackButtonSouth.started += instance.OnAttackButtonSouth;
+                @AttackButtonSouth.performed += instance.OnAttackButtonSouth;
+                @AttackButtonSouth.canceled += instance.OnAttackButtonSouth;
                 @AttackButtonWest.started += instance.OnAttackButtonWest;
                 @AttackButtonWest.performed += instance.OnAttackButtonWest;
                 @AttackButtonWest.canceled += instance.OnAttackButtonWest;
@@ -1320,6 +1408,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
+                @Special.started += instance.OnSpecial;
+                @Special.performed += instance.OnSpecial;
+                @Special.canceled += instance.OnSpecial;
             }
         }
     }
@@ -1493,12 +1584,14 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnAttackButtonNorth(InputAction.CallbackContext context);
+        void OnAttackButtonSouth(InputAction.CallbackContext context);
         void OnAttackButtonWest(InputAction.CallbackContext context);
         void OnAttackButtonEast(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnCrounched(InputAction.CallbackContext context);
         void OnEnterGame(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnSpecial(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

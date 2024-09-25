@@ -11,6 +11,7 @@ public class ConnectPlayer : MonoBehaviour
     PlayerInput playerInput;
     public string controlScheme; //Mapa de ação utilizado pelo player
     public string deviceName; //dispositivo do player
+    public string rawPathName;
 
     [Header("Device Display Settings")]
     public DeviceDisplayConfigurator deviceDisplaySettings;
@@ -18,15 +19,24 @@ public class ConnectPlayer : MonoBehaviour
     GameObject connectManager;
     bool CanDoIt = false;
 
+    PlayerController controller;
+
     private void Awake()
     {
+        controller = GetComponent<PlayerController>();
         StartCoroutine(PlayerCanDoIt());
-        connectManager = GameObject.FindGameObjectWithTag("ConnectManager");
         playerInput = this.gameObject.GetComponent<PlayerInput>();
+        if (!controller.GetSceneGame())
+        { 
+            connectManager = GameObject.FindGameObjectWithTag("ConnectManager");
+        }
     }
     private void Start()
     {
-        connectManager.GetComponent<ConnectPlayerInMenu>().JoinPlayer(this.gameObject);
+        if (!controller.GetSceneGame())
+        {
+            connectManager.GetComponent<ConnectPlayerInMenu>().JoinPlayer(this.gameObject);
+        }
         DontDestroyOnLoad(this.gameObject);
     }
     public void SetupPlayer(int newPlayerID)
@@ -52,7 +62,7 @@ public class ConnectPlayer : MonoBehaviour
     {
         if (CanDoIt && controlScheme == "Keyboard" && context.started)
         {
-            connectManager.GetComponent<ConnectPlayerInMenu>().EnableSplitKeyboard();
+            //connectManager.GetComponent<ConnectPlayerInMenu>().EnableSplitKeyboard();
         }
     }
     IEnumerator PlayerCanDoIt()
@@ -62,4 +72,16 @@ public class ConnectPlayer : MonoBehaviour
         yield break;
     }
 
+    public int GetPlayerID()
+    { 
+        return playerID;
+    }
+    public string GetControlScheme()
+    { 
+        return controlScheme;
+    }
+    public string GetDeviceName()
+    { 
+        return deviceName;
+    }
 }

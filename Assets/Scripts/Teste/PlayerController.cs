@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        scene = Scene.Connect;
+        scene = Scene.Game;
     }
 
     private void Update()
@@ -59,6 +59,7 @@ public class PlayerController : MonoBehaviour
     {
         playerInput.SwitchCurrentActionMap(actionMapPlayer);
         scene = Scene.Game;
+        Debug.Log(playerInput.currentActionMap);
     }
     public void EnableMapActionUI()
     {
@@ -73,5 +74,16 @@ public class PlayerController : MonoBehaviour
     {
         if (scene == Scene.Game)
             gameManager.GetComponent<GameController>().Pause(this.gameObject, false);
+    }
+    public bool GetSceneGame()
+    {
+        if (scene == Scene.Game)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

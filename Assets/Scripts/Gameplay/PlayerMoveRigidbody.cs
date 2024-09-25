@@ -1,39 +1,37 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.VFX;
 
 public class PlayerMoveRigidbody : MonoBehaviour
 {
-    //private PlayerInputs playerInputs;
-    //private InputAction move;
-
-    //Animator anim;
-
-    //GameObject player1;
-
-    private Rigidbody rb;
-    public float directionX;
-    [SerializeField] float moveForce;
-    GameController gameController;
+    Rigidbody rb;
+    float directionX;
     PlayerStats playerStats;
     PlayerCombat playerCombat;
-    [SerializeField] float jumpForce;
-    [SerializeField] Transform GroundCheck;
-    [SerializeField] LayerMask ground;
     PlayerInput playerInput;
 
-    [SerializeField] bool InAttack = false;
+    [SerializeField] GameObject objFumaca;
+    VisualEffect vfxFumaca;
+    FumacaChao scrpFumaca;
+
     bool _OnJump;
     bool crouched = false;
+
+    string otherPlayerTag;
 
     public float isPlayer2 = 1;
     int jumpCount;
 
-    [SerializeField] float forcaEmpurrar;
-    //[SerializeField] float forcaEmpurrarAtacar;
+    [Header("Forces")]
+    [SerializeField] float MoveForce;
+    [SerializeField] float JumpForce;
+    [SerializeField] float ForcaEmpurrar;
 
     GameObject gameManager;
+    GameController gameController;
 
     private void Awake()
     {
@@ -41,6 +39,9 @@ public class PlayerMoveRigidbody : MonoBehaviour
         playerCombat = GetComponent<PlayerCombat>();
         playerStats = GetComponent<PlayerStats>();
         playerInput = GetComponent<PlayerInput>();
+
+        vfxFumaca = objFumaca.GetComponent<VisualEffect>();
+        scrpFumaca = objFumaca.GetComponent<FumacaChao>();
     }
 
     private void Update()
@@ -51,6 +52,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
             gameController = gameManager.GetComponent<GameController>();
             if (this.gameObject.CompareTag("Player2"))
             {
+                otherPlayerTag = "Player1";
                 if (gameController.ChangedSide)
                     isPlayer2 = 1;
                 else
@@ -58,6 +60,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
             }
             else
             {
+                otherPlayerTag = "Player2";
                 if (gameController.ChangedSide)
                     isPlayer2 = -1;
                 else
@@ -65,22 +68,30 @@ public class PlayerMoveRigidbody : MonoBehaviour
             }
         }
 
-        if (directionX * isPlayer2 <= -1)
+
+        if (directionX * isPlayer2 <= -1 && !playerCombat.GetInAttack() && !playerCombat.GetInCombo())
         {
-            playerStats.defendendo = true;
-            //Debug.Log("Defendendo");
+            playerStats.SetDefendendo(true);
         }
         else
         {
-            playerStats.defendendo = false;
+            playerStats.SetDefendendo(false);
         }
     }
     private void FixedUpdate()
     {
-        if (jumpCount == 1 && !InAttack && !crouched)
-            rb.velocity = new Vector3(directionX * moveForce, rb.velocity.y, rb.velocity.z);
+        if (jumpCount == 1 && !GetComponent<PlayerCombat>().GetInAttack() && !crouched && !playerStats.GetDefendedOrSuffered())
+        { 
+            rb.velocity = new Vector3(directionX * MoveForce, rb.velocity.y, rb.velocity.z);
+        }
+        else if (jumpCount == 0)
+        {
+            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, rb.velocity.z);
+        }
         else
-            rb.velocity = new Vector3(rb.velocity.x ,rb.velocity.y ,rb.velocity.z);
+        {
+            rb.velocity = new Vector3(0f, rb.velocity.y, rb.velocity.z);
+        }
         //WasPressedThisFrame() pesquisar em casa
     }
 
@@ -91,7 +102,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
 
     public void OnCrouch(InputAction.CallbackContext context)
     {
-        if (jumpCount == 1 && context.performed && !playerCombat.InAttack())
+        if (jumpCount == 1 && context.performed && !playerCombat.GetInAttack())
             crouched = true;
         else if (jumpCount == 0 || context.canceled)
             crouched = false;
@@ -99,11 +110,11 @@ public class PlayerMoveRigidbody : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (jumpCount > 0 && !playerCombat.InAttack())
-        { 
-            rb.AddForce(Vector3.up * jumpForce);
-            GetComponent<PlayerAnimator>().Jump();
-            jumpCount--;
+        if (jumpCount > 0 && !playerCombat.GetInAttack())
+        {
+            Jump(JumpForce);
+
+            vfxFumaca.Play();
         }
     }
     public void SetInputActive(bool value)
@@ -119,37 +130,96 @@ public class PlayerMoveRigidbody : MonoBehaviour
         }
     }
 
-    public bool IsGrounded()
+    public void Jump(float force)
+    {
+        rb.AddForce(Vector3.zero);
+        rb.AddForce(Vector3.up * force);
+        jumpCount--;
+    }
+
+    public bool GetIsGrounded()
     {
         return _OnJump;
     }
-    public bool IsCrouched()
-    { 
+    public bool GetCrouched()
+    {
         return crouched;
     }
-
-    public void MoverAoAtacar()
+    public void SetCrouched(bool value)
     {
-        rb.AddForce(Vector3.right * forcaEmpurrar * isPlayer2);
+        crouched = value;
+    }
+    public void MoverAoAtacar(float MoverAoAtacar_)
+    {
+        rb.AddForce(Vector3.zero);
+        rb.AddForce(Vector3.right * MoverAoAtacar_ * isPlayer2);
+        SetOtherPlayerForce(MoverAoAtacar_);
+    }
+
+    GameObject otherPlayer;
+
+    [SerializeField] float MoveForceSufferAttack;
+
+    [SerializeField] bool moveUp = false;
+
+    public void SetOtherPlayerForce(float force)
+    {
+        otherPlayer = GameObject.FindGameObjectWithTag(otherPlayerTag);
+        otherPlayer.GetComponent<PlayerMoveRigidbody>().SetForce(force);
+    }
+    public void SetForce(float force)
+    {
+        MoveForceSufferAttack = force;
+    }
+
+    public void SetMoveUp(bool value)
+    {
+        moveUp = value;
+    }
+
+    public void MoveUpOtherPlayer(int i)
+    {
+        bool value;
+        if (i == 1)
+            value = true;
+        else
+            value = false;
+
+        otherPlayer = GameObject.FindGameObjectWithTag(otherPlayerTag);
+        otherPlayer.GetComponent<PlayerMoveRigidbody>().SetMoveUp(value);
+    }
+
+    public void MoveUp()
+    {
+        if (moveUp)
+            Jump(MoveForceSufferAttack);
     }
 
     public void MoverAoLevarDano()
     {
-        rb.AddForce(Vector3.left * forcaEmpurrar * isPlayer2);
+        if (!moveUp)
+        {
+            rb.AddForce(Vector3.zero);
+            rb.AddForce(Vector3.left * MoveForceSufferAttack * 3 * isPlayer2);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
-        { 
+        {
             _OnJump = true;
             jumpCount = 1;
+            vfxFumaca.Play();
         }
     }
-    private void OnCollisionExit(Collision collision) 
+    private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
+        {
             _OnJump = false;
+        }
+            
     }
 
     /*public void MoveForce(bool Attacked)
