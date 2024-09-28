@@ -23,35 +23,11 @@ public class PlayerAnimator : MonoBehaviour
         anim.SetBool("Crouched", playerMoveRigidbody.GetCrouched());
         anim.SetBool("InCombo", playerCombat.GetInCombo());
         anim.SetBool("InAttack", playerCombat.GetInAttack());
+        anim.SetFloat("OrdemCombo", playerCombat.GetAtualOrdemCombo() + 1f);
     }
 
     public void TriggerAction(string AttackName)
     {
         anim.SetTrigger(AttackName);
-    }
-    public void ContinueCombo(int number)
-    {
-        playerCombat.ContinueCombo(number);
-    }
-    public void ConfirmedContinuedCombo()
-    { 
-        anim.SetTrigger("Continued");
-    }
-    public void NotContinued()
-    {
-        playerCombat.ResetCombo(0f);
-    }
-    public void ConfirmedNotContinued()
-    {
-        anim.SetTrigger("NotContinued");
-    }
-    public void FinishedAttack()
-    {
-        anim.SetTrigger("NotContinued");
-        playerCombat.ResetCombo(0f);
-    }
-    public void ResetAttack()
-    {
-        playerCombat.SetInAttack(false);
     }
 }

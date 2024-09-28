@@ -7,7 +7,8 @@ using UnityEngine.VFX;
 public class NaraSkills : MonoBehaviour
 {
     int actualNumber = -1;
-    
+
+    [SerializeField] GameObject attackGameObject;
 
     PlayerMoveRigidbody scrpRigidbody;
     PlayerStats scrpPlayerStats;
@@ -39,6 +40,8 @@ public class NaraSkills : MonoBehaviour
 
     [Header("Explosao")]
     [SerializeField] float custoExplosao;
+    [SerializeField] float danoExplosao;
+    [SerializeField] int rangeExplosao;
     //[SerializeField] int[] ordemComboExplosao;
     [SerializeField] VisualEffect vfxExplosao;
     //int ordemExplosao = 0;
@@ -55,8 +58,6 @@ public class NaraSkills : MonoBehaviour
 
     private void Update()
     {
-        
-
         if (this.gameObject.CompareTag("Player1"))
         {
             outroPlayer = GameObject.FindGameObjectWithTag("Player2");
@@ -71,7 +72,7 @@ public class NaraSkills : MonoBehaviour
         {
             posicaoRaycastPlayer2 = new Vector3(outroPlayer.transform.position.x + 0.5f, outroPlayer.transform.position.y + 1.3f, outroPlayer.transform.position.z);
 
-            Debug.DrawLine(posicaoRaycast, outroPlayer.transform.position, Color.red);
+            //Debug.DrawLine(posicaoRaycast, outroPlayer.transform.position, Color.red);
         }
 
 
@@ -233,7 +234,7 @@ public class NaraSkills : MonoBehaviour
             {
                 
                 Player2.GetComponent<PlayerStats>().SufferDamage(danoLaser, 2, this.gameObject);
-                Player2.GetComponent<PlayerStats>().AddEnergy(danoLaser/2);
+                Player2.GetComponent<PlayerStats>().AddEnergy(danoLaser / 2);
             }                    
         }
         else
@@ -294,6 +295,8 @@ public class NaraSkills : MonoBehaviour
 
         playerCombat.SetInAttack(true);
 
+        attackGameObject.GetComponent<Damage>().SetAttack(danoExplosao, rangeExplosao, false);
+
         scrpPlayerStats.UsouSkill(custoExplosao);
 
         playerAnimator.TriggerAction("Kaboom");
@@ -302,7 +305,7 @@ public class NaraSkills : MonoBehaviour
 
         vfxExplosao.Play();
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         playerCombat.SetInAttack(false);
         yield return ResetCombo();

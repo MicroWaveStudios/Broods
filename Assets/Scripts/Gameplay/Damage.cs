@@ -8,17 +8,18 @@ public class Damage : MonoBehaviour
 
     [SerializeField] float damage;
     [SerializeField] float attackRange;
-    int divisaoEnergia = 1;
+    bool addEnergy;
 
     private void Awake()
     {
         playerStats = transform.parent.GetComponent<PlayerStats>();
     }
 
-    public void SetAttack(float newDamage, float newAttackRange)
+    public void SetAttack(float newDamage, float newAttackRange, bool newAddEnergy)
     {
         damage = newDamage;
         attackRange = newAttackRange;
+        addEnergy = newAddEnergy;
     }
 
     public void SetDamage(float newDamage)
@@ -41,22 +42,13 @@ public class Damage : MonoBehaviour
                 playerStats = GameObject.FindGameObjectWithTag("Player2").GetComponent<PlayerStats>();
             }
 
-            if(otherPlayerStats.GetDefendendo() == true)
+            if (addEnergy)
             {
-                divisaoEnergia = 4;         
-            }
-            else
-            {
-                divisaoEnergia = 1;
+                playerStats.AddEnergy(damage);
             }
 
-            playerStats.AddEnergy(damage / divisaoEnergia);
-            otherPlayerStats.AddEnergy(damage / divisaoEnergia * 2);
             otherPlayerStats.SufferDamage(damage, attackRange, this.transform.parent.gameObject);
-
-
-
-
+            otherPlayerStats.AddEnergy(damage / 2);
         }
     }
 
