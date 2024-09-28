@@ -18,6 +18,7 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] bool teste;
 
     VisualEffect vfxImpacto;
+    VisualEffect vfxDefesa;
     private void Awake()
     {
         playerMoveRigidbody = this.GetComponent<PlayerMoveRigidbody>();
@@ -25,6 +26,7 @@ public class PlayerStats : MonoBehaviour
         playerAnimator = this.GetComponent<PlayerAnimator>();
 
         vfxImpacto = transform.GetChild(0).GetComponent<VisualEffect>();
+        vfxDefesa = transform.GetChild(8).GetComponent<VisualEffect>();
         //DontDestroyOnLoad(this.gameObject);
     }
 
@@ -90,6 +92,8 @@ public class PlayerStats : MonoBehaviour
             if (defendendo)
             {
                 playerAnimator.TriggerAction("Defendeu");
+
+                vfxDefesa.Play();
             }
             else
             {
