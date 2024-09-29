@@ -43,13 +43,10 @@ public class GameController : MonoBehaviour
     [SerializeField] GameObject PanelManager;
 
     PlayerInputManager playerInputManager;
-    PersonagensManager personagensManager;
 
     private void Start()
     {
-        personagensManager = GetComponent<PersonagensManager>();
         playerInputManager = GetComponent<PlayerInputManager>();
-
         //if (Pontos.pontosP1 != 0 || Pontos.pontosP2 != 0)
         //{
         //    playerInputManager.DisableJoining();
@@ -64,8 +61,10 @@ public class GameController : MonoBehaviour
 
         if (Player1 != null)
         {
-            playerInputManager.playerPrefab = PrefabPlayer[personagensManager.indexPersonagem1];
+            playerInputManager.playerPrefab = PrefabPlayer[0];
         }
+
+
 
         if (Player1 != null && Player2 != null)
         {
