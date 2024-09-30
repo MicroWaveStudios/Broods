@@ -47,6 +47,7 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         playerInputManager = GetComponent<PlayerInputManager>();
+
         //if (Pontos.pontosP1 != 0 || Pontos.pontosP2 != 0)
         //{
         //    playerInputManager.DisableJoining();
@@ -63,8 +64,6 @@ public class GameController : MonoBehaviour
         {
             playerInputManager.playerPrefab = PrefabPlayer[0];
         }
-
-
 
         if (Player1 != null && Player2 != null)
         {
