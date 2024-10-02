@@ -2898,7 +2898,7 @@ MonoBehaviour:
   life: 0
   maxLife: 100
   damageMultiplier: 0
-  maxEnergy: 10
+  maxEnergy: 15
   energy: 0
   defendendo: 0
   defendeu: 0

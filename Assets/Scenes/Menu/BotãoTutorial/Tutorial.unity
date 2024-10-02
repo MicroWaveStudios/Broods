@@ -206,7 +206,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &11419857
 MonoBehaviour:
@@ -427,7 +427,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Ande para Frente
+  m_text: D - Ande para Frente
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c08d2beccd65cc24898f2568477464f6, type: 2}
   m_sharedMaterial: {fileID: -3573398107632926605, guid: c08d2beccd65cc24898f2568477464f6, type: 2}
@@ -573,7 +573,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Fa\xE7a um ataque leve"
+  m_text: "J - Fa\xE7a um ataque leve"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c08d2beccd65cc24898f2568477464f6, type: 2}
   m_sharedMaterial: {fileID: -3573398107632926605, guid: c08d2beccd65cc24898f2568477464f6, type: 2}
@@ -842,7 +842,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Pule
+  m_text: W - Pule
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c08d2beccd65cc24898f2568477464f6, type: 2}
   m_sharedMaterial: {fileID: -3573398107632926605, guid: c08d2beccd65cc24898f2568477464f6, type: 2}
@@ -919,6 +919,71 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 659558508}
   m_CullTransparentMesh: 1
+--- !u!1001 &821349639
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: dc2af877bcc279b458a7ec26067f84df, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dc2af877bcc279b458a7ec26067f84df, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6366
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dc2af877bcc279b458a7ec26067f84df, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dc2af877bcc279b458a7ec26067f84df, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.16139603
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dc2af877bcc279b458a7ec26067f84df, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 7.3
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dc2af877bcc279b458a7ec26067f84df, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dc2af877bcc279b458a7ec26067f84df, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dc2af877bcc279b458a7ec26067f84df, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dc2af877bcc279b458a7ec26067f84df, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dc2af877bcc279b458a7ec26067f84df, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dc2af877bcc279b458a7ec26067f84df, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: dc2af877bcc279b458a7ec26067f84df, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: dc2af877bcc279b458a7ec26067f84df, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2cb37e3da042e0e4781efbfaf8d84881, type: 2}
+    - target: {fileID: 919132149155446097, guid: dc2af877bcc279b458a7ec26067f84df, type: 3}
+      propertyPath: m_Name
+      value: cenario-treino (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dc2af877bcc279b458a7ec26067f84df, type: 3}
 --- !u!1 &953803311
 GameObject:
   m_ObjectHideFlags: 0
@@ -1247,7 +1312,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Fa\xE7a um ataque pesado"
+  m_text: "L - Fa\xE7a um ataque pesado"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c08d2beccd65cc24898f2568477464f6, type: 2}
   m_sharedMaterial: {fileID: -3573398107632926605, guid: c08d2beccd65cc24898f2568477464f6, type: 2}
@@ -1699,7 +1764,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1543341450706339045, guid: ac06cef3dead19b4c9e97f5a3211992e, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1543341450706339045, guid: ac06cef3dead19b4c9e97f5a3211992e, type: 3}
       propertyPath: m_LocalScale.z
@@ -1864,7 +1929,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!114 &1336376874
 MonoBehaviour:
@@ -1944,7 +2009,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Fa\xE7a um ataque m\xE9dio"
+  m_text: "I - Fa\xE7a um ataque m\xE9dio"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c08d2beccd65cc24898f2568477464f6, type: 2}
   m_sharedMaterial: {fileID: -3573398107632926605, guid: c08d2beccd65cc24898f2568477464f6, type: 2}
@@ -2114,7 +2179,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6159176544576339363, guid: 6e0e975df5265ee4f8d65c428d1f3e66, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6159176544576339363, guid: 6e0e975df5265ee4f8d65c428d1f3e66, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2382,7 +2447,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1741340578
 MonoBehaviour:
@@ -2431,7 +2496,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6295414256745156598, guid: 6ae38b9c128d93748b30d3cef5189263, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6295414256745156598, guid: 6ae38b9c128d93748b30d3cef5189263, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2579,7 +2644,7 @@ RectTransform:
   - {fileID: 1937321424}
   - {fileID: 1437681053}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2720,7 +2785,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Fa\xE7a um ataque baixo"
+  m_text: "K - Fa\xE7a um ataque baixo"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c08d2beccd65cc24898f2568477464f6, type: 2}
   m_sharedMaterial: {fileID: -3573398107632926605, guid: c08d2beccd65cc24898f2568477464f6, type: 2}
@@ -2869,7 +2934,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1914435223
 AudioSource:
@@ -3104,7 +3169,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Agache
+  m_text: S - Agache
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c08d2beccd65cc24898f2568477464f6, type: 2}
   m_sharedMaterial: {fileID: -3573398107632926605, guid: c08d2beccd65cc24898f2568477464f6, type: 2}
@@ -3374,7 +3439,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Ande para Tr\xE1s"
+  m_text: "A - Ande para Tr\xE1s"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c08d2beccd65cc24898f2568477464f6, type: 2}
   m_sharedMaterial: {fileID: -3573398107632926605, guid: c08d2beccd65cc24898f2568477464f6, type: 2}
