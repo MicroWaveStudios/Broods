@@ -13,6 +13,7 @@ public class PlayerStats : MonoBehaviour
     PlayerMoveRigidbody playerMoveRigidbody;
     PlayerCombat playerCombat;
     PlayerAnimator playerAnimator;
+    GameController scrpGameController;
     public bool defendendo;
 
     public bool defendeu;
@@ -21,14 +22,15 @@ public class PlayerStats : MonoBehaviour
 
     [SerializeField] bool teste;
 
-    VisualEffect vfxImpacto;
+    [SerializeField] VisualEffect vfxImpacto;
+    [SerializeField] VisualEffect vfxDefesa;
     private void Awake()
     {
         playerMoveRigidbody = this.GetComponent<PlayerMoveRigidbody>();
         playerCombat = this.GetComponent<PlayerCombat>();
         playerAnimator = this.GetComponent<PlayerAnimator>();
 
-        vfxImpacto = transform.GetChild(0).GetComponent<VisualEffect>();
+        scrpGameController = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameController>();
     }
 
     private void Start()
@@ -41,8 +43,7 @@ public class PlayerStats : MonoBehaviour
     {
         if (life <= 0f)
         {
-            GameObject gameController = GameObject.FindGameObjectWithTag("GameManager");
-            gameController.GetComponent<GameController>().GameFinished();
+            scrpGameController.GameFinished();
         }
         if (teste == true)
         {
@@ -74,16 +75,23 @@ public class PlayerStats : MonoBehaviour
         playerAnimator.TriggerAction("TomouDano");
     }
 
+    public void CounterParry(GameObject otherPlayer)
+    {
+        playerAnimator.TriggerAction("PerryContinuacao");
+        otherPlayer.GetComponent<PlayerStats>().SufferDamage(10, 3, 10, null);
+    }
+
     public void SufferDamage(float damage, float attackRange, float moveDamage, GameObject otherPlayer)
     {
         StartCoroutine(SetDefended());
-        if (playerCombat.GetInAttack() || playerCombat.GetInCombo())
+        if (playerCombat.GetInAttack() && otherPlayer != null || playerCombat.GetInCombo() && otherPlayer != null)
         {
             MoveDamage();
             otherPlayer.GetComponent<PlayerStats>().MoveDamage();
         }
         else
         {
+
             switch (attackRange)
             {
                 case 0:
@@ -122,19 +130,30 @@ public class PlayerStats : MonoBehaviour
             }
             if (!defendeu)
             {
-                life -= damage;
-                playerAnimator.TriggerAction("TomouDano");
-                playerMoveRigidbody.MoveUp();
-                MoveDamage();
+                if (playerCombat.GetInParry() == true)
+                {
+                    CounterParry(otherPlayer);
+                }
+                else
+                {
+                    life -= damage;
+                    playerAnimator.TriggerAction("TomouDano");
+                    playerMoveRigidbody.MoveUp();
+                    MoveDamage();
 
-                vfxImpacto.Play();
+                    vfxImpacto.Play();
 
-                playerCombat.ResetCombo();
-                StartCoroutine(ResetScripts(0.5f));
+                    playerCombat.ResetCombo();
+                    StartCoroutine(ResetScripts(0.5f));
+                }
+            }
+            else
+            {
+                vfxDefesa.Play();
             }
         }
-        GameObject GameManager = GameObject.FindGameObjectWithTag("GameManager");
-        GameManager.GetComponent<GameController>().SetTimeScale();
+
+        scrpGameController.SetTimeScale();
     }
 
 
@@ -183,5 +202,18 @@ public class PlayerStats : MonoBehaviour
     public bool GetXimas()
     {
         return Ximas;
+    }
+
+    public bool GetEnergyFull()
+    {
+        if (energy >= maxEnergy)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+
     }
 }

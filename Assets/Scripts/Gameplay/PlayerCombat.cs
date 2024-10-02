@@ -15,6 +15,8 @@ public class PlayerCombat : MonoBehaviour
 
     bool _InAttack = false;
     bool InCombo = false;
+    bool InParry = false;
+    bool InMeiaLua = false;
     int actualNumber = 0;
     float timer = 0f;
 
@@ -271,5 +273,23 @@ public class PlayerCombat : MonoBehaviour
     public bool GetAtacouBaixo()
     {
         return atacouBaixo;
+    }
+
+    public void SetInParry(bool value)
+    {
+        InParry = value;
+    }
+    public bool GetInParry()
+    {
+        return InParry;
+    }
+
+    public void SetInMeiaLua(bool value)
+    {
+        InMeiaLua = value;
+    }
+    public bool GetInMeiaLua()
+    {
+        return InMeiaLua;
     }
 }
