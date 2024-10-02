@@ -113,7 +113,7 @@ public class PersonagensManager : MonoBehaviour
         int tag = player + 1;
         GameObject playerGameObject = GameObject.FindGameObjectWithTag("Player" + tag);
         playerGameObject.GetComponent<ConnectPlayer>().SetarPersonagem(indexPersonagem[player]);
-        Debug.Log("player " + tag + " selecionou o personagem " + indexPersonagem[player]);
+        //Debug.Log("player " + tag + " selecionou o personagem " + indexPersonagem[player]);
     }
     #endregion
 

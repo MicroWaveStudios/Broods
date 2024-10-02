@@ -24,6 +24,8 @@ public class GameController : MonoBehaviour
     [SerializeField] Image greenBar2;
     [SerializeField] Image redBar2;
 
+    [SerializeField] GameObject[] BarraJogador;
+
     [SerializeField] Slider energyBarPlayer1;
     [SerializeField] Slider energyBarPlayer2;
     [SerializeField] GameObject winnerPanel;
@@ -52,6 +54,9 @@ public class GameController : MonoBehaviour
         //    playerInputManager.DisableJoining();
         //}
         InstanciarPlayer();
+        BarraJogador[0].SetActive(true);
+        BarraJogador[1].SetActive(true);
+        Pontos.cenaAtual = SceneManager.GetActiveScene().name;
     }
 
     void InstanciarPlayer()
@@ -271,10 +276,6 @@ public class GameController : MonoBehaviour
     {
         return isPaused;
     }
-    public void Acabou()
-    {
-        SceneManager.LoadScene(1);
-    }
 
     public void DestroyPlayers()
     {
@@ -312,7 +313,7 @@ public class GameController : MonoBehaviour
         }
         if (!finishGame)
         {
-            SceneManager.LoadScene("Game");
+            SceneManager.LoadScene(Pontos.cenaAtual);
         }
     }
 
@@ -320,13 +321,16 @@ public class GameController : MonoBehaviour
 
     IEnumerator FinishGame()
     {
+        BarraJogador[0].SetActive(false);
+        BarraJogador[1].SetActive(false);
         Pontos.pontosP1 = 0;
         Pontos.pontosP2 = 0;
         winnerPanel.SetActive(true);
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2.5f);
         Pontos.pontosP1 = 0;
         Pontos.pontosP2 = 0;
-        SceneManager.LoadScene("Game");
+        yield return new WaitForSeconds(2.5f);
+        SceneManager.LoadScene("Menu");
     }
 
 

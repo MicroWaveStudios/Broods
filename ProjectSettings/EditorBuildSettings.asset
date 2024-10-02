@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Game/Game.unity
-    guid: 0b2198e2a78880d4c95231d974890e03
+    path: Assets/Scenes/Menu/Menu.unity
+    guid: def3478b175fb5e4baa40d033625d328
   - enabled: 1
     path: Assets/Scenes/Game/GameBarDoBanana.unity
     guid: 2c3c36a000481ea419d73ee795c0e6fe
@@ -15,8 +15,8 @@ EditorBuildSettings:
     path: "Assets/Scenes/Menu/Bot\xE3oJogar/Jogar.Conectar_Jogadores.unity"
     guid: 9b61ff2b97beff1468aea6c391e99cf4
   - enabled: 1
-    path: Assets/Scenes/Menu/Menu.unity
-    guid: def3478b175fb5e4baa40d033625d328
+    path: Assets/Scenes/Game/Game.unity
+    guid: 0b2198e2a78880d4c95231d974890e03
   - enabled: 1
     path: "Assets/Scenes/Menu/Bot\xE3oCampoDeTrenamento/CampoDeTreinamento.unity"
     guid: 62e8700fc6ae36740ace2e5ee705e532

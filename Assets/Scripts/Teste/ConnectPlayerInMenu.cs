@@ -32,6 +32,12 @@ public class ConnectPlayerInMenu : MonoBehaviour
     public int limitPlayer;
     public int playerInScene;
 
+    private void Start()
+    {
+        Pontos.pontosP1 = 0;
+        Pontos.pontosP2 = 0;
+    }
+
     public void ConnectDisconnectPlayer(GameObject Player, int playerID, string controlScheme, bool value)
     {
         DesactivePlayerText(playerID);
@@ -86,7 +92,7 @@ public class ConnectPlayerInMenu : MonoBehaviour
         }
     }
 
-    public void TrocarCenaGame()
+    public void TrocarCenaGame(string novaCenaAtual)
     {
         Pontos.prefabPlayer[0] = prefabPersonagens[player[0].GetComponent<ConnectPlayer>().GetNumeroPersonagem()];
         Pontos.prefabPlayer[1] = prefabPersonagens[player[1].GetComponent<ConnectPlayer>().GetNumeroPersonagem()];

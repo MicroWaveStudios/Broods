@@ -7,4 +7,5 @@ class Pontos
 
     public static GameObject[] prefabPlayer = new GameObject[2];
     public static string[] ControlSchemePlayer = new string[2];
+    public static string cenaAtual;
 }
