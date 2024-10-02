@@ -9,7 +9,7 @@ public class ConnectPlayerInMenu : MonoBehaviour
 {
     [Header("Player Input Manager")]
     [SerializeField] PlayerInputManager playerInputManager;
-    [SerializeField] Scenes sceneManager;
+    [SerializeField] sceneManager_Menu sceneManager;
 
     [Header("Connect Screen")]
     [SerializeField] GameObject[] PlayerMenu;
@@ -20,12 +20,15 @@ public class ConnectPlayerInMenu : MonoBehaviour
     [SerializeField] GameObject BackButton;
 
     [Header("Characters Screen")]
-
-
     [SerializeField] GameObject[] player;
     [SerializeField] Transform[] spawn; //Variavel para nn bugar os players ao ir para a cena jogar
 
     [SerializeField] GameObject eventSystemManager;
+
+    [Header("Prefabs")]
+    [SerializeField] GameObject[] prefabPersonagens;
+    int[] playerPersonagem;
+
     public int limitPlayer;
     public int playerInScene;
 
@@ -74,8 +77,41 @@ public class ConnectPlayerInMenu : MonoBehaviour
         if (player[0] != null && player[1] != null)
         {
             ContinueButton.SetActive(true);
+            playerInputManager.DisableJoining();
             eventSystemManager.GetComponent<EventSystemManager>().SetCurrentSelectedButton(ContinueButton);
         }
+        else
+        {
+            playerInputManager.EnableJoining();
+        }
+    }
+
+    public void TrocarCenaGame()
+    {
+        Pontos.prefabPlayer[0] = prefabPersonagens[player[0].GetComponent<ConnectPlayer>().GetNumeroPersonagem()];
+        Pontos.prefabPlayer[1] = prefabPersonagens[player[1].GetComponent<ConnectPlayer>().GetNumeroPersonagem()];
+
+        Pontos.ControlSchemePlayer[0] = player[0].GetComponent<ConnectPlayer>().GetControlScheme();
+        Pontos.ControlSchemePlayer[1] = player[1].GetComponent<ConnectPlayer>().GetControlScheme();
+
+        Pontos.prefabPlayer[0].tag = player[0].tag;
+        Pontos.prefabPlayer[1].tag = player[1].tag;
+
+        Destroy(player[0]);
+        Destroy(player[1]);
+    }
+    public void SetarPrefabPlayer(int playerAtual, int prefabIndex)
+    {
+        playerPersonagem[playerAtual] = prefabIndex;
+    }
+
+    public GameObject GetPlayer1()
+    {
+        return player[0];
+    }
+    public GameObject GetPlayer2() 
+    {
+        return player[1];
     }
 
     //public void EnableSplitKeyboard()
@@ -91,15 +127,5 @@ public class ConnectPlayerInMenu : MonoBehaviour
     //    Destroy(player[1]);
     //    player[1] = null;
     //}
-    public void ChangeMapAction()
-    {
-        player[0].GetComponent<PlayerController>().EnableMapActionPlayer();
-        player[1].GetComponent<PlayerController>().EnableMapActionPlayer();
-        Invoke("ChangeScene", 1f);
-    }
 
-    void ChangeScene()
-    {
-        SceneManager.LoadScene("Game");
-    }
 }

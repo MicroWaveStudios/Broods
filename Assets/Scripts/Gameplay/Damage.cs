@@ -8,6 +8,7 @@ public class Damage : MonoBehaviour
 
     [SerializeField] float damage;
     [SerializeField] float attackRange;
+    float moveDamage;
     bool addEnergy;
 
     private void Awake()
@@ -15,10 +16,11 @@ public class Damage : MonoBehaviour
         playerStats = transform.parent.GetComponent<PlayerStats>();
     }
 
-    public void SetAttack(float newDamage, float newAttackRange, bool newAddEnergy)
+    public void SetAttack(float newDamage, float newAttackRange, float newMoveDamage, bool newAddEnergy)
     {
         damage = newDamage;
         attackRange = newAttackRange;
+        moveDamage = newMoveDamage;
         addEnergy = newAddEnergy;
     }
 
@@ -47,7 +49,7 @@ public class Damage : MonoBehaviour
                 playerStats.AddEnergy(damage);
             }
 
-            otherPlayerStats.SufferDamage(damage, attackRange, this.transform.parent.gameObject);
+            otherPlayerStats.SufferDamage(damage, attackRange, moveDamage, this.transform.parent.gameObject);
             otherPlayerStats.AddEnergy(damage / 2);
         }
     }

@@ -232,8 +232,7 @@ public class NaraSkills : MonoBehaviour
 
             if (Player2.GetComponent<PlayerStats>() != null)
             {
-                
-                Player2.GetComponent<PlayerStats>().SufferDamage(danoLaser, 2, this.gameObject);
+                Player2.GetComponent<PlayerStats>().SufferDamage(danoLaser, 2, 20f, this.gameObject);
                 Player2.GetComponent<PlayerStats>().AddEnergy(danoLaser / 2);
             }                    
         }
@@ -295,7 +294,7 @@ public class NaraSkills : MonoBehaviour
 
         playerCombat.SetInAttack(true);
 
-        attackGameObject.GetComponent<Damage>().SetAttack(danoExplosao, rangeExplosao, false);
+        attackGameObject.GetComponent<Damage>().SetAttack(danoExplosao, rangeExplosao, 220f, false);
 
         scrpPlayerStats.UsouSkill(custoExplosao);
 

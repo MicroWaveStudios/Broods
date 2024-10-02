@@ -17,6 +17,8 @@ public class PlayerStats : MonoBehaviour
 
     public bool defendeu;
 
+    [SerializeField] bool Ximas;
+
     [SerializeField] bool teste;
 
     VisualEffect vfxImpacto;
@@ -72,7 +74,7 @@ public class PlayerStats : MonoBehaviour
         playerAnimator.TriggerAction("TomouDano");
     }
 
-    public void SufferDamage(float damage, float attackRange, GameObject otherPlayer)
+    public void SufferDamage(float damage, float attackRange, float moveDamage, GameObject otherPlayer)
     {
         StartCoroutine(SetDefended());
         if (playerCombat.GetInAttack() || playerCombat.GetInCombo())
@@ -85,7 +87,7 @@ public class PlayerStats : MonoBehaviour
             switch (attackRange)
             {
                 case 0:
-                    if (playerMoveRigidbody.GetEstaAgachado() && defendendo)
+                    if (playerMoveRigidbody.GetCrouched() && defendendo)
                     {
                         playerAnimator.TriggerAction("Defendeu");
                         defendeu = true;
@@ -96,7 +98,7 @@ public class PlayerStats : MonoBehaviour
                     }
                     break;
                 case 1:
-                    if (!playerMoveRigidbody.GetEstaAgachado() && defendendo)
+                    if (!playerMoveRigidbody.GetCrouched() && defendendo)
                     {
                         playerAnimator.TriggerAction("Defendeu");
                         defendeu = true;
@@ -176,5 +178,10 @@ public class PlayerStats : MonoBehaviour
         {
             energy = maxEnergy;
         }
+    }
+
+    public bool GetXimas()
+    {
+        return Ximas;
     }
 }

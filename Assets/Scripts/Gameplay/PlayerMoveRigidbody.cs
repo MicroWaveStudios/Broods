@@ -17,7 +17,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
     VisualEffect vfxFumaca;
     FumacaChao scrpFumaca;
 
-    public bool noChao;
+    bool noChao;
     bool crouched = false;
 
     string otherPlayerTag;
@@ -137,16 +137,11 @@ public class PlayerMoveRigidbody : MonoBehaviour
         jumpCount--;
     }
 
-    public float GetDirecaoX()
-    {
-        return directionX;
-    }
-
-    public bool GetNoChao()
+    public bool GetIsGrounded()
     {
         return noChao;
     }
-    public bool GetEstaAgachado()
+    public bool GetCrouched()
     {
         return crouched;
     }
@@ -154,11 +149,10 @@ public class PlayerMoveRigidbody : MonoBehaviour
     {
         crouched = value;
     }
-
     public void MoverAoAtacar(float MoverAoAtacar_)
     {
         rb.AddForce(Vector3.zero);
-        rb.AddForce(Vector3.right * MoverAoAtacar_ * isPlayer2);
+        rb.AddForce(Vector3.right * MoverAoAtacar_ * 2 * isPlayer2);
         SetOtherPlayerForce(MoverAoAtacar_);
     }
 
@@ -170,8 +164,18 @@ public class PlayerMoveRigidbody : MonoBehaviour
 
     public void SetOtherPlayerForce(float force)
     {
-        otherPlayer = GameObject.FindGameObjectWithTag(otherPlayerTag);
-        otherPlayer.GetComponent<PlayerMoveRigidbody>().SetForce(force);
+        if (this.gameObject.CompareTag("Player2"))
+        {
+            otherPlayerTag = "Player1";
+            
+        }
+        else
+        {
+            otherPlayerTag = "Player2";
+            
+        }
+        //otherPlayer = GameObject.FindGameObjectWithTag(otherPlayerTag);
+        //otherPlayer.GetComponent<PlayerMoveRigidbody>().SetForce(force);
     }
     public void SetForce(float force)
     {
@@ -206,7 +210,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
         if (!moveUp)
         {
             rb.AddForce(Vector3.zero);
-            rb.AddForce(Vector3.left * MoveForceSufferAttack * 3 * isPlayer2);
+            rb.AddForce(Vector3.left * MoveForceSufferAttack * isPlayer2);
         }
     }
 
@@ -225,8 +229,23 @@ public class PlayerMoveRigidbody : MonoBehaviour
         {
             noChao = false;
         }
+            
     }
 
+
+    public float GetDirecaoX()
+    {
+        return directionX;
+    }
+
+    public bool GetNoChao()
+    {
+        return noChao;
+    }
+    public bool GetEstaAgachado()
+    {
+        return crouched;
+    }
     /*public void MoveForce(bool Attacked)
     {
         float intensidade = 1f;

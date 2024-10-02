@@ -12,9 +12,19 @@ public class EventSystemManager : MonoBehaviour
 
     public void SetCurrentSelectedButton(GameObject newSelectedButton)
     {
+        StartCoroutine(SelectedButton(newSelectedButton));
+        //eventSystem.SetSelectedGameObject(newSelectedButton);
+        //eventSystem.firstSelectedGameObject = newSelectedButton;
+        //Button newSelectable = newSelectedButton.GetComponent<Button>();
+        //newSelectable.Select();
+        //newSelectable.OnSelect(null);
+    }
+    IEnumerator SelectedButton(GameObject newSelectedButton)
+    {
+        yield return new WaitForSeconds(0.2f);
         eventSystem.SetSelectedGameObject(newSelectedButton);
+        eventSystem.firstSelectedGameObject = newSelectedButton;
         Button newSelectable = newSelectedButton.GetComponent<Button>();
         newSelectable.Select();
-        //newSelectable.OnSelect(null);
     }
 }

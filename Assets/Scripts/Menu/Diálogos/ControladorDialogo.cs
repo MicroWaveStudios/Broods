@@ -39,9 +39,9 @@ public class ControladorDialogo : MonoBehaviour
         textoComAnimacao = FindObjectOfType<AnimacaoTexto>();
         dialogueUI = FindObjectOfType<Dialogo_UI>();
         somTexto = FindObjectOfType<AudioSource>();
-        playerMove = FindObjectOfType<PlayerMoveRigidbody>();
-        playerStats = FindObjectOfType<PlayerStats>();
-        playerCombat = FindObjectOfType<PlayerCombat>();
+        playerMove = GameObject.FindGameObjectWithTag("Player1").GetComponent<PlayerMoveRigidbody>();
+        playerStats = GameObject.FindGameObjectWithTag("Player1").GetComponent<PlayerStats>();
+        playerCombat = GameObject.FindGameObjectWithTag("Player1").GetComponent<PlayerCombat>();
         CaixaDialogo = dialogueUI.gameObject;
         textoComAnimacao.acabouDeEscrever = AnimacaoDeEscreverTerminou;
     }

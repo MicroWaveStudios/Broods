@@ -3,29 +3,30 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.tvOS;
 
 public class ConnectPlayer : MonoBehaviour
 {
     //PlayerID
-    public int playerID; //numero do player
+    int playerID; //numero do player
     PlayerInput playerInput;
-    public string controlScheme; //Mapa de ação utilizado pelo player
-    public string deviceName; //dispositivo do player
-    public string rawPathName;
+    string controlScheme; //Mapa de ação utilizado pelo player
+    string deviceName; //dispositivo do player
+    string rawPathName;
+    int numeroPersonagem;
+
+    Gamepad dispositivo;
 
     [Header("Device Display Settings")]
-    public DeviceDisplayConfigurator deviceDisplaySettings;
+    [SerializeField] DeviceDisplayConfigurator deviceDisplaySettings;
 
     GameObject connectManager;
     bool CanDoIt = false;
 
-    PlayerController controller;
-
     private void Awake()
     {
-        controller = GetComponent<PlayerController>();
         StartCoroutine(PlayerCanDoIt());
-        playerInput = this.gameObject.GetComponent<PlayerInput>();
+        playerInput = GetComponent<PlayerInput>();
         connectManager = GameObject.FindGameObjectWithTag("ConnectManager");
     }
     private void Start()
@@ -38,6 +39,18 @@ public class ConnectPlayer : MonoBehaviour
         playerID = newPlayerID;
         DevicePlayer();
         connectManager.GetComponent<ConnectPlayerInMenu>().ConnectDisconnectPlayer(this.gameObject, playerID, controlScheme, true);
+
+
+        //if (controlScheme == "Gamepad")
+        //{
+        //    var device = new Gamepad();
+        //    InputSystem.AddDevice(device);
+        //}
+        //else
+        //{
+        //    var device = new Keyboard();
+        //    InputSystem.AddDevice(device);
+        //}
     }
     void DevicePlayer()
     {
@@ -60,6 +73,11 @@ public class ConnectPlayer : MonoBehaviour
         }
     }
 
+    public void SetarPersonagem(int newNumeroPersonagem)
+    { 
+        numeroPersonagem = newNumeroPersonagem;
+    }
+
     IEnumerator PlayerCanDoIt()
     {
         yield return new WaitForSeconds(0.1f);
@@ -67,6 +85,10 @@ public class ConnectPlayer : MonoBehaviour
         yield break;
     }
 
+    public int GetNumeroPersonagem()
+    { 
+        return numeroPersonagem;
+    }
     public int GetPlayerID()
     { 
         return playerID;
@@ -78,5 +100,9 @@ public class ConnectPlayer : MonoBehaviour
     public string GetDeviceName()
     { 
         return deviceName;
+    }
+    public string GetDispositivo()
+    {
+        return dispositivo.ToString();
     }
 }

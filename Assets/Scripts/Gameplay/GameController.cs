@@ -47,11 +47,39 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         playerInputManager = GetComponent<PlayerInputManager>();
-
         //if (Pontos.pontosP1 != 0 || Pontos.pontosP2 != 0)
         //{
         //    playerInputManager.DisableJoining();
         //}
+        InstanciarPlayer();
+    }
+
+    void InstanciarPlayer()
+    {
+        //var p1 = PlayerInput.Instantiate(Pontos.prefabPlayer[0], 0, "Gamepad", -1, Gamepad.current);
+        //p1.tag = "Player1";
+        //var p2 = PlayerInput.Instantiate(Pontos.prefabPlayer[1], 1, "Keyboard", -1, Gamepad.current);
+        //p2.tag = "Player2";
+        if (Pontos.ControlSchemePlayer[0] == "Keyboard")
+        {
+            var p1 = PlayerInput.Instantiate(Pontos.prefabPlayer[0], 0, "Keyboard", -1, Keyboard.current, Mouse.current);
+            p1.tag = "Player1";
+        }
+        else
+        {
+            var p1 = PlayerInput.Instantiate(Pontos.prefabPlayer[0], 0, "Gamepad", -1, Gamepad.current);
+            p1.tag = "Player1";
+        }
+        if (Pontos.ControlSchemePlayer[1] == "Keyboard")
+        {
+            var p2 = PlayerInput.Instantiate(Pontos.prefabPlayer[1], 1, "Keyboard", -1, Keyboard.current, Mouse.current);
+            p2.tag = "Player2";
+        }
+        else
+        {
+            var p2 = PlayerInput.Instantiate(Pontos.prefabPlayer[1], 1, "Gamepad", -1, Gamepad.current);
+            p2.tag = "Player2";
+        }
     }
 
     private void Update()
@@ -64,6 +92,8 @@ public class GameController : MonoBehaviour
         {
             playerInputManager.playerPrefab = PrefabPlayer[0];
         }
+
+
 
         if (Player1 != null && Player2 != null)
         {
@@ -166,8 +196,23 @@ public class GameController : MonoBehaviour
             PlayerLeft = Player2.transform;
             PlayerRight = Player1.transform;
         }
-        PlayerLeft.localScale = new Vector3(1f, 1f, 1f);
-        PlayerRight.localScale = new Vector3(1f, 1f, -1f);
+
+        if (PlayerLeft.GetComponent<PlayerStats>().GetXimas())
+        {
+            PlayerLeft.localScale = new Vector3(0.009999999f, 0.01f, 0.009999999f);
+        }
+        else
+        {
+            PlayerLeft.localScale = new Vector3(1f, 1f, 1f);
+        }
+        if (PlayerRight.GetComponent<PlayerStats>().GetXimas())
+        {
+            PlayerRight.localScale = new Vector3(0.009999999f, 0.01f, -0.009999999f);
+        }
+        else
+        {
+            PlayerRight.localScale = new Vector3(1f, 1f, -1f);
+        }
     }
 
     void MidPosition()

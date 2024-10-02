@@ -40,7 +40,7 @@ public class PlayerCombat : MonoBehaviour
         public int[] AtaqueRange; // Variavel que definirá onde o ataque acontecerá | 0 = Parte Inferior / 1 = Parte Superior / 2 = Corpo Todo \\
         public int[] Dano;
         public int[] OrdemCombo;
-        public int[] FramesContinuar;
+        public float[] TimeContinuar;
         public float[] MoveDamage;
     }
     [SerializeField] List<AttackList> _AttackList = new List<AttackList>();
@@ -124,9 +124,9 @@ public class PlayerCombat : MonoBehaviour
     }
     void Attack(int numberAttack)
     {
-        if (!_InAttack && !InCombo && playerMove.GetNoChao() && !playerStats.GetDefendedOrSuffered() && !NaraSkills.GetInMeiaLua() && ListaDeAtaqueAtual == -1)
+        if (!_InAttack && !InCombo && playerMove.GetIsGrounded() && !playerStats.GetDefendedOrSuffered() && ListaDeAtaqueAtual == -1)
         {
-            if (playerMove.GetEstaAgachado())
+            if (playerMove.GetCrouched())
             {
                 ListaDeAtaqueAtual = numberAttack + 4;
             }
@@ -170,10 +170,11 @@ public class PlayerCombat : MonoBehaviour
             ResetCombo();
             yield break;
         }
-        attackGameObject.GetComponent<Damage>().SetAttack(_AttackList[ListaDeAtaqueAtual].Dano[ordem], _AttackList[ListaDeAtaqueAtual].AtaqueRange[ordem], true);
+        attackGameObject.GetComponent<Damage>().SetAttack(_AttackList[ListaDeAtaqueAtual].Dano[ordem], _AttackList[ListaDeAtaqueAtual].AtaqueRange[ordem], _AttackList[ListaDeAtaqueAtual].MoveDamage[ordem], true);
+        playerMove.MoverAoAtacar(_AttackList[ListaDeAtaqueAtual].MoveDamage[ordem]);
         yield return new WaitForSeconds(0.01f);
         InCombo = true;
-        yield return StartCoroutine(WaitForFrames(_AttackList[ListaDeAtaqueAtual].FramesContinuar[ordem]));
+        yield return StartCoroutine(WaitForFrames(_AttackList[ListaDeAtaqueAtual].TimeContinuar[ordem]));
     }
     IEnumerator ContinuarCombo()
     {
@@ -198,14 +199,15 @@ public class PlayerCombat : MonoBehaviour
 
     public int FrameAtual;
 
-    IEnumerator WaitForFrames(int frameCount)
+    IEnumerator WaitForFrames(float frameCount)
     { 
-        FrameAtual = frameCount;
-        while (FrameAtual > 0) 
-        {
-            FrameAtual--;
-            yield return new WaitForEndOfFrame();
-        }
+        //FrameAtual = frameCount;
+        //while (FrameAtual > 0) 
+        //{
+        //    FrameAtual--;
+        //    yield return new WaitForEndOfFrame();
+        //}
+        yield return new WaitForSeconds(frameCount);
         StartCoroutine(ContinuarCombo());
     }
     public void ResetCombo()
@@ -251,7 +253,6 @@ public class PlayerCombat : MonoBehaviour
     {
         return InCombo;
     }
-
     public bool GetAtacouLeve()
     {
         return atacouLeve;
