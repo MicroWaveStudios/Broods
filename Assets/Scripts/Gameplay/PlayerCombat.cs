@@ -21,6 +21,12 @@ public class PlayerCombat : MonoBehaviour
     int ListaDeAtaqueAtual = -1;
     int OrdemCombo;
 
+    bool atacouLeve;
+    bool atacouMedio;
+    bool atacouPesado;
+    bool atacouBaixo;
+    bool atacouAgachado;
+
     [SerializeField] public int ordem;
 
 
@@ -65,6 +71,7 @@ public class PlayerCombat : MonoBehaviour
         if (context.started)
         {
             Attack(0);
+            atacouBaixo = true;
         }
     }
 
@@ -77,6 +84,7 @@ public class PlayerCombat : MonoBehaviour
         if (context.started)
         {
             Attack(1);
+            atacouLeve = true;
         }
     }
 
@@ -89,6 +97,7 @@ public class PlayerCombat : MonoBehaviour
         if (context.started)
         {
             Attack(2);
+            atacouMedio = true;
         }
     }
 
@@ -100,6 +109,7 @@ public class PlayerCombat : MonoBehaviour
         if (context.started)
         {
             Attack(3);
+            atacouPesado = true;
         }
     }
 
@@ -114,9 +124,9 @@ public class PlayerCombat : MonoBehaviour
     }
     void Attack(int numberAttack)
     {
-        if (!_InAttack && !InCombo && playerMove.GetIsGrounded() && !playerStats.GetDefendedOrSuffered() && !NaraSkills.GetInMeiaLua() && ListaDeAtaqueAtual == -1)
+        if (!_InAttack && !InCombo && playerMove.GetNoChao() && !playerStats.GetDefendedOrSuffered() && !NaraSkills.GetInMeiaLua() && ListaDeAtaqueAtual == -1)
         {
-            if (playerMove.GetCrouched())
+            if (playerMove.GetEstaAgachado())
             {
                 ListaDeAtaqueAtual = numberAttack + 4;
             }
@@ -240,5 +250,25 @@ public class PlayerCombat : MonoBehaviour
     public bool GetInCombo()
     {
         return InCombo;
+    }
+
+    public bool GetAtacouLeve()
+    {
+        return atacouLeve;
+    }
+
+    public bool GetAtacouMedio()
+    {
+        return atacouMedio;
+    }
+
+    public bool GetAtacouPesado()
+    {
+        return atacouPesado;
+    }
+
+    public bool GetAtacouBaixo()
+    {
+        return atacouBaixo;
     }
 }

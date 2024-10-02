@@ -17,7 +17,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
     VisualEffect vfxFumaca;
     FumacaChao scrpFumaca;
 
-    bool _OnJump;
+    public bool noChao;
     bool crouched = false;
 
     string otherPlayerTag;
@@ -137,11 +137,16 @@ public class PlayerMoveRigidbody : MonoBehaviour
         jumpCount--;
     }
 
-    public bool GetIsGrounded()
+    public float GetDirecaoX()
     {
-        return _OnJump;
+        return directionX;
     }
-    public bool GetCrouched()
+
+    public bool GetNoChao()
+    {
+        return noChao;
+    }
+    public bool GetEstaAgachado()
     {
         return crouched;
     }
@@ -149,6 +154,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
     {
         crouched = value;
     }
+
     public void MoverAoAtacar(float MoverAoAtacar_)
     {
         rb.AddForce(Vector3.zero);
@@ -208,7 +214,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            _OnJump = true;
+            noChao = true;
             jumpCount = 1;
             vfxFumaca.Play();
         }
@@ -217,9 +223,8 @@ public class PlayerMoveRigidbody : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            _OnJump = false;
+            noChao = false;
         }
-            
     }
 
     /*public void MoveForce(bool Attacked)

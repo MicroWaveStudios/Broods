@@ -9,7 +9,7 @@ public class ConnectPlayerInMenu : MonoBehaviour
 {
     [Header("Player Input Manager")]
     [SerializeField] PlayerInputManager playerInputManager;
-    [SerializeField] sceneManager_Menu sceneManager;
+    [SerializeField] Scenes sceneManager;
 
     [Header("Connect Screen")]
     [SerializeField] GameObject[] PlayerMenu;

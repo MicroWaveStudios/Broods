@@ -16,7 +16,7 @@ public class PersonagensManager : MonoBehaviour
     //[SerializeField] GameObject poseXimas2;
     //[SerializeField] GameObject confirm2;
 
-    int[] indexPersonagem = new int[] { -1, -1};
+    int[] indexPersonagem = new int[] {-1, -1};
     bool p2PodeEscolher = false;
 
     [System.Serializable]
@@ -41,6 +41,7 @@ public class PersonagensManager : MonoBehaviour
         {
             player = 1;
         }
+
         for (int i = 0; i < ListaPose[player].posePersonagem.Length; i++)
         {
             if (ListaPose[player].posePersonagem[i].activeInHierarchy)
@@ -48,6 +49,7 @@ public class PersonagensManager : MonoBehaviour
                 indexPersonagem[player] = i;
             }
         }
+
         ListaPose[player].confirmar.SetActive(false);
 
 
@@ -93,6 +95,7 @@ public class PersonagensManager : MonoBehaviour
         {
             player = 1;
         }
+
         ResetarPosePersonagem(player);
         ListaPose[player].posePersonagem[value].SetActive(true);
         ListaPose[player].confirmar.SetActive(true); 

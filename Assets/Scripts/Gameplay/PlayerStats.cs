@@ -85,7 +85,7 @@ public class PlayerStats : MonoBehaviour
             switch (attackRange)
             {
                 case 0:
-                    if (playerMoveRigidbody.GetCrouched() && defendendo)
+                    if (playerMoveRigidbody.GetEstaAgachado() && defendendo)
                     {
                         playerAnimator.TriggerAction("Defendeu");
                         defendeu = true;
@@ -96,7 +96,7 @@ public class PlayerStats : MonoBehaviour
                     }
                     break;
                 case 1:
-                    if (!playerMoveRigidbody.GetCrouched() && defendendo)
+                    if (!playerMoveRigidbody.GetEstaAgachado() && defendendo)
                     {
                         playerAnimator.TriggerAction("Defendeu");
                         defendeu = true;
