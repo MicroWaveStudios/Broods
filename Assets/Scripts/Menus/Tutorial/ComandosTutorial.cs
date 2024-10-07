@@ -7,7 +7,8 @@ using UnityEngine.UI;
 
 public class ComandosTutorial : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> acao = new List<GameObject>();
+    [SerializeField] private List<TMP_Text> acao = new List<TMP_Text>();
+    [SerializeField] private List<bool> confirmacoes = new List<bool>();
     [SerializeField] private GameObject instrucoes;
     [SerializeField] private GameObject painelFimTutorial;
     PlayerMoveRigidbody playerMove;
@@ -20,64 +21,76 @@ public class ComandosTutorial : MonoBehaviour
         playerCombat = GameObject.FindGameObjectWithTag("Player1").GetComponent<PlayerCombat>();
         playerInput = GameObject.FindGameObjectWithTag("Player1").GetComponent<PlayerInput>();
         playerInput.enabled = true;
-    
     }
+    private void Update()
+    {
+        Jogando();    
+    }
+
     void Jogando()
     {
         instrucoes.SetActive(true);
 
         if (playerMove.GetDirecaoX() == 1f)
         {
-            //acao[0].fontStyle = FontStyles.Strikethrough;
-            Destroy(acao[0]);
+            acao[0].fontStyle = FontStyles.Strikethrough;
         }
 
         if (playerMove.GetDirecaoX() == -1f)
         {
-            //acao[1].fontStyle = FontStyles.Strikethrough;
-            Destroy(acao[1]);
+            acao[1].fontStyle = FontStyles.Strikethrough;
         }
 
         if (!playerMove.GetNoChao())
         {
-            //acao[2].fontStyle = FontStyles.Strikethrough;
-            Destroy(acao[2]);
+            acao[2].fontStyle = FontStyles.Strikethrough;
         }
 
         if (playerMove.GetEstaAgachado())
         {
-            //acao[3].fontStyle = FontStyles.Strikethrough;
-            Destroy(acao[3]);
+            acao[3].fontStyle = FontStyles.Strikethrough;
         }
 
         if (playerCombat.GetAtacouLeve())
         {
-            //acao[4].fontStyle = FontStyles.Strikethrough;
-            Destroy(acao[4]);
+            acao[4].fontStyle = FontStyles.Strikethrough;
         }
 
         if (playerCombat.GetAtacouMedio())
         {
-            //acao[5].fontStyle = FontStyles.Strikethrough;
-            Destroy(acao[5]);
+            acao[5].fontStyle = FontStyles.Strikethrough;
         }
 
         if (playerCombat.GetAtacouPesado())
         {
-            //acao[6].fontStyle = FontStyles.Strikethrough;
-            Destroy(acao[6]);
+            acao[6].fontStyle = FontStyles.Strikethrough;
         }
 
         if (playerCombat.GetAtacouBaixo())
         {
-            //acao[7].fontStyle = FontStyles.Strikethrough;
-            Destroy(acao[7]);
+            acao[7].fontStyle = FontStyles.Strikethrough;
         }
 
-        if (instrucoes.transform.childCount == 0)
+        for (int i = 0; i < acao.Count; i++)
         {
-            StartCoroutine(Acabou());
+            if (acao[i].fontStyle == FontStyles.Strikethrough)
+            {
+                confirmacoes[i] = true;
+            }
         }
+
+        foreach (bool check in confirmacoes)
+        {
+            if (check)
+            {
+            
+            }
+        }
+
+        //if (confirmacoes[] = true)
+        //{
+        //    StartCoroutine(Acabou());
+        //}
     }
 
     private IEnumerator Acabou()

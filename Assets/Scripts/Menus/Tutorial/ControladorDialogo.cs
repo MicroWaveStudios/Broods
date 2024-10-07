@@ -17,6 +17,7 @@ public class ControladorDialogo : MonoBehaviour
     public DialogoData dialogoData;
 
     [SerializeField] Image spriteMostrar;
+    [SerializeField] GameObject tutorialManager;
     int textoAtual = 0;
     bool acabouAnimacao = false;
 
@@ -105,6 +106,7 @@ public class ControladorDialogo : MonoBehaviour
                 dialogueUI.Disable();
                 textoAtual = 0;
                 acabouAnimacao = false;
+                tutorialManager.SetActive(true);
             }
         }
     }
