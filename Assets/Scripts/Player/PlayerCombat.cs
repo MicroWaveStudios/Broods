@@ -42,7 +42,9 @@ public class PlayerCombat : MonoBehaviour
         public int[] AtaqueRange; // Variavel que definirá onde o ataque acontecerá | 0 = Parte Inferior / 1 = Parte Superior / 2 = Corpo Todo \\
         public int[] Dano;
         public int[] OrdemCombo;
-        public float[] TimeContinuar;
+        public float[] FramesContinuar;
+        public float[] VelocidadeDaAnimacao;
+        public float[] SampleRate;
         public float[] MoveDamage;
     }
     [SerializeField] List<AttackList> _AttackList = new List<AttackList>();
@@ -176,7 +178,7 @@ public class PlayerCombat : MonoBehaviour
         playerMove.MoverAoAtacar(_AttackList[ListaDeAtaqueAtual].MoveDamage[ordem]);
         yield return new WaitForSeconds(0.01f);
         InCombo = true;
-        yield return StartCoroutine(WaitForFrames(_AttackList[ListaDeAtaqueAtual].TimeContinuar[ordem]));
+        yield return StartCoroutine(WaitForFrames(_AttackList[ListaDeAtaqueAtual].FramesContinuar[ordem], _AttackList[ListaDeAtaqueAtual].VelocidadeDaAnimacao[ordem], _AttackList[ListaDeAtaqueAtual].SampleRate[ordem]));
     }
     IEnumerator ContinuarCombo()
     {
@@ -201,16 +203,11 @@ public class PlayerCombat : MonoBehaviour
 
     public int FrameAtual;
 
-    IEnumerator WaitForFrames(float frameCount)
+    IEnumerator WaitForFrames(float frameCount, float velocidade, float sampleRate)
     { 
-        //FrameAtual = frameCount;
-        //while (FrameAtual > 0) 
-        //{
-        //    FrameAtual--;
-        //    yield return new WaitForEndOfFrame();
-        //}
-        yield return new WaitForSeconds(frameCount);
+        yield return new WaitForSeconds(frameCount * velocidade / sampleRate);
         StartCoroutine(ContinuarCombo());
+        yield break;
     }
     public void ResetCombo()
     {

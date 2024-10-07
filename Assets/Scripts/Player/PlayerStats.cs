@@ -17,6 +17,7 @@ public class PlayerStats : MonoBehaviour
     public bool defendendo;
 
     public bool defendeu;
+    [SerializeField] bool tutorial;
 
     [SerializeField] bool Ximas;
 
@@ -30,7 +31,10 @@ public class PlayerStats : MonoBehaviour
         playerCombat = this.GetComponent<PlayerCombat>();
         playerAnimator = this.GetComponent<PlayerAnimator>();
 
-        scrpGameController = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameController>();
+        if (!tutorial)
+        {
+            scrpGameController = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameController>();
+        }
     }
 
     private void Start()
@@ -41,7 +45,7 @@ public class PlayerStats : MonoBehaviour
 
     private void Update()
     {
-        if (life <= 0f)
+        if (life <= 0f && !tutorial)
         {
             scrpGameController.GameFinished();
         }
