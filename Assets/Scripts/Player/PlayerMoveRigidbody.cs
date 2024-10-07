@@ -28,7 +28,6 @@ public class PlayerMoveRigidbody : MonoBehaviour
     [Header("Forces")]
     [SerializeField] float MoveForce;
     [SerializeField] float JumpForce;
-    [SerializeField] float ForcaEmpurrar;
 
     GameObject gameManager;
     GameController gameController;
