@@ -20,8 +20,21 @@ public class NaraSkills : MonoBehaviour
     bool InMeiaLua = false;
     Vector3 posicaoRaycast;
     Vector3 posicaoRaycastPlayer2;
-    
-    
+
+    [System.Serializable]
+
+    public struct ListaDeAtaquesEspeciais
+    {
+        public string nomeDoAtaque;
+        public float danoDoAtaque;
+        public float rangeDoAtaque;
+        public float custoDoAtaque;
+        public int[] ordemDaMeiaLua;
+        public float framesContinuar;
+        public float velocidadeDaAnimacao;
+        public float sampleRate;
+        public VisualEffect visualEffectDoAtaque;
+    }
 
     [Header("Skill Laser")]
     [SerializeField] float custoLaser;
@@ -30,7 +43,7 @@ public class NaraSkills : MonoBehaviour
     GameObject objLaser;
     VisualEffect vfxLaser;
     int ordemLaser = 0;
-
+    
     [Header("Tarticos")]
     [SerializeField] GameObject[] tarticos;
     [SerializeField] float custoTartico;
@@ -67,7 +80,6 @@ public class NaraSkills : MonoBehaviour
             outroPlayer = GameObject.FindGameObjectWithTag("Player1");
         }
 
-
         if (outroPlayer != null)
         {
             posicaoRaycastPlayer2 = new Vector3(outroPlayer.transform.position.x + 0.5f, outroPlayer.transform.position.y + 1.3f, outroPlayer.transform.position.z);
@@ -82,12 +94,10 @@ public class NaraSkills : MonoBehaviour
 
     public void MeiaLuaStart(InputAction.CallbackContext context)
     {
-        if (!InMeiaLua)
+        if (!playerCombat.GetInMeiaLua())
         {
             StartCoroutine(ConfirmacaoSkill(0.2f, 10));
         }
-        
-            
     }
     public void MeiaLuaEsquerda(InputAction.CallbackContext context)
     {
@@ -318,7 +328,7 @@ public class NaraSkills : MonoBehaviour
         ordemLaser = 0;
         ordemTarticos = 0;     
         timer = 0f;
-        InMeiaLua = false;
+        playerCombat.SetInMeiaLua(false);
         actualNumber = -1;
         StopAllCoroutines();
         yield break;
@@ -334,7 +344,7 @@ public class NaraSkills : MonoBehaviour
             {
                 StartCoroutine(MeiaLuaLaser());
                 timer = 0f;
-                InMeiaLua = true;
+                playerCombat.SetInMeiaLua(true);
                 yield break;
             }
             else
@@ -343,7 +353,7 @@ public class NaraSkills : MonoBehaviour
                 {
                     StartCoroutine(MeiaLuaTarticos());
                     timer = 0f;
-                    InMeiaLua = true;
+                    playerCombat.SetInMeiaLua(true);
                     yield break;
                 }
 

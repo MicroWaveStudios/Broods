@@ -80,7 +80,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (jumpCount == 1 && !GetComponent<PlayerCombat>().GetInAttack() && !crouched && !playerStats.GetDefendedOrSuffered())
+        if (jumpCount == 1 && !GetComponent<PlayerCombat>().GetInAttack() && !crouched && !playerStats.GetInAction())
         { 
             rb.velocity = new Vector3(directionX * MoveForce, rb.velocity.y, rb.velocity.z);
         }

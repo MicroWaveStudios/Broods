@@ -128,7 +128,7 @@ public class PlayerCombat : MonoBehaviour
     }
     void Attack(int numberAttack)
     {
-        if (!_InAttack && !InCombo && playerMove.GetIsGrounded() && !playerStats.GetDefendedOrSuffered() && ListaDeAtaqueAtual == -1)
+        if (!_InAttack && !InCombo && playerMove.GetIsGrounded() && InMeiaLua && !playerStats.GetInAction() && ListaDeAtaqueAtual == -1)
         {
             if (playerMove.GetCrouched())
             {
@@ -149,7 +149,6 @@ public class PlayerCombat : MonoBehaviour
     }
 
     // ================================================================= //
-
 
     // Mêcanica de Combo antiga \\
 
@@ -182,7 +181,7 @@ public class PlayerCombat : MonoBehaviour
     }
     IEnumerator ContinuarCombo()
     {
-        while (timer < 0.2f && !playerStats.GetDefendedOrSuffered() && ordem < _AttackList[ListaDeAtaqueAtual].OrdemCombo.Length)
+        while (timer < 0.2f && !playerStats.GetInAction() && ordem < _AttackList[ListaDeAtaqueAtual].OrdemCombo.Length)
         {
             timer += 1 * Time.deltaTime;
             if (actualNumber == _AttackList[ListaDeAtaqueAtual].OrdemCombo[ordem])
@@ -205,7 +204,7 @@ public class PlayerCombat : MonoBehaviour
 
     IEnumerator WaitForFrames(float frameCount, float velocidade, float sampleRate)
     { 
-        yield return new WaitForSeconds(frameCount * velocidade / sampleRate);
+        yield return new WaitForSeconds(frameCount / velocidade / sampleRate);
         StartCoroutine(ContinuarCombo());
         yield break;
     }

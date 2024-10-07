@@ -66,11 +66,11 @@ public class PlayerStats : MonoBehaviour
         return defendendo;
     }
 
-    bool defended = false;
+    bool InAction = false;
 
-    public bool GetDefendedOrSuffered()
+    public bool GetInAction()
     {
-        return defended;
+        return InAction;
     }
 
     public void MoveDamage()
@@ -87,76 +87,66 @@ public class PlayerStats : MonoBehaviour
 
     public void SufferDamage(float damage, float attackRange, float moveDamage, GameObject otherPlayer)
     {
-        StartCoroutine(SetDefended());
-        if (playerCombat.GetInAttack() && otherPlayer != null || playerCombat.GetInCombo() && otherPlayer != null)
+        StartCoroutine(SetInAction());
+        switch (attackRange)
         {
-            MoveDamage();
-            otherPlayer.GetComponent<PlayerStats>().MoveDamage();
-        }
-        else
-        {
-
-            switch (attackRange)
-            {
-                case 0:
-                    if (playerMoveRigidbody.GetCrouched() && defendendo)
-                    {
-                        playerAnimator.TriggerAction("Defendeu");
-                        defendeu = true;
-                    }
-                    else
-                    {
-                        defendeu = false;
-                    }
-                    break;
-                case 1:
-                    if (!playerMoveRigidbody.GetCrouched() && defendendo)
-                    {
-                        playerAnimator.TriggerAction("Defendeu");
-                        defendeu = true;
-                    }
-                    else
-                    {
-                        defendeu = false;
-                    }
-                    break;
-                case 2:
-                    if (defendendo)
-                    {
-                        playerAnimator.TriggerAction("Defendeu");
-                        defendeu = true;
-                    }
-                    else
-                    {
-                        defendeu = false;
-                    }
-                    break;
-            }
-            if (!defendeu)
-            {
-                if (playerCombat.GetInParry() == true)
+            case 0:
+                if (playerMoveRigidbody.GetCrouched() && defendendo)
                 {
-                    CounterParry(otherPlayer);
+                    playerAnimator.TriggerAction("Defendeu");
+                    defendeu = true;
                 }
                 else
                 {
-                    life -= damage;
-                    playerAnimator.TriggerAction("TomouDano");
-                    playerMoveRigidbody.MoveUp();
-                    MoveDamage();
-
-                    vfxImpacto.Play();
-
-                    playerCombat.ResetCombo();
-                    StartCoroutine(ResetScripts(0.5f));
+                    defendeu = false;
                 }
+                break;
+            case 1:
+                if (!playerMoveRigidbody.GetCrouched() && defendendo)
+                {
+                    playerAnimator.TriggerAction("Defendeu");
+                    defendeu = true;
+                }
+                else
+                {
+                    defendeu = false;
+                }
+                break;
+            case 2:
+                if (defendendo)
+                {
+                    playerAnimator.TriggerAction("Defendeu");
+                    defendeu = true;
+                }
+                else
+                {
+                    defendeu = false;
+                }
+                break;
+        }
+        if (!defendeu)
+        {
+            if (playerCombat.GetInParry() == true)
+            {
+                CounterParry(otherPlayer);
             }
             else
             {
-                vfxDefesa.Play();
+                life -= damage;
+                playerAnimator.TriggerAction("TomouDano");
+                playerMoveRigidbody.MoveUp();
+                MoveDamage();
+
+                vfxImpacto.Play();
+
+                playerCombat.ResetCombo();
+                StartCoroutine(ResetScripts(0.5f));
             }
         }
-
+        else
+        {
+            vfxDefesa.Play();
+        }
         scrpGameController.SetTimeScale();
     }
 
@@ -172,11 +162,11 @@ public class PlayerStats : MonoBehaviour
         yield break;
     }
 
-    IEnumerator SetDefended()
+    IEnumerator SetInAction()
     {
-        defended = true;
+        InAction = true;
         yield return new WaitForSeconds(0.3f);
-        defended = false;
+        InAction = false;
     }
 
     public void UsouSkill(float custoSkill)
