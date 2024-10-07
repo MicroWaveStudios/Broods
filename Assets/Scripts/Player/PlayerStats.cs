@@ -73,8 +73,9 @@ public class PlayerStats : MonoBehaviour
         return InAction;
     }
 
-    public void MoveDamage()
+    public void MoveDamage(float moveDamage)
     {
+        playerMoveRigidbody.SetForce(moveDamage);
         playerMoveRigidbody.MoverAoLevarDano();
         playerAnimator.TriggerAction("TomouDano");
     }
@@ -135,7 +136,7 @@ public class PlayerStats : MonoBehaviour
                 life -= damage;
                 playerAnimator.TriggerAction("TomouDano");
                 playerMoveRigidbody.MoveUp();
-                MoveDamage();
+                MoveDamage(moveDamage);
 
                 vfxImpacto.Play();
 

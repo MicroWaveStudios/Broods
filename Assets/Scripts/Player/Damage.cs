@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Damage : MonoBehaviour
 {
-    [SerializeField] PlayerStats playerStats;
+    PlayerStats playerStats;
+
+    PlayerMoveRigidbody rbPlayer;
 
     [SerializeField] float damage;
     [SerializeField] float attackRange;
@@ -14,6 +16,13 @@ public class Damage : MonoBehaviour
     private void Awake()
     {
         playerStats = transform.parent.GetComponent<PlayerStats>();
+
+        rbPlayer = transform.parent.GetComponent<PlayerMoveRigidbody>();
+    }
+
+    private void OnEnable()
+    {
+        rbPlayer.MoverAoAtacar(moveDamage);
     }
 
     public void SetAttack(float newDamage, float newAttackRange, float newMoveDamage, bool newAddEnergy)

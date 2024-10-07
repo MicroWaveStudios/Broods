@@ -128,7 +128,7 @@ public class PlayerCombat : MonoBehaviour
     }
     void Attack(int numberAttack)
     {
-        if (!_InAttack && !InCombo && playerMove.GetIsGrounded() && InMeiaLua && !playerStats.GetInAction() && ListaDeAtaqueAtual == -1)
+        if (!_InAttack && !InCombo && playerMove.GetNoChao() && !InMeiaLua && !playerStats.GetInAction() && ListaDeAtaqueAtual == -1)
         {
             if (playerMove.GetCrouched())
             {
@@ -174,14 +174,14 @@ public class PlayerCombat : MonoBehaviour
             yield break;
         }
         attackGameObject.GetComponent<Damage>().SetAttack(_AttackList[ListaDeAtaqueAtual].Dano[ordem], _AttackList[ListaDeAtaqueAtual].AtaqueRange[ordem], _AttackList[ListaDeAtaqueAtual].MoveDamage[ordem], true);
-        playerMove.MoverAoAtacar(_AttackList[ListaDeAtaqueAtual].MoveDamage[ordem]);
+        //playerMove.MoverAoAtacar(_AttackList[ListaDeAtaqueAtual].MoveDamage[ordem]);
         yield return new WaitForSeconds(0.01f);
         InCombo = true;
         yield return StartCoroutine(WaitForFrames(_AttackList[ListaDeAtaqueAtual].FramesContinuar[ordem], _AttackList[ListaDeAtaqueAtual].VelocidadeDaAnimacao[ordem], _AttackList[ListaDeAtaqueAtual].SampleRate[ordem]));
     }
     IEnumerator ContinuarCombo()
     {
-        while (timer < 0.2f && !playerStats.GetInAction() && ordem < _AttackList[ListaDeAtaqueAtual].OrdemCombo.Length)
+        while (timer < 0.2f && !playerStats.GetInAction() && ordem < _AttackList[ListaDeAtaqueAtual].OrdemCombo.Length) 
         {
             timer += 1 * Time.deltaTime;
             if (actualNumber == _AttackList[ListaDeAtaqueAtual].OrdemCombo[ordem])

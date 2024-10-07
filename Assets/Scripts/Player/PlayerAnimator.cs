@@ -19,7 +19,7 @@ public class PlayerAnimator : MonoBehaviour
     private void Update()
     {
         anim.SetFloat("Move", rb.velocity.x * playerMoveRigidbody.isPlayer2);
-        anim.SetBool("IsGrounded", playerMoveRigidbody.GetIsGrounded());
+        anim.SetBool("NoChao", playerMoveRigidbody.GetNoChao());
         anim.SetBool("Crouched", playerMoveRigidbody.GetCrouched());
         anim.SetBool("InCombo", playerCombat.GetInCombo());
         anim.SetBool("InAttack", playerCombat.GetInAttack());
