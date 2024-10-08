@@ -71,26 +71,25 @@ public class ComandosTutorial : MonoBehaviour
             acao[7].fontStyle = FontStyles.Strikethrough;
         }
 
+        int x = 0;
+
         for (int i = 0; i < acao.Count; i++)
         {
             if (acao[i].fontStyle == FontStyles.Strikethrough)
             {
-                confirmacoes[i] = true;
+                x++;
+                //confirmacoes[i] = true;
             }
-        }
-
-        foreach (bool check in confirmacoes)
-        {
-            if (check)
+            else
             {
-            
+                x = 0;
             }
         }
 
-        //if (confirmacoes[] = true)
-        //{
-        //    StartCoroutine(Acabou());
-        //}
+        if (x == acao.Count)
+        {
+            StartCoroutine(Acabou());
+        }
     }
 
     private IEnumerator Acabou()
