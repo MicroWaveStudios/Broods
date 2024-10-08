@@ -7,21 +7,14 @@ using UnityEngine.VFX;
 public class LaserSeguir : MonoBehaviour
 {
     public GameObject objSeguir;
-    Vector3 newPosition;
     GameObject outroPlayer;
 
+    Vector3 positionSeguir;
+    Vector3 originalLocalScale;
 
-    //[SerializeField] VisualEffect vfxLaser;
-
-    //Vector3 posicaoOlhar;
-    //Vector3 distancia;
-
-    //float size;
-
-    private void Awake()
+    private void Start()
     {
-
-        //vfxLaser = GetComponent<VisualEffect>();
+        originalLocalScale = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
     }
 
     private void Update()
@@ -34,31 +27,21 @@ public class LaserSeguir : MonoBehaviour
         {
             outroPlayer = GameObject.FindGameObjectWithTag("Player1");
         }
+
+        
+
         if (outroPlayer != null)
         {
-
             objSeguir = outroPlayer.transform.GetChild(2).gameObject;
-        }
-        if (transform.parent.gameObject.CompareTag("Player1"))
-        {
-            outroPlayer = GameObject.FindGameObjectWithTag("Player2");
-        }
-        else
-        {
-            outroPlayer = GameObject.FindGameObjectWithTag("Player1");
-        }
 
-        if (objSeguir != null)
-        {
-            //posicaoOlhar = new Vector3(objSeguir.transform.position.x, objSeguir.transform.position.y, objSeguir.transform.position.z);
+            transform.localScale = new Vector3(originalLocalScale.x, originalLocalScale.y, originalLocalScale.z * transform.parent.transform.localScale.z);
 
-            //distancia = new Vector3(transform.position.x - objSeguir.transform.position.x, transform.position.y - objSeguir.transform.position.y, transform.position.z - objSeguir.transform.position.z);
+            //positionSeguir = new Vector3(objSeguir.transform.position.x * transform.parent.transform.localScale.z,
+            //                             objSeguir.transform.position.y, 
+            //                             objSeguir.transform.position.z);
 
-            //vfxLaser.SetFloat("Size", size);
 
-            newPosition = new Vector3(-1f, 1f, 1f);
             transform.LookAt(objSeguir.transform.position);
-
         }
     }
 }

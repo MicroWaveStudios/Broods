@@ -64,7 +64,7 @@ public class XimasSkills : MonoBehaviour
             outroPlayer = GameObject.FindGameObjectWithTag("Player1");
         }
 
-        posicaoTpDash = new Vector3(outroPlayer.transform.position.x + (2f * scrpRigidbody.isPlayer2), outroPlayer.transform.position.y, outroPlayer.transform.position.z);
+        posicaoTpDash = new Vector3(outroPlayer.transform.position.x + (2f * scrpRigidbody.isPlayer2), transform.position.y, transform.position.z);
 
         if (scrpPlayerStats.GetEnergyFull() == true)
         {
@@ -184,7 +184,7 @@ public class XimasSkills : MonoBehaviour
 
         transform.position = posicaoTpDash;
 
-        playerAnimator.TriggerAction("Dash");
+        playerAnimator.TriggerAction("AtaqueFraco");
 
         yield return new WaitForSeconds(0.2f);     
 

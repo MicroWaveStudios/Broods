@@ -104,6 +104,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6042919135044194306}
+  - component: {fileID: 8538664666730685135}
   m_Layer: 0
   m_Name: nara
   m_TagString: Untagged
@@ -131,6 +132,60 @@ Transform:
   m_Father: {fileID: 4743303365692611087}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &8538664666730685135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149119745377257969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d07bd5c9c9e54c44878a4c237d085a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaterialPlayer1:
+  - {fileID: 2100000, guid: 8f00857e604a17441abc5f89cc5c502f, type: 2}
+  - {fileID: 2100000, guid: 8817f34031c4c914e8f976b54df4a281, type: 2}
+  - {fileID: 2100000, guid: 897a13c56d208514e8a642e6b589928b, type: 2}
+  - {fileID: 2100000, guid: 3021a234ff74bab47b26e7cefeccb646, type: 2}
+  - {fileID: 2100000, guid: f5fccc0277028ee4e95a224d86389aae, type: 2}
+  - {fileID: 2100000, guid: b8098f626d251a34c98e007e9c45cd3d, type: 2}
+  - {fileID: 2100000, guid: 4ddf1a12c4bf89d4eacb7989b38388b5, type: 2}
+  - {fileID: 2100000, guid: ce61ff82fbca12045a58a1adcb24bd15, type: 2}
+  - {fileID: 2100000, guid: e7ba6750a976ed848bda8e7e5aa88327, type: 2}
+  - {fileID: 2100000, guid: 3aebaba0fffd06d48a5fe2f20eb98c68, type: 2}
+  - {fileID: 2100000, guid: f22acba4a179b11438a07df4eca9481d, type: 2}
+  - {fileID: 2100000, guid: e645839132acda044890ab814588f44a, type: 2}
+  - {fileID: 2100000, guid: 39f9ac03968bd1449ab9f90f0726424a, type: 2}
+  MaterialPlayer2:
+  - {fileID: 2100000, guid: 55f36f56151f0c54bb3f8dc0b22c62d7, type: 2}
+  - {fileID: 2100000, guid: a61eb81d2b7dade47b9620dfd0cbb3ec, type: 2}
+  - {fileID: 2100000, guid: 585180d3699753748984c740833c3027, type: 2}
+  - {fileID: 2100000, guid: e862de741820cad4c8bd2ff0e6479041, type: 2}
+  - {fileID: 2100000, guid: 639adeff376c3f74c89a9adb924fedeb, type: 2}
+  - {fileID: 2100000, guid: 002a977434d3613439c0f7fc98457ebe, type: 2}
+  - {fileID: 2100000, guid: 9552809d8b0a68946a17ca9e6638015c, type: 2}
+  - {fileID: 2100000, guid: e654268753112b341a950ae005f42cd3, type: 2}
+  - {fileID: 2100000, guid: 9ace74960d249254888366a4d5aab95d, type: 2}
+  - {fileID: 2100000, guid: 70bf0fc8872e01f4485696cea3b7ca62, type: 2}
+  - {fileID: 2100000, guid: 0c3eebdb0caeeed4f84513bc40b8935a, type: 2}
+  - {fileID: 2100000, guid: b6d0db64aae36b44d8217d702409b4e3, type: 2}
+  - {fileID: 2100000, guid: 3948ac91a9490c149ac215d076dfd03b, type: 2}
+  PartesDoCorpo:
+  - {fileID: 2535780235716495698}
+  - {fileID: 1192263844710013247}
+  - {fileID: 8678336720529811677}
+  - {fileID: 3014026803680739464}
+  - {fileID: 8112686747739935298}
+  - {fileID: 7813996346361524218}
+  - {fileID: 7002460024583549704}
+  - {fileID: 6937396610672254488}
+  - {fileID: 782408906295775224}
+  - {fileID: 6757202109634479650}
+  - {fileID: 3505516221689296666}
+  - {fileID: 7218692869924287352}
+  - {fileID: 1127680274305014479}
 --- !u!1 &167079366755351895
 GameObject:
   m_ObjectHideFlags: 0
@@ -6427,9 +6482,9 @@ MonoBehaviour:
     Dano: 05000000
     OrdemCombo: 
     FramesContinuar:
-    - 7
+    - 5
     VelocidadeDaAnimacao:
-    - 0.7
+    - 2
     SampleRate:
     - 24
     MoveDamage:
@@ -6440,8 +6495,8 @@ MonoBehaviour:
     OrdemCombo: 0200000003000000
     FramesContinuar:
     - 7
-    - 20
-    - 41
+    - 5
+    - 25
     VelocidadeDaAnimacao:
     - 1
     - 1
@@ -6459,9 +6514,9 @@ MonoBehaviour:
     Dano: 070000000400000008000000
     OrdemCombo: 0100000000000000
     FramesContinuar:
-    - 11
-    - 19
-    - 21
+    - 5
+    - 9
+    - 17
     VelocidadeDaAnimacao:
     - 1
     - 1
@@ -6479,8 +6534,8 @@ MonoBehaviour:
     Dano: 0a00000006000000
     OrdemCombo: 03000000
     FramesContinuar:
-    - 29
-    - 80
+    - 10
+    - 65
     VelocidadeDaAnimacao:
     - 1.9
     - 2
@@ -6495,7 +6550,7 @@ MonoBehaviour:
     Dano: 00000000
     OrdemCombo: 
     FramesContinuar:
-    - 7
+    - 1
     VelocidadeDaAnimacao:
     - 1
     SampleRate:

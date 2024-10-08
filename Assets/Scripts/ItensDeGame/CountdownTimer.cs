@@ -18,6 +18,8 @@ public class CountdownTimer : MonoBehaviour
     bool isPaused;
     bool gameFinished;
 
+    [SerializeField] int tempo;
+
     private void Update()
     {
         Player1 = GameObject.FindGameObjectWithTag("Player1");
@@ -60,7 +62,7 @@ public class CountdownTimer : MonoBehaviour
     int i;
     IEnumerator TimerGame()
     {
-        for (i = 99; i > 1; i--)
+        for (i = tempo; i > 1; i--)
         {
             if (i >= 10)
                 TxtTimerGame.text = i.ToString();

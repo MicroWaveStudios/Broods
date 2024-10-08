@@ -84,7 +84,7 @@ public class NaraSkills : MonoBehaviour
         {
             posicaoRaycastPlayer2 = new Vector3(outroPlayer.transform.position.x + 0.5f, outroPlayer.transform.position.y + 1.3f, outroPlayer.transform.position.z);
 
-            //Debug.DrawLine(posicaoRaycast, outroPlayer.transform.position, Color.red);
+            Debug.DrawLine(posicaoRaycast, outroPlayer.transform.position, Color.red);
         }
 
 

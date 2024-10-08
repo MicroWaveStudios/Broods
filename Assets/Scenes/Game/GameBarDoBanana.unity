@@ -2948,6 +2948,7 @@ MonoBehaviour:
   - {fileID: 142740010}
   countdownText: {fileID: 2060001245}
   TxtTimerGame: {fileID: 1869833480}
+  tempo: 99999
 --- !u!114 &1140325871
 MonoBehaviour:
   m_ObjectHideFlags: 0
