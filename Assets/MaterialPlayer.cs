@@ -10,12 +10,12 @@ public class MaterialPlayer : MonoBehaviour
 
     [SerializeField] GameObject[] PartesDoCorpo;
 
-    bool isPlayer2 = false;
+    public bool isPlayer2 = false;
 
 
     private void Start()
     {
-        if (transform.parent.gameObject.CompareTag("Player2"))
+        if (transform.parent.transform.parent.gameObject.CompareTag("Player2"))
         {
             isPlayer2 = true;
         }
