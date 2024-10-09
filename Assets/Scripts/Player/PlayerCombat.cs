@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.VFX;
 
 public class PlayerCombat : MonoBehaviour
 {
@@ -34,6 +35,8 @@ public class PlayerCombat : MonoBehaviour
 
     [SerializeField] ParticleSystem[] rastrosAtaque;
     [SerializeField] GameObject attackGameObject;
+
+    [SerializeField] VisualEffect laserAtaqueBaixo;
 
     [System.Serializable]
     public struct AttackList
@@ -143,6 +146,10 @@ public class PlayerCombat : MonoBehaviour
                 _InAttack = true;
                 playerAnimator.TriggerAction(_AttackList[ListaDeAtaqueAtual].NomeDoAtaque);
 
+                if (numberAttack == 0)
+                {
+                    laserAtaqueBaixo.Play();
+                }
             }
             StartCoroutine(Combo());
         }
