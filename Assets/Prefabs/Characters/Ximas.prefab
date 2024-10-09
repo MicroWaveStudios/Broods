@@ -1758,6 +1758,37 @@ Transform:
   m_Father: {fileID: 3360364185959385992}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -0.7293714, y: 3.2963963, z: -39.206787}
+--- !u!1 &1438356908121150857
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2849346277723681661}
+  m_Layer: 0
+  m_Name: PosicaoFumaca
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2849346277723681661
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1438356908121150857}
+  m_LocalRotation: {x: -0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -6, y: -22, z: -5}
+  m_LocalScale: {x: 99.99999, y: 100, z: 99.99999}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1543341450706339045}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1566867292252235063
 GameObject:
   m_ObjectHideFlags: 0
@@ -2380,7 +2411,7 @@ GameObject:
   - component: {fileID: 3259785787356502641}
   m_Layer: 7
   m_Name: Ximas
-  m_TagString: Player1
+  m_TagString: Player2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2409,6 +2440,7 @@ Transform:
   - {fileID: 6315040522086657127}
   - {fileID: 5488264982377763131}
   - {fileID: 2031961057483941235}
+  - {fileID: 2849346277723681661}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2821,7 +2853,7 @@ MonoBehaviour:
     Dano: 0a000000
     OrdemCombo: 
     FramesContinuar:
-    - 18
+    - 0.3
     VelocidadeDaAnimacao:
     - 1.3
     SampleRate:
@@ -2833,7 +2865,7 @@ MonoBehaviour:
     Dano: 0f000000
     OrdemCombo: 
     FramesContinuar:
-    - 20
+    - 0.4
     VelocidadeDaAnimacao:
     - 1
     SampleRate:
@@ -2845,7 +2877,7 @@ MonoBehaviour:
     Dano: 0f000000
     OrdemCombo: 
     FramesContinuar:
-    - 16
+    - 0.3
     VelocidadeDaAnimacao:
     - 1.2
     SampleRate:
@@ -3492,12 +3524,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2428397226556226383}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f249fb8c5704b144aa528c120e3edea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  posicaoFumaca: {fileID: 0}
+  posicaoFumaca: {fileID: 2849346277723681661}
   Travado: 0
 --- !u!1 &2443928195796040165
 GameObject:
