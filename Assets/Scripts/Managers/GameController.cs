@@ -496,6 +496,9 @@ public class GameController : MonoBehaviour
 
     public void ReloadScene()
     {
+        Pontos.pontosP1 = 0;
+        Pontos.pontosP2 = 0;
+
         SceneManager.LoadScene(Pontos.cenaAtual);
     }
 }

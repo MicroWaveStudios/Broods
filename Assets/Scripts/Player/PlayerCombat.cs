@@ -204,7 +204,7 @@ public class PlayerCombat : MonoBehaviour
 
             if (tempoRestante <= 0.01f)
             {
-                Debug.Log("Continuar");
+                //Debug.Log("Continuar");
             }
 
             if (actualNumber == _AttackList[ListaDeAtaqueAtual].OrdemCombo[ordem] && tempoRestante <= 0.1f)
@@ -219,7 +219,7 @@ public class PlayerCombat : MonoBehaviour
             yield return null;
         }
 
-        Debug.Log("Acabou o tempo");
+        //Debug.Log("Acabou o tempo");
         ResetCombo();
         yield break;
     }

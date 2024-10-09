@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.25759384, g: 0.6897634, b: 0.8192467, a: 1}
+  m_IndirectSpecularColor: {r: 0.2582091, g: 0.68974036, b: 0.8184585, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3429,12 +3429,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de36284866be3d544bcebfb1c4558ac9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PausePanel: {fileID: 0}
+  PausePanel: {fileID: 53203561}
   ButtonPanel:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  DefaultButtonSelected: {fileID: 0}
+  - {fileID: 1325314247}
+  - {fileID: 577456962}
+  - {fileID: 1155059939}
+  DefaultButtonSelected: {fileID: 1155059939}
   EventSystemManager: {fileID: 721454773}
 --- !u!4 &857956302
 Transform:

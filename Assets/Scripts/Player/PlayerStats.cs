@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.VFX;
 using UnityEngine.InputSystem.Users;
+using UnityEngine.InputSystem.Controls;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -58,6 +59,10 @@ public class PlayerStats : MonoBehaviour
 
     private void Update()
     {
+        if (tutorial) 
+        {
+            //GetComponent<PlayerInput>().SwitchCurrentControlScheme("");
+        }
         if (life <= 0f && !tutorial)
         {
             scrpGameController.GameFinished();
