@@ -1,4 +1,3 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -42,7 +41,6 @@ public class PlayerMoveRigidbody : MonoBehaviour
         vfxFumaca = objFumaca.GetComponent<VisualEffect>();
         scrpFumaca = objFumaca.GetComponent<FumacaChao>();
     }
-
     private void Update()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager");

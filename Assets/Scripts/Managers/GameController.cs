@@ -168,7 +168,7 @@ public class GameController : MonoBehaviour
                 //PlayerInput playerInput2 = playerGameObject2.GetComponent<PlayerInput>();
 
                 Pontos.prefabPlayer[0].GetComponent<PlayerInput>().defaultControlScheme = "KeyboardLeft";
-                var player1 = PlayerInput.Instantiate(Pontos.prefabPlayer[0], 0, null, -1, Keyboard.current);
+                var player1 = PlayerInput.Instantiate(Pontos.prefabPlayer[0], 0, null, -1, Keyboard.current, Mouse.current);
                 Pontos.prefabPlayer[1].GetComponent<PlayerInput>().defaultControlScheme = "KeyboardRight";
                 var player2 = PlayerInput.Instantiate(Pontos.prefabPlayer[1], 1, null, -1, Keyboard.current);
                 InputUser.PerformPairingWithDevice(player2.GetComponent<PlayerInput>().devices[0], player2.user);

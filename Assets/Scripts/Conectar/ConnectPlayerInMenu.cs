@@ -121,7 +121,7 @@ public class ConnectPlayerInMenu : MonoBehaviour
     public void EnableSplitKeyboard()
     {
         ConnectDisconnectPlayer(player[0], 0, null, false);
-        PlayerInput player1 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 0, "KeyboardLeft", -1, Keyboard.current);
+        PlayerInput player1 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 0, "KeyboardLeft", -1, Keyboard.current, Mouse.current);
         PlayerInput player2 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 1, "KeyboardRight", -1, Keyboard.current);
         player1.tag = "Player1";
         player2.tag = "Player2";

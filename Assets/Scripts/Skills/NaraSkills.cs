@@ -206,6 +206,8 @@ public class NaraSkills : MonoBehaviour
             yield break;
         }
 
+        attackGameObject.GetComponent<Damage>().SetAttack(20f, 3, 0f, false);
+
         Vector3 NovaPosicaoOutroPlayer = outroPlayer.transform.position;
 
         playerCombat.SetInAttack(true);
@@ -287,7 +289,7 @@ public class NaraSkills : MonoBehaviour
 
         playerAnimator.TriggerAction("Tartico");
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         playerCombat.SetInAttack(false);
         yield return ResetCombo();
         yield break;
@@ -324,10 +326,12 @@ public class NaraSkills : MonoBehaviour
 
     IEnumerator ResetCombo()
     {
+        yield return new WaitForSeconds(0.1f);
         ordemLaser = 0;
         ordemTarticos = 0;     
         timer = 0f;
         playerCombat.SetInMeiaLua(false);
+        playerCombat.SetInAttack(false);
         actualNumber = -1;
         StopAllCoroutines();
         yield break;
