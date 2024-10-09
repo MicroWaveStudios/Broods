@@ -98,10 +98,12 @@ public class GameController : MonoBehaviour
             switch (Pontos.ControlSchemePlayer[i])
             {
                 case "Gamepad":
+                    Pontos.prefabPlayer[i].GetComponent<PlayerInput>().defaultControlScheme = "Gamepad";
                     newPlayerInput = PlayerInput.Instantiate(Pontos.prefabPlayer[i], i, Pontos.ControlSchemePlayer[i], -1, Gamepad.current);
                     newPlayerInput.tag = "Player" + tagPlayer;
                     break;
                 case "Keyboard":
+                    Pontos.prefabPlayer[i].GetComponent<PlayerInput>().defaultControlScheme = "Keyboard";
                     newPlayerInput = PlayerInput.Instantiate(Pontos.prefabPlayer[i], i, Pontos.ControlSchemePlayer[i], -1, Keyboard.current, Mouse.current);
                     newPlayerInput.tag = "Player" + tagPlayer;
                     break;
@@ -474,9 +476,12 @@ public class GameController : MonoBehaviour
         PlayerInput player2 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 1, "KeyboardRight", -1, Keyboard.current);
         player2.tag = "Player2";
 
+        Pontos.prefabPlayer[1].GetComponent<PlayerInput>().defaultControlScheme = "KeyboardLeft";
+        playerInputManager.playerPrefab = Pontos.prefabPlayer[0];
         PlayerInput player3 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 0, "KeyboardLeft", -1, Keyboard.current, Mouse.current);
         player3.tag = "Player1";
         Pontos.prefabPlayer[1].GetComponent<PlayerInput>().defaultControlScheme = "KeyboardRight";
+        playerInputManager.playerPrefab = Pontos.prefabPlayer[1];
         PlayerInput player4 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 1, "KeyboardRight", -1, Keyboard.current);
         player4.tag = "Player2";
 
