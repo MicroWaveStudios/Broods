@@ -6180,7 +6180,7 @@ GameObject:
   - component: {fileID: 757593877083283454}
   m_Layer: 0
   m_Name: Nara
-  m_TagString: Player2
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6433,7 +6433,19 @@ MonoBehaviour:
     m_ActionId: 33ce5a8e-5a9d-4d65-8612-af9a0c743bc9
     m_ActionName: Player/Crounched[/Keyboard/s,/Keyboard/downArrow]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5825252824003833762}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: EnableSplitKeyboard
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 3cc34bc1-876f-4d6c-9c9a-3e63c75bcd04
     m_ActionName: Player/EnterGame[/Keyboard/w,/Keyboard/a,/Keyboard/s,/Keyboard/d,/Keyboard/upArrow,/Keyboard/space]
   - m_PersistentCalls:

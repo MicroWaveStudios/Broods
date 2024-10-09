@@ -484,6 +484,17 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""70f1c655-6e32-4b4e-974e-db8f81c8b9b1"",
+                    ""path"": ""<Keyboard>/backspace"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardRight"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""5a6ca224-bfb5-4596-b9b5-10f3e6a4ccab"",
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",

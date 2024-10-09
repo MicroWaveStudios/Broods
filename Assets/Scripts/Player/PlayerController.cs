@@ -25,12 +25,18 @@ public class PlayerController : MonoBehaviour
 
     //bool isPaused = false;
     GameObject gameManager;
+    bool CanDoIt = false;
 
     Scene scene;
 
     private void Awake()
     {
         scene = Scene.Game;
+    }
+
+    private void Start()
+    {
+        StartCoroutine(PlayerCanDoIt());
     }
 
     private void Update()
@@ -85,5 +91,20 @@ public class PlayerController : MonoBehaviour
         {
             return false;
         }
+    }
+
+    public void EnableSplitKeyboard(InputAction.CallbackContext context)
+    {
+        if (Pontos.SplitKeyboard && GetComponent<PlayerInput>().currentControlScheme.ToString() == "Keyboard" && CanDoIt && context.started)
+        {
+            GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameController>().EnableSplitKeyboard(this.gameObject);
+        }
+    }
+
+    IEnumerator PlayerCanDoIt()
+    {
+        yield return new WaitForSeconds(0.1f);
+        CanDoIt = true;
+        yield break;
     }
 }

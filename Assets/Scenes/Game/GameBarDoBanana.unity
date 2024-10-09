@@ -3187,7 +3187,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1140325867}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 621567455fd1c4ceb811cc8a00b6a1a5, type: 3}
   m_Name: 
@@ -3213,7 +3213,7 @@ MonoBehaviour:
       m_Interactions: 
       m_SingletonActionBindings: []
       m_Flags: 0
-    m_Reference: {fileID: 8142521471416472307, guid: 52b818f2dd13c7849abc50fddb44c4c1, type: 3}
+    m_Reference: {fileID: -7105275054168454656, guid: 52b818f2dd13c7849abc50fddb44c4c1, type: 3}
   m_PlayerPrefab: {fileID: 6635523287152186700, guid: 6ae38b9c128d93748b30d3cef5189263, type: 3}
   m_SplitScreen: 0
   m_MaintainAspectRatioInSplitScreen: 0

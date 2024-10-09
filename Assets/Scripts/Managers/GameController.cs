@@ -61,7 +61,7 @@ public class GameController : MonoBehaviour
             //PlayerInput player2 = PlayerInput.Instantiate(Pontos.prefabPlayer[1], 1, "KeyboardRight", -1, Keyboard.current);
             //player1.tag = "Player1";
             //player2.tag = "Player2";
-            playerInputManager.DisableJoining();
+            //playerInputManager.DisableJoining();
         }
         else
         {
@@ -133,10 +133,16 @@ public class GameController : MonoBehaviour
         Player1 = GameObject.FindGameObjectWithTag("Player1");
         Player2 = GameObject.FindGameObjectWithTag("Player2");
 
-        if (Player1 != null)
-        {
-            playerInputManager.playerPrefab = PrefabPlayer[0];
-        }
+        //if (Player1 == null && !Pontos.SplitKeyboard)
+        //{
+        //    playerInputManager.playerPrefab.GetComponent<PlayerInput>().defaultControlScheme = Pontos.ControlSchemePlayer[0];
+        //    playerInputManager.playerPrefab = Pontos.prefabPlayer[0];
+        //}
+        //else if (Player1 != null && !Pontos.SplitKeyboard)
+        //{
+        //    playerInputManager.playerPrefab.GetComponent<PlayerInput>().defaultControlScheme = Pontos.ControlSchemePlayer[1];
+        //    playerInputManager.playerPrefab = Pontos.prefabPlayer[1];
+        //}
 
         if (Player1 != null && Player2 != null)
         {
@@ -149,6 +155,22 @@ public class GameController : MonoBehaviour
         {
             if (Pontos.SplitKeyboard)
             {
+                if (Player1 == null)
+                {
+                    playerInputManager.playerPrefab = Pontos.prefabPlayer[0];
+                    playerInputManager.playerPrefab.tag = "Player1";                   
+                    playerInputManager.playerPrefab.GetComponent<PlayerInput>().defaultControlScheme = "Keyboard";
+                    //var player1 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 0, null, -1, Keyboard.current, Mouse.current);
+                    //player1.tag = "Player1";
+                }
+                //else if (Player1 != null)
+                //{
+                //    Destroy(Player1);
+                //    PlayerInput player1 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 0, "KeyboardLeft", -1, Keyboard.current, Mouse.current);
+                //    PlayerInput player2 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 1, "KeyboardRight", -1, Keyboard.current);
+                //    player1.tag = "Player1";
+                //    player2.tag = "Player2";
+                //}
                 //var allKeyboards = Keyboard.all;
                 //InputDevice player1Device = allKeyboards[0];
                 //InputDevice player2Device = allKeyboards[0];
@@ -167,17 +189,19 @@ public class GameController : MonoBehaviour
                 //PlayerInput playerInput1 = playerGameObject1.GetComponent<PlayerInput>();
                 //PlayerInput playerInput2 = playerGameObject2.GetComponent<PlayerInput>();
 
-                Pontos.prefabPlayer[0].GetComponent<PlayerInput>().defaultControlScheme = "KeyboardLeft";
-                var player1 = PlayerInput.Instantiate(Pontos.prefabPlayer[0], 0, null, -1, Keyboard.current, Mouse.current);
-                Pontos.prefabPlayer[1].GetComponent<PlayerInput>().defaultControlScheme = "KeyboardRight";
-                var player2 = PlayerInput.Instantiate(Pontos.prefabPlayer[1], 1, null, -1, Keyboard.current);
-                InputUser.PerformPairingWithDevice(player2.GetComponent<PlayerInput>().devices[0], player2.user);
+                //Pontos.prefabPlayer[0].GetComponent<PlayerInput>().defaultControlScheme = "KeyboardLeft";
+                //playerInputManager.playerPrefab.GetComponent<PlayerInput>().defaultControlScheme = "KeyboardLeft";
+                //var player1 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 0, null, -1, Keyboard.current, Mouse.current);
+                //playerInputManager.playerPrefab.GetComponent<PlayerInput>().defaultControlScheme = "KeyboardRight";
+                //Pontos.prefabPlayer[1].GetComponent<PlayerInput>().defaultControlScheme = "KeyboardRight";
+                //var player2 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 1, null, -1, Keyboard.current);
+                //InputUser.PerformPairingWithDevice(player2.GetComponent<PlayerInput>().devices[0], player2.user);
 
                 //playerInput1.tag = "Player1";
                 //playerInput2.tag = "Player2";
 
-                player1.tag = "Player1";
-                player2.tag = "Player2";
+                //player1.tag = "Player1";
+                //player2.tag = "Player2";
 
                 //InputUser.PerformPairingWithDevice(player1Device, playerInput1.user);
                 //playerInput1.SwitchCurrentActionMap(Pontos.ControlSchemePlayer[0]);
@@ -434,5 +458,29 @@ public class GameController : MonoBehaviour
         Player1.GetComponent<Animator>().speed = speedP1;
         Player2.GetComponent<Animator>().speed = speedP2;
         yield break;
+    }
+
+    public void EnableSplitKeyboard(GameObject newGameObject)
+    {
+        playerInputManager.DisableJoining();
+        Destroy(newGameObject);
+        Pontos.prefabPlayer[0].GetComponent<PlayerInput>().defaultControlScheme = "KeyboardLeft";
+        PlayerInput player1 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 0, "KeyboardLeft", -1, Keyboard.current, Mouse.current);
+        player1.tag = "Player1";
+        Pontos.prefabPlayer[1].GetComponent<PlayerInput>().defaultControlScheme = "KeyboardRight";
+        PlayerInput player2 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 1, "KeyboardRight", -1, Keyboard.current);
+        player2.tag = "Player2";
+
+        PlayerInput player3 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 0, "KeyboardLeft", -1, Keyboard.current, Mouse.current);
+        player3.tag = "Player1";
+        Pontos.prefabPlayer[1].GetComponent<PlayerInput>().defaultControlScheme = "KeyboardRight";
+        PlayerInput player4 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 1, "KeyboardRight", -1, Keyboard.current);
+        player4.tag = "Player2";
+
+        player3.transform.position = InstancePosition[0].transform.position;
+        player4.transform.position = InstancePosition[1].transform.position;
+
+        Destroy(player1.gameObject);
+        Destroy(player2.gameObject);
     }
 }
