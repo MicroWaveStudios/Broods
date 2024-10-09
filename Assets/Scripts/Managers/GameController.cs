@@ -435,8 +435,8 @@ public class GameController : MonoBehaviour
         winnerPanel.SetActive(true);
         yield return new WaitForSeconds(2.5f);
         ZerarPontos();
-        yield return new WaitForSeconds(2.5f);
-        SceneManager.LoadScene("Menu");
+        //yield return new WaitForSeconds(2.5f);
+        //SceneManager.LoadScene("Menu");
     }
 
     public void ZerarPontos()
@@ -487,5 +487,10 @@ public class GameController : MonoBehaviour
         Destroy(player2.gameObject);
 
         txtInformativo.SetActive(false);
+    }
+
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene(Pontos.cenaAtual);
     }
 }
