@@ -64,7 +64,11 @@ public class XimasSkills : MonoBehaviour
             outroPlayer = GameObject.FindGameObjectWithTag("Player1");
         }
 
-        posicaoTpDash = new Vector3(outroPlayer.transform.position.x + (2f * scrpRigidbody.isPlayer2), transform.position.y, transform.position.z);
+        if (outroPlayer != null)
+        {
+            posicaoTpDash = new Vector3(outroPlayer.transform.position.x + (2f * scrpRigidbody.isPlayer2), transform.position.y, transform.position.z);
+        }
+        
 
         if (scrpPlayerStats.GetEnergyFull() == true)
         {

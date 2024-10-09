@@ -146,7 +146,7 @@ public class PlayerCombat : MonoBehaviour
                 _InAttack = true;
                 playerAnimator.TriggerAction(_AttackList[ListaDeAtaqueAtual].NomeDoAtaque);
 
-                if (numberAttack == 0)
+                if (numberAttack == 0 && !playerStats.GetXimas())
                 {
                     laserAtaqueBaixo.Play();
                 }
