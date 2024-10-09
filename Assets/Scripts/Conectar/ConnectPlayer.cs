@@ -17,7 +17,7 @@ public class ConnectPlayer : MonoBehaviour
     Gamepad dispositivo;
 
     [Header("Device Display Settings")]
-    [SerializeField] DeviceDisplayConfigurator deviceDisplaySettings;
+    //[SerializeField] DeviceDisplayConfigurator deviceDisplaySettings;
 
     GameObject connectManager;
     bool CanDoIt = false;
@@ -52,7 +52,9 @@ public class ConnectPlayer : MonoBehaviour
     }
     void DevicePlayer()
     {
-        deviceName = deviceDisplaySettings.GetDeviceName(playerInput); //Nome do dispositivo conectado
+        //deviceName = deviceDisplaySettings.GetDeviceName(playerInput); //Nome do dispositivo conectado
+
+        deviceName = playerInput.devices[0].ToString();
 
         controlScheme = playerInput.GetComponent<PlayerInput>().currentControlScheme.ToString(); //Nome do controlScheme sendo usado pelo player
     }

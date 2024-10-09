@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.VFX;
-using UnityEngine.InputSystem.Users;
-using UnityEngine.InputSystem.Controls;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -166,7 +164,7 @@ public class PlayerStats : MonoBehaviour
         {
             vfxDefesa.Play();
         }
-        scrpGameController.SetTimeScale();
+        //scrpGameController.SetTimeScale();
     }
 
 
