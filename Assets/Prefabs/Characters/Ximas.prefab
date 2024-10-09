@@ -2792,7 +2792,7 @@ MonoBehaviour:
     m_ActionId: 772c0d3d-819b-4929-a0f8-f3e16370640e
     m_ActionName: UI/Connect[/Keyboard/space,/XInputControllerWindows/buttonSouth]
   m_NeverAutoSwitchControlSchemes: 1
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: Gamepad
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
