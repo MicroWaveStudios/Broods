@@ -7,7 +7,7 @@ public class sceneManager : MonoBehaviour
 {
     public void Game()
     {
-        SceneManager.LoadScene("Game");
+        SceneManager.LoadScene("GameAcademia");
     }
     public void GameBarDoBanana()
     {

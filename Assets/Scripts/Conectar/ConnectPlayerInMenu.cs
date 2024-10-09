@@ -38,6 +38,7 @@ public class ConnectPlayerInMenu : MonoBehaviour
         Pontos.pontosP2 = 0;
     }
 
+
     public void ConnectDisconnectPlayer(GameObject Player, int playerID, string controlScheme, bool value)
     {
         DesactivePlayerText(playerID);
@@ -102,9 +103,6 @@ public class ConnectPlayerInMenu : MonoBehaviour
 
         Pontos.prefabPlayer[0].tag = player[0].tag;
         Pontos.prefabPlayer[1].tag = player[1].tag;
-
-        Destroy(player[0]);
-        Destroy(player[1]);
     }
     public void SetarPrefabPlayer(int playerAtual, int prefabIndex)
     {
@@ -120,18 +118,19 @@ public class ConnectPlayerInMenu : MonoBehaviour
         return player[1];
     }
 
-    //public void EnableSplitKeyboard()
-    //{
-    //    DestroyPlayersInScene();
-    //    var p1 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 0, "KeyboardLeft", -1, Keyboard.current, Mouse.current);
-    //    var p2 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 1, "KeyboardRight", -1, Keyboard.current);
-    //}
-    //public void DestroyPlayersInScene()
-    //{
-    //    Destroy(player[0]);
-    //    player[0] = null;
-    //    Destroy(player[1]);
-    //    player[1] = null;
-    //}
+    public void EnableSplitKeyboard()
+    {
+        ConnectDisconnectPlayer(player[0], 0, null, false);
+        PlayerInput player1 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 0, "KeyboardLeft", -1, Keyboard.current);
+        PlayerInput player2 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 1, "KeyboardRight", -1, Keyboard.current);
+        player1.tag = "Player1";
+        player2.tag = "Player2";
+        Pontos.SplitKeyboard = true;
+    }
+
+    public int GetPlayerInScene()
+    {
+        return playerInScene;
+    }
 
 }

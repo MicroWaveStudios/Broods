@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Users;
 using UnityEngine.SceneManagement;
 using TMPro;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class GameController : MonoBehaviour
 {
@@ -53,37 +55,75 @@ public class GameController : MonoBehaviour
         //{
         //    playerInputManager.DisableJoining();
         //}
-        InstanciarPlayer();
+        if (Pontos.SplitKeyboard)
+        {
+            //PlayerInput player1 = PlayerInput.Instantiate(Pontos.prefabPlayer[0], 0, "KeyboardLeft", -1, Keyboard.current);
+            //PlayerInput player2 = PlayerInput.Instantiate(Pontos.prefabPlayer[1], 1, "KeyboardRight", -1, Keyboard.current);
+            //player1.tag = "Player1";
+            //player2.tag = "Player2";
+            playerInputManager.DisableJoining();
+        }
+        else
+        {
+            InstanciarPlayer();
+        }
         BarraJogador[0].SetActive(true);
         BarraJogador[1].SetActive(true);
         Pontos.cenaAtual = SceneManager.GetActiveScene().name;
     }
 
+    //IEnumerator InstanciarComDelay()
+    //{
+    //    yield return new WaitForSeconds(0.5f);
+    //    PlayerInput playerInput1 = PlayerInput.Instantiate(Pontos.prefabPlayer[0], 0, Pontos.ControlSchemePlayer[0], -1, Keyboard.current);
+    //    PlayerInput playerInput2 = PlayerInput.Instantiate(Pontos.prefabPlayer[1], 1, Pontos.ControlSchemePlayer[1], -1, Keyboard.current);
+    //    playerInput1.tag = "Player1";
+    //    playerInput2.tag = "Player2";
+    //}
+
     void InstanciarPlayer()
     {
-        //var p1 = PlayerInput.Instantiate(Pontos.prefabPlayer[0], 0, "Gamepad", -1, Gamepad.current);
-        //p1.tag = "Player1";
-        //var p2 = PlayerInput.Instantiate(Pontos.prefabPlayer[1], 1, "Keyboard", -1, Gamepad.current);
-        //p2.tag = "Player2";
-        if (Pontos.ControlSchemePlayer[0] == "Keyboard")
+        for (int i = 0; i < 2; i++)
         {
-            var p1 = PlayerInput.Instantiate(Pontos.prefabPlayer[0], 0, "Keyboard", -1, Keyboard.current, Mouse.current);
-            p1.tag = "Player1";
-        }
-        else
-        {
-            var p1 = PlayerInput.Instantiate(Pontos.prefabPlayer[0], 0, "Gamepad", -1, Gamepad.current);
-            p1.tag = "Player1";
-        }
-        if (Pontos.ControlSchemePlayer[1] == "Keyboard")
-        {
-            var p2 = PlayerInput.Instantiate(Pontos.prefabPlayer[1], 1, "Keyboard", -1, Keyboard.current, Mouse.current);
-            p2.tag = "Player2";
-        }
-        else
-        {
-            var p2 = PlayerInput.Instantiate(Pontos.prefabPlayer[1], 1, "Gamepad", -1, Gamepad.current);
-            p2.tag = "Player2";
+            Pontos.prefabPlayer[i].GetComponent<PlayerInput>().defaultControlScheme = Pontos.ControlSchemePlayer[i];
+            int tagPlayer = i + 1;
+            //Pontos.prefabPlayer[i].tag = "Player" + tagPlayer; 
+            //Debug.Log(Pontos.ControlSchemePlayer[i]);
+
+            PlayerInput newPlayerInput;
+
+            switch (Pontos.ControlSchemePlayer[i])
+            {
+                case "Gamepad":
+                    newPlayerInput = PlayerInput.Instantiate(Pontos.prefabPlayer[i], i, Pontos.ControlSchemePlayer[i], -1, Gamepad.current);
+                    newPlayerInput.tag = "Player" + tagPlayer;
+                    break;
+                case "Keyboard":
+                    newPlayerInput = PlayerInput.Instantiate(Pontos.prefabPlayer[i], i, Pontos.ControlSchemePlayer[i], -1, Keyboard.current, Mouse.current);
+                    newPlayerInput.tag = "Player" + tagPlayer;
+                    break;
+            }
+
+            //switch (Pontos.ControlSchemePlayer[i])
+            //{
+            //    case "Gamepad":
+            //        playerInput[i] = PlayerInput.Instantiate(Pontos.prefabPlayer[i], i, Pontos.ControlSchemePlayer[i], -1, Gamepad.current);
+            //        //Debug.Log("GAMEPAD");
+            //        break;
+            //    case "Keyboard":
+            //        playerInput[i] = PlayerInput.Instantiate(Pontos.prefabPlayer[i], i, Pontos.ControlSchemePlayer[i], -1, Keyboard.current, Mouse.current);
+            //        //Debug.Log("KEYBOARD");
+            //        break;
+            //    case "KeyboardLeft":
+            //        playerInput[i] = PlayerInput.Instantiate(Pontos.prefabPlayer[i], i, Pontos.ControlSchemePlayer[i], -1, Keyboard.current);
+            //        InputUser.PerformPairingWithDevice(Keyboard.current, playerInput[i].user);
+            //        //Debug.Log("KEYBOARD_LEFT");
+            //        break;
+            //    case "KeyboardRight":
+            //        playerInput[i] = PlayerInput.Instantiate(Pontos.prefabPlayer[i], i, Pontos.ControlSchemePlayer[i], -1, Keyboard.current);
+            //        //Debug.Log("KEYBOARD_RIGHT");
+            //        break;
+            //}
         }
     }
 
@@ -98,8 +138,6 @@ public class GameController : MonoBehaviour
             playerInputManager.playerPrefab = PrefabPlayer[0];
         }
 
-
-
         if (Player1 != null && Player2 != null)
         {
             ChangePlayer();
@@ -107,6 +145,49 @@ public class GameController : MonoBehaviour
             PlayerLife();
             PlayerEnergy();
         }
+        else
+        {
+            if (Pontos.SplitKeyboard)
+            {
+                //var allKeyboards = Keyboard.all;
+                //InputDevice player1Device = allKeyboards[0];
+                //InputDevice player2Device = allKeyboards[0];
+
+                //InputUser playerInputUser1 = InputUser.CreateUserWithoutPairedDevices();
+                //InputUser playerInputUser2 = InputUser.CreateUserWithoutPairedDevices();
+
+                //InputUser.PerformPairingWithDevice(Keyboard.current, playerInputUser1);
+                //InputUser.PerformPairingWithDevice(Keyboard.current, playerInputUser2);
+
+                //Pontos.prefabPlayer[0].GetComponent<PlayerInput>().defaultControlScheme = "KeyboardLeft";
+                //GameObject playerGameObject1 = Instantiate(Pontos.prefabPlayer[0]);
+                //Pontos.prefabPlayer[1].GetComponent<PlayerInput>().defaultControlScheme = "KeyboardRight";
+                //GameObject playerGameObject2 = Instantiate(Pontos.prefabPlayer[1]);
+
+                //PlayerInput playerInput1 = playerGameObject1.GetComponent<PlayerInput>();
+                //PlayerInput playerInput2 = playerGameObject2.GetComponent<PlayerInput>();
+
+                Pontos.prefabPlayer[0].GetComponent<PlayerInput>().defaultControlScheme = "KeyboardLeft";
+                var player1 = PlayerInput.Instantiate(Pontos.prefabPlayer[0], 0, null, -1, Keyboard.current);
+                Pontos.prefabPlayer[1].GetComponent<PlayerInput>().defaultControlScheme = "KeyboardRight";
+                var player2 = PlayerInput.Instantiate(Pontos.prefabPlayer[1], 1, null, -1, Keyboard.current);
+                InputUser.PerformPairingWithDevice(player2.GetComponent<PlayerInput>().devices[0], player2.user);
+
+                //playerInput1.tag = "Player1";
+                //playerInput2.tag = "Player2";
+
+                player1.tag = "Player1";
+                player2.tag = "Player2";
+
+                //InputUser.PerformPairingWithDevice(player1Device, playerInput1.user);
+                //playerInput1.SwitchCurrentActionMap(Pontos.ControlSchemePlayer[0]);
+
+                //InputUser.PerformPairingWithDevice(player2Device, playerInput2.user);
+                //playerInput2.SwitchCurrentActionMap(Pontos.ControlSchemePlayer[1]);
+
+            }
+        }
+
         if (Pontos.pontosP1 >= 1)
         {
             WinnerCountP1[0].SetActive(true);
@@ -323,16 +404,19 @@ public class GameController : MonoBehaviour
     {
         BarraJogador[0].SetActive(false);
         BarraJogador[1].SetActive(false);
-        Pontos.pontosP1 = 0;
-        Pontos.pontosP2 = 0;
+        ZerarPontos();
         winnerPanel.SetActive(true);
         yield return new WaitForSeconds(2.5f);
-        Pontos.pontosP1 = 0;
-        Pontos.pontosP2 = 0;
+        ZerarPontos();
         yield return new WaitForSeconds(2.5f);
         SceneManager.LoadScene("Menu");
     }
 
+    public void ZerarPontos()
+    {
+        Pontos.pontosP1 = 0;
+        Pontos.pontosP2 = 0;
+    }
 
 
     public void SetTimeScale()

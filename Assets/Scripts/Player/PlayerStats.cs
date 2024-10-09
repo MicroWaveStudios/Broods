@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.VFX;
+using UnityEngine.InputSystem.Users;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -41,6 +43,17 @@ public class PlayerStats : MonoBehaviour
     {
         life = maxLife;
         energy = 0;
+        //if (Pontos.SplitKeyboard)
+        //{
+        //    if (gameObject.tag == "Player1")
+        //    {
+        //        GetComponent<PlayerInput>().SwitchCurrentControlScheme("KeyboardLeft");
+        //    }
+        //    else
+        //    {
+        //        GetComponent<PlayerInput>().SwitchCurrentControlScheme("KeyboardRight");
+        //    }
+        //}
     }
 
     private void Update()

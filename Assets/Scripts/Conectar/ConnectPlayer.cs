@@ -31,7 +31,6 @@ public class ConnectPlayer : MonoBehaviour
     private void Start()
     {
         connectManager.GetComponent<ConnectPlayerInMenu>().JoinPlayer(this.gameObject);
-        DontDestroyOnLoad(this.gameObject);
     }
     public void SetupPlayer(int newPlayerID)
     { 
@@ -66,9 +65,9 @@ public class ConnectPlayer : MonoBehaviour
     }
     public void ConnectSplitKeyboard(InputAction.CallbackContext context)
     {
-        if (CanDoIt && controlScheme == "Keyboard" && context.started)
+        if (CanDoIt && controlScheme == "Keyboard" && context.started && connectManager.GetComponent<ConnectPlayerInMenu>().GetPlayerInScene() == 1)
         {
-            //connectManager.GetComponent<ConnectPlayerInMenu>().EnableSplitKeyboard();
+            connectManager.GetComponent<ConnectPlayerInMenu>().EnableSplitKeyboard();
         }
     }
 
