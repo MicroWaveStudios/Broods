@@ -1202,7 +1202,13 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         {
             ""name"": ""KeyboardRight"",
             ""bindingGroup"": ""KeyboardRight"",
-            ""devices"": []
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Keyboard>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
         }
     ]
 }");

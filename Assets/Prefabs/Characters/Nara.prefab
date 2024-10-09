@@ -6549,7 +6549,7 @@ MonoBehaviour:
     m_ActionId: 644fb18b-b04d-4c6c-9f15-fa5ec3ade69c
     m_ActionName: Player/Special[/Keyboard/q,/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 1
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: KeyboardRight
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}

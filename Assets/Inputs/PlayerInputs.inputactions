@@ -1180,7 +1180,13 @@
         {
             "name": "KeyboardRight",
             "bindingGroup": "KeyboardRight",
-            "devices": []
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                }
+            ]
         }
     ]
 }

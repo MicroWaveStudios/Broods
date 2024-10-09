@@ -288,7 +288,6 @@ public class NaraSkills : MonoBehaviour
         playerAnimator.TriggerAction("Tartico");
 
         yield return new WaitForSeconds(1f);
-
         playerCombat.SetInAttack(false);
         yield return ResetCombo();
         yield break;
