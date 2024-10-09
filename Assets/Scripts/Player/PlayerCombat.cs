@@ -177,25 +177,42 @@ public class PlayerCombat : MonoBehaviour
         //playerMove.MoverAoAtacar(_AttackList[ListaDeAtaqueAtual].MoveDamage[ordem]);
         yield return new WaitForSeconds(0.01f);
         InCombo = true;
-        yield return StartCoroutine(WaitForFrames(_AttackList[ListaDeAtaqueAtual].FramesContinuar[ordem], _AttackList[ListaDeAtaqueAtual].VelocidadeDaAnimacao[ordem], _AttackList[ListaDeAtaqueAtual].SampleRate[ordem]));
+        yield return StartCoroutine(ContinuarCombo());
+        //yield return StartCoroutine(WaitForFrames(_AttackList[ListaDeAtaqueAtual].FramesContinuar[ordem], _AttackList[ListaDeAtaqueAtual].VelocidadeDaAnimacao[ordem], _AttackList[ListaDeAtaqueAtual].SampleRate[ordem]));
     }
     IEnumerator ContinuarCombo()
     {
-        while (timer < 0.2f && !playerStats.GetInAction() && ordem < _AttackList[ListaDeAtaqueAtual].OrdemCombo.Length) 
+        float tempoRestante = 0f;
+
+        while (timer < _AttackList[ListaDeAtaqueAtual].FramesContinuar[ordem] && !playerStats.GetInAction() /*&& ordem < _AttackList[ListaDeAtaqueAtual].OrdemCombo.Length*/) 
         {
             timer += 1 * Time.deltaTime;
-            if (actualNumber == _AttackList[ListaDeAtaqueAtual].OrdemCombo[ordem])
+
+            if(ordem >= _AttackList[ListaDeAtaqueAtual].OrdemCombo.Length)
+            {
+                goto skip;
+            }
+
+            tempoRestante = _AttackList[ListaDeAtaqueAtual].FramesContinuar[ordem] - timer;
+
+            if (tempoRestante <= 0.01f)
+            {
+                Debug.Log("Continuar");
+            }
+
+            if (actualNumber == _AttackList[ListaDeAtaqueAtual].OrdemCombo[ordem] && tempoRestante <= 0.1f)
             {
                 ordem++;
                 timer = 0;
                 StartCoroutine(Combo());
                 yield break;
             }
-            else
-            {
-                yield return null;
-            }
+
+            skip:
+            yield return null;
         }
+
+        Debug.Log("Acabou o tempo");
         ResetCombo();
         yield break;
     }
@@ -205,7 +222,7 @@ public class PlayerCombat : MonoBehaviour
     IEnumerator WaitForFrames(float frameCount, float velocidade, float sampleRate)
     { 
         yield return new WaitForSeconds(frameCount / velocidade / sampleRate);
-        StartCoroutine(ContinuarCombo());
+        //StartCoroutine(ContinuarCombo());
         yield break;
     }
     public void ResetCombo()
