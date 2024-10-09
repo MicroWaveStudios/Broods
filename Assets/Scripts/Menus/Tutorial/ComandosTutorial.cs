@@ -33,49 +33,49 @@ public class ComandosTutorial : MonoBehaviour
 
         if (playerMove.GetDirecaoX() == 1f)
         {
-            acao[0].fontStyle = FontStyles.Strikethrough;
+            acao[0].color = Color.green;
         }
 
         if (playerMove.GetDirecaoX() == -1f)
         {
-            acao[1].fontStyle = FontStyles.Strikethrough;
+            acao[1].color = Color.green;
         }
 
         if (!playerMove.GetNoChao())
         {
-            acao[2].fontStyle = FontStyles.Strikethrough;
+            acao[2].color = Color.green;
         }
 
         if (playerMove.GetEstaAgachado())
         {
-            acao[3].fontStyle = FontStyles.Strikethrough;
+            acao[3].color = Color.green;
         }
 
         if (playerCombat.GetAtacouLeve())
         {
-            acao[4].fontStyle = FontStyles.Strikethrough;
+            acao[4].color = Color.green;
         }
 
         if (playerCombat.GetAtacouMedio())
         {
-            acao[5].fontStyle = FontStyles.Strikethrough;
+            acao[5].color = Color.green;
         }
 
         if (playerCombat.GetAtacouPesado())
         {
-            acao[6].fontStyle = FontStyles.Strikethrough;
+            acao[6].color = Color.green;
         }
 
         if (playerCombat.GetAtacouBaixo())
         {
-            acao[7].fontStyle = FontStyles.Strikethrough;
+            acao[7].color = Color.green;
         }
 
         int x = 0;
 
         for (int i = 0; i < acao.Count; i++)
         {
-            if (acao[i].fontStyle == FontStyles.Strikethrough)
+            if (acao[i].color == Color.green)
             {
                 x++;
             }
