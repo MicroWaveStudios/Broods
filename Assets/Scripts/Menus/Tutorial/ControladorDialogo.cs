@@ -100,13 +100,12 @@ public class ControladorDialogo : MonoBehaviour
             {
                 Next();
             }
-
             else
             {
                 dialogueUI.Disable();
                 textoAtual = 0;
-                acabouAnimacao = false;
-                tutorialManager.SetActive(true);
+                //acabouAnimacao = false;
+                tutorialManager.GetComponent<ComandosTutorial>().enabled = true;
             }
         }
     }

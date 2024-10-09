@@ -239,6 +239,11 @@ public class PlayerCombat : MonoBehaviour
 
     IEnumerator ResetCombo_()
     {
+        atacouLeve = false;
+        atacouMedio = false;
+        atacouBaixo = false;
+        atacouPesado = false;
+        atacouAgachado = false;
         ListaDeAtaqueAtual = -1;
         ordem = 0;
         timer = 0f;

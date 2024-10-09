@@ -78,7 +78,6 @@ public class ComandosTutorial : MonoBehaviour
             if (acao[i].fontStyle == FontStyles.Strikethrough)
             {
                 x++;
-                //confirmacoes[i] = true;
             }
             else
             {
