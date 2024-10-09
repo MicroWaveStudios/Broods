@@ -6648,7 +6648,7 @@ MonoBehaviour:
     - 60
     MoveDamage:
     - 150
-    - 300
+    - 150
     - 200
   - NomeDoAtaque: AtaqueMedio
     AtaqueRange: 020000000200000002000000

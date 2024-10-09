@@ -48,6 +48,8 @@ public class GameController : MonoBehaviour
 
     PlayerInputManager playerInputManager;
 
+    [SerializeField] GameObject txtInformativo;
+
     private void Start()
     {
         playerInputManager = GetComponent<PlayerInputManager>();
@@ -62,6 +64,7 @@ public class GameController : MonoBehaviour
             //player1.tag = "Player1";
             //player2.tag = "Player2";
             //playerInputManager.DisableJoining();
+            txtInformativo.SetActive(true);
         }
         else
         {
@@ -482,5 +485,7 @@ public class GameController : MonoBehaviour
 
         Destroy(player1.gameObject);
         Destroy(player2.gameObject);
+
+        txtInformativo.SetActive(false);
     }
 }
