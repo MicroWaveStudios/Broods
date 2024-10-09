@@ -6180,7 +6180,7 @@ GameObject:
   - component: {fileID: 757593877083283454}
   m_Layer: 0
   m_Name: Nara
-  m_TagString: Player2
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6561,7 +6561,7 @@ MonoBehaviour:
     m_ActionId: 644fb18b-b04d-4c6c-9f15-fa5ec3ade69c
     m_ActionName: Player/Special[/Keyboard/q,/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 1
-  m_DefaultControlScheme: Keyboard
+  m_DefaultControlScheme: KeyboardRight
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}

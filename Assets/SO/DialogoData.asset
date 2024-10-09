@@ -54,7 +54,11 @@ MonoBehaviour:
   - nome: "Nar\xE1"
     icon: {fileID: 21300000, guid: 0b88bc4b7bfbbb548ab8ffbbbd1ff96f, type: 3}
     text: "Preciso ir embora agora, mas sinta-se livre para continuar treinando e
-      aperfei\xE7oando seus ataques."
+      aperfei\xE7oando seus ataques, pois existem outras t\xE9cnicas poss\xEDveis. "
+  - nome: "Nar\xE1"
+    icon: {fileID: 21300000, guid: 0b88bc4b7bfbbb548ab8ffbbbd1ff96f, type: 3}
+    text: "Mais para frente, durante as partidas, aperte ESC para pausar o jogo e
+      aprender a utilizar suas habilidades, relembrando o que voc\xEA esqueceu."
   - nome: "Nar\xE1"
     icon: {fileID: 21300000, guid: 0b88bc4b7bfbbb548ab8ffbbbd1ff96f, type: 3}
     text: Nos vemos por ai, jovem.

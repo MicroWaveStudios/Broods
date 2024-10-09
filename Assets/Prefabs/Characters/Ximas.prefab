@@ -2411,7 +2411,7 @@ GameObject:
   - component: {fileID: 3259785787356502641}
   m_Layer: 7
   m_Name: Ximas
-  m_TagString: Player2
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2792,7 +2792,7 @@ MonoBehaviour:
     m_ActionId: 772c0d3d-819b-4929-a0f8-f3e16370640e
     m_ActionName: UI/Connect[/Keyboard/space,/XInputControllerWindows/buttonSouth]
   m_NeverAutoSwitchControlSchemes: 1
-  m_DefaultControlScheme: Gamepad
+  m_DefaultControlScheme: KeyboardRight
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
