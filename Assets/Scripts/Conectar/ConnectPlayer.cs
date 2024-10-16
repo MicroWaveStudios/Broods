@@ -20,12 +20,16 @@ public class ConnectPlayer : MonoBehaviour
     //[SerializeField] DeviceDisplayConfigurator deviceDisplaySettings;
 
     GameObject connectManager;
+    //ConnectPlayerInMenu connectManager;
+    SelecaoPersonagem selecaoPersonagem;
+
     bool CanDoIt = false;
 
     private void Awake()
     {
         StartCoroutine(PlayerCanDoIt());
         playerInput = GetComponent<PlayerInput>();
+        selecaoPersonagem = GetComponent<SelecaoPersonagem>();
         connectManager = GameObject.FindGameObjectWithTag("ConnectManager");
     }
     private void Start()
@@ -36,6 +40,7 @@ public class ConnectPlayer : MonoBehaviour
     { 
         playerID = newPlayerID;
         DevicePlayer();
+        selecaoPersonagem.TrocarCorDaBorda(newPlayerID);
         connectManager.GetComponent<ConnectPlayerInMenu>().ConnectDisconnectPlayer(this.gameObject, playerID, controlScheme, true);
 
 

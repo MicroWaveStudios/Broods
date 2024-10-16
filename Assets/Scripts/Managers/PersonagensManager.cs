@@ -20,8 +20,10 @@ public class PersonagensManager : MonoBehaviour
     //[SerializeField] GameObject confirm2;
 
     int[] indexPersonagem = new int[] { -1, -1};
-    GameObject[] playerGameObject;
+    GameObject[] playerGameObject = new GameObject[2];
     int player = 0;
+
+    bool naSelecaoDePersonagem;
 
     [System.Serializable]
     struct Lista
@@ -39,6 +41,15 @@ public class PersonagensManager : MonoBehaviour
             playerGameObject[0] = GameObject.FindGameObjectWithTag("ConnectManager").GetComponent<ConnectPlayerInMenu>().GetPlayer1();
             playerGameObject[1] = GameObject.FindGameObjectWithTag("ConnectManager").GetComponent<ConnectPlayerInMenu>().GetPlayer2();
         }
+    }
+
+    public void IniciarPainelPersonagem()
+    {
+        naSelecaoDePersonagem = true;
+        playerGameObject[0] = GameObject.FindGameObjectWithTag("ConnectManager").GetComponent<ConnectPlayerInMenu>().GetPlayer1();
+        playerGameObject[1] = GameObject.FindGameObjectWithTag("ConnectManager").GetComponent<ConnectPlayerInMenu>().GetPlayer2();
+        playerGameObject[0].transform.position = BotoesDaCena[0].transform.position;
+        playerGameObject[1].transform.position = BotoesDaCena[1].transform.position;
     }
 
     #region Confirmações
@@ -149,6 +160,14 @@ public class PersonagensManager : MonoBehaviour
     public void SetIndexPlayer(int player, int value)
     {
         indexPersonagem[player] = value;
+    }
+    public bool GetNaSelecaoDePersonagem()
+    {
+        return naSelecaoDePersonagem;
+    }
+    public void SetNaSelecaoDePersonagem(bool value)
+    { 
+        naSelecaoDePersonagem = value;
     }
 }
 

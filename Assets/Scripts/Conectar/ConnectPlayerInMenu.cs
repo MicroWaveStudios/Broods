@@ -78,7 +78,7 @@ public class ConnectPlayerInMenu : MonoBehaviour
         spawnedPlayer.tag = "Player" + tagNumber;
         spawnedPlayer.GetComponent<ConnectPlayer>().SetupPlayer(playerNumber);
 
-        spawnedPlayer.transform.position = spawn[playerNumber].transform.position;
+        //spawnedPlayer.transform.position = spawn[playerNumber].transform.position;
 
         playerInScene++;
         if (player[0] != null && player[1] != null)
