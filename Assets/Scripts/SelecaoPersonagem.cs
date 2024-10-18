@@ -11,13 +11,13 @@ public class SelecaoPersonagem : MonoBehaviour
     [SerializeField] Color[] CorBorda;
     [SerializeField] Vector3[] PosicaoTexto;
 
-    PersonagensManager personagensManager;
+    [SerializeField] GameObject personagensManager;
 
     GameObject botaoAtual;
 
-    private void Start()
+    private void Awake()
     {
-        personagensManager = GameObject.FindGameObjectWithTag("PersonagemManager").GetComponent<PersonagensManager>();
+        personagensManager = GameObject.FindGameObjectWithTag("PersonagemManager");
     }
 
     public void TrocarCorDaBorda(int playerIndex)
@@ -32,28 +32,32 @@ public class SelecaoPersonagem : MonoBehaviour
         //BordaSelecaoPersonagem.GetComponentInChildren<TextMeshPro>().color = CorBorda[playerIndex];
     }
 
+    public void AlterarBotaoAtual(GameObject novoBotaoAtual)
+    {
+        int playerIndex = GetComponent<ConnectPlayer>().GetPlayerID();
+        if (botaoAtual != null)
+        {
+            botaoAtual.GetComponent<scriptBotao>().SetJogadorNoBotao(false, playerIndex);
+        }
+        botaoAtual = novoBotaoAtual;
+        BordaSelecaoPersonagem.transform.position = botaoAtual.transform.position;
+        botaoAtual.GetComponent<scriptBotao>().SetJogadorNoBotao(true, playerIndex);
+    }
+
+    public void Confirmar(InputAction.CallbackContext context)
+    {
+        if (context.started && botaoAtual.GetComponent<scriptBotao>().GetPrefabJogador() != null && GameObject.FindGameObjectWithTag("PersonagemManager").GetComponent<PersonagensManager>().GetNaSelecaoDePersonagem())
+        {
+
+        }
+    }
+
     public void Navegacao(InputAction.CallbackContext context)
     {
         Vector2 orientacao = context.ReadValue<Vector2>();
-        Debug.Log("naSelecaoDePersonagem = " + GameObject.FindGameObjectWithTag("PersonagemManager").GetComponent<PersonagensManager>().GetNaSelecaoDePersonagem());
-        //Debug.Log(orientacao);
-        if (orientacao != Vector2.zero && GameObject.FindGameObjectWithTag("PersonagemManager").GetComponent<PersonagensManager>())
+        if (orientacao != Vector2.zero && GameObject.FindGameObjectWithTag("PersonagemManager").GetComponent<PersonagensManager>().GetComponent<PersonagensManager>())
         {
-            switch (orientacao)
-            {
-                case Vector2 when orientacao.Equals(Vector2.up):
-                    Debug.Log("Up");
-                    break;
-                case Vector2 when orientacao.Equals(Vector2.down):
-                    Debug.Log("Down");
-                    break;
-                case Vector2 when orientacao.Equals(Vector2.right):
-                    Debug.Log("Right");
-                    break;
-                case Vector2 when orientacao.Equals(Vector2.left):
-                    Debug.Log("Left");
-                    break;
-            }
+            botaoAtual.GetComponent<scriptBotao>().Orientacao(this.gameObject, orientacao);
         }
     }
 

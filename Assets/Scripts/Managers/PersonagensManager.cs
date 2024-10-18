@@ -11,6 +11,9 @@ public class PersonagensManager : MonoBehaviour
     [SerializeField] GameObject[] BotoesDaCena;
     [SerializeField] GameObject eventSystemManager;
     [SerializeField] GameObject BotaoInicial;
+
+    [SerializeField] Transform[] posicaoPlayer;
+
     //[SerializeField] GameObject poseNara1;
     //[SerializeField] GameObject poseXimas1;
     //[SerializeField] GameObject confirm1;
@@ -48,8 +51,8 @@ public class PersonagensManager : MonoBehaviour
         naSelecaoDePersonagem = true;
         playerGameObject[0] = GameObject.FindGameObjectWithTag("ConnectManager").GetComponent<ConnectPlayerInMenu>().GetPlayer1();
         playerGameObject[1] = GameObject.FindGameObjectWithTag("ConnectManager").GetComponent<ConnectPlayerInMenu>().GetPlayer2();
-        playerGameObject[0].transform.position = BotoesDaCena[0].transform.position;
-        playerGameObject[1].transform.position = BotoesDaCena[1].transform.position;
+        playerGameObject[0].GetComponent<SelecaoPersonagem>().AlterarBotaoAtual(BotaoInicial);
+        playerGameObject[1].GetComponent<SelecaoPersonagem>().AlterarBotaoAtual(BotaoInicial);
     }
 
     #region Confirmações
@@ -68,33 +71,6 @@ public class PersonagensManager : MonoBehaviour
         {
             player = 1;
         }
-        //if (!p2PodeEscolher)
-        //{
-        //    if (ListaPose[0].Personagem[0].gameObject.activeInHierarchy)
-        //    {
-        //        indexPersonagem1 = 0;
-        //    }
-
-        //    if (ListaPose[0].poseXimas.gameObject.activeInHierarchy)
-        //    {
-        //        indexPersonagem1 = 1;
-        //    }
-
-        //    p2PodeEscolher = true;
-        //}
-
-        //else
-        //{
-        //    if (ListaPose[1].poseNara.gameObject.activeInHierarchy)
-        //    {
-        //        indexPersonagem2 = 0;
-        //    }
-
-        //    if (ListaPose[1].poseXimas.gameObject.activeInHierarchy)
-        //    {
-        //        indexPersonagem2 = 1;
-        //    }
-        //}
     }
     void SetarPersonagem()
     {
@@ -120,37 +96,6 @@ public class PersonagensManager : MonoBehaviour
             ListaPose[value].posePersonagem[i].SetActive(false);
         }
     }
-    //public void SelecionouNara()
-    //{
-    //    if (!p2PodeEscolher)
-    //    {
-    //        poseNara1.SetActive(true);
-    //        poseXimas1.SetActive(false);
-    //        confirm1.SetActive(true);
-    //    }
-    //    else
-    //    {
-    //        poseNara2.SetActive(true);
-    //        poseXimas2.SetActive(false);
-    //        confirm2.SetActive(true);
-    //    }
-    //}
-    //public void SelecionouXimas()
-    //{
-    //    if (!p2PodeEscolher)
-    //    {
-    //        poseNara1.SetActive(false);
-    //        poseXimas1.SetActive(true);
-    //        confirm1.SetActive(true);
-    //    }
-
-    //    else
-    //    {
-    //        poseNara2.SetActive(false);
-    //        poseXimas2.SetActive(true);
-    //        confirm2.SetActive(true);
-    //    }
-    //}
     #endregion
 
     public int GetIndexPlayer(int player)
