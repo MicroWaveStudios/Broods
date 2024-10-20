@@ -28,7 +28,6 @@ public class scriptBotao : MonoBehaviour
         if (value && PrefabJogador != null)
         {
             Jogador = Instantiate(PrefabJogador, transform.position, Quaternion.identity);
-            Jogador.GetComponent<PlayerInput>().enabled = false;
         }
         else
         {

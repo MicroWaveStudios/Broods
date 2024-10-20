@@ -20,6 +20,20 @@ public class SelecaoPersonagem : MonoBehaviour
         personagensManager = GameObject.FindGameObjectWithTag("PersonagemManager");
     }
 
+    private void Start()
+    {
+        //personagensManager.GetComponent<PersonagensManager>().
+    }
+
+    public void SetActiveBordaSelecao(bool value)
+    {
+        BordaSelecaoPersonagem.SetActive(value);
+        if (value)
+        {
+            AlterarBotaoAtual(personagensManager.GetComponent<PersonagensManager>().GetBotaoInicial());
+        }
+    }
+
     public void TrocarCorDaBorda(int playerIndex)
     {
         BordaSelecaoPersonagem.GetComponent<SpriteRenderer>().color = CorBorda[playerIndex];
@@ -55,7 +69,7 @@ public class SelecaoPersonagem : MonoBehaviour
     public void Navegacao(InputAction.CallbackContext context)
     {
         Vector2 orientacao = context.ReadValue<Vector2>();
-        if (orientacao != Vector2.zero && GameObject.FindGameObjectWithTag("PersonagemManager").GetComponent<PersonagensManager>().GetComponent<PersonagensManager>())
+        if (orientacao != Vector2.zero && personagensManager.GetComponent<PersonagensManager>().GetComponent<PersonagensManager>().GetNaSelecaoDePersonagem())
         {
             botaoAtual.GetComponent<scriptBotao>().Orientacao(this.gameObject, orientacao);
         }

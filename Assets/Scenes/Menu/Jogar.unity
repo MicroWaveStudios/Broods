@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -134,7 +134,6 @@ GameObject:
   - component: {fileID: 23043932}
   - component: {fileID: 23043935}
   - component: {fileID: 23043934}
-  - component: {fileID: 23043933}
   - component: {fileID: 23043936}
   m_Layer: 0
   m_Name: ButtonPipoco
@@ -164,50 +163,6 @@ RectTransform:
   m_AnchoredPosition: {x: 97.58943, y: -31.149532}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &23043933
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 23043931}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 0
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.00126791, g: 1, b: 0, a: 1}
-    m_PressedColor: {r: 1, g: 0.96763754, b: 0, a: 1}
-    m_SelectedColor: {r: 0.032397628, g: 1, b: 0, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 23043934}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &23043934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,26 +201,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 23043931}
   m_CullTransparentMesh: 1
---- !u!95 &23043936
-Animator:
-  serializedVersion: 4
+--- !u!114 &23043936
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 23043931}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ab1a292c8f96bb748b8bf595c960e720, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40a34d254d248664bb7854e2a9e4c46a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BotoesProximos:
+  - {fileID: 0}
+  - {fileID: 86514574}
+  - {fileID: 1635701177}
+  - {fileID: 0}
+  PrefabJogador: {fileID: 0}
 --- !u!1 &38311943
 GameObject:
   m_ObjectHideFlags: 0
@@ -1234,6 +1187,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: c9b28b4f15c7866449e961dd3de4caae, type: 3}
     - target: {fileID: 5888470286630149207, guid: ea09e7c8c8dd3014ab6837ca2d6bcb26, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5888470286630149207, guid: ea09e7c8c8dd3014ab6837ca2d6bcb26, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5888470286630149207, guid: ea09e7c8c8dd3014ab6837ca2d6bcb26, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2098846303}
@@ -1248,7 +1209,7 @@ PrefabInstance:
     - target: {fileID: 7635764584608856731, guid: ea09e7c8c8dd3014ab6837ca2d6bcb26, type: 3}
       propertyPath: PrefabJogador
       value: 
-      objectReference: {fileID: 6635523287152186700, guid: 6ae38b9c128d93748b30d3cef5189263, type: 3}
+      objectReference: {fileID: 957597484839092533, guid: e1bb1516de1c03b489443de1bda23b61, type: 3}
     - target: {fileID: 7635764584608856731, guid: ea09e7c8c8dd3014ab6837ca2d6bcb26, type: 3}
       propertyPath: BotoesProximos.Array.size
       value: 4
@@ -1256,20 +1217,21 @@ PrefabInstance:
     - target: {fileID: 7635764584608856731, guid: ea09e7c8c8dd3014ab6837ca2d6bcb26, type: 3}
       propertyPath: BotoesProximos.Array.data[0]
       value: 
-      objectReference: {fileID: 86514574}
+      objectReference: {fileID: 1072625288}
     - target: {fileID: 7635764584608856731, guid: ea09e7c8c8dd3014ab6837ca2d6bcb26, type: 3}
       propertyPath: BotoesProximos.Array.data[1]
       value: 
-      objectReference: {fileID: 86514574}
+      objectReference: {fileID: 0}
     - target: {fileID: 7635764584608856731, guid: ea09e7c8c8dd3014ab6837ca2d6bcb26, type: 3}
       propertyPath: BotoesProximos.Array.data[2]
       value: 
-      objectReference: {fileID: 86514574}
+      objectReference: {fileID: 0}
     - target: {fileID: 7635764584608856731, guid: ea09e7c8c8dd3014ab6837ca2d6bcb26, type: 3}
       propertyPath: BotoesProximos.Array.data[3]
       value: 
-      objectReference: {fileID: 86514574}
-    m_RemovedComponents: []
+      objectReference: {fileID: 1635701177}
+    m_RemovedComponents:
+    - {fileID: 5888470286630149207, guid: ea09e7c8c8dd3014ab6837ca2d6bcb26, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ea09e7c8c8dd3014ab6837ca2d6bcb26, type: 3}
 --- !u!1 &235834629
 GameObject:
@@ -4255,7 +4217,6 @@ GameObject:
   - component: {fileID: 1072625289}
   - component: {fileID: 1072625292}
   - component: {fileID: 1072625291}
-  - component: {fileID: 1072625290}
   - component: {fileID: 1072625293}
   m_Layer: 0
   m_Name: ButtonIrmaosInho
@@ -4285,50 +4246,6 @@ RectTransform:
   m_AnchoredPosition: {x: -41.41057, y: -31.149532}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1072625290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1072625288}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 0
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.00126791, g: 1, b: 0, a: 1}
-    m_PressedColor: {r: 1, g: 0.96763754, b: 0, a: 1}
-    m_SelectedColor: {r: 0.032397628, g: 1, b: 0, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1072625291}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &1072625291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4367,26 +4284,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1072625288}
   m_CullTransparentMesh: 1
---- !u!95 &1072625293
-Animator:
-  serializedVersion: 4
+--- !u!114 &1072625293
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1072625288}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: deb482901a714304ea917d6b99a85c19, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40a34d254d248664bb7854e2a9e4c46a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BotoesProximos:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 1639498863}
+  - {fileID: 86514574}
+  PrefabJogador: {fileID: 0}
 --- !u!1 &1083748574
 GameObject:
   m_ObjectHideFlags: 0
@@ -4497,8 +4412,8 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 2098846303}
         m_TargetAssemblyTypeName: PersonagensManager, Assembly-CSharp
-        m_MethodName: IniciarPainelPersonagem
-        m_Mode: 1
+        m_MethodName: AlterarCenaPersonagens
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5355,10 +5270,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 974486270}
-        m_TargetAssemblyTypeName: PanelsManager, Assembly-CSharp
-        m_MethodName: ChangePanel
-        m_Mode: 3
+      - m_Target: {fileID: 2098846303}
+        m_TargetAssemblyTypeName: PersonagensManager, Assembly-CSharp
+        m_MethodName: AlterarCenaPersonagens
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -5506,14 +5421,26 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 2784dc0bb7bc2e24b87495e1d8e571af, type: 3}
+    - target: {fileID: 5888470286630149207, guid: ea09e7c8c8dd3014ab6837ca2d6bcb26, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5888470286630149207, guid: ea09e7c8c8dd3014ab6837ca2d6bcb26, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5888470286630149208, guid: ea09e7c8c8dd3014ab6837ca2d6bcb26, type: 3}
       propertyPath: m_Name
       value: BotaoXimas
       objectReference: {fileID: 0}
+    - target: {fileID: 5888470286630149208, guid: ea09e7c8c8dd3014ab6837ca2d6bcb26, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7635764584608856731, guid: ea09e7c8c8dd3014ab6837ca2d6bcb26, type: 3}
       propertyPath: PrefabJogador
       value: 
-      objectReference: {fileID: 2170977410140118623, guid: ac06cef3dead19b4c9e97f5a3211992e, type: 3}
+      objectReference: {fileID: 4787019588658103715, guid: 35b22893867a7664d81ddd210915c879, type: 3}
     - target: {fileID: 7635764584608856731, guid: ea09e7c8c8dd3014ab6837ca2d6bcb26, type: 3}
       propertyPath: BotoesProximos.Array.size
       value: 4
@@ -5521,11 +5448,11 @@ PrefabInstance:
     - target: {fileID: 7635764584608856731, guid: ea09e7c8c8dd3014ab6837ca2d6bcb26, type: 3}
       propertyPath: BotoesProximos.Array.data[0]
       value: 
-      objectReference: {fileID: 1639498863}
+      objectReference: {fileID: 0}
     - target: {fileID: 7635764584608856731, guid: ea09e7c8c8dd3014ab6837ca2d6bcb26, type: 3}
       propertyPath: BotoesProximos.Array.data[1]
       value: 
-      objectReference: {fileID: 1639498863}
+      objectReference: {fileID: 1072625288}
     - target: {fileID: 7635764584608856731, guid: ea09e7c8c8dd3014ab6837ca2d6bcb26, type: 3}
       propertyPath: BotoesProximos.Array.data[2]
       value: 
@@ -5533,8 +5460,9 @@ PrefabInstance:
     - target: {fileID: 7635764584608856731, guid: ea09e7c8c8dd3014ab6837ca2d6bcb26, type: 3}
       propertyPath: BotoesProximos.Array.data[3]
       value: 
-      objectReference: {fileID: 1639498863}
-    m_RemovedComponents: []
+      objectReference: {fileID: 23043931}
+    m_RemovedComponents:
+    - {fileID: 5888470286630149207, guid: ea09e7c8c8dd3014ab6837ca2d6bcb26, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ea09e7c8c8dd3014ab6837ca2d6bcb26, type: 3}
 --- !u!1 &1467521165
 GameObject:
@@ -6491,7 +6419,6 @@ GameObject:
   - component: {fileID: 1635701178}
   - component: {fileID: 1635701181}
   - component: {fileID: 1635701180}
-  - component: {fileID: 1635701179}
   - component: {fileID: 1635701182}
   m_Layer: 0
   m_Name: ButtonFrescalia
@@ -6521,50 +6448,6 @@ RectTransform:
   m_AnchoredPosition: {x: 65.78943, y: 38.699997}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1635701179
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1635701177}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 0
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.00126791, g: 1, b: 0, a: 1}
-    m_PressedColor: {r: 1, g: 0.96763754, b: 0, a: 1}
-    m_SelectedColor: {r: 0.032397628, g: 1, b: 0, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 1635701180}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &1635701180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6603,26 +6486,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1635701177}
   m_CullTransparentMesh: 1
---- !u!95 &1635701182
-Animator:
-  serializedVersion: 4
+--- !u!114 &1635701182
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1635701177}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e9fd7caac8bbcdd4c94ca4d0c3d78ccc, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40a34d254d248664bb7854e2a9e4c46a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BotoesProximos:
+  - {fileID: 23043931}
+  - {fileID: 1639498863}
+  - {fileID: 0}
+  - {fileID: 0}
+  PrefabJogador: {fileID: 0}
 --- !u!1 &1639498863 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5888470286630149208, guid: ea09e7c8c8dd3014ab6837ca2d6bcb26, type: 3}
@@ -7998,7 +7879,7 @@ MonoBehaviour:
   spritePersonagens: []
   BotoesDaCena:
   - {fileID: 1639498863}
-  - {fileID: 86514574}
+  - {fileID: 1639498863}
   eventSystemManager: {fileID: 758114260}
   BotaoInicial: {fileID: 1639498863}
   posicaoPlayer:

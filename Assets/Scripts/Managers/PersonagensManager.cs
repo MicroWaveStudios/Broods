@@ -39,11 +39,16 @@ public class PersonagensManager : MonoBehaviour
 
     public void AlterarCenaPersonagens(bool value)
     {
-        if (value)
-        {
-            playerGameObject[0] = GameObject.FindGameObjectWithTag("ConnectManager").GetComponent<ConnectPlayerInMenu>().GetPlayer1();
-            playerGameObject[1] = GameObject.FindGameObjectWithTag("ConnectManager").GetComponent<ConnectPlayerInMenu>().GetPlayer2();
-        }
+        naSelecaoDePersonagem = value;
+        playerGameObject[0] = GameObject.FindGameObjectWithTag("ConnectManager").GetComponent<ConnectPlayerInMenu>().GetPlayer1();
+        playerGameObject[1] = GameObject.FindGameObjectWithTag("ConnectManager").GetComponent<ConnectPlayerInMenu>().GetPlayer2();
+        playerGameObject[0].GetComponent<SelecaoPersonagem>().SetActiveBordaSelecao(value);
+        playerGameObject[1].GetComponent<SelecaoPersonagem>().SetActiveBordaSelecao(value);
+    }
+
+    public GameObject GetBotaoInicial()
+    {
+        return BotaoInicial;
     }
 
     public void IniciarPainelPersonagem()
@@ -51,8 +56,6 @@ public class PersonagensManager : MonoBehaviour
         naSelecaoDePersonagem = true;
         playerGameObject[0] = GameObject.FindGameObjectWithTag("ConnectManager").GetComponent<ConnectPlayerInMenu>().GetPlayer1();
         playerGameObject[1] = GameObject.FindGameObjectWithTag("ConnectManager").GetComponent<ConnectPlayerInMenu>().GetPlayer2();
-        playerGameObject[0].GetComponent<SelecaoPersonagem>().AlterarBotaoAtual(BotaoInicial);
-        playerGameObject[1].GetComponent<SelecaoPersonagem>().AlterarBotaoAtual(BotaoInicial);
     }
 
     #region Confirmações
