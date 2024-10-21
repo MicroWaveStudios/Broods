@@ -5,6 +5,11 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
+
+enum Etapa
+{ 
+    conectar, selecaoDePersonagem, selecaoDeMapa
+}
 public class ConnectPlayerInMenu : MonoBehaviour
 {
     [Header("Player Input Manager")]
@@ -19,6 +24,8 @@ public class ConnectPlayerInMenu : MonoBehaviour
     [SerializeField] GameObject ContinueButton;
     [SerializeField] GameObject BackButton;
 
+    [SerializeField] GameObject TxtSplitKeyboard;
+
     [Header("Characters Screen")]
     [SerializeField] GameObject[] player;
     [SerializeField] Transform[] spawn; //Variavel para nn bugar os players ao ir para a cena jogar
@@ -31,6 +38,7 @@ public class ConnectPlayerInMenu : MonoBehaviour
 
     public int limitPlayer;
     public int playerInScene;
+    Etapa etapa;
 
     private void Start()
     {
@@ -53,9 +61,14 @@ public class ConnectPlayerInMenu : MonoBehaviour
         EnterMessage[playerID].SetActive(!value);
         PlayerMenu[playerID].SetActive(value);
         if (controlScheme == "Gamepad")
+        {
             GamepadMenu[playerID].SetActive(value);
+        }
         else
+        { 
             KeyboardMenu[playerID].SetActive(value);
+            TxtSplitKeyboard.SetActive(value);
+        }
     }
 
     void DesactivePlayerText(int playerID)
@@ -109,15 +122,30 @@ public class ConnectPlayerInMenu : MonoBehaviour
         playerPersonagem[playerAtual] = prefabIndex;
     }
 
-    public GameObject GetPlayer1()
+    public GameObject GetPlayer(int playerIndex)
     {
-        return player[0];
+        return player[playerIndex];
     }
-    public GameObject GetPlayer2() 
+    public void Voltar()
     {
-        return player[1];
+        switch (etapa)
+        {
+            case Etapa.conectar:
+                sceneManager.VoltarMenu();
+                break;
+            case Etapa.selecaoDePersonagem:
+                etapa = Etapa.conectar;
+                break;
+            case Etapa.selecaoDeMapa:
+                etapa = Etapa.selecaoDePersonagem;
+                break;
+        }
     }
 
+    public string GetEtapa()
+    { 
+        return etapa.ToString();
+    }
     public void EnableSplitKeyboard()
     {
         ConnectDisconnectPlayer(player[0], 0, null, false);

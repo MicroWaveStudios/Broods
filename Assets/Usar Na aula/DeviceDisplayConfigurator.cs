@@ -80,16 +80,16 @@ public class DeviceDisplayConfigurator : ScriptableObject
 
         Sprite displaySpriteIcon = null;
 
-        for(int i = 0; i < listDeviceSets.Count; i++)
-        {
-            if(listDeviceSets[i].deviceRawPath == currentDeviceRawPath)
-            {
-                if(listDeviceSets[i].deviceDisplaySettings.deviceHasContextIcons != null)
-                {
-                    displaySpriteIcon = FilterForDeviceInputBinding(listDeviceSets[i], playerInputDeviceInputBinding);
-                }
-            }
-        }
+        //for(int i = 0; i < listDeviceSets.Count; i++)
+        //{
+        //    if(listDeviceSets[i].deviceRawPath == currentDeviceRawPath)
+        //    {
+        //        //if(listDeviceSets[i].deviceDisplaySettings.deviceHasContextIcons != null)
+        //        //{
+        //        //    displaySpriteIcon = FilterForDeviceInputBinding(listDeviceSets[i], playerInputDeviceInputBinding);
+        //        //}
+        //    }
+        //}
 
         return displaySpriteIcon;
     }

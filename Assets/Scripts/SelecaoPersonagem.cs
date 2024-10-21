@@ -11,15 +11,15 @@ public class SelecaoPersonagem : MonoBehaviour
     [SerializeField] Color[] CorBorda;
     [SerializeField] Vector3[] PosicaoTexto;
 
-    Vector3 PosicaoInicialTexto;
-
-    [SerializeField] GameObject personagensManager;
+    GameObject personagensManager;
+    GameObject ConnectPlayerInMenu;
 
     GameObject botaoAtual;
 
     private void Awake()
     {
         personagensManager = GameObject.FindGameObjectWithTag("PersonagemManager");
+        ConnectPlayerInMenu = GameObject.FindGameObjectWithTag("ConnectManager");
     }
 
     public void SetActiveBordaSelecao(bool value)

@@ -44,8 +44,8 @@ public class UIRebindActionBehaviour : MonoBehaviour
 
     void GetFocusedPlayerInput()
     {
-        PlayerController focusedPlayerController = GameManager.Instance.GetFocusedPlayerController();
-        focusedPlayerInput = focusedPlayerController.GetPlayerInput();
+        //PlayerController focusedPlayerController = GameManager.Instance.GetFocusedPlayerController();
+        //focusedPlayerInput = focusedPlayerController.GetPlayerInput();
     }
 
     void SetupFocusedInputAction()

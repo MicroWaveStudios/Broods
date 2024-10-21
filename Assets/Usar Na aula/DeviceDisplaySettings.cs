@@ -17,8 +17,6 @@ public class DeviceDisplaySettings : ScriptableObject
 
     public Color deviceDisplayColor;
 
-    public bool deviceHasContextIcons;
-
     public Sprite buttonNorthIcon;
     public Sprite buttonSouthIcon;
     public Sprite buttonWestIcon;
