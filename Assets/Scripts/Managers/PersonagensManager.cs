@@ -7,10 +7,13 @@ using UnityEngine.UI;
 public class PersonagensManager : MonoBehaviour
 {
     #region Variáveis
+    [SerializeField] ConnectPlayerInMenu connectManger;
+
     [SerializeField] Image[] spritePersonagens;
     [SerializeField] GameObject[] BotoesDaCena;
     [SerializeField] GameObject eventSystemManager;
     [SerializeField] GameObject BotaoInicial;
+    [SerializeField] GameObject txtContinuar;
 
     [SerializeField] Transform[] PosicaoInstanciar;
 
@@ -23,6 +26,7 @@ public class PersonagensManager : MonoBehaviour
     bool naSelecaoDePersonagem;
 
     bool[] selecionouPersonagem = new bool[2]; 
+    bool[] confirmouPersonagem = new bool[2];
 
     //[System.Serializable]
     //struct Lista
@@ -35,6 +39,14 @@ public class PersonagensManager : MonoBehaviour
 
     public void AlterarCenaPersonagens(bool value)
     {
+        if (value == true)
+        {
+            connectManger.SetEtapaSelecaoMapa();
+        }
+        else
+        {
+            connectManger.SetEtapaConectar();
+        }
         naSelecaoDePersonagem = value;
         GameObject.FindGameObjectWithTag("ConnectManager").GetComponent<ConnectPlayerInMenu>().GetPlayer(0).GetComponent<SelecaoPersonagem>().SetActiveBordaSelecao(value);
         GameObject.FindGameObjectWithTag("ConnectManager").GetComponent<ConnectPlayerInMenu>().GetPlayer(1).GetComponent<SelecaoPersonagem>().SetActiveBordaSelecao(value);
@@ -44,18 +56,18 @@ public class PersonagensManager : MonoBehaviour
     {
         return BotaoInicial;
     }
-
-    public void IniciarPainelPersonagem()
-    {
-        naSelecaoDePersonagem = true;
-        playerGameObject[0] = GameObject.FindGameObjectWithTag("ConnectManager").GetComponent<ConnectPlayerInMenu>().GetPlayer(0);
-        playerGameObject[1] = GameObject.FindGameObjectWithTag("ConnectManager").GetComponent<ConnectPlayerInMenu>().GetPlayer(1);
-    }
-
     #region Confirmações
-    public void Confirmou()
+    public void ConfirmouPersonagem(int playerIndex, bool value)
     {
-        
+        confirmouPersonagem[playerIndex] = value;
+        if (confirmouPersonagem[0] && confirmouPersonagem[1])
+        {
+            // aparecer mensagem pode continuar para tela de selecao de mapas
+        }
+        else
+        {
+            // setar mensagem como false
+        }
     }
     #endregion
 
@@ -63,6 +75,8 @@ public class PersonagensManager : MonoBehaviour
     public void SelecionouPersonagem(int playerIndex, bool value)
     {
         selecionouPersonagem[playerIndex] = value;
+
+        //deixar ele selecionar o material
     }
     #endregion
 
@@ -74,7 +88,14 @@ public class PersonagensManager : MonoBehaviour
     { 
         naSelecaoDePersonagem = value;
     }
-
+    public bool GetSelecionouPersonagem(int playerIndex)
+    {
+        return selecionouPersonagem[playerIndex];
+    }
+    public bool GetConfirmouPersonagem(int playerIndex)
+    {
+        return confirmouPersonagem[playerIndex];
+    }
     public Transform GetPosicaoInstanciar(int value)
     {
         return PosicaoInstanciar[value];

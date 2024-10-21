@@ -19,7 +19,10 @@ public class PanelsManager : MonoBehaviour
         panel[currentPanel].SetActive(false);
         currentPanel = numberPanel;
         panel[currentPanel].SetActive(true);
-        eventSystemManager.GetComponent<EventSystemManager>().SetCurrentSelectedButton(defaultPanelButton[currentPanel]);
+        if (defaultPanelButton[currentPanel] != null)
+        {
+            eventSystemManager.GetComponent<EventSystemManager>().SetCurrentSelectedButton(defaultPanelButton[currentPanel]);
+        }
     }
 
     public void ClosePanel()

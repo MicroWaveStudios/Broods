@@ -13,6 +13,7 @@ public class ConnectPlayer : MonoBehaviour
     string deviceName; //dispositivo do player
     string rawPathName;
     int numeroPersonagem;
+    int VarianteSkin;
 
     Gamepad dispositivo;
 
@@ -65,7 +66,7 @@ public class ConnectPlayer : MonoBehaviour
     }
     public void DisconnectPlayer(InputAction.CallbackContext context)
     {
-        if (CanDoIt && !this.gameObject.GetComponent<PlayerController>().SceneGame())
+        if (CanDoIt && connectManager.GetComponent<ConnectPlayerInMenu>().GetEtapa() == "conectar")
         {
             connectManager.GetComponent<ConnectPlayerInMenu>().ConnectDisconnectPlayer(this.gameObject, playerID, controlScheme, false);
         }
@@ -88,6 +89,11 @@ public class ConnectPlayer : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         CanDoIt = true;
         yield break;
+    }
+
+    public void SetVarianteSkin(int value)
+    {
+        VarianteSkin = value;
     }
 
     public int GetNumeroPersonagem()

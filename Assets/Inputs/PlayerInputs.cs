@@ -736,6 +736,15 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": ""Tap"",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Confirmar"",
+                    ""type"": ""Button"",
+                    ""id"": ""3307bfa4-9d81-444a-91fe-2bc12120abca"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -1119,7 +1128,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard;KeyboardLeft"",
+                    ""groups"": ""Keyboard;KeyboardLeft;KeyboardRight"",
                     ""action"": ""Exit"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -1154,6 +1163,39 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Connect"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7112c8dd-1180-4fb8-9a36-63dde83f3d42"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard;KeyboardLeft"",
+                    ""action"": ""Confirmar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a4ddeb53-e70a-4eeb-83aa-8275196524cc"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardRight"",
+                    ""action"": ""Confirmar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6120b7ac-e72d-4e2c-a3af-aeea27533ab2"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Confirmar"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1244,6 +1286,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
         m_UI_Exit = m_UI.FindAction("Exit", throwIfNotFound: true);
         m_UI_Connect = m_UI.FindAction("Connect", throwIfNotFound: true);
+        m_UI_Confirmar = m_UI.FindAction("Confirmar", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1421,6 +1464,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_TrackedDeviceOrientation;
     private readonly InputAction m_UI_Exit;
     private readonly InputAction m_UI_Connect;
+    private readonly InputAction m_UI_Confirmar;
     public struct UIActions
     {
         private @PlayerInputs m_Wrapper;
@@ -1438,6 +1482,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         public InputAction @TrackedDeviceOrientation => m_Wrapper.m_UI_TrackedDeviceOrientation;
         public InputAction @Exit => m_Wrapper.m_UI_Exit;
         public InputAction @Connect => m_Wrapper.m_UI_Connect;
+        public InputAction @Confirmar => m_Wrapper.m_UI_Confirmar;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1486,6 +1531,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @Connect.started -= m_Wrapper.m_UIActionsCallbackInterface.OnConnect;
                 @Connect.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnConnect;
                 @Connect.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnConnect;
+                @Confirmar.started -= m_Wrapper.m_UIActionsCallbackInterface.OnConfirmar;
+                @Confirmar.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnConfirmar;
+                @Confirmar.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnConfirmar;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
@@ -1529,6 +1577,9 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 @Connect.started += instance.OnConnect;
                 @Connect.performed += instance.OnConnect;
                 @Connect.canceled += instance.OnConnect;
+                @Confirmar.started += instance.OnConfirmar;
+                @Confirmar.performed += instance.OnConfirmar;
+                @Confirmar.canceled += instance.OnConfirmar;
             }
         }
     }
@@ -1597,5 +1648,6 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
         void OnExit(InputAction.CallbackContext context);
         void OnConnect(InputAction.CallbackContext context);
+        void OnConfirmar(InputAction.CallbackContext context);
     }
 }

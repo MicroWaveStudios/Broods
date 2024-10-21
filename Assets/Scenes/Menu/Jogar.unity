@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -266,6 +266,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInputManager: {fileID: 38311947}
   sceneManager: {fileID: 974070512}
+  personagensManager: {fileID: 2098846303}
+  panelsManager: {fileID: 974486270}
   PlayerMenu:
   - {fileID: 1365987856}
   - {fileID: 235834629}
@@ -280,6 +282,7 @@ MonoBehaviour:
   - {fileID: 1505878789}
   ContinueButton: {fileID: 1083748574}
   BackButton: {fileID: 486071886}
+  TxtSplitKeyboard: {fileID: 1803994721}
   player:
   - {fileID: 0}
   - {fileID: 0}
@@ -938,6 +941,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 2098846303}
+        m_TargetAssemblyTypeName: PersonagensManager, Assembly-CSharp
+        m_MethodName: AlterarCenaPersonagens
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &170083201
 MonoBehaviour:
@@ -4448,29 +4463,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 383553408}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 974486270}
+        m_TargetAssemblyTypeName: PanelsManager, Assembly-CSharp
+        m_MethodName: ChangePanel
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 456213591}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 2098846303}
         m_TargetAssemblyTypeName: PersonagensManager, Assembly-CSharp
@@ -5332,6 +5335,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 974486270}
+        m_TargetAssemblyTypeName: PanelsManager, Assembly-CSharp
+        m_MethodName: ChangePanel
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 2098846303}
         m_TargetAssemblyTypeName: PersonagensManager, Assembly-CSharp
         m_MethodName: AlterarCenaPersonagens
@@ -6973,7 +6988,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1803994722
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7940,27 +7955,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eeb3c54bc0f266428f2131fda29c0fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  connectManger: {fileID: 38311946}
   spritePersonagens: []
   BotoesDaCena:
   - {fileID: 1639498863}
   - {fileID: 1639498863}
   eventSystemManager: {fileID: 758114260}
   BotaoInicial: {fileID: 1639498863}
+  txtContinuar: {fileID: 0}
   PosicaoInstanciar:
   - {fileID: 408425038}
   - {fileID: 1033331615}
   posicaoPlayer:
   - {fileID: 174123042}
   - {fileID: 1148179423}
-  ListaPose:
-  - posePersonagem:
-    - {fileID: 1597510575}
-    - {fileID: 1942600527}
-    confirmar: {fileID: 569315552}
-  - posePersonagem:
-    - {fileID: 723146667}
-    - {fileID: 173453956}
-    confirmar: {fileID: 319904560}
 --- !u!1 &2146736372
 GameObject:
   m_ObjectHideFlags: 0
@@ -8111,7 +8119,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2186313280502644088, guid: 53b9db743295e5649b5e43ff7b5bd36c, type: 3}
       propertyPath: panel.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2186313280502644088, guid: 53b9db743295e5649b5e43ff7b5bd36c, type: 3}
       propertyPath: eventSystemManager
@@ -8124,14 +8132,14 @@ PrefabInstance:
     - target: {fileID: 2186313280502644088, guid: 53b9db743295e5649b5e43ff7b5bd36c, type: 3}
       propertyPath: panel.Array.data[1]
       value: 
-      objectReference: {fileID: 1650723519}
+      objectReference: {fileID: 456213591}
     - target: {fileID: 2186313280502644088, guid: 53b9db743295e5649b5e43ff7b5bd36c, type: 3}
       propertyPath: panel.Array.data[2]
       value: 
-      objectReference: {fileID: 456213591}
+      objectReference: {fileID: 1650723519}
     - target: {fileID: 2186313280502644088, guid: 53b9db743295e5649b5e43ff7b5bd36c, type: 3}
       propertyPath: defaultPanelButton.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2186313280502644088, guid: 53b9db743295e5649b5e43ff7b5bd36c, type: 3}
       propertyPath: defaultPanelButton.Array.data[0]
@@ -8140,7 +8148,7 @@ PrefabInstance:
     - target: {fileID: 2186313280502644088, guid: 53b9db743295e5649b5e43ff7b5bd36c, type: 3}
       propertyPath: defaultPanelButton.Array.data[1]
       value: 
-      objectReference: {fileID: 820502262}
+      objectReference: {fileID: 0}
     - target: {fileID: 2186313280502644088, guid: 53b9db743295e5649b5e43ff7b5bd36c, type: 3}
       propertyPath: defaultPanelButton.Array.data[2]
       value: 

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using UnityEngine.SceneManagement;
 enum Scene
 { 
     Connect,
@@ -31,7 +31,10 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        scene = Scene.Game;
+        if (SceneManager.GetActiveScene().name == "GameAcademia" || SceneManager.GetActiveScene().name == "GameBarDoBanana")
+        {
+            scene = Scene.Game;
+        }
     }
 
     private void Start()

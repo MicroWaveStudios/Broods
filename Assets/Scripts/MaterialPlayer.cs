@@ -19,7 +19,7 @@ public class MaterialPlayer : MonoBehaviour
 
     [SerializeField] GameObject[] PartesDoCorpo;
 
-    public bool isPlayer2 = false;
+    int materialAtual;
 
 
     private void Start()
@@ -48,7 +48,20 @@ public class MaterialPlayer : MonoBehaviour
         //    }
         //}
     }
+    public void TrocarMaterial(float direcao)
+    {
+        float material = materialAtual + direcao;
+        if (material < VarianteDaSkin.Count && material >= 0)
+        {
+            materialAtual = (int)material;
+            SetMaterialPersonagem(materialAtual);
+        }
+    }
 
+    public string GetVarianteAtual()
+    {
+        return VarianteDaSkin[materialAtual].nome;
+    }
     public void SetMaterialPersonagem(int skin)
     {
         for (int i = 0; i < PartesDoCorpo.Length; i++)

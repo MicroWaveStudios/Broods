@@ -714,6 +714,15 @@
                     "processors": "",
                     "interactions": "Tap",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Confirmar",
+                    "type": "Button",
+                    "id": "3307bfa4-9d81-444a-91fe-2bc12120abca",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1097,7 +1106,7 @@
                     "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard;KeyboardLeft",
+                    "groups": "Keyboard;KeyboardLeft;KeyboardRight",
                     "action": "Exit",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -1132,6 +1141,39 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Connect",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7112c8dd-1180-4fb8-9a36-63dde83f3d42",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard;KeyboardLeft",
+                    "action": "Confirmar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a4ddeb53-e70a-4eeb-83aa-8275196524cc",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardRight",
+                    "action": "Confirmar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6120b7ac-e72d-4e2c-a3af-aeea27533ab2",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Confirmar",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

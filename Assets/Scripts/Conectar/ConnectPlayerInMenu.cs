@@ -12,9 +12,11 @@ enum Etapa
 }
 public class ConnectPlayerInMenu : MonoBehaviour
 {
-    [Header("Player Input Manager")]
+    [Header("Managers")]
     [SerializeField] PlayerInputManager playerInputManager;
     [SerializeField] sceneManager sceneManager;
+    [SerializeField] PersonagensManager personagensManager;
+    [SerializeField] PanelsManager panelsManager;
 
     [Header("Connect Screen")]
     [SerializeField] GameObject[] PlayerMenu;
@@ -65,7 +67,7 @@ public class ConnectPlayerInMenu : MonoBehaviour
             GamepadMenu[playerID].SetActive(value);
         }
         else
-        { 
+        {
             KeyboardMenu[playerID].SetActive(value);
             TxtSplitKeyboard.SetActive(value);
         }
@@ -105,7 +107,13 @@ public class ConnectPlayerInMenu : MonoBehaviour
             playerInputManager.EnableJoining();
         }
     }
-
+    private void Update()
+    {
+        if (player[0] == null || player[1] == null)
+        {
+            playerInputManager.EnableJoining();
+        }
+    }
     public void TrocarCenaGame(string novaCenaAtual)
     {
         Pontos.prefabPlayer[0] = prefabPersonagens[player[0].GetComponent<ConnectPlayer>().GetNumeroPersonagem()];
@@ -126,20 +134,48 @@ public class ConnectPlayerInMenu : MonoBehaviour
     {
         return player[playerIndex];
     }
-    public void Voltar()
+    public void Voltar(int playerIndex)
     {
         switch (etapa)
         {
             case Etapa.conectar:
-                sceneManager.VoltarMenu();
+                if (player[0] == null && player[1] == null)
+                {
+                    sceneManager.VoltarMenu();
+                }
                 break;
             case Etapa.selecaoDePersonagem:
-                etapa = Etapa.conectar;
+                if (personagensManager.GetConfirmouPersonagem(playerIndex))
+                {
+                    personagensManager.ConfirmouPersonagem(playerIndex, false);
+                }
+                else if (personagensManager.GetSelecionouPersonagem(playerIndex)) 
+                {
+                    personagensManager.SelecionouPersonagem(playerIndex, false);
+                }
+                else
+                {
+                    panelsManager.ChangePanel(0);
+                    etapa = Etapa.conectar;
+                }
                 break;
             case Etapa.selecaoDeMapa:
+                panelsManager.ChangePanel(1);
                 etapa = Etapa.selecaoDePersonagem;
                 break;
         }
+    }
+    public void SetEtapaConectar()
+    { 
+        etapa = Etapa.conectar;
+    }
+    public void SetEtapaSelecaoPersonagem()
+    {
+        etapa = Etapa.selecaoDePersonagem;
+    }
+    public void SetEtapaSelecaoMapa()
+    {
+        etapa = Etapa.selecaoDeMapa;
     }
 
     public string GetEtapa()

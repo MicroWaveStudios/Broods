@@ -17,9 +17,9 @@ public class scriptBotao : MonoBehaviour
         InstantiateJogador(value, playerIndex);
     }
 
-    public GameObject GetPrefabJogador()
+    public GameObject GetJogador(int playerIndex)
     { 
-        return PrefabJogador;
+        return Jogador[playerIndex];
     }
 
 

@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &71838735134086701
 RectTransform:
   m_ObjectHideFlags: 0
@@ -396,6 +396,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: -5618542849229416776}
+        m_TargetAssemblyTypeName: SelecaoPersonagem, Assembly-CSharp
+        m_MethodName: Voltar
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 9c27497b-30a5-44b4-873f-443a68e07ee1
     m_ActionName: UI/Cancel[/Keyboard/escape,/DualShock4GamepadHID/buttonEast]
   - m_PersistentCalls:
@@ -474,6 +486,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 644fb18b-b04d-4c6c-9f15-fa5ec3ade69c
     m_ActionName: Player/Special[/Keyboard/q,/Keyboard/e,/Keyboard/u,/Keyboard/o]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -5618542849229416776}
+        m_TargetAssemblyTypeName: SelecaoPersonagem, Assembly-CSharp
+        m_MethodName: Confirmar
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 3307bfa4-9d81-444a-91fe-2bc12120abca
+    m_ActionName: UI/Confirmar[/Keyboard/space,/Keyboard/enter]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: UI
@@ -524,4 +552,3 @@ MonoBehaviour:
   PosicaoTexto:
   - {x: -5.5, y: 6, z: 0}
   - {x: 6, y: 6, z: 0}
-  personagensManager: {fileID: 0}
