@@ -12,6 +12,8 @@ public class PersonagensManager : MonoBehaviour
     [SerializeField] GameObject eventSystemManager;
     [SerializeField] GameObject BotaoInicial;
 
+    [SerializeField] Transform[] PosicaoInstanciar;
+
     [SerializeField] Transform[] posicaoPlayer;
 
     //[SerializeField] GameObject poseNara1;
@@ -116,6 +118,11 @@ public class PersonagensManager : MonoBehaviour
     public void SetNaSelecaoDePersonagem(bool value)
     { 
         naSelecaoDePersonagem = value;
+    }
+
+    public Transform GetPosicaoInstanciar(int value)
+    {
+        return PosicaoInstanciar[value];
     }
 }
 

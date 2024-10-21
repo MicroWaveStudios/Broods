@@ -11,6 +11,8 @@ public class SelecaoPersonagem : MonoBehaviour
     [SerializeField] Color[] CorBorda;
     [SerializeField] Vector3[] PosicaoTexto;
 
+    Vector3 PosicaoInicialTexto;
+
     [SerializeField] GameObject personagensManager;
 
     GameObject botaoAtual;
@@ -18,11 +20,6 @@ public class SelecaoPersonagem : MonoBehaviour
     private void Awake()
     {
         personagensManager = GameObject.FindGameObjectWithTag("PersonagemManager");
-    }
-
-    private void Start()
-    {
-        //personagensManager.GetComponent<PersonagensManager>().
     }
 
     public void SetActiveBordaSelecao(bool value)
@@ -38,12 +35,9 @@ public class SelecaoPersonagem : MonoBehaviour
     {
         BordaSelecaoPersonagem.GetComponent<SpriteRenderer>().color = CorBorda[playerIndex];
         int playerText = playerIndex + 1;
-        textoBorda.GetComponent<Transform>().position = PosicaoTexto[playerIndex];
+        textoBorda.rectTransform.position = PosicaoTexto[playerIndex];
         textoBorda.color = CorBorda[playerIndex];
         textoBorda.text = "P" + playerText;
-
-        //BordaSelecaoPersonagem.GetComponentInChildren<TextMeshPro>().text = "P" + playerText;
-        //BordaSelecaoPersonagem.GetComponentInChildren<TextMeshPro>().color = CorBorda[playerIndex];
     }
 
     public void AlterarBotaoAtual(GameObject novoBotaoAtual)
@@ -54,13 +48,13 @@ public class SelecaoPersonagem : MonoBehaviour
             botaoAtual.GetComponent<scriptBotao>().SetJogadorNoBotao(false, playerIndex);
         }
         botaoAtual = novoBotaoAtual;
-        BordaSelecaoPersonagem.transform.position = botaoAtual.transform.position;
+        transform.position = novoBotaoAtual.transform.position;
         botaoAtual.GetComponent<scriptBotao>().SetJogadorNoBotao(true, playerIndex);
     }
 
     public void Confirmar(InputAction.CallbackContext context)
     {
-        if (context.started && botaoAtual.GetComponent<scriptBotao>().GetPrefabJogador() != null && GameObject.FindGameObjectWithTag("PersonagemManager").GetComponent<PersonagensManager>().GetNaSelecaoDePersonagem())
+        if (context.started && botaoAtual.GetComponent<scriptBotao>().GetPrefabJogador() != null && personagensManager.GetComponent<PersonagensManager>().GetNaSelecaoDePersonagem())
         {
 
         }

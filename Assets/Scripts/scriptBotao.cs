@@ -8,13 +8,13 @@ public class scriptBotao : MonoBehaviour
     [Header("Baixo = 0 - Esquerda = 1 - Cima = 2 - Direito = 3")]
     [SerializeField] GameObject[] BotoesProximos;
     [SerializeField] GameObject PrefabJogador;
-    GameObject Jogador;
+    GameObject[] Jogador = new GameObject[2];
     bool[] NoBotao = new bool[2];
 
     public void SetJogadorNoBotao(bool value, int playerIndex)
     { 
         NoBotao[playerIndex] = value;
-        InstantiateJogador(value);
+        InstantiateJogador(value, playerIndex);
     }
 
     public GameObject GetPrefabJogador()
@@ -23,15 +23,42 @@ public class scriptBotao : MonoBehaviour
     }
 
 
-    void InstantiateJogador(bool value)
+    void InstantiateJogador(bool value, int playerIndex)
     {
         if (value && PrefabJogador != null)
         {
-            Jogador = Instantiate(PrefabJogador, transform.position, Quaternion.identity);
+            if (Jogador != null) 
+            {
+                Destroy(Jogador[playerIndex]);
+            }
+            Jogador[playerIndex] = Instantiate(PrefabJogador, GameObject.FindGameObjectWithTag("PersonagemManager").GetComponent<PersonagensManager>().GetPosicaoInstanciar(playerIndex).position, Quaternion.Euler(0f, 90f, 0f));
+            switch (PrefabJogador.name)
+            {
+                case "Nara Variant":
+                    if (playerIndex == 0)
+                    {
+                        Jogador[playerIndex].transform.localScale = new Vector3(1f, 1f, 1f);
+                    }
+                    else
+                    {
+                        Jogador[playerIndex].transform.localScale = new Vector3(1f, 1f, -1);
+                    }
+                    break;
+                case "Ximas Variant":
+                    if (playerIndex == 0)
+                    {
+                        Jogador[playerIndex].transform.localScale = new Vector3(0.009999999f, 0.01f, 0.009999999f);
+                    }
+                    else
+                    {
+                        Jogador[playerIndex].transform.localScale = new Vector3(0.009999999f, 0.01f, -0.009999999f);
+                    }
+                    break;
+            }
         }
         else
         {
-            Destroy(Jogador);
+            Destroy(Jogador[playerIndex]);
         }
     }
 

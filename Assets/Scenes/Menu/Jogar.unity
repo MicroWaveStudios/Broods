@@ -855,7 +855,7 @@ GameObject:
   - component: {fileID: 170083202}
   - component: {fileID: 170083201}
   - component: {fileID: 170083200}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: VoltarButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -988,7 +988,7 @@ GameObject:
   - component: {fileID: 173453957}
   - component: {fileID: 173453959}
   - component: {fileID: 173453958}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: ximasPose2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1244,7 +1244,7 @@ GameObject:
   - component: {fileID: 235834630}
   - component: {fileID: 235834634}
   - component: {fileID: 235834633}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Player 2 Conectado
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1379,7 +1379,7 @@ GameObject:
   - component: {fileID: 252770713}
   - component: {fileID: 252770715}
   - component: {fileID: 252770714}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: txtPersonagens
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1736,7 +1736,7 @@ GameObject:
   - component: {fileID: 345687246}
   - component: {fileID: 345687248}
   - component: {fileID: 345687247}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: icone Teclado 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1810,7 +1810,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 383553409}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: ParearControlesPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1838,6 +1838,37 @@ Transform:
   - {fileID: 1803994722}
   m_Father: {fileID: 1041287171}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &408425037
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 408425038}
+  m_Layer: 0
+  m_Name: PosicaoInstanciar - P1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &408425038
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408425037}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.6, y: -0.75, z: -4.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2098846302}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &456213591
 GameObject:
@@ -1891,7 +1922,7 @@ GameObject:
   - component: {fileID: 459985814}
   - component: {fileID: 459985816}
   - component: {fileID: 459985815}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: coluna 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1967,7 +1998,7 @@ GameObject:
   - component: {fileID: 464364974}
   - component: {fileID: 464364976}
   - component: {fileID: 464364975}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: icone Controle 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2044,7 +2075,7 @@ GameObject:
   - component: {fileID: 486071890}
   - component: {fileID: 486071889}
   - component: {fileID: 486071888}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: 'VoltarButton '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2213,7 +2244,7 @@ GameObject:
   - component: {fileID: 501625049}
   - component: {fileID: 501625051}
   - component: {fileID: 501625050}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2348,7 +2379,7 @@ GameObject:
   - component: {fileID: 535490291}
   - component: {fileID: 535490293}
   - component: {fileID: 535490292}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: icone Teclado 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3037,7 +3068,7 @@ GameObject:
   - component: {fileID: 660005736}
   - component: {fileID: 660005738}
   - component: {fileID: 660005737}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: txtConectar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3172,7 +3203,7 @@ GameObject:
   - component: {fileID: 681509023}
   - component: {fileID: 681509025}
   - component: {fileID: 681509024}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: txtJogador1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3307,7 +3338,7 @@ GameObject:
   - component: {fileID: 723146668}
   - component: {fileID: 723146670}
   - component: {fileID: 723146669}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: naraPose2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3567,7 +3598,7 @@ GameObject:
   - component: {fileID: 881048201}
   - component: {fileID: 881048203}
   - component: {fileID: 881048202}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3862,7 +3893,7 @@ GameObject:
   - component: {fileID: 1016533707}
   - component: {fileID: 1016533709}
   - component: {fileID: 1016533708}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3988,6 +4019,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1016533706}
   m_CullTransparentMesh: 1
+--- !u!1 &1033331614
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1033331615}
+  m_Layer: 0
+  m_Name: PosicaoInstanciar - P2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1033331615
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1033331614}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.6, y: -0.75, z: -4.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2098846302}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1041287167
 GameObject:
   m_ObjectHideFlags: 0
@@ -4000,7 +4062,7 @@ GameObject:
   - component: {fileID: 1041287170}
   - component: {fileID: 1041287169}
   - component: {fileID: 1041287168}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4058,7 +4120,7 @@ Canvas:
   serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 168580920}
-  m_PlaneDistance: 5
+  m_PlaneDistance: 10
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -4141,7 +4203,7 @@ GameObject:
   - component: {fileID: 1071629302}
   - component: {fileID: 1071629304}
   - component: {fileID: 1071629303}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: coluna 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4314,7 +4376,7 @@ GameObject:
   - component: {fileID: 1083748578}
   - component: {fileID: 1083748577}
   - component: {fileID: 1083748576}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: ContinueButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4792,7 +4854,7 @@ GameObject:
   - component: {fileID: 1333229914}
   - component: {fileID: 1333229916}
   - component: {fileID: 1333229915}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: nomeNara2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4927,7 +4989,7 @@ GameObject:
   - component: {fileID: 1365987857}
   - component: {fileID: 1365987861}
   - component: {fileID: 1365987860}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Player 1 Conectado
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5198,7 +5260,7 @@ GameObject:
   - component: {fileID: 1439772762}
   - component: {fileID: 1439772761}
   - component: {fileID: 1439772760}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: VoltarButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5475,7 +5537,7 @@ GameObject:
   - component: {fileID: 1467521166}
   - component: {fileID: 1467521168}
   - component: {fileID: 1467521167}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: EscolhaDeMapasPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5553,7 +5615,7 @@ GameObject:
   - component: {fileID: 1486773988}
   - component: {fileID: 1486773990}
   - component: {fileID: 1486773989}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5688,7 +5750,7 @@ GameObject:
   - component: {fileID: 1492758090}
   - component: {fileID: 1492758092}
   - component: {fileID: 1492758091}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: coluna 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5765,7 +5827,7 @@ GameObject:
   - component: {fileID: 1505878792}
   - component: {fileID: 1505878791}
   - component: {fileID: 1505878793}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text Enter Player 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6055,7 +6117,7 @@ GameObject:
   - component: {fileID: 1594479790}
   - component: {fileID: 1594479789}
   - component: {fileID: 1594479791}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text Enter Player 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6207,7 +6269,7 @@ GameObject:
   - component: {fileID: 1597510576}
   - component: {fileID: 1597510578}
   - component: {fileID: 1597510577}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: naraPose1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6284,7 +6346,7 @@ GameObject:
   - component: {fileID: 1623233642}
   - component: {fileID: 1623233644}
   - component: {fileID: 1623233643}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: nomeXimas2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6538,7 +6600,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1650723519}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -27.292679, y: -2.8186188, z: -230.01065}
+  m_LocalPosition: {x: -27.292679, y: -2.8186188, z: 0}
   m_LocalScale: {x: 1.0825441, y: 1.0825441, z: 1.0825441}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6694,7 +6756,7 @@ GameObject:
   - component: {fileID: 1710629357}
   - component: {fileID: 1710629359}
   - component: {fileID: 1710629358}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: icone Controle 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6770,7 +6832,7 @@ GameObject:
   - component: {fileID: 1799796883}
   - component: {fileID: 1799796885}
   - component: {fileID: 1799796884}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6905,7 +6967,7 @@ GameObject:
   - component: {fileID: 1803994722}
   - component: {fileID: 1803994724}
   - component: {fileID: 1803994723}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: txtInformativo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7116,7 +7178,7 @@ GameObject:
   - component: {fileID: 1827665533}
   - component: {fileID: 1827665535}
   - component: {fileID: 1827665534}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: nomeXimas1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7251,7 +7313,7 @@ GameObject:
   - component: {fileID: 1892277841}
   - component: {fileID: 1892277843}
   - component: {fileID: 1892277842}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: nomeNara1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7420,7 +7482,7 @@ GameObject:
   - component: {fileID: 1942600528}
   - component: {fileID: 1942600530}
   - component: {fileID: 1942600529}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: ximasPose1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7497,7 +7559,7 @@ GameObject:
   - component: {fileID: 1979459877}
   - component: {fileID: 1979459879}
   - component: {fileID: 1979459878}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: txtMapas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7632,7 +7694,7 @@ GameObject:
   - component: {fileID: 2005357924}
   - component: {fileID: 2005357926}
   - component: {fileID: 2005357925}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: txtJogador2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7860,7 +7922,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 408425038}
+  - {fileID: 1033331615}
   m_Father: {fileID: 498119413}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7882,6 +7946,9 @@ MonoBehaviour:
   - {fileID: 1639498863}
   eventSystemManager: {fileID: 758114260}
   BotaoInicial: {fileID: 1639498863}
+  PosicaoInstanciar:
+  - {fileID: 408425038}
+  - {fileID: 1033331615}
   posicaoPlayer:
   - {fileID: 174123042}
   - {fileID: 1148179423}
