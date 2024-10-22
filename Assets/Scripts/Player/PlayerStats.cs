@@ -91,18 +91,18 @@ public class PlayerStats : MonoBehaviour
 
     public void MoveDamage(float moveDamage)
     {
-        playerMoveRigidbody.SetForce(moveDamage);
-        playerMoveRigidbody.MoverAoLevarDano();
-        playerAnimator.TriggerAction("TomouDano");
+        //playerMoveRigidbody.SetForce(moveDamage);
+        playerMoveRigidbody.MoverAoLevarDano(moveDamage);
+        //playerAnimator.TriggerAction("TomouDano");
     }
 
     public void CounterParry(GameObject otherPlayer)
     {
         playerAnimator.TriggerAction("PerryContinuacao");
-        otherPlayer.GetComponent<PlayerStats>().SufferDamage(10, 3, 10, null);
+        otherPlayer.GetComponent<PlayerStats>().SufferDamage(10, 3, 10, 10, 0, null);
     }
 
-    public void SufferDamage(float damage, float attackRange, float moveDamage, GameObject otherPlayer)
+    public void SufferDamage(float damage, float attackRange, float moveDamage, float moveDamageOtherPlayer, float moveUpOtherPlayer, GameObject otherPlayer)
     {
         StartCoroutine(SetInAction());
         switch (attackRange)
@@ -151,8 +151,9 @@ public class PlayerStats : MonoBehaviour
             {
                 life -= damage;
                 playerAnimator.TriggerAction("TomouDano");
-                playerMoveRigidbody.MoveUp();
-                MoveDamage(moveDamage);
+                playerMoveRigidbody.MoveUp(moveUpOtherPlayer);
+                playerMoveRigidbody.MoverAoLevarDano(moveDamageOtherPlayer);
+                //MoveDamage(moveDamage);
 
                 vfxImpacto.Play();
 

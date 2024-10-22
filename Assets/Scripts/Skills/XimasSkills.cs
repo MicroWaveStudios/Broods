@@ -234,7 +234,7 @@ public class XimasSkills : MonoBehaviour
 
         playerCombat.SetInAttack(true);
 
-        attackGameObject.GetComponent<Damage>().SetAttack(danoSopro, rangeSopro, 10f, false);
+        attackGameObject.GetComponent<Damage>().SetAttack(danoSopro, rangeSopro, 10f, 10f, 0f, false);
 
         scrpPlayerStats.UsouSkill(custoSopro);
 

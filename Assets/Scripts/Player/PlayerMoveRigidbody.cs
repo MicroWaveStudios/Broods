@@ -174,11 +174,6 @@ public class PlayerMoveRigidbody : MonoBehaviour
         //otherPlayer = GameObject.FindGameObjectWithTag(otherPlayerTag);
         //otherPlayer.GetComponent<PlayerMoveRigidbody>().SetForce(force);
     }
-    public void SetForce(float force)
-    {
-        MoveForceSufferAttack = force;
-    }
-
     public void SetMoveUp(bool value)
     {
         moveUp = value;
@@ -196,19 +191,25 @@ public class PlayerMoveRigidbody : MonoBehaviour
         otherPlayer.GetComponent<PlayerMoveRigidbody>().SetMoveUp(value);
     }
 
-    public void MoveUp()
+    public void MoveUp(float moveUp)
     {
-        if (moveUp)
-            Jump(MoveForceSufferAttack);
+        Jump(moveUp);
     }
 
-    public void MoverAoLevarDano()
+    public void MoverAoLevarDano(float moveDamage)
     {
-        if (!moveUp)
-        {
-            rb.AddForce(Vector3.zero);
-            rb.AddForce(Vector3.left * MoveForceSufferAttack * isPlayer2);
-        }
+        //StartCoroutine(moverAoLevarDano());
+        rb.AddForce(Vector3.zero);
+        rb.AddForce(Vector3.left * moveDamage * isPlayer2);
+    }
+
+    IEnumerator moverAoLevarDano()
+    {
+        rb.AddForce(Vector3.zero);
+        yield return new WaitForSeconds(0.02f);
+        rb.AddForce(Vector3.zero);
+        rb.AddForce(Vector3.left * MoveForceSufferAttack * isPlayer2);
+        yield break;
     }
 
     private void OnCollisionEnter(Collision collision)
