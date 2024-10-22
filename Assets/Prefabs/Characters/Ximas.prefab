@@ -2411,7 +2411,7 @@ GameObject:
   - component: {fileID: 3259785787356502641}
   m_Layer: 7
   m_Name: Ximas
-  m_TagString: Player1
+  m_TagString: Player2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2791,6 +2791,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 772c0d3d-819b-4929-a0f8-f3e16370640e
     m_ActionName: UI/Connect[/Keyboard/space,/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3307bfa4-9d81-444a-91fe-2bc12120abca
+    m_ActionName: UI/Confirmar[/Keyboard/space,/Keyboard/enter]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: KeyboardRight
   m_DefaultActionMap: Player
@@ -5920,62 +5924,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d07bd5c9c9e54c44878a4c237d085a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaterialPlayer1:
-  - {fileID: 2100000, guid: 141c73dee7cfa0246bf12a6549d9df54, type: 2}
-  - {fileID: 2100000, guid: 141c73dee7cfa0246bf12a6549d9df54, type: 2}
-  - {fileID: 2100000, guid: 33d55f95f71b33d4aa06ea8564b274f6, type: 2}
-  - {fileID: 2100000, guid: 33d55f95f71b33d4aa06ea8564b274f6, type: 2}
-  - {fileID: 2100000, guid: 33d55f95f71b33d4aa06ea8564b274f6, type: 2}
-  - {fileID: 2100000, guid: 2245fb441e2df7f42b632a099e6a819d, type: 2}
-  - {fileID: 2100000, guid: 2245fb441e2df7f42b632a099e6a819d, type: 2}
-  - {fileID: 2100000, guid: 438e387d9af1eea45913dbb955336dc6, type: 2}
-  - {fileID: 2100000, guid: aba115a319edad145b32fac08916e0b8, type: 2}
-  - {fileID: 2100000, guid: 29bf6e8c29c91c745bedc3205046dda7, type: 2}
-  - {fileID: 2100000, guid: 03c25a534a632464fa9c5bc2e38400ad, type: 2}
-  - {fileID: 2100000, guid: 03c25a534a632464fa9c5bc2e38400ad, type: 2}
-  - {fileID: 2100000, guid: 24e3e5e574d7f02409af25856cfeeb8b, type: 2}
-  - {fileID: 2100000, guid: 24e3e5e574d7f02409af25856cfeeb8b, type: 2}
-  - {fileID: 2100000, guid: 24e3e5e574d7f02409af25856cfeeb8b, type: 2}
-  - {fileID: 2100000, guid: 41786377aba18054caa323a46c260508, type: 2}
-  - {fileID: 2100000, guid: 073b3f2324942f1439ef02534199e52f, type: 2}
-  - {fileID: 2100000, guid: 073b3f2324942f1439ef02534199e52f, type: 2}
-  - {fileID: 2100000, guid: 073b3f2324942f1439ef02534199e52f, type: 2}
-  - {fileID: 2100000, guid: 073b3f2324942f1439ef02534199e52f, type: 2}
-  - {fileID: 2100000, guid: 073b3f2324942f1439ef02534199e52f, type: 2}
-  - {fileID: 2100000, guid: 073b3f2324942f1439ef02534199e52f, type: 2}
-  - {fileID: 2100000, guid: 073b3f2324942f1439ef02534199e52f, type: 2}
-  - {fileID: 2100000, guid: c98c398aa7be0a040a9d0674042ec890, type: 2}
-  - {fileID: 2100000, guid: b633f305a8311d14d960d4aad43d1a58, type: 2}
-  - {fileID: 2100000, guid: b633f305a8311d14d960d4aad43d1a58, type: 2}
-  - {fileID: 2100000, guid: b633f305a8311d14d960d4aad43d1a58, type: 2}
-  MaterialPlayer2:
-  - {fileID: 2100000, guid: 1a4bc3d28945a1e488f4227cb9b5c903, type: 2}
-  - {fileID: 2100000, guid: 1a4bc3d28945a1e488f4227cb9b5c903, type: 2}
-  - {fileID: 2100000, guid: c5e4b5916f24c4d4c8917b67d2cdf00d, type: 2}
-  - {fileID: 2100000, guid: c5e4b5916f24c4d4c8917b67d2cdf00d, type: 2}
-  - {fileID: 2100000, guid: c5e4b5916f24c4d4c8917b67d2cdf00d, type: 2}
-  - {fileID: 2100000, guid: 6e9648aec753be741b4e61ba71ee273b, type: 2}
-  - {fileID: 2100000, guid: 6e9648aec753be741b4e61ba71ee273b, type: 2}
-  - {fileID: 2100000, guid: afbb9eef14d1cd947b2a6e4e0db5f8d1, type: 2}
-  - {fileID: 2100000, guid: ca70bbf0d3e3773448f1c1ba1f038c02, type: 2}
-  - {fileID: 2100000, guid: 2cd03fc41fa30084a9338e335c53756a, type: 2}
-  - {fileID: 2100000, guid: 539b1307b5d7fbc4cb50fbfff2300aa2, type: 2}
-  - {fileID: 2100000, guid: 539b1307b5d7fbc4cb50fbfff2300aa2, type: 2}
-  - {fileID: 2100000, guid: 4b2e6171c3cd2e44896358a3090daadf, type: 2}
-  - {fileID: 2100000, guid: 4b2e6171c3cd2e44896358a3090daadf, type: 2}
-  - {fileID: 2100000, guid: 4b2e6171c3cd2e44896358a3090daadf, type: 2}
-  - {fileID: 2100000, guid: b58711b263f4e1a439cf9f7cdb17e01c, type: 2}
-  - {fileID: 2100000, guid: 72940bcf8793f4a4a8a2e26ceae60ee2, type: 2}
-  - {fileID: 2100000, guid: 72940bcf8793f4a4a8a2e26ceae60ee2, type: 2}
-  - {fileID: 2100000, guid: 72940bcf8793f4a4a8a2e26ceae60ee2, type: 2}
-  - {fileID: 2100000, guid: 72940bcf8793f4a4a8a2e26ceae60ee2, type: 2}
-  - {fileID: 2100000, guid: 72940bcf8793f4a4a8a2e26ceae60ee2, type: 2}
-  - {fileID: 2100000, guid: 72940bcf8793f4a4a8a2e26ceae60ee2, type: 2}
-  - {fileID: 2100000, guid: 72940bcf8793f4a4a8a2e26ceae60ee2, type: 2}
-  - {fileID: 2100000, guid: 202d64e9778c95d4aa6333fff2e6eee5, type: 2}
-  - {fileID: 2100000, guid: ff1303b8371cf3d49b0d4ecfda6570c8, type: 2}
-  - {fileID: 2100000, guid: ff1303b8371cf3d49b0d4ecfda6570c8, type: 2}
-  - {fileID: 2100000, guid: ff1303b8371cf3d49b0d4ecfda6570c8, type: 2}
+  VarianteDaSkin: []
   PartesDoCorpo:
   - {fileID: 1615056327699141980}
   - {fileID: 9175722214568395221}
@@ -6004,7 +5953,6 @@ MonoBehaviour:
   - {fileID: 7340766378001185437}
   - {fileID: 931522610642139290}
   - {fileID: 8913803173649523331}
-  isPlayer2: 0
 --- !u!1 &5076609868047416295
 GameObject:
   m_ObjectHideFlags: 0

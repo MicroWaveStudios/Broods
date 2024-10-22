@@ -20,6 +20,7 @@ public class ControladorDialogo : MonoBehaviour
     [SerializeField] GameObject tutorialManager;
     int textoAtual = 0;
     bool acabouAnimacao = false;
+    bool treinamento;
 
     AnimacaoTexto textoComAnimacao;
     Dialogo_UI dialogueUI;
@@ -105,7 +106,11 @@ public class ControladorDialogo : MonoBehaviour
                 dialogueUI.Disable();
                 textoAtual = 0;
                 //acabouAnimacao = false;
-                tutorialManager.GetComponent<ComandosTutorial>().enabled = true;
+
+                if (!treinamento)
+                {
+                    tutorialManager.GetComponent<ComandosTutorial>().enabled = true;
+                }
             }
         }
     }

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3411205988c167c4ca1c26cadc6664e3, type: 3}
+  m_Name: TreinamentoData
+  m_EditorClassIdentifier: 
+  scriptFalas:
+  - nome: "Nar\xE1"
+    icon: {fileID: 21300000, guid: 0b88bc4b7bfbbb548ab8ffbbbd1ff96f, type: 3}
+    text: "Ol\xE1, bem-vindo ao campo de treinameto do Broods!"
+  - nome: "Nar\xE1"
+    icon: {fileID: 21300000, guid: 0b88bc4b7bfbbb548ab8ffbbbd1ff96f, type: 3}
+    text: " voc\xEA poder\xE1 aperfei\xE7oar suas t\xE9cnicas de combate e treinar
+      diferentes ataques."
+  - nome: "Nar\xE1"
+    icon: {fileID: 21300000, guid: 0b88bc4b7bfbbb548ab8ffbbbd1ff96f, type: 3}
+    text: "Voc\xEA pode tamb\xE9m treinar com outros personagens! Basta troc\xE1-lo
+      ao pausar o jogo. "
+  - nome: "Nar\xE1"
+    icon: {fileID: 21300000, guid: 0b88bc4b7bfbbb548ab8ffbbbd1ff96f, type: 3}
+    text: "N\xE3o irei mais te atrapalhar, v\xE1 treinar!"
