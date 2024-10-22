@@ -49,6 +49,8 @@ public class PlayerCombat : MonoBehaviour
         public float[] VelocidadeDaAnimacao;
         public float[] SampleRate;
         public float[] MoveDamage;
+        public float[] MoveDamageOtherPlayer;
+        public float[] MoveUpOtherPlayer;
     }
     [SerializeField] List<AttackList> _AttackList = new List<AttackList>();
 
@@ -180,7 +182,7 @@ public class PlayerCombat : MonoBehaviour
             ResetCombo();
             yield break;
         }
-        attackGameObject.GetComponent<Damage>().SetAttack(_AttackList[ListaDeAtaqueAtual].Dano[ordem], _AttackList[ListaDeAtaqueAtual].AtaqueRange[ordem], _AttackList[ListaDeAtaqueAtual].MoveDamage[ordem], true);
+        attackGameObject.GetComponent<Damage>().SetAttack(_AttackList[ListaDeAtaqueAtual].Dano[ordem], _AttackList[ListaDeAtaqueAtual].AtaqueRange[ordem], _AttackList[ListaDeAtaqueAtual].MoveDamage[ordem], _AttackList[ListaDeAtaqueAtual].MoveDamageOtherPlayer[ordem], _AttackList[ListaDeAtaqueAtual].MoveUpOtherPlayer[ordem], true);
         //playerMove.MoverAoAtacar(_AttackList[ListaDeAtaqueAtual].MoveDamage[ordem]);
         yield return new WaitForSeconds(0.01f);
         InCombo = true;
