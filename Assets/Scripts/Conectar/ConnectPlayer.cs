@@ -9,7 +9,7 @@ public class ConnectPlayer : MonoBehaviour
     //PlayerID
     int playerID; //numero do player
     PlayerInput playerInput;
-    string controlScheme; //Mapa de ação utilizado pelo player
+    public string controlScheme; //Mapa de ação utilizado pelo player
     string deviceName; //dispositivo do player
     string rawPathName;
     int numeroPersonagem;
@@ -68,12 +68,21 @@ public class ConnectPlayer : MonoBehaviour
     {
         if (CanDoIt && connectManager.GetComponent<ConnectPlayerInMenu>().GetEtapa() == "conectar")
         {
-            connectManager.GetComponent<ConnectPlayerInMenu>().ConnectDisconnectPlayer(this.gameObject, playerID, controlScheme, false);
+            connectManager.GetComponent<ConnectPlayerInMenu>().DisableSplitKeyboard(playerID);
+            //if (controlScheme == "KeyboardLeft" || controlScheme == "KeyboardRight")
+            //{
+            //    connectManager.GetComponent<ConnectPlayerInMenu>().DisableSplitKeyboard(playerID);
+            //}
+            //else
+            //{ 
+            //    connectManager.GetComponent<ConnectPlayerInMenu>().ConnectDisconnectPlayer(this.gameObject, playerID, controlScheme, false);
+            //}
         }
+
     }
     public void ConnectSplitKeyboard(InputAction.CallbackContext context)
     {
-        if (CanDoIt && controlScheme == "Keyboard" && context.started && connectManager.GetComponent<ConnectPlayerInMenu>().GetPlayerInScene() == 1)
+        if (context.started && CanDoIt && controlScheme == "Keyboard" && context.started && connectManager.GetComponent<ConnectPlayerInMenu>().GetPlayerInScene() == 1)
         {
             connectManager.GetComponent<ConnectPlayerInMenu>().EnableSplitKeyboard();
         }
@@ -84,9 +93,10 @@ public class ConnectPlayer : MonoBehaviour
         numeroPersonagem = newNumeroPersonagem;
     }
 
-    IEnumerator PlayerCanDoIt()
+    public IEnumerator PlayerCanDoIt()
     {
-        yield return new WaitForSeconds(0.1f);
+        CanDoIt = false;
+        yield return new WaitForSeconds(0.3f);
         CanDoIt = true;
         yield break;
     }

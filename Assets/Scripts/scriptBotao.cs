@@ -9,6 +9,7 @@ public class scriptBotao : MonoBehaviour
     [SerializeField] GameObject[] BotoesProximos;
     [SerializeField] GameObject PrefabJogador;
     GameObject[] Jogador = new GameObject[2];
+    int[] variantePlayer = new int[2];
     bool[] NoBotao = new bool[2];
 
     public void SetJogadorNoBotao(bool value, int playerIndex)
@@ -30,6 +31,14 @@ public class scriptBotao : MonoBehaviour
         }
     }
 
+    public void SetVariantePlayer(int newVariantePlayer, int playerIndex)
+    {
+        variantePlayer[playerIndex] = newVariantePlayer;
+    }
+    public int GetVariantePlayer(int playerIndex)
+    { 
+        return variantePlayer[playerIndex];
+    }
     void InstantiateJogador(bool value, int playerIndex)
     {
         if (value && PrefabJogador != null)
@@ -62,6 +71,8 @@ public class scriptBotao : MonoBehaviour
                     }
                     break;
             }
+            Jogador[playerIndex].GetComponent<MaterialPlayer>().SetPlayerID(playerIndex);
+            Jogador[playerIndex].GetComponent<MaterialPlayer>().SetBotao(this.gameObject);
         }
         else
         {

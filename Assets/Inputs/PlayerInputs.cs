@@ -658,7 +658,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""Click"",
-                    ""type"": ""PassThrough"",
+                    ""type"": ""Button"",
                     ""id"": ""8c163228-c904-43e6-8ef2-f0ff7e22f789"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
@@ -725,7 +725,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""id"": ""9fb908e3-dbc7-47b0-bb89-af040754d50f"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Tap"",
                     ""initialStateCheck"": false
                 },
                 {
@@ -1128,7 +1128,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard;KeyboardLeft;KeyboardRight"",
+                    ""groups"": ""Keyboard;KeyboardLeft"",
                     ""action"": ""Exit"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -1140,6 +1140,17 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
+                    ""action"": ""Exit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""251328a8-f3b3-4e35-a19e-ddfc6e9df37b"",
+                    ""path"": ""<Keyboard>/backspace"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardRight"",
                     ""action"": ""Exit"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false

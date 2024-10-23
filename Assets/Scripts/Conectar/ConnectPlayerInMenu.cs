@@ -47,8 +47,6 @@ public class ConnectPlayerInMenu : MonoBehaviour
         Pontos.pontosP1 = 0;
         Pontos.pontosP2 = 0;
     }
-
-
     public void ConnectDisconnectPlayer(GameObject Player, int playerID, string controlScheme, bool value)
     {
         DesactivePlayerText(playerID);
@@ -58,6 +56,10 @@ public class ConnectPlayerInMenu : MonoBehaviour
             playerInScene--;
             ContinueButton.SetActive(value);
             eventSystemManager.GetComponent<EventSystemManager>().SetCurrentSelectedButton(BackButton);
+            if (controlScheme == "KeyboardLeft" || controlScheme == "KeyboardRight")
+            {
+                playerInScene = 0;
+            }
             Destroy(Player);
         }
         EnterMessage[playerID].SetActive(!value);
@@ -96,9 +98,6 @@ public class ConnectPlayerInMenu : MonoBehaviour
         int tagNumber = playerNumber + 1;
         spawnedPlayer.tag = "Player" + tagNumber;
         spawnedPlayer.GetComponent<ConnectPlayer>().SetupPlayer(playerNumber);
-
-        //spawnedPlayer.transform.position = spawn[playerNumber].transform.position;
-
         playerInScene++;
         if (player[0] != null && player[1] != null)
         {
@@ -159,19 +158,25 @@ public class ConnectPlayerInMenu : MonoBehaviour
                 }
                 else if (!personagensManager.GetSelecionouPersonagem(0) && !personagensManager.GetSelecionouPersonagem(1))
                 {
+                    personagensManager.AlterarCenaPersonagens(false);
                     personagensManager.DestroyPersonagens();
                     panelsManager.ChangePanel(0);
                     etapa = Etapa.conectar;
+                    StartCoroutine(player[0].GetComponent<ConnectPlayer>().PlayerCanDoIt());
+                    StartCoroutine(player[1].GetComponent<ConnectPlayer>().PlayerCanDoIt());
+                    //Invoke("SetEtapaConectar", 0.2f);
                 }
                 break;
             case Etapa.selecaoDeMapa:
                 panelsManager.ChangePanel(1);
+                personagensManager.AlterarCenaPersonagens(true);
                 etapa = Etapa.selecaoDePersonagem;
+                //Invoke("SetEtapaSelecaoPersonagem", 0.2f);
                 break;
         }
     }
     public void SetEtapaConectar()
-    { 
+    {
         etapa = Etapa.conectar;
     }
     public void SetEtapaSelecaoPersonagem()
@@ -196,7 +201,15 @@ public class ConnectPlayerInMenu : MonoBehaviour
         player2.tag = "Player2";
         Pontos.SplitKeyboard = true;
     }
-
+    public void DisableSplitKeyboard(int i)
+    {
+        ConnectDisconnectPlayer(player[0], 0, null, false);
+        ConnectDisconnectPlayer(player[1], 1, null, false);
+        //PlayerInput.Instantiate(playerInputManager.playerPrefab, i, "Keyboard", -1, Keyboard.current, Mouse.current);
+        //playerInScene = 1;
+        playerInScene = 0;
+        Pontos.SplitKeyboard = false;
+    }
     public int GetPlayerInScene()
     {
         return playerInScene;

@@ -18,46 +18,35 @@ public class MaterialPlayer : MonoBehaviour
     [SerializeField] List<ListaMaterial> VarianteDaSkin = new List<ListaMaterial>();
 
     [SerializeField] GameObject[] PartesDoCorpo;
+    GameObject botao;
 
+    int playerID;
     int materialAtual;
-
 
     private void Start()
     {
-        //if (transform.parent.transform.parent.gameObject.CompareTag("Player2"))
-        //{
-        //    isPlayer2 = true;
-        //}
-        //else
-        //{
-        //    isPlayer2 = false;
-        //}
-
-        //if (isPlayer2)
-        //{
-        //    for(int i = 0; i < PartesDoCorpo.Length; i++)
-        //    {
-        //        PartesDoCorpo[i].GetComponent<Renderer>().material = MaterialPlayer2[i];
-        //    }
-        //}
-        //else
-        //{
-        //    for (int i = 0; i < PartesDoCorpo.Length; i++)
-        //    {
-        //        PartesDoCorpo[i].GetComponent<Renderer>().material = MaterialPlayer1[i];
-        //    }
-        //}
+        TrocarMaterial(0);
+    }
+    public void SetBotao(GameObject newBotao)
+    {
+        botao = newBotao;
     }
     public void TrocarMaterial(float direcao)
     {
         float material = materialAtual + direcao;
+        //botao.GetComponent<scriptBotao>().GetVariantePlayer(0) != botao.GetComponent<scriptBotao>().GetVariantePlayer(1)
         if (material < VarianteDaSkin.Count && material >= 0)
         {
             materialAtual = (int)material;
+            botao.GetComponent<scriptBotao>().SetVariantePlayer(materialAtual, playerID);
             SetMaterialPersonagem(materialAtual);
+            GameObject.FindGameObjectWithTag("PersonagemManager").GetComponent<PersonagensManager>().TrocarVarianteTxt(playerID, VarianteDaSkin[materialAtual].nome);
         }
     }
-
+    public void SetPlayerID(int newPlayerID)
+    { 
+        playerID = newPlayerID;
+    }
     public string GetVarianteAtual()
     {
         return VarianteDaSkin[materialAtual].nome;

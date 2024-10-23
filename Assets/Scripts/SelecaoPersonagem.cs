@@ -56,7 +56,10 @@ public class SelecaoPersonagem : MonoBehaviour
     { 
         return botaoAtual;
     }
-
+    public GameObject GetPersonagem()
+    {
+        return botaoAtual.GetComponent<scriptBotao>().GetJogador(GetComponent<ConnectPlayer>().GetPlayerID());
+    }
     public void Confirmar(InputAction.CallbackContext context)
     {
         if (context.started && botaoAtual != null && personagensManager.GetComponent<PersonagensManager>().GetNaSelecaoDePersonagem())
@@ -85,11 +88,11 @@ public class SelecaoPersonagem : MonoBehaviour
         Vector2 orientacao = context.ReadValue<Vector2>();
         if (orientacao != Vector2.zero)
         {
-            if (personagensManager.GetComponent<PersonagensManager>().GetNaSelecaoDePersonagem())
+            if (personagensManager.GetComponent<PersonagensManager>().GetNaSelecaoDePersonagem() && !personagensManager.GetComponent<PersonagensManager>().GetConfirmouPersonagem(GetComponent<ConnectPlayer>().GetPlayerID()))
             {
                 if (personagensManager.GetComponent<PersonagensManager>().GetSelecionouPersonagem(GetComponent<ConnectPlayer>().GetPlayerID()))
                 {
-                    botaoAtual.GetComponent<scriptBotao>().GetJogador(GetComponent<ConnectPlayer>().GetPlayerID()).GetComponent<MaterialPlayer>().TrocarMaterial(context.ReadValue<Vector2>().x);
+                    GetPersonagem().GetComponent<MaterialPlayer>().TrocarMaterial(context.ReadValue<Vector2>().x);
                 }
                 else
                 {

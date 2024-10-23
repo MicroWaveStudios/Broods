@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &71838735134086701
 RectTransform:
   m_ObjectHideFlags: 0
@@ -396,18 +396,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: -5618542849229416776}
-        m_TargetAssemblyTypeName: SelecaoPersonagem, Assembly-CSharp
-        m_MethodName: Voltar
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
     m_ActionId: 9c27497b-30a5-44b4-873f-443a68e07ee1
     m_ActionName: UI/Cancel[/Keyboard/escape,/DualShock4GamepadHID/buttonEast]
   - m_PersistentCalls:
@@ -447,6 +435,18 @@ MonoBehaviour:
       - m_Target: {fileID: 6713973963200268976}
         m_TargetAssemblyTypeName: ConnectPlayer, Assembly-CSharp
         m_MethodName: DisconnectPlayer
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: -5618542849229416776}
+        m_TargetAssemblyTypeName: SelecaoPersonagem, Assembly-CSharp
+        m_MethodName: Voltar
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -532,6 +532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 622b94c502dd85d4aa154782f7a8e9f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controlScheme: 
 --- !u!114 &-5618542849229416776
 MonoBehaviour:
   m_ObjectHideFlags: 0
