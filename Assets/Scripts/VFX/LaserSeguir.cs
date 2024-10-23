@@ -7,6 +7,7 @@ using UnityEngine.VFX;
 public class LaserSeguir : MonoBehaviour
 {
     public GameObject objSeguir;
+    [SerializeField] bool treinamento;
     GameObject outroPlayer;
 
     Vector3 positionSeguir;
@@ -32,7 +33,14 @@ public class LaserSeguir : MonoBehaviour
 
         if (outroPlayer != null)
         {
-            objSeguir = outroPlayer.transform.GetChild(2).gameObject;
+            if (treinamento)
+            {
+                objSeguir = outroPlayer.transform.gameObject;
+            }
+            else
+            {                   
+                objSeguir = outroPlayer.transform.GetChild(2).gameObject;
+            }
 
             transform.localScale = new Vector3(originalLocalScale.x, originalLocalScale.y, originalLocalScale.z * transform.parent.transform.localScale.z);
 

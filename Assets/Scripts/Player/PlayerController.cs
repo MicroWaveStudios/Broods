@@ -67,8 +67,8 @@ public class PlayerController : MonoBehaviour
     public void EnableMapActionPlayer()
     {
         playerInput.SwitchCurrentActionMap(actionMapPlayer);
-        scene = Scene.Game;
-        Debug.Log(playerInput.currentActionMap);
+        ///scene = Scene.Game;
+        //Debug.Log(playerInput.currentActionMap);
     }
     public void EnableMapActionUI()
     {

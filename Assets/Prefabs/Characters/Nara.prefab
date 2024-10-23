@@ -159,7 +159,6 @@ MonoBehaviour:
   - {fileID: 7218692869924287352}
   - {fileID: 7002460024583549704}
   - {fileID: 8678336720529811677}
-  isPlayer2: 0
 --- !u!1 &167079366755351895
 GameObject:
   m_ObjectHideFlags: 0
@@ -6269,6 +6268,10 @@ MonoBehaviour:
     - 24
     MoveDamage:
     - 0
+    MoveDamageOtherPlayer:
+    - 0
+    MoveUpOtherPlayer:
+    - 0
   - NomeDoAtaque: AtaqueFraco
     AtaqueRange: 010000000100000001000000
     Dano: 050000000200000006000000
@@ -6289,6 +6292,14 @@ MonoBehaviour:
     - 150
     - 150
     - 200
+    MoveDamageOtherPlayer:
+    - 0
+    - 0
+    - 0
+    MoveUpOtherPlayer:
+    - 0
+    - 0
+    - 0
   - NomeDoAtaque: AtaqueMedio
     AtaqueRange: 020000000200000002000000
     Dano: 070000000400000008000000
@@ -6309,6 +6320,14 @@ MonoBehaviour:
     - 0
     - 200
     - 0
+    MoveDamageOtherPlayer:
+    - 0
+    - 0
+    - 0
+    MoveUpOtherPlayer:
+    - 0
+    - 0
+    - 0
   - NomeDoAtaque: AtaqueForte
     AtaqueRange: 0200000002000000
     Dano: 0a00000006000000
@@ -6325,6 +6344,12 @@ MonoBehaviour:
     MoveDamage:
     - 0
     - 0
+    MoveDamageOtherPlayer:
+    - 0
+    - 0
+    MoveUpOtherPlayer:
+    - 0
+    - 0
   - NomeDoAtaque: AtaqueBaixoAgachado
     AtaqueRange: 00000000
     Dano: 00000000
@@ -6336,6 +6361,10 @@ MonoBehaviour:
     SampleRate:
     - 24
     MoveDamage:
+    - 0
+    MoveDamageOtherPlayer:
+    - 0
+    MoveUpOtherPlayer:
     - 0
   FrameAtual: 0
 --- !u!114 &5825252824003833760

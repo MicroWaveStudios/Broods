@@ -411,6 +411,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 9d911854c46bd0f4ba146c503d1ce607, type: 2}
     - target: {fileID: 1229946910750169812, guid: ffe2ddd29f20ab8469e6a3e7339eb19e, type: 3}
+      propertyPath: treinamento
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1229946910750169812, guid: ffe2ddd29f20ab8469e6a3e7339eb19e, type: 3}
       propertyPath: spriteMostrar
       value: 
       objectReference: {fileID: 448995480}
@@ -926,6 +930,17 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+--- !u!114 &1651375113 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1229946910750169812, guid: ffe2ddd29f20ab8469e6a3e7339eb19e, type: 3}
+  m_PrefabInstance: {fileID: 721482430}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74e6e2f83a4c087489a1459a62bfcd12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1656494067
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13013,6 +13028,10 @@ MonoBehaviour:
     - 24
     MoveDamage:
     - 0
+    MoveDamageOtherPlayer:
+    - 0
+    MoveUpOtherPlayer:
+    - 0
   - NomeDoAtaque: AtaqueFraco
     AtaqueRange: 010000000100000001000000
     Dano: 050000000200000006000000
@@ -13033,6 +13052,14 @@ MonoBehaviour:
     - 150
     - 150
     - 200
+    MoveDamageOtherPlayer:
+    - 0
+    - 0
+    - 0
+    MoveUpOtherPlayer:
+    - 0
+    - 0
+    - 0
   - NomeDoAtaque: AtaqueMedio
     AtaqueRange: 020000000200000002000000
     Dano: 070000000400000008000000
@@ -13053,6 +13080,14 @@ MonoBehaviour:
     - 0
     - 200
     - 0
+    MoveDamageOtherPlayer:
+    - 0
+    - 0
+    - 0
+    MoveUpOtherPlayer:
+    - 0
+    - 0
+    - 0
   - NomeDoAtaque: AtaqueForte
     AtaqueRange: 0200000002000000
     Dano: 0a00000006000000
@@ -13069,6 +13104,12 @@ MonoBehaviour:
     MoveDamage:
     - 0
     - 0
+    MoveDamageOtherPlayer:
+    - 0
+    - 0
+    MoveUpOtherPlayer:
+    - 0
+    - 0
   - NomeDoAtaque: AtaqueBaixoAgachado
     AtaqueRange: 00000000
     Dano: 00000000
@@ -13080,6 +13121,10 @@ MonoBehaviour:
     SampleRate:
     - 24
     MoveDamage:
+    - 0
+    MoveDamageOtherPlayer:
+    - 0
+    MoveUpOtherPlayer:
     - 0
   FrameAtual: 0
 --- !u!114 &4822978008927504019
@@ -13115,7 +13160,6 @@ MonoBehaviour:
   defendendo: 0
   defendeu: 0
   tutorial: 1
-  treinamento: 0
   Ximas: 0
   teste: 0
   vfxImpacto: {fileID: 5726784586524760643}
@@ -13380,7 +13424,19 @@ MonoBehaviour:
     m_ActionId: 12b3ce11-f3f0-4b84-9718-552e17344d9d
     m_ActionName: UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1651375113}
+        m_TargetAssemblyTypeName: ControladorDialogo, Assembly-CSharp
+        m_MethodName: PularTexto
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: dfc39033-5be7-4685-b814-8684753479e8
     m_ActionName: UI/Submit[/Keyboard/enter]
   - m_PersistentCalls:
@@ -13477,7 +13533,7 @@ MonoBehaviour:
     m_ActionName: UI/Confirmar[/Keyboard/space,/Keyboard/enter]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
+  m_DefaultActionMap: UI
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!1 &4841839239293061129
@@ -14070,6 +14126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objSeguir: {fileID: 0}
+  treinamento: 1
 --- !u!1 &5409980576727189361
 GameObject:
   m_ObjectHideFlags: 0

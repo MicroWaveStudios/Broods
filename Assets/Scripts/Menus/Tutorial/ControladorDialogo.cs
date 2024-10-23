@@ -18,12 +18,16 @@ public class ControladorDialogo : MonoBehaviour
 
     [SerializeField] Image spriteMostrar;
     [SerializeField] GameObject tutorialManager;
+    [SerializeField] bool treinamento;
+
     int textoAtual = 0;
     bool acabouAnimacao = false;
-    bool treinamento;
+    bool rodouMetodoEscrevendo;
+    bool rodouMetodoEsperando;
 
     AnimacaoTexto textoComAnimacao;
     Dialogo_UI dialogueUI;
+    PlayerController playerController;
 
     ESTADO estado;
 
@@ -32,10 +36,12 @@ public class ControladorDialogo : MonoBehaviour
         textoComAnimacao = FindObjectOfType<AnimacaoTexto>();
         dialogueUI = FindObjectOfType<Dialogo_UI>();
         textoComAnimacao.acabouDeEscrever = AnimacaoDeEscreverTerminou;
+        playerController = FindObjectOfType<PlayerController>();
     }
 
     void Start()
     {
+        playerController.EnableMapActionUI();
         estado = ESTADO.DESABILITADO;
         Next();
     }
@@ -84,18 +90,33 @@ public class ControladorDialogo : MonoBehaviour
         estado = ESTADO.ESPERANDO;
     }
 
-        void Escrevendo()
+    void Escrevendo()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (rodouMetodoEscrevendo)
         {
             textoComAnimacao.Skip();
             estado = ESTADO.ESPERANDO;
         }
     }
 
+    public void PularTexto(InputAction.CallbackContext context)
+    {
+        if (context.started && estado == ESTADO.ESCREVENDO)
+        {
+            rodouMetodoEscrevendo = true;
+            rodouMetodoEsperando = false;
+        }
+
+        if (context.started && estado == ESTADO.ESPERANDO)
+        {
+            rodouMetodoEscrevendo = false;
+            rodouMetodoEsperando = true;
+        }
+    }
+
     void Esperando()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (rodouMetodoEsperando)
         {
             if (!acabouAnimacao)
             {
@@ -105,7 +126,7 @@ public class ControladorDialogo : MonoBehaviour
             {
                 dialogueUI.Disable();
                 textoAtual = 0;
-                //acabouAnimacao = false;
+                playerController.EnableMapActionPlayer();
 
                 if (!treinamento)
                 {

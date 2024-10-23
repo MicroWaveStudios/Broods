@@ -20,7 +20,7 @@ public class ComandosTutorial : MonoBehaviour
         playerMove = GameObject.FindGameObjectWithTag("Player1").GetComponent<PlayerMoveRigidbody>();
         playerCombat = GameObject.FindGameObjectWithTag("Player1").GetComponent<PlayerCombat>();
         playerInput = GameObject.FindGameObjectWithTag("Player1").GetComponent<PlayerInput>();
-        playerInput.enabled = true;
+        // playerInput.enabled = true;
     }
     private void Update()
     {

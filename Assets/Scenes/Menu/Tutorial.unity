@@ -668,7 +668,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &514459393
 GameObject:
@@ -2866,7 +2866,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!114 &1336376874
 MonoBehaviour:
@@ -3824,7 +3824,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6159176544576339363, guid: 6e0e975df5265ee4f8d65c428d1f3e66, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6159176544576339363, guid: 6e0e975df5265ee4f8d65c428d1f3e66, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10658,7 +10658,6 @@ MonoBehaviour:
   defendendo: 0
   defendeu: 0
   tutorial: 1
-  treinamento: 0
   Ximas: 1
   teste: 1
   vfxImpacto: {fileID: 7264577121345925028}
@@ -12625,7 +12624,7 @@ PrefabInstance:
       objectReference: {fileID: 1959976169}
     - target: {fileID: 1229946910750169815, guid: ffe2ddd29f20ab8469e6a3e7339eb19e, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1229946910750169815, guid: ffe2ddd29f20ab8469e6a3e7339eb19e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15961,6 +15960,8 @@ MonoBehaviour:
     - 1
     MoveDamage:
     - 0
+    MoveDamageOtherPlayer: []
+    MoveUpOtherPlayer: []
   - NomeDoAtaque: AtaqueFraco
     AtaqueRange: 01000000
     Dano: 0a000000
@@ -15973,6 +15974,8 @@ MonoBehaviour:
     - 24
     MoveDamage:
     - 0
+    MoveDamageOtherPlayer: []
+    MoveUpOtherPlayer: []
   - NomeDoAtaque: AtaqueMedio
     AtaqueRange: 02000000
     Dano: 0f000000
@@ -15985,6 +15988,8 @@ MonoBehaviour:
     - 24
     MoveDamage:
     - 150
+    MoveDamageOtherPlayer: []
+    MoveUpOtherPlayer: []
   - NomeDoAtaque: AtaqueForte
     AtaqueRange: 02000000
     Dano: 0f000000
@@ -15997,6 +16002,8 @@ MonoBehaviour:
     - 24
     MoveDamage:
     - 250
+    MoveDamageOtherPlayer: []
+    MoveUpOtherPlayer: []
   - NomeDoAtaque: AtaqueBaixoAgachado
     AtaqueRange: 00000000
     Dano: 00000000
@@ -16009,6 +16016,8 @@ MonoBehaviour:
     - 1
     MoveDamage:
     - 0
+    MoveDamageOtherPlayer: []
+    MoveUpOtherPlayer: []
   FrameAtual: 0
 --- !u!4 &2754065481602694933
 Transform:
@@ -22888,7 +22897,6 @@ MonoBehaviour:
   defendendo: 0
   defendeu: 0
   tutorial: 1
-  treinamento: 0
   Ximas: 0
   teste: 0
   vfxImpacto: {fileID: 6719507376214969220}
@@ -22940,6 +22948,10 @@ MonoBehaviour:
     - 24
     MoveDamage:
     - 0
+    MoveDamageOtherPlayer:
+    - 0
+    MoveUpOtherPlayer:
+    - 0
   - NomeDoAtaque: AtaqueFraco
     AtaqueRange: 010000000100000001000000
     Dano: 050000000200000006000000
@@ -22960,6 +22972,14 @@ MonoBehaviour:
     - 150
     - 150
     - 200
+    MoveDamageOtherPlayer:
+    - 0
+    - 0
+    - 0
+    MoveUpOtherPlayer:
+    - 0
+    - 0
+    - 0
   - NomeDoAtaque: AtaqueMedio
     AtaqueRange: 020000000200000002000000
     Dano: 070000000400000008000000
@@ -22980,6 +23000,14 @@ MonoBehaviour:
     - 0
     - 200
     - 0
+    MoveDamageOtherPlayer:
+    - 0
+    - 0
+    - 0
+    MoveUpOtherPlayer:
+    - 0
+    - 0
+    - 0
   - NomeDoAtaque: AtaqueForte
     AtaqueRange: 0200000002000000
     Dano: 0a00000006000000
@@ -22996,6 +23024,12 @@ MonoBehaviour:
     MoveDamage:
     - 0
     - 0
+    MoveDamageOtherPlayer:
+    - 0
+    - 0
+    MoveUpOtherPlayer:
+    - 0
+    - 0
   - NomeDoAtaque: AtaqueBaixoAgachado
     AtaqueRange: 00000000
     Dano: 00000000
@@ -23007,6 +23041,10 @@ MonoBehaviour:
     SampleRate:
     - 24
     MoveDamage:
+    - 0
+    MoveDamageOtherPlayer:
+    - 0
+    MoveUpOtherPlayer:
     - 0
   FrameAtual: 0
 --- !u!114 &5825252822260750166
@@ -24177,6 +24215,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objSeguir: {fileID: 0}
+  treinamento: 0
 --- !u!1 &6412465916241194291
 GameObject:
   m_ObjectHideFlags: 0
