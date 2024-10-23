@@ -79,7 +79,11 @@ public class PersonagensManager : MonoBehaviour
         //deixar ele selecionar o material
     }
     #endregion
-
+    public void DestroyPersonagens()
+    {
+        connectManger.GetPlayer(0).GetComponent<SelecaoPersonagem>().GetBotaoAtual().GetComponent<scriptBotao>().DestroyPersonagem(0);
+        connectManger.GetPlayer(1).GetComponent<SelecaoPersonagem>().GetBotaoAtual().GetComponent<scriptBotao>().DestroyPersonagem(1);
+    }
     public bool GetNaSelecaoDePersonagem()
     {
         return naSelecaoDePersonagem;

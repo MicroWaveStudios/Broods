@@ -84,9 +84,13 @@ public class ConnectPlayerInMenu : MonoBehaviour
     {
         int playerNumber;
         if (player[0] == null)
+        {
             playerNumber = 0;
+        }
         else
+        { 
             playerNumber = 1;
+        }
         player[playerNumber] = spawnedPlayer;
 
         int tagNumber = playerNumber + 1;
@@ -153,8 +157,9 @@ public class ConnectPlayerInMenu : MonoBehaviour
                 {
                     personagensManager.SelecionouPersonagem(playerIndex, false);
                 }
-                else
+                else if (!personagensManager.GetSelecionouPersonagem(0) && !personagensManager.GetSelecionouPersonagem(1))
                 {
+                    personagensManager.DestroyPersonagens();
                     panelsManager.ChangePanel(0);
                     etapa = Etapa.conectar;
                 }
