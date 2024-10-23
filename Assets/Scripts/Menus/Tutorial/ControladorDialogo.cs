@@ -35,8 +35,8 @@ public class ControladorDialogo : MonoBehaviour
     {
         textoComAnimacao = FindObjectOfType<AnimacaoTexto>();
         dialogueUI = FindObjectOfType<Dialogo_UI>();
-        textoComAnimacao.acabouDeEscrever = AnimacaoDeEscreverTerminou;
         playerController = FindObjectOfType<PlayerController>();
+        textoComAnimacao.acabouDeEscrever = AnimacaoDeEscreverTerminou;
     }
 
     void Start()
@@ -125,6 +125,7 @@ public class ControladorDialogo : MonoBehaviour
             else
             {
                 dialogueUI.Disable();
+                textoComAnimacao.texto.gameObject.SetActive(false); 
                 textoAtual = 0;
                 playerController.EnableMapActionPlayer();
 

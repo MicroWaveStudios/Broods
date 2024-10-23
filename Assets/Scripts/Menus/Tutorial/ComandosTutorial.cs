@@ -7,27 +7,23 @@ using UnityEngine.UI;
 
 public class ComandosTutorial : MonoBehaviour
 {
-    [SerializeField] private List<TMP_Text> acao = new List<TMP_Text>();
-    [SerializeField] private List<bool> confirmacoes = new List<bool>();
+    [SerializeField] public List<TMP_Text> acao = new List<TMP_Text>();
     [SerializeField] private GameObject instrucoes;
     [SerializeField] private GameObject painelFimTutorial;
     PlayerMoveRigidbody playerMove;
     PlayerCombat playerCombat;
-    PlayerInput playerInput;
 
     private void Start()
     {
         playerMove = GameObject.FindGameObjectWithTag("Player1").GetComponent<PlayerMoveRigidbody>();
         playerCombat = GameObject.FindGameObjectWithTag("Player1").GetComponent<PlayerCombat>();
-        playerInput = GameObject.FindGameObjectWithTag("Player1").GetComponent<PlayerInput>();
-        // playerInput.enabled = true;
     }
     private void Update()
     {
-        Jogando();    
+        Jogando();
     }
 
-    void Jogando()
+    public void Jogando()
     {
         instrucoes.SetActive(true);
 

@@ -652,7 +652,6 @@ MonoBehaviour:
   - {fileID: 1435624656}
   - {fileID: 1093839384}
   - {fileID: 1899209961}
-  confirmacoes: 0000000000000000
   instrucoes: {fileID: 1437681052}
   painelFimTutorial: {fileID: 1937321423}
 --- !u!4 &483563901
@@ -2773,6 +2772,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1304234612}
   m_Mesh: {fileID: 4617350656985717814, guid: 7a9a3da402ebf78408d862e7e8bbbda8, type: 3}
+--- !u!114 &1313550707 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1229946910750169812, guid: ffe2ddd29f20ab8469e6a3e7339eb19e, type: 3}
+  m_PrefabInstance: {fileID: 1229946909372820545}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74e6e2f83a4c087489a1459a62bfcd12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1336376871
 GameObject:
   m_ObjectHideFlags: 0
@@ -2862,7 +2872,7 @@ Transform:
   m_GameObject: {fileID: 1336376871}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
   m_LocalPosition: {x: 0, y: 3, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 0.99999994}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -3824,7 +3834,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6159176544576339363, guid: 6e0e975df5265ee4f8d65c428d1f3e66, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6159176544576339363, guid: 6e0e975df5265ee4f8d65c428d1f3e66, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12610,6 +12620,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DialogoManager
       objectReference: {fileID: 0}
+    - target: {fileID: 1229946910750169810, guid: ffe2ddd29f20ab8469e6a3e7339eb19e, type: 3}
+      propertyPath: m_TagString
+      value: DialogoManager
+      objectReference: {fileID: 0}
     - target: {fileID: 1229946910750169812, guid: ffe2ddd29f20ab8469e6a3e7339eb19e, type: 3}
       propertyPath: spriteMostrar
       value: 
@@ -12624,7 +12638,7 @@ PrefabInstance:
       objectReference: {fileID: 1959976169}
     - target: {fileID: 1229946910750169815, guid: ffe2ddd29f20ab8469e6a3e7339eb19e, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1229946910750169815, guid: ffe2ddd29f20ab8469e6a3e7339eb19e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12644,15 +12658,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1229946910750169815, guid: ffe2ddd29f20ab8469e6a3e7339eb19e, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1229946910750169815, guid: ffe2ddd29f20ab8469e6a3e7339eb19e, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1229946910750169815, guid: ffe2ddd29f20ab8469e6a3e7339eb19e, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1229946910750169815, guid: ffe2ddd29f20ab8469e6a3e7339eb19e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -22735,7 +22749,19 @@ MonoBehaviour:
     m_ActionId: add53a49-bbee-478d-bedf-0b6c61797cb2
     m_ActionName: UI/Point[/Mouse/position]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1313550707}
+        m_TargetAssemblyTypeName: ControladorDialogo, Assembly-CSharp
+        m_MethodName: PularTexto
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 8c163228-c904-43e6-8ef2-f0ff7e22f789
     m_ActionName: UI/Click[/Keyboard/enter,/Mouse/leftButton]
   - m_PersistentCalls:
@@ -22820,7 +22846,7 @@ MonoBehaviour:
     m_ActionName: UI/Confirmar[/Keyboard/space,/Keyboard/enter]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
+  m_DefaultActionMap: UI
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &5825252822260750123

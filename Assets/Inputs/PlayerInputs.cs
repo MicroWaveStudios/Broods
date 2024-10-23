@@ -1073,7 +1073,18 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/enter"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard;KeyboardRight;KeyboardLeft"",
+                    ""groups"": ""Keyboard;KeyboardRight"",
+                    ""action"": ""Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f568acf5-1f81-490b-8971-edc7964f2981"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard;KeyboardLeft"",
                     ""action"": ""Click"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -1085,17 +1096,6 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Click"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""555e90fd-8d24-4f12-995a-33aafccd12c5"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
                     ""action"": ""Click"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false

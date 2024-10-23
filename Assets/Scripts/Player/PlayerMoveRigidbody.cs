@@ -100,9 +100,13 @@ public class PlayerMoveRigidbody : MonoBehaviour
     public void OnCrouch(InputAction.CallbackContext context)
     {
         if (jumpCount == 1 && context.performed && !playerCombat.GetInAttack() && !playerCombat.GetInCombo())
+        {
             crouched = true;
+        }
         else if (jumpCount == 0 || context.canceled)
+        {
             crouched = false;
+        }
     }
 
     public void OnJump(InputAction.CallbackContext context)
