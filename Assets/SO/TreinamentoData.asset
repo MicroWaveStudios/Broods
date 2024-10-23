@@ -18,7 +18,7 @@ MonoBehaviour:
     text: "Ol\xE1, bem-vindo ao campo de treinameto do Broods!"
   - nome: "Nar\xE1"
     icon: {fileID: 21300000, guid: 0b88bc4b7bfbbb548ab8ffbbbd1ff96f, type: 3}
-    text: " voc\xEA poder\xE1 aperfei\xE7oar suas t\xE9cnicas de combate e treinar
+    text: " Voc\xEA poder\xE1 aperfei\xE7oar suas t\xE9cnicas de combate e treinar
       diferentes ataques."
   - nome: "Nar\xE1"
     icon: {fileID: 21300000, guid: 0b88bc4b7bfbbb548ab8ffbbbd1ff96f, type: 3}

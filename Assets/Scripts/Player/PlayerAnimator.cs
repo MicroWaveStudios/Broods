@@ -4,7 +4,6 @@ public class PlayerAnimator : MonoBehaviour
 {
     PlayerMoveRigidbody playerMoveRigidbody;
     PlayerCombat playerCombat;
-    PlayerStats playerStats;
 
     Rigidbody rb;
     Animator anim;
@@ -13,7 +12,6 @@ public class PlayerAnimator : MonoBehaviour
         anim = GetComponent<Animator>();
         playerMoveRigidbody = GetComponent<PlayerMoveRigidbody>();
         playerCombat = GetComponent<PlayerCombat>();
-        playerStats = GetComponent<PlayerStats>();
         rb = GetComponent<Rigidbody>();
     }
     private void Update()

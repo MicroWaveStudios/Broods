@@ -84,7 +84,6 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
-
     // Botão Quadrado / Square (Playstation) - X (Xbox) - Y (Nintendo Switch) - J (Teclado/Teclado Direito) - F (Teclado Esquerdo)
     // Retornará o número 1
     public void LightAttack(InputAction.CallbackContext context)

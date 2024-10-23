@@ -2462,6 +2462,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objSeguir: {fileID: 0}
+  treinamento: 0
 --- !u!1 &2645837054539767338
 GameObject:
   m_ObjectHideFlags: 0
@@ -6119,7 +6120,19 @@ MonoBehaviour:
     m_ActionId: add53a49-bbee-478d-bedf-0b6c61797cb2
     m_ActionName: UI/Point[/Mouse/position]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1229946910750169812, guid: ffe2ddd29f20ab8469e6a3e7339eb19e, type: 3}
+        m_TargetAssemblyTypeName: ControladorDialogo, Assembly-CSharp
+        m_MethodName: PularTexto
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 8c163228-c904-43e6-8ef2-f0ff7e22f789
     m_ActionName: UI/Click[/Keyboard/enter,/Mouse/leftButton]
   - m_PersistentCalls:
@@ -6198,6 +6211,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 644fb18b-b04d-4c6c-9f15-fa5ec3ade69c
     m_ActionName: Player/Special[/Keyboard/q,/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3307bfa4-9d81-444a-91fe-2bc12120abca
+    m_ActionName: UI/Confirmar[/Keyboard/space,/Keyboard/enter,/XInputControllerWindows/buttonSouth]
   m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: KeyboardRight
   m_DefaultActionMap: Player

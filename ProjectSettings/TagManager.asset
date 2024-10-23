@@ -15,6 +15,7 @@ TagManager:
   - GameManager
   - ConnectManager
   - PersonagemManager
+  - DialogoManager
   layers:
   - Default
   - TransparentFX
