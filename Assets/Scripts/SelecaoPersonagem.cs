@@ -52,6 +52,11 @@ public class SelecaoPersonagem : MonoBehaviour
         botaoAtual.GetComponent<scriptBotao>().SetJogadorNoBotao(true, playerIndex);
     }
 
+    public GameObject GetBotaoAtual()
+    { 
+        return botaoAtual;
+    }
+
     public void Confirmar(InputAction.CallbackContext context)
     {
         if (context.started && botaoAtual != null && personagensManager.GetComponent<PersonagensManager>().GetNaSelecaoDePersonagem())

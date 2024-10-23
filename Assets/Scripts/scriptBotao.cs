@@ -22,6 +22,13 @@ public class scriptBotao : MonoBehaviour
         return Jogador[playerIndex];
     }
 
+    public void DestroyPersonagem(int playerIndex)
+    {
+        if (Jogador[playerIndex] != null)
+        {
+            Destroy(Jogador[playerIndex]);
+        }
+    }
 
     void InstantiateJogador(bool value, int playerIndex)
     {
