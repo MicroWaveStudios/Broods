@@ -14,8 +14,8 @@ public class PlayerCombat : MonoBehaviour
 
     [SerializeField] Animator anim;
 
-    bool _InAttack = false;
-    bool InCombo = false;
+    [SerializeField] bool _InAttack = false;
+    [SerializeField] bool InCombo = false;
     bool InParry = false;
     bool InMeiaLua = false;
     int actualNumber = 0;

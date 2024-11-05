@@ -2865,6 +2865,10 @@ MonoBehaviour:
     - 1
     MoveDamage:
     - 0
+    MoveDamageOtherPlayer:
+    - 0
+    MoveUpOtherPlayer:
+    - 0
   - NomeDoAtaque: AtaqueFraco
     AtaqueRange: 01000000
     Dano: 0a000000
@@ -2876,6 +2880,10 @@ MonoBehaviour:
     SampleRate:
     - 24
     MoveDamage:
+    - 0
+    MoveDamageOtherPlayer:
+    - 0
+    MoveUpOtherPlayer:
     - 0
   - NomeDoAtaque: AtaqueMedio
     AtaqueRange: 02000000
@@ -2889,6 +2897,10 @@ MonoBehaviour:
     - 24
     MoveDamage:
     - 150
+    MoveDamageOtherPlayer:
+    - 0
+    MoveUpOtherPlayer:
+    - 0
   - NomeDoAtaque: AtaqueForte
     AtaqueRange: 02000000
     Dano: 0f000000
@@ -2901,6 +2913,10 @@ MonoBehaviour:
     - 24
     MoveDamage:
     - 250
+    MoveDamageOtherPlayer:
+    - 0
+    MoveUpOtherPlayer:
+    - 0
   - NomeDoAtaque: AtaqueBaixoAgachado
     AtaqueRange: 00000000
     Dano: 00000000
@@ -2912,6 +2928,10 @@ MonoBehaviour:
     SampleRate:
     - 1
     MoveDamage:
+    - 0
+    MoveDamageOtherPlayer:
+    - 0
+    MoveUpOtherPlayer:
     - 0
   FrameAtual: 0
 --- !u!114 &1781845846367271014

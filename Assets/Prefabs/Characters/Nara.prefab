@@ -6346,25 +6346,31 @@ MonoBehaviour:
     - 0
     - 0
   - NomeDoAtaque: AtaqueForte
-    AtaqueRange: 0200000002000000
-    Dano: 0a00000006000000
+    AtaqueRange: 020000000200000002000000
+    Dano: 0a0000000600000006000000
     OrdemCombo: 03000000
     FramesContinuar:
+    - 0.6
     - 0.6
     - 0.6
     VelocidadeDaAnimacao:
     - 1.9
     - 2
+    - 2
     SampleRate:
     - 24
     - 60
+    - 60
     MoveDamage:
+    - 0
     - 0
     - 0
     MoveDamageOtherPlayer:
     - 0
     - 0
+    - 0
     MoveUpOtherPlayer:
+    - 0
     - 0
     - 0
   - NomeDoAtaque: AtaqueBaixoAgachado
