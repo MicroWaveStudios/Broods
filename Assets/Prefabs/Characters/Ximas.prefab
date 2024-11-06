@@ -2441,6 +2441,7 @@ Transform:
   - {fileID: 5488264982377763131}
   - {fileID: 2031961057483941235}
   - {fileID: 2849346277723681661}
+  - {fileID: 1931142160201944325}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2815,7 +2816,7 @@ MonoBehaviour:
   objFumaca: {fileID: 2428397226556226383}
   isPlayer2: 1
   MoveForce: 3
-  JumpForce: 500
+  JumpForce: 700
   MoveForceSufferAttack: 0
   moveUp: 0
 --- !u!114 &9003609753184435342
@@ -2848,6 +2849,8 @@ MonoBehaviour:
   playerStats: {fileID: 212009621018895382}
   NaraSkills: {fileID: 0}
   anim: {fileID: 1360568270482154252}
+  _InAttack: 0
+  InCombo: 0
   ordem: 0
   rastrosAtaque: []
   attackGameObject: {fileID: 1899415472055321106}
@@ -8439,6 +8442,51 @@ Transform:
   m_Father: {fileID: 8538683406605891476}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -1.8101797, y: 0.084948584, z: 55.87498}
+--- !u!1 &7657034320336801801
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1931142160201944325}
+  - component: {fileID: 6137319956086261583}
+  m_Layer: 0
+  m_Name: ConeCabeca
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1931142160201944325
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7657034320336801801}
+  m_LocalRotation: {x: -0.36994395, y: -0, z: -0, w: 0.92905414}
+  m_LocalPosition: {x: 0, y: 169, z: -7.5}
+  m_LocalScale: {x: 100.00002, y: 100, z: 100}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1543341450706339045}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: -43.424, y: 0, z: 0}
+--- !u!65 &6137319956086261583
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7657034320336801801}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7749884367169607531
 GameObject:
   m_ObjectHideFlags: 0

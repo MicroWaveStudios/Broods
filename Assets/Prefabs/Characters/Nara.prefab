@@ -806,6 +806,51 @@ Transform:
   m_Father: {fileID: 2808503652777627333}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &885727486230491919
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6815024553101162272}
+  - component: {fileID: 2334146910550661658}
+  m_Layer: 0
+  m_Name: ConeCabeca
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6815024553101162272
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 885727486230491919}
+  m_LocalRotation: {x: -0.36994395, y: -0, z: 0.000000014901159, w: 0.92905414}
+  m_LocalPosition: {x: 0, y: 1.288, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6295414256745156598}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: -43.424, y: 0, z: 0}
+--- !u!65 &2334146910550661658
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 885727486230491919}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &931384645064526209
 GameObject:
   m_ObjectHideFlags: 0
@@ -5849,6 +5894,7 @@ Transform:
   - {fileID: 3322144807970631300}
   - {fileID: 5324853229032968673}
   - {fileID: 5029492403180260251}
+  - {fileID: 6815024553101162272}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -6235,7 +6281,7 @@ MonoBehaviour:
   objFumaca: {fileID: 6830945488235815930}
   isPlayer2: 1
   MoveForce: 3
-  JumpForce: 500
+  JumpForce: 700
   MoveForceSufferAttack: 0
   moveUp: 0
 --- !u!114 &5825252824003833762
@@ -6268,6 +6314,8 @@ MonoBehaviour:
   playerStats: {fileID: 5825252824003833765}
   NaraSkills: {fileID: 757593877083283454}
   anim: {fileID: 5825252824003833767}
+  _InAttack: 0
+  InCombo: 0
   ordem: 0
   rastrosAtaque: []
   attackGameObject: {fileID: 5825252823125675279}
