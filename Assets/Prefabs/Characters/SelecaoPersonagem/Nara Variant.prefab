@@ -1101,6 +1101,9 @@ MonoBehaviour:
   - {fileID: 3851138948035700481}
   - {fileID: 3490765634441144177}
   - {fileID: 2968903321597115556}
+  playerID: 0
+  materialAtual: 0
+  materialOutroPlayer: -1
 --- !u!1 &2434759708475868731 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8112686747739935298, guid: 6ae38b9c128d93748b30d3cef5189263, type: 3}

@@ -20,9 +20,9 @@ public class MaterialPlayer : MonoBehaviour
     [SerializeField] GameObject[] PartesDoCorpo;
     GameObject botao;
 
-    int playerID;
-    int materialAtual;
-    int materialOutroPlayer;
+    [SerializeField] int playerID;
+    int materialAtual = -1;
+    int materialOutroPlayer = -1;
 
     private void Start()
     {
@@ -56,13 +56,16 @@ public class MaterialPlayer : MonoBehaviour
                 materialAtual--;
             }
         }
-        if (materialAtual > VarianteDaSkin.Count)
+        if (materialAtual >= VarianteDaSkin.Count)
         {
             materialAtual = 0;
         }
-        else if (materialAtual < 0)
+        else
         {
-            materialAtual = VarianteDaSkin.Count - 1;
+            if (materialAtual < 0)
+            {
+                materialAtual = VarianteDaSkin.Count - 1;
+            }
         }
         botao.GetComponent<scriptBotao>().SetVariantePlayer(materialAtual, playerID);
         SetMaterialPersonagem(materialAtual);

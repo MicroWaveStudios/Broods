@@ -64,6 +64,13 @@ public class PersonagensManager : MonoBehaviour
     {
         if (value)
         {
+            for (int i = 0; i < 1; i++)
+            {
+                if (playerIndex != i)
+                {
+                    //GetComponent<ConnectPlayerInMenu>().GetPlayer(playerIndex).GetComponent<SelecaoPersonagem>().GetBotaoAtual().GetComponent<MaterialPlayer>().SetMaterialOutroPlayer(NumeroDaVariante);
+                }
+            }
             VarianteTxt[playerIndex].text = "Pronto!";
         }
         else
