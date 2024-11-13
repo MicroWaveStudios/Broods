@@ -219,6 +219,7 @@ MonoBehaviour:
   - {fileID: 1635701177}
   - {fileID: 0}
   PrefabJogador: {fileID: 0}
+  PersonagemID: -1
 --- !u!1 &38311943
 GameObject:
   m_ObjectHideFlags: 0
@@ -4383,6 +4384,7 @@ MonoBehaviour:
   - {fileID: 1639498863}
   - {fileID: 86514574}
   PrefabJogador: {fileID: 0}
+  PersonagemID: -1
 --- !u!1 &1083748574
 GameObject:
   m_ObjectHideFlags: 0
@@ -5654,6 +5656,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7635764584608856731, guid: ea09e7c8c8dd3014ab6837ca2d6bcb26, type: 3}
+      propertyPath: PersonagemID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7635764584608856731, guid: ea09e7c8c8dd3014ab6837ca2d6bcb26, type: 3}
       propertyPath: PrefabJogador
       value: 
       objectReference: {fileID: 4787019588658103715, guid: 35b22893867a7664d81ddd210915c879, type: 3}
@@ -6890,6 +6896,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   PrefabJogador: {fileID: 0}
+  PersonagemID: -1
 --- !u!1 &1639498863 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5888470286630149208, guid: ea09e7c8c8dd3014ab6837ca2d6bcb26, type: 3}
