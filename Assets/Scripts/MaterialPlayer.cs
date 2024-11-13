@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class MaterialPlayer : MonoBehaviour
 {
-    //[SerializeField] Material[] MaterialPlayer1;
-
-    //[SerializeField] Material[] MaterialPlayer2;
-
     [System.Serializable]
     struct ListaMaterial
     {

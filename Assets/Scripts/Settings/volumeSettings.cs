@@ -20,13 +20,13 @@ public class volumeSettings : MonoBehaviour
     [Header("Audios")]
     public AudioMixer audioMixer;
 
-    [Header("PopUps")]
-    public GameObject PopUpNaoSalvou;
-    public GameObject JanelaSom;
-    public GameObject JanelaConfigs;
+    [Header("PanelManager")]
+    PanelsManager panelsManager;
 
     private void Start()
     {
+        panelsManager = FindObjectOfType<PanelsManager>();
+
         volumeGeral.value = PlayerPrefs.GetFloat("VolumeGeral");
         AtualizarTextoVolumeGeral();
 
@@ -90,13 +90,13 @@ public class volumeSettings : MonoBehaviour
             BG.value != PlayerPrefs.GetFloat("VolumeBG") ||
             VFX.value != PlayerPrefs.GetFloat("VolumeVFX"))
         {
-            PopUpNaoSalvou.SetActive(true);
-            JanelaSom.SetActive(false);
+            //PopUpNaoSalvou.SetActive(true);
+            panelsManager.ChangePanel(6);
         }
         else
         {
-            JanelaConfigs.SetActive(true);
-            JanelaSom.SetActive(false);
+            //JanelaConfigs.SetActive(true);
+            panelsManager.ChangePanel(1);
         }
     }
 

@@ -36,8 +36,4 @@ public class sceneManager : MonoBehaviour
     {
         SceneManager.LoadScene("CampoDeTreinamento");
     }
-    public void Personagens()
-    {
-        SceneManager.LoadScene("Personagens");
-    }
 }

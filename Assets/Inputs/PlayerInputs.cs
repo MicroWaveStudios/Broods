@@ -1102,6 +1102,17 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""b191a997-cc81-4d8f-b50f-7269d9fdf298"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""572ad88f-3efc-46e7-b2e4-cf5040b08da4"",
                     ""path"": ""<Mouse>/scroll"",
                     ""interactions"": """",

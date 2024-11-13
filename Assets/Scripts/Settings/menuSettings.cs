@@ -9,11 +9,12 @@ using UnityEngine.Rendering;
 
 public class menuSettings : MonoBehaviour
 {    
+    private PanelsManager panelsManager;
     private int qualidadeAtual;
     private bool isFullScreen;
     private float TelaCheia;
-    [SerializeField] private bool onVsync;
-    [SerializeField] private float vSync;
+    private bool onVsync;
+    private float vSync;
 
     [Header("Resolução")]
     int width;
@@ -22,11 +23,6 @@ public class menuSettings : MonoBehaviour
     private Resolution[] resolutions;
     private List<Resolution> filteredResolutions;
     private float currentRefreshRate;
-    
-    [Header("PopUps")]
-    [SerializeField] private GameObject PopUpGraficos;
-    [SerializeField] private GameObject PopUpConfigs;
-    [SerializeField] private GameObject PopUpNaoSalvouGraficos;
 
     [Header("Botões")]
     [SerializeField] private TMP_Dropdown QualityDropdown;
@@ -36,6 +32,8 @@ public class menuSettings : MonoBehaviour
 
     private void Start()
     {
+        panelsManager = FindObjectOfType<PanelsManager>();
+
         resolutions = Screen.resolutions;
         filteredResolutions = new List<Resolution>();
         resolutionDropdown.ClearOptions();
@@ -156,13 +154,13 @@ public class menuSettings : MonoBehaviour
             TelaCheia != PlayerPrefs.GetFloat("fullscreen") ||
             resolucaoAtual_index != PlayerPrefs.GetInt("resolution"))
         {
-            PopUpNaoSalvouGraficos.SetActive(true);
-            PopUpGraficos.SetActive(false);
+            //PopUpNaoSalvouGraficos.SetActive(true);
+            panelsManager.ChangePanel(3);
         }
         else
         {
-            PopUpConfigs.SetActive(true);
-            PopUpGraficos.SetActive(false);
+            //PopUpConfigs.SetActive(true);
+            panelsManager.ChangePanel(1);
         }
     }
 

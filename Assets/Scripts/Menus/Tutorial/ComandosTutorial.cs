@@ -12,11 +12,13 @@ public class ComandosTutorial : MonoBehaviour
     [SerializeField] private GameObject painelFimTutorial;
     PlayerMoveRigidbody playerMove;
     PlayerCombat playerCombat;
+    PlayerInput playerInput;
 
     private void Start()
     {
         playerMove = GameObject.FindGameObjectWithTag("Player1").GetComponent<PlayerMoveRigidbody>();
         playerCombat = GameObject.FindGameObjectWithTag("Player1").GetComponent<PlayerCombat>();
+        playerInput = GameObject.FindGameObjectWithTag("Player1").GetComponent<PlayerInput>();
     }
     private void Update()
     {
