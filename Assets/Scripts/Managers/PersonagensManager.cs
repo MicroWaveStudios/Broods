@@ -25,20 +25,24 @@ public class PersonagensManager : MonoBehaviour
     int[] indexPersonagem = new int[] { -1, -1};
     GameObject[] playerGameObject = new GameObject[2];
     int player = 0;
+    int[] PersonagemID = new int[2];
+    int[] varianteAtual = new int[2];
 
     bool naSelecaoDePersonagem;
 
     bool[] selecionouPersonagem = new bool[2]; 
     bool[] confirmouPersonagem = new bool[2];
-
-    //[System.Serializable]
-    //struct Lista
-    //{
-    //    public GameObject[] posePersonagem;
-    //    public GameObject confirmar;
-    //}
-    //[SerializeField] List<Lista> ListaPose = new List<Lista>();
     #endregion
+
+    private void Start()
+    {
+        for (int i = 0; i < 1; i++)
+        {
+            selecionouPersonagem[i] = false;
+            confirmouPersonagem[i] = false;
+            varianteAtual[i] = -1;
+        }
+    }
 
     public void AlterarCenaPersonagens(bool value)
     {
@@ -54,13 +58,28 @@ public class PersonagensManager : MonoBehaviour
         GameObject.FindGameObjectWithTag("ConnectManager").GetComponent<ConnectPlayerInMenu>().GetPlayer(0).GetComponent<SelecaoPersonagem>().SetActiveBordaSelecao(value);
         GameObject.FindGameObjectWithTag("ConnectManager").GetComponent<ConnectPlayerInMenu>().GetPlayer(1).GetComponent<SelecaoPersonagem>().SetActiveBordaSelecao(value);
     }
-
+    public void SetPersonagemID(int personagemIndex, int playerIndex)
+    {
+        PersonagemID[playerIndex] = personagemIndex;
+    }
+    public int GetPersonagemID(int playerIndex)
+    {
+        return PersonagemID[playerIndex];
+    }
     public GameObject GetBotaoInicial()
     {
         return BotaoInicial;
     }
+    public void SetVariante(int playerIndex, int newVariante)
+    {
+        varianteAtual[playerIndex] = newVariante;
+    }
+    public int GetVariante(int playerIndex)
+    {
+        return varianteAtual[playerIndex];
+    }
     #region Confirmações
-    public void ConfirmouPersonagem(int playerIndex, bool value)
+    public void ConfirmouPersonagem(int playerIndex, int material, bool value)
     {
         if (value)
         {
@@ -68,7 +87,7 @@ public class PersonagensManager : MonoBehaviour
             {
                 if (playerIndex != i)
                 {
-                    //GetComponent<ConnectPlayerInMenu>().GetPlayer(playerIndex).GetComponent<SelecaoPersonagem>().GetBotaoAtual().GetComponent<MaterialPlayer>().SetMaterialOutroPlayer(NumeroDaVariante);
+                    GetComponent<ConnectPlayerInMenu>().GetPlayer(playerIndex).GetComponent<SelecaoPersonagem>().GetBotaoAtual().GetComponent<MaterialPlayer>().SetMaterialOutroPlayer(material);
                 }
             }
             VarianteTxt[playerIndex].text = "Pronto!";
@@ -91,9 +110,10 @@ public class PersonagensManager : MonoBehaviour
     #endregion
 
     #region Selecionar Personagens
-    public void SelecionouPersonagem(int playerIndex, bool value)
+    public void SelecionouPersonagem(int playerIndex, int personagemIndex, bool value)
     {
         selecionouPersonagem[playerIndex] = value;
+
         VarianteTxt[playerIndex].gameObject.SetActive(value);
     }
     #endregion

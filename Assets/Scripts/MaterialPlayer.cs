@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class MaterialPlayer : MonoBehaviour
 {
-    //[SerializeField] Material[] MaterialPlayer1;
-
-    //[SerializeField] Material[] MaterialPlayer2;
-
     [System.Serializable]
     struct ListaMaterial
     {
@@ -21,12 +17,13 @@ public class MaterialPlayer : MonoBehaviour
     GameObject botao;
 
     [SerializeField] int playerID;
-    int materialAtual = -1;
-    int materialOutroPlayer = -1;
+    [SerializeField] int otherPlayerID;
+    [SerializeField] int materialAtual = -1;
+    [SerializeField] int materialOutroPlayer = -1;
 
     private void Start()
     {
-        SetMaterialPersonagem(materialAtual);
+        TrocarMaterial(1);
     }
     public void SetMaterialAtual(int novoMaterialAtual)
     {
@@ -45,7 +42,17 @@ public class MaterialPlayer : MonoBehaviour
         materialAtual += (int)direcao;
         VerificacaoVarianteOutroPlayer();
 
-        if (materialAtual == materialOutroPlayer)
+        for (int i = 0; i < 1; i++)
+        {
+            if (playerID != i)
+            {
+                otherPlayerID = i;
+            }
+        }
+
+        PersonagensManager personagemManager = GameObject.FindGameObjectWithTag("PersonagemManager").GetComponent<PersonagensManager>();
+
+        if (materialAtual == materialOutroPlayer && personagemManager.GetPersonagemID(playerID) == personagemManager.GetPersonagemID(otherPlayerID) && personagemManager.GetConfirmouPersonagem(otherPlayerID))
         {
             if (direcao > 0)
             {
@@ -69,6 +76,7 @@ public class MaterialPlayer : MonoBehaviour
         }
         botao.GetComponent<scriptBotao>().SetVariantePlayer(materialAtual, playerID);
         SetMaterialPersonagem(materialAtual);
+        GameObject.FindGameObjectWithTag("PersonagemManager").GetComponent<PersonagensManager>().SetVariante(playerID, materialAtual);
         GameObject.FindGameObjectWithTag("PersonagemManager").GetComponent<PersonagensManager>().TrocarVarianteTxt(playerID, VarianteDaSkin[materialAtual].nome);
     }
     void VerificacaoVarianteOutroPlayer()

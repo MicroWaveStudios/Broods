@@ -9,6 +9,7 @@ public class scriptBotao : MonoBehaviour
     [SerializeField] GameObject[] BotoesProximos;
     [SerializeField] GameObject PrefabJogador;
     GameObject[] Jogador = new GameObject[2];
+    [SerializeField] int PersonagemID; //Variavel para saber qual o personagem
     int[] variantePlayer = new int[2];
     bool[] NoBotao = new bool[2];
 
@@ -38,6 +39,10 @@ public class scriptBotao : MonoBehaviour
     public int GetVariantePlayer(int playerIndex)
     { 
         return variantePlayer[playerIndex];
+    }
+    public int GetPersonagemID()
+    { 
+        return PersonagemID;
     }
     void InstantiateJogador(bool value, int playerIndex)
     {

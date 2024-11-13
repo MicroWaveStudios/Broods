@@ -10,6 +10,7 @@ public class SelecaoPersonagem : MonoBehaviour
     [SerializeField] TMP_Text textoBorda;
     [SerializeField] Color[] CorBorda;
     [SerializeField] Vector3[] PosicaoTexto;
+    int variante = -1;
 
     GameObject personagensManager;
     GameObject connectManager;
@@ -51,7 +52,6 @@ public class SelecaoPersonagem : MonoBehaviour
         transform.position = novoBotaoAtual.transform.position;
         botaoAtual.GetComponent<scriptBotao>().SetJogadorNoBotao(true, playerIndex);
     }
-
     public GameObject GetBotaoAtual()
     { 
         return botaoAtual;
@@ -66,11 +66,11 @@ public class SelecaoPersonagem : MonoBehaviour
         {
             if (personagensManager.GetComponent<PersonagensManager>().GetSelecionouPersonagem(GetComponent<ConnectPlayer>().GetPlayerID()))
             {
-                personagensManager.GetComponent<PersonagensManager>().ConfirmouPersonagem(GetComponent<ConnectPlayer>().GetPlayerID(), true);
+                personagensManager.GetComponent<PersonagensManager>().ConfirmouPersonagem(GetComponent<ConnectPlayer>().GetPlayerID(), personagensManager.GetComponent<PersonagensManager>().GetVariante(GetComponent<ConnectPlayer>().GetPlayerID()), true);
             }
             else if (botaoAtual.GetComponent<scriptBotao>().GetJogador(GetComponent<ConnectPlayer>().GetPlayerID()) != null)
             {
-                personagensManager.GetComponent<PersonagensManager>().SelecionouPersonagem(GetComponent<ConnectPlayer>().GetPlayerID(), true);
+                personagensManager.GetComponent<PersonagensManager>().SelecionouPersonagem(GetComponent<ConnectPlayer>().GetPlayerID(), botaoAtual.GetComponent<scriptBotao>().GetPersonagemID(), true);
             }
         }
     }

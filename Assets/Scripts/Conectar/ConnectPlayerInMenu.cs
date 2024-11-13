@@ -150,11 +150,11 @@ public class ConnectPlayerInMenu : MonoBehaviour
             case Etapa.selecaoDePersonagem:
                 if (personagensManager.GetConfirmouPersonagem(playerIndex))
                 {
-                    personagensManager.ConfirmouPersonagem(playerIndex, false);
+                    personagensManager.ConfirmouPersonagem(playerIndex, -1, false);
                 }
                 else if (personagensManager.GetSelecionouPersonagem(playerIndex)) 
                 {
-                    personagensManager.SelecionouPersonagem(playerIndex, false);
+                    personagensManager.SelecionouPersonagem(playerIndex, -1, false);
                 }
                 else if (!personagensManager.GetSelecionouPersonagem(0) && !personagensManager.GetSelecionouPersonagem(1))
                 {
