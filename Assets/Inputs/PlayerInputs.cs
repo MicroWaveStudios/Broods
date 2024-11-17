@@ -1226,30 +1226,8 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         {
             ""name"": ""Static"",
             ""id"": ""dd456586-6638-48f3-8407-f7da7c1e124f"",
-            ""actions"": [
-                {
-                    ""name"": ""New action"",
-                    ""type"": ""Button"",
-                    ""id"": ""63dfb7b0-87ed-4fcb-83dc-4ce59c3818ce"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""cb7f576d-c033-4917-8602-f7285d5b5b41"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""New action"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                }
-            ]
+            ""actions"": [],
+            ""bindings"": []
         }
     ],
     ""controlSchemes"": [
@@ -1339,7 +1317,6 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         m_UI_Confirmar = m_UI.FindAction("Confirmar", throwIfNotFound: true);
         // Static
         m_Static = asset.FindActionMap("Static", throwIfNotFound: true);
-        m_Static_Newaction = m_Static.FindAction("New action", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1641,12 +1618,10 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
     // Static
     private readonly InputActionMap m_Static;
     private IStaticActions m_StaticActionsCallbackInterface;
-    private readonly InputAction m_Static_Newaction;
     public struct StaticActions
     {
         private @PlayerInputs m_Wrapper;
         public StaticActions(@PlayerInputs wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_Static_Newaction;
         public InputActionMap Get() { return m_Wrapper.m_Static; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1656,16 +1631,10 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_StaticActionsCallbackInterface != null)
             {
-                @Newaction.started -= m_Wrapper.m_StaticActionsCallbackInterface.OnNewaction;
-                @Newaction.performed -= m_Wrapper.m_StaticActionsCallbackInterface.OnNewaction;
-                @Newaction.canceled -= m_Wrapper.m_StaticActionsCallbackInterface.OnNewaction;
             }
             m_Wrapper.m_StaticActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Newaction.started += instance.OnNewaction;
-                @Newaction.performed += instance.OnNewaction;
-                @Newaction.canceled += instance.OnNewaction;
             }
         }
     }
@@ -1738,6 +1707,5 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
     }
     public interface IStaticActions
     {
-        void OnNewaction(InputAction.CallbackContext context);
     }
 }

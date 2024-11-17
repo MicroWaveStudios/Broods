@@ -6235,7 +6235,7 @@ MonoBehaviour:
     m_ActionId: 3307bfa4-9d81-444a-91fe-2bc12120abca
     m_ActionName: UI/Confirmar[/Keyboard/space,/Keyboard/enter,/XInputControllerWindows/buttonSouth]
   m_NeverAutoSwitchControlSchemes: 1
-  m_DefaultControlScheme: KeyboardRight
+  m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -6251,8 +6251,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca8049ff7646d72458a94f906cb11d7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  directionX: 0
   objFumaca: {fileID: 6830945488235815930}
+  noChao: 0
+  crouched: 0
   isPlayer2: 1
+  jumpCount: 0
   MoveForce: 3
   JumpForce: 700
   MoveForceSufferAttack: 0

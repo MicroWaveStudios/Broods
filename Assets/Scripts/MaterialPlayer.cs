@@ -60,7 +60,6 @@ public class MaterialPlayer : MonoBehaviour
         }
         botao.GetComponent<scriptBotao>().SetVariantePlayer(materialAtual, playerID);
         SetMaterialPersonagem(materialAtual);
-        Debug.Log(materialAtual);
         GameObject.FindGameObjectWithTag("PersonagemManager").GetComponent<PersonagensManager>().TrocarVarianteTxt(playerID, VarianteDaSkin[materialAtual].nome);
     }
     public void SetMaterialPersonagem(int skin)

@@ -7,7 +7,7 @@ using UnityEngine.VFX;
 public class PlayerMoveRigidbody : MonoBehaviour
 {
     Rigidbody rb;
-    float directionX;
+    [SerializeField] float directionX;
     PlayerStats playerStats;
     PlayerCombat playerCombat;
     PlayerInput playerInput;
@@ -16,13 +16,13 @@ public class PlayerMoveRigidbody : MonoBehaviour
     VisualEffect vfxFumaca;
     FumacaChao scrpFumaca;
 
-    bool noChao;
-    bool crouched = false;
+    [SerializeField] bool noChao;
+    [SerializeField] bool crouched = false;
 
     string otherPlayerTag;
 
     public float isPlayer2 = 1;
-    int jumpCount;
+    [SerializeField] int jumpCount;
 
     [Header("Forces")]
     [SerializeField] float MoveForce;
@@ -113,7 +113,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
     {
         if (jumpCount > 0 && !playerCombat.GetInAttack())
         {
-            Jump(JumpForce);
+            Jump(JumpForce, true);
 
             vfxFumaca.Play();
         }
@@ -131,11 +131,14 @@ public class PlayerMoveRigidbody : MonoBehaviour
         }
     }
 
-    public void Jump(float force)
+    public void Jump(float force, bool value)
     {
         rb.AddForce(Vector3.zero);
         rb.AddForce(Vector3.up * force);
-        jumpCount--;
+        if (value)
+        {
+            jumpCount--;
+        }
     }
 
     public bool GetIsGrounded()
@@ -205,7 +208,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
 
     public void MoveUp(float moveUp)
     {
-        Jump(moveUp);
+        Jump(moveUp, false);
     }
 
     public void MoverAoLevarDano(float moveDamage)

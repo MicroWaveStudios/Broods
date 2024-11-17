@@ -13,8 +13,8 @@ public class GameController : MonoBehaviour
     float lifePlayer1;
     float lifePlayer2;
 
-    GameObject Player1;
-    GameObject Player2;
+    GameObject[] player = new GameObject[2];
+    //GameObject Player2;
     Transform PlayerLeft;
     Transform PlayerRight;
     [SerializeField] GameObject[] PrefabPlayer;
@@ -47,7 +47,7 @@ public class GameController : MonoBehaviour
     private bool isPaused = false;
 
     [SerializeField] GameObject eventSystemManager;
-    [SerializeField] GameObject PanelManager;
+    [SerializeField] PanelsManager PanelManager;
 
     PlayerInputManager playerInputManager;
 
@@ -140,8 +140,8 @@ public class GameController : MonoBehaviour
     private void Update()
     {
         Canvas = GameObject.FindGameObjectWithTag("Canvas");
-        Player1 = GameObject.FindGameObjectWithTag("Player1");
-        Player2 = GameObject.FindGameObjectWithTag("Player2");
+        player[0] = GameObject.FindGameObjectWithTag("Player1");
+        player[1] = GameObject.FindGameObjectWithTag("Player2");
 
         //if (Player1 == null && !Pontos.SplitKeyboard)
         //{
@@ -154,7 +154,7 @@ public class GameController : MonoBehaviour
         //    playerInputManager.playerPrefab = Pontos.prefabPlayer[1];
         //}
 
-        if (Player1 != null && Player2 != null)
+        if (player[0] != null && player[1] != null)
         {
             if (!Pontos.SplitKeyboard)
             {
@@ -164,66 +164,6 @@ public class GameController : MonoBehaviour
             MidPosition();
             PlayerLife();
             PlayerEnergy();
-        }
-        else
-        {
-            if (Pontos.SplitKeyboard)
-            {
-                if (Player1 == null)
-                {
-                    //playerInputManager.playerPrefab = Pontos.prefabPlayer[0];
-                    //playerInputManager.playerPrefab.tag = "Player1";                   
-                    //playerInputManager.playerPrefab.GetComponent<PlayerInput>().defaultControlScheme = "Keyboard";
-                    //var player1 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 0, null, -1, Keyboard.current, Mouse.current);
-                    //player1.tag = "Player1";
-                }
-                //else if (Player1 != null)
-                //{
-                //    Destroy(Player1);
-                //    PlayerInput player1 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 0, "KeyboardLeft", -1, Keyboard.current, Mouse.current);
-                //    PlayerInput player2 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 1, "KeyboardRight", -1, Keyboard.current);
-                //    player1.tag = "Player1";
-                //    player2.tag = "Player2";
-                //}
-                //var allKeyboards = Keyboard.all;
-                //InputDevice player1Device = allKeyboards[0];
-                //InputDevice player2Device = allKeyboards[0];
-
-                //InputUser playerInputUser1 = InputUser.CreateUserWithoutPairedDevices();
-                //InputUser playerInputUser2 = InputUser.CreateUserWithoutPairedDevices();
-
-                //InputUser.PerformPairingWithDevice(Keyboard.current, playerInputUser1);
-                //InputUser.PerformPairingWithDevice(Keyboard.current, playerInputUser2);
-
-                //Pontos.prefabPlayer[0].GetComponent<PlayerInput>().defaultControlScheme = "KeyboardLeft";
-                //GameObject playerGameObject1 = Instantiate(Pontos.prefabPlayer[0]);
-                //Pontos.prefabPlayer[1].GetComponent<PlayerInput>().defaultControlScheme = "KeyboardRight";
-                //GameObject playerGameObject2 = Instantiate(Pontos.prefabPlayer[1]);
-
-                //PlayerInput playerInput1 = playerGameObject1.GetComponent<PlayerInput>();
-                //PlayerInput playerInput2 = playerGameObject2.GetComponent<PlayerInput>();
-
-                //Pontos.prefabPlayer[0].GetComponent<PlayerInput>().defaultControlScheme = "KeyboardLeft";
-                //playerInputManager.playerPrefab.GetComponent<PlayerInput>().defaultControlScheme = "KeyboardLeft";
-                //var player1 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 0, null, -1, Keyboard.current, Mouse.current);
-                //playerInputManager.playerPrefab.GetComponent<PlayerInput>().defaultControlScheme = "KeyboardRight";
-                //Pontos.prefabPlayer[1].GetComponent<PlayerInput>().defaultControlScheme = "KeyboardRight";
-                //var player2 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 1, null, -1, Keyboard.current);
-                //InputUser.PerformPairingWithDevice(player2.GetComponent<PlayerInput>().devices[0], player2.user);
-
-                //playerInput1.tag = "Player1";
-                //playerInput2.tag = "Player2";
-
-                //player1.tag = "Player1";
-                //player2.tag = "Player2";
-
-                //InputUser.PerformPairingWithDevice(player1Device, playerInput1.user);
-                //playerInput1.SwitchCurrentActionMap(Pontos.ControlSchemePlayer[0]);
-
-                //InputUser.PerformPairingWithDevice(player2Device, playerInput2.user);
-                //playerInput2.SwitchCurrentActionMap(Pontos.ControlSchemePlayer[1]);
-
-            }
         }
 
         if (Pontos.pontosP1 >= 1)
@@ -256,12 +196,11 @@ public class GameController : MonoBehaviour
 
     void PlayerLife()
     {
-        lifePlayer1 = Player1.GetComponent<PlayerStats>().life / Player1.GetComponent<PlayerStats>().maxLife;
+        lifePlayer1 = player[0].GetComponent<PlayerStats>().life / player[0].GetComponent<PlayerStats>().maxLife;
         greenBar1.fillAmount = lifePlayer1;
         StartCoroutine(DecreaseRedBar1(lifePlayer1));
 
-
-        lifePlayer2 = Player2.GetComponent<PlayerStats>().life / Player2.GetComponent<PlayerStats>().maxLife;
+        lifePlayer2 = player[1].GetComponent<PlayerStats>().life / player[1].GetComponent<PlayerStats>().maxLife;
         greenBar2.fillAmount = lifePlayer2;
         StartCoroutine(DecreaseRedBar2(lifePlayer2));
     }
@@ -300,25 +239,25 @@ public class GameController : MonoBehaviour
 
     void PlayerEnergy()
     {
-        energyBarPlayer1.value = Player1.GetComponent<PlayerStats>().energy;
-        energyBarPlayer2.value = Player2.GetComponent<PlayerStats>().energy;
+        energyBarPlayer1.value = player[0].GetComponent<PlayerStats>().energy;
+        energyBarPlayer2.value = player[1].GetComponent<PlayerStats>().energy;
     }
 
     void ChangePlayer()
     {
-        if (Player1.transform.position.x < Player2.transform.position.x)
+        if (player[0].transform.position.x < player[1].transform.position.x)
         {
             //Esta na esquerda (posicao inicial)
             ChangedSide = false;
-            PlayerLeft = Player1.transform;
-            PlayerRight = Player2.transform;
+            PlayerLeft = player[0].transform;
+            PlayerRight = player[1].transform;
         }
         else
         {
             //Esta na direita (posicao modificada)
             ChangedSide = true;
-            PlayerLeft = Player2.transform;
-            PlayerRight = Player1.transform;
+            PlayerLeft = player[1].transform;
+            PlayerRight = player[0].transform;
         }
 
         if (PlayerLeft.GetComponent<PlayerStats>().GetXimas())
@@ -398,10 +337,10 @@ public class GameController : MonoBehaviour
 
     public void DestroyPlayers()
     {
-        Destroy(Player1);
-        Player1 = null;
-        Destroy(Player2);
-        Player2 = null;
+        Destroy(player[0]);
+        player = null;
+        Destroy(player[1]);
+        player[1] = null;
     }
 
     public void GameFinished()
@@ -439,11 +378,16 @@ public class GameController : MonoBehaviour
         BarraJogador[0].SetActive(false);
         BarraJogador[1].SetActive(false);
         ZerarPontos();
-        winnerPanel.SetActive(true);
-        yield return new WaitForSeconds(2.5f);
+        PanelManager.ChangePanel(1);
+        for (int i = 0; i < player.Length; i++)
+        {
+            player[i].GetComponent<PlayerController>().EnableMapActionUI();
+        }
+        //yield return new WaitForSeconds(2.5f);
         ZerarPontos();
         //yield return new WaitForSeconds(2.5f);
         //SceneManager.LoadScene("Menu");
+        yield break;
     }
 
     public void ZerarPontos()
@@ -460,13 +404,13 @@ public class GameController : MonoBehaviour
     IEnumerator ChangeTimeScale()
     {
         yield return new WaitForSeconds(0.1f);
-        float speedP1 = Player1.GetComponent<Animator>().speed;
-        float speedP2 = Player2.GetComponent<Animator>().speed;
-        Player1.GetComponent<Animator>().speed = 0f;
-        Player2.GetComponent<Animator>().speed = 0f;
+        float speedP1 = player[0].GetComponent<Animator>().speed;
+        float speedP2 = player[1].GetComponent<Animator>().speed;
+        player[0].GetComponent<Animator>().speed = 0f;
+        player[1].GetComponent<Animator>().speed = 0f;
         yield return new WaitForSeconds(0.2f);
-        Player1.GetComponent<Animator>().speed = speedP1;
-        Player2.GetComponent<Animator>().speed = speedP2;
+        player[0].GetComponent<Animator>().speed = speedP1;
+        player[1].GetComponent<Animator>().speed = speedP2;
         yield break;
     }
 
