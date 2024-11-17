@@ -119,14 +119,13 @@ public class ConnectPlayerInMenu : MonoBehaviour
     }
     public void TrocarCenaGame(string novaCenaAtual)
     {
-        Pontos.prefabPlayer[0] = prefabPersonagens[player[0].GetComponent<ConnectPlayer>().GetNumeroPersonagem()];
-        Pontos.prefabPlayer[1] = prefabPersonagens[player[1].GetComponent<ConnectPlayer>().GetNumeroPersonagem()];
-
-        Pontos.ControlSchemePlayer[0] = player[0].GetComponent<ConnectPlayer>().GetControlScheme();
-        Pontos.ControlSchemePlayer[1] = player[1].GetComponent<ConnectPlayer>().GetControlScheme();
-
-        Pontos.prefabPlayer[0].tag = player[0].tag;
-        Pontos.prefabPlayer[1].tag = player[1].tag;
+        for (int i = 0; i < 2; i++) 
+        {
+            Pontos.prefabPlayer[i] = prefabPersonagens[player[i].GetComponent<ConnectPlayer>().GetNumeroPersonagem()];
+            Pontos.ControlSchemePlayer[i] = player[i].GetComponent<ConnectPlayer>().GetControlScheme();
+            Pontos.variante[i] = personagensManager.GetVariante(i);
+            Pontos.prefabPlayer[i].tag = player[i].tag;
+        }
     }
     public void SetarPrefabPlayer(int playerAtual, int prefabIndex)
     {
@@ -164,14 +163,12 @@ public class ConnectPlayerInMenu : MonoBehaviour
                     etapa = Etapa.conectar;
                     StartCoroutine(player[0].GetComponent<ConnectPlayer>().PlayerCanDoIt());
                     StartCoroutine(player[1].GetComponent<ConnectPlayer>().PlayerCanDoIt());
-                    //Invoke("SetEtapaConectar", 0.2f);
                 }
                 break;
             case Etapa.selecaoDeMapa:
                 panelsManager.ChangePanel(1);
                 personagensManager.AlterarCenaPersonagens(true);
                 etapa = Etapa.selecaoDePersonagem;
-                //Invoke("SetEtapaSelecaoPersonagem", 0.2f);
                 break;
         }
     }
@@ -205,8 +202,6 @@ public class ConnectPlayerInMenu : MonoBehaviour
     {
         ConnectDisconnectPlayer(player[0], 0, null, false);
         ConnectDisconnectPlayer(player[1], 1, null, false);
-        //PlayerInput.Instantiate(playerInputManager.playerPrefab, i, "Keyboard", -1, Keyboard.current, Mouse.current);
-        //playerInScene = 1;
         playerInScene = 0;
         Pontos.SplitKeyboard = false;
     }

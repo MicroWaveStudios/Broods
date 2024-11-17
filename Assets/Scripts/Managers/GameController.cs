@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Users;
 using UnityEngine.SceneManagement;
 using TMPro;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class GameController : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class GameController : MonoBehaviour
     Transform PlayerLeft;
     Transform PlayerRight;
     [SerializeField] GameObject[] PrefabPlayer;
+
+    [SerializeField] GameObject PlayerTeste;
+
     [SerializeField] Transform[] InstancePosition;
     [SerializeField] Transform mid;
     GameObject Canvas;
@@ -63,7 +67,9 @@ public class GameController : MonoBehaviour
             //player1.tag = "Player1";
             //player2.tag = "Player2";
             //playerInputManager.DisableJoining();
-            txtInformativo.SetActive(true);
+
+            //txtInformativo.SetActive(true);
+            EnableSplitKeyboard(null);
         }
         else
         {
@@ -150,6 +156,10 @@ public class GameController : MonoBehaviour
 
         if (Player1 != null && Player2 != null)
         {
+            if (!Pontos.SplitKeyboard)
+            {
+                GetComponent<CountdownTimer>().SetPodeComecar(true);
+            }
             ChangePlayer();
             MidPosition();
             PlayerLife();
@@ -161,9 +171,9 @@ public class GameController : MonoBehaviour
             {
                 if (Player1 == null)
                 {
-                    playerInputManager.playerPrefab = Pontos.prefabPlayer[0];
-                    playerInputManager.playerPrefab.tag = "Player1";                   
-                    playerInputManager.playerPrefab.GetComponent<PlayerInput>().defaultControlScheme = "Keyboard";
+                    //playerInputManager.playerPrefab = Pontos.prefabPlayer[0];
+                    //playerInputManager.playerPrefab.tag = "Player1";                   
+                    //playerInputManager.playerPrefab.GetComponent<PlayerInput>().defaultControlScheme = "Keyboard";
                     //var player1 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 0, null, -1, Keyboard.current, Mouse.current);
                     //player1.tag = "Player1";
                 }
@@ -396,25 +406,21 @@ public class GameController : MonoBehaviour
 
     public void GameFinished()
     {
-        if (lifePlayer1 == lifePlayer2)
+        if (lifePlayer1 != lifePlayer2)
         {
-            
-        }
-        else
-        { 
             if (lifePlayer1 > lifePlayer2)
                 Pontos.pontosP1++;
             else if (lifePlayer2 > lifePlayer1)
                 Pontos.pontosP2++;
 
             if (Pontos.pontosP1 > 1)
-            { 
+            {
                 textPlayerWinner.text = "Player 1 Ganhou!";
                 StartCoroutine(FinishGame());
                 finishGame = true;
             }
             if (Pontos.pontosP2 > 1)
-            { 
+            {
                 textPlayerWinner.text = "Player 2 Ganhou!";
                 StartCoroutine(FinishGame());
                 finishGame = true;
@@ -466,33 +472,47 @@ public class GameController : MonoBehaviour
 
     public void EnableSplitKeyboard(GameObject newGameObject)
     {
-        playerInputManager.DisableJoining();
-        Destroy(newGameObject);
-        Pontos.prefabPlayer[0].GetComponent<PlayerInput>().defaultControlScheme = "KeyboardLeft";
-        PlayerInput player1 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 0, "KeyboardLeft", -1, Keyboard.current, Mouse.current);
-        player1.tag = "Player1";
+        Pontos.prefabPlayer[1].GetComponent<PlayerInput>().defaultControlScheme = "KeyboardLeft";
+        playerInputManager.playerPrefab = Pontos.prefabPlayer[0];
+        PlayerInput player3 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 0, "KeyboardLeft", -1, Keyboard.current, Mouse.current);
         Pontos.prefabPlayer[1].GetComponent<PlayerInput>().defaultControlScheme = "KeyboardRight";
-        PlayerInput player2 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 1, "KeyboardRight", -1, Keyboard.current);
-        player2.tag = "Player2";
+        playerInputManager.playerPrefab = Pontos.prefabPlayer[1];
+        PlayerInput player4 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 1, "KeyboardRight", -1, Keyboard.current);
+        player3.GetComponent<MaterialPlayer>().SetMaterialPersonagem(Pontos.variante[0]);
+        player3.tag = "Player1";
+        player4.GetComponent<MaterialPlayer>().SetMaterialPersonagem(Pontos.variante[1]);
+        player4.tag = "Player2";
+
+        GetComponent<CountdownTimer>().SetPodeComecar(true);
+        //StartCoroutine(InstantiatePlayerSplitKeyboard());
+    }
+    IEnumerator InstantiatePlayerSplitKeyboard()
+    {
+        playerInputManager.DisableJoining();
+
+        yield return new WaitForSeconds(1f);
 
         Pontos.prefabPlayer[1].GetComponent<PlayerInput>().defaultControlScheme = "KeyboardLeft";
         playerInputManager.playerPrefab = Pontos.prefabPlayer[0];
         PlayerInput player3 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 0, "KeyboardLeft", -1, Keyboard.current, Mouse.current);
-        player3.tag = "Player1";
         Pontos.prefabPlayer[1].GetComponent<PlayerInput>().defaultControlScheme = "KeyboardRight";
         playerInputManager.playerPrefab = Pontos.prefabPlayer[1];
         PlayerInput player4 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 1, "KeyboardRight", -1, Keyboard.current);
-        player4.tag = "Player2";
 
         player3.transform.position = InstancePosition[0].transform.position;
         player4.transform.position = InstancePosition[1].transform.position;
 
-        Destroy(player1.gameObject);
-        Destroy(player2.gameObject);
+        yield return new WaitForSeconds(1f);
 
-        txtInformativo.SetActive(false);
+        player3.GetComponent<MaterialPlayer>().SetMaterialPersonagem(Pontos.variante[0]);
+        player3.tag = "Player1";
+        player4.GetComponent<MaterialPlayer>().SetMaterialPersonagem(Pontos.variante[1]);
+        player4.tag = "Player2";
+
+        yield return new WaitForSeconds(2.5f);
+
+        GetComponent<CountdownTimer>().SetPodeComecar(true);
     }
-
     public void ReloadScene()
     {
         Pontos.pontosP1 = 0;

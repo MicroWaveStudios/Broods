@@ -9,7 +9,7 @@ public class ConnectPlayer : MonoBehaviour
     //PlayerID
     int playerID; //numero do player
     PlayerInput playerInput;
-    public string controlScheme; //Mapa de ação utilizado pelo player
+    public string controlScheme; //Mapa de aï¿½ï¿½o utilizado pelo player
     string deviceName; //dispositivo do player
     string rawPathName;
     int numeroPersonagem;
@@ -106,6 +106,10 @@ public class ConnectPlayer : MonoBehaviour
         VarianteSkin = value;
     }
 
+    public void SetNumeroPersonagem(int newNumeroPersonagem)
+    {
+        numeroPersonagem = newNumeroPersonagem;
+    }
     public int GetNumeroPersonagem()
     { 
         return numeroPersonagem;

@@ -1084,7 +1084,7 @@
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard",
+                    "groups": "Keyboard;KeyboardLeft",
                     "action": "Click",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -1196,6 +1196,34 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Confirmar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Static",
+            "id": "dd456586-6638-48f3-8407-f7da7c1e124f",
+            "actions": [
+                {
+                    "name": "New action",
+                    "type": "Button",
+                    "id": "63dfb7b0-87ed-4fcb-83dc-4ce59c3818ce",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "cb7f576d-c033-4917-8602-f7285d5b5b41",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "New action",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

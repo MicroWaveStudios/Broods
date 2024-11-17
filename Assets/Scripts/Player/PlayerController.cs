@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     [Header("Input Action Maps")]
     private string actionMapPlayer = "Player";
     private string actionMapUI = "UI";
+    private string actionMapStatic = "Static";
 
     //bool isPaused = false;
     GameObject gameManager;
@@ -67,12 +68,14 @@ public class PlayerController : MonoBehaviour
     public void EnableMapActionPlayer()
     {
         playerInput.SwitchCurrentActionMap(actionMapPlayer);
-        ///scene = Scene.Game;
-        //Debug.Log(playerInput.currentActionMap);
     }
     public void EnableMapActionUI()
     {
         playerInput.SwitchCurrentActionMap(actionMapUI);
+    }
+    public void EnableMapActionStatic()
+    {
+        playerInput.SwitchCurrentActionMap(actionMapStatic);
     }
     public void PauseOn(InputAction.CallbackContext context)
     {
@@ -100,7 +103,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Pontos.SplitKeyboard && GetComponent<PlayerInput>().currentControlScheme.ToString() == "Keyboard" && CanDoIt && context.started)
         {
-            GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameController>().EnableSplitKeyboard(this.gameObject);
+            //GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameController>().EnableSplitKeyboard(this.gameObject);
         }
     }
 

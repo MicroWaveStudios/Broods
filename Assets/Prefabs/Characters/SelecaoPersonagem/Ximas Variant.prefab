@@ -351,6 +351,7 @@ PrefabInstance:
     - {fileID: 3369839407600525854, guid: ac06cef3dead19b4c9e97f5a3211992e, type: 3}
     - {fileID: 4887512476026040775, guid: ac06cef3dead19b4c9e97f5a3211992e, type: 3}
     - {fileID: 330174957214408859, guid: ac06cef3dead19b4c9e97f5a3211992e, type: 3}
+    - {fileID: 6733909688477422776, guid: ac06cef3dead19b4c9e97f5a3211992e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ac06cef3dead19b4c9e97f5a3211992e, type: 3}
 --- !u!1 &541474324202621859 stripped
 GameObject:
@@ -535,6 +536,7 @@ MonoBehaviour:
   otherPlayerID: -1
   materialAtual: -1
   materialOutroPlayer: -1
+  selecaoPersonagem: 1
 --- !u!1 &5343487609882545824 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1615056327699141980, guid: ac06cef3dead19b4c9e97f5a3211992e, type: 3}

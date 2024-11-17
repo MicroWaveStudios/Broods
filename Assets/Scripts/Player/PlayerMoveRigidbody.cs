@@ -101,11 +101,11 @@ public class PlayerMoveRigidbody : MonoBehaviour
     {
         if (jumpCount == 1 && context.performed && !playerCombat.GetInAttack() && !playerCombat.GetInCombo())
         {
-            crouched = true;
+            SetCrouched(true, 0f);
         }
         else if (jumpCount == 0 || context.canceled)
         {
-            crouched = false;
+            SetCrouched(false, 0.2f);
         }
     }
 
@@ -146,10 +146,18 @@ public class PlayerMoveRigidbody : MonoBehaviour
     {
         return crouched;
     }
-    public void SetCrouched(bool value)
+    public void SetCrouched(bool value, float timer)
     {
         crouched = value;
+        //StartCoroutine(Agachar(value, timer));
     }
+
+    //IEnumerator Agachar(bool value, float timer)
+    //{ 
+    //    yield return new WaitForSeconds(timer);
+    //    crouched = value;
+    //}
+
     public void MoverAoAtacar(float MoverAoAtacar_)
     {
         rb.AddForce(Vector3.zero);

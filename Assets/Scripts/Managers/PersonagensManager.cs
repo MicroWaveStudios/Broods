@@ -7,8 +7,8 @@ using TMPro;
 
 public class PersonagensManager : MonoBehaviour
 {
-    #region Variáveis
-    [SerializeField] ConnectPlayerInMenu connectManger;
+    #region Variaveis
+    [SerializeField] ConnectPlayerInMenu connectManager;
 
     [SerializeField] Image[] spritePersonagens;
     [SerializeField] GameObject[] BotoesDaCena;
@@ -22,11 +22,10 @@ public class PersonagensManager : MonoBehaviour
 
     [SerializeField] TMP_Text[] VarianteTxt;
 
-    int[] indexPersonagem = new int[] { -1, -1};
     GameObject[] playerGameObject = new GameObject[2];
-    int player = 0;
-    int[] PersonagemID = new int[2];
-    int[] varianteAtual = new int[2];
+
+    [SerializeField] int[] PersonagemID = new int[2];
+    [SerializeField] int[] varianteAtual = new int[2];
 
     bool naSelecaoDePersonagem;
 
@@ -48,15 +47,15 @@ public class PersonagensManager : MonoBehaviour
     {
         if (value == true)
         {
-            connectManger.SetEtapaSelecaoMapa();
+            connectManager.SetEtapaSelecaoPersonagem();
         }
         else
         {
-            connectManger.SetEtapaConectar();
+            connectManager.SetEtapaConectar();
         }
         naSelecaoDePersonagem = value;
-        GameObject.FindGameObjectWithTag("ConnectManager").GetComponent<ConnectPlayerInMenu>().GetPlayer(0).GetComponent<SelecaoPersonagem>().SetActiveBordaSelecao(value);
-        GameObject.FindGameObjectWithTag("ConnectManager").GetComponent<ConnectPlayerInMenu>().GetPlayer(1).GetComponent<SelecaoPersonagem>().SetActiveBordaSelecao(value);
+        connectManager.GetPlayer(0).GetComponent<SelecaoPersonagem>().SetActiveBordaSelecao(value);
+        connectManager.GetPlayer(1).GetComponent<SelecaoPersonagem>().SetActiveBordaSelecao(value);
     }
     public void SetPersonagemID(int personagemIndex, int playerIndex)
     {
@@ -78,25 +77,28 @@ public class PersonagensManager : MonoBehaviour
     {
         return varianteAtual[playerIndex];
     }
-    #region Confirmações
+    #region Confirmacoes
     public void ConfirmouPersonagem(int playerIndex, int material, bool value)
     {
+        varianteAtual[playerIndex] = material;
+        confirmouPersonagem[playerIndex] = value;
         if (value)
         {
-            for (int i = 0; i < 1; i++)
+            VarianteTxt[playerIndex].text = "Pronto!";
+            connectManager.GetPlayer(playerIndex).GetComponent<ConnectPlayer>().SetNumeroPersonagem(PersonagemID[playerIndex]);
+            SetVariante(playerIndex, material);
+            for (int i = 0; i < 2; i++)
             {
-                if (playerIndex != i)
+                if (playerIndex != i && GetPersonagemID(playerIndex) == GetPersonagemID(i))
                 {
-                    GetComponent<ConnectPlayerInMenu>().GetPlayer(playerIndex).GetComponent<SelecaoPersonagem>().GetBotaoAtual().GetComponent<MaterialPlayer>().SetMaterialOutroPlayer(material);
+                    connectManager.GetPlayer(i).GetComponent<SelecaoPersonagem>().GetBotaoAtual().GetComponent<scriptBotao>().GetJogador(i).GetComponent<MaterialPlayer>().TrocarMaterial(1);
                 }
             }
-            VarianteTxt[playerIndex].text = "Pronto!";
         }
         else
         {
             VarianteTxt[playerIndex].text = nomeVariante[playerIndex];
         }
-        confirmouPersonagem[playerIndex] = value;
         if (confirmouPersonagem[0] && confirmouPersonagem[1])
         {
             txtContinuar.SetActive(true);
@@ -113,7 +115,6 @@ public class PersonagensManager : MonoBehaviour
     public void SelecionouPersonagem(int playerIndex, int personagemIndex, bool value)
     {
         selecionouPersonagem[playerIndex] = value;
-
         VarianteTxt[playerIndex].gameObject.SetActive(value);
     }
     #endregion
@@ -128,8 +129,8 @@ public class PersonagensManager : MonoBehaviour
     }
     public void DestroyPersonagens()
     {
-        connectManger.GetPlayer(0).GetComponent<SelecaoPersonagem>().GetBotaoAtual().GetComponent<scriptBotao>().DestroyPersonagem(0);
-        connectManger.GetPlayer(1).GetComponent<SelecaoPersonagem>().GetBotaoAtual().GetComponent<scriptBotao>().DestroyPersonagem(1);
+        connectManager.GetPlayer(0).GetComponent<SelecaoPersonagem>().GetBotaoAtual().GetComponent<scriptBotao>().DestroyPersonagem(0);
+        connectManager.GetPlayer(1).GetComponent<SelecaoPersonagem>().GetBotaoAtual().GetComponent<scriptBotao>().DestroyPersonagem(1);
     }
     public bool GetNaSelecaoDePersonagem()
     {

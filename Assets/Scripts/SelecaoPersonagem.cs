@@ -10,7 +10,6 @@ public class SelecaoPersonagem : MonoBehaviour
     [SerializeField] TMP_Text textoBorda;
     [SerializeField] Color[] CorBorda;
     [SerializeField] Vector3[] PosicaoTexto;
-    int variante = -1;
 
     GameObject personagensManager;
     GameObject connectManager;
@@ -52,21 +51,13 @@ public class SelecaoPersonagem : MonoBehaviour
         transform.position = novoBotaoAtual.transform.position;
         botaoAtual.GetComponent<scriptBotao>().SetJogadorNoBotao(true, playerIndex);
     }
-    public GameObject GetBotaoAtual()
-    { 
-        return botaoAtual;
-    }
-    public GameObject GetPersonagem()
-    {
-        return botaoAtual.GetComponent<scriptBotao>().GetJogador(GetComponent<ConnectPlayer>().GetPlayerID());
-    }
     public void Confirmar(InputAction.CallbackContext context)
     {
         if (context.started && botaoAtual != null && personagensManager.GetComponent<PersonagensManager>().GetNaSelecaoDePersonagem())
         {
             if (personagensManager.GetComponent<PersonagensManager>().GetSelecionouPersonagem(GetComponent<ConnectPlayer>().GetPlayerID()))
             {
-                personagensManager.GetComponent<PersonagensManager>().ConfirmouPersonagem(GetComponent<ConnectPlayer>().GetPlayerID(), personagensManager.GetComponent<PersonagensManager>().GetVariante(GetComponent<ConnectPlayer>().GetPlayerID()), true);
+                personagensManager.GetComponent<PersonagensManager>().ConfirmouPersonagem(GetComponent<ConnectPlayer>().GetPlayerID(), botaoAtual.GetComponent<scriptBotao>().GetJogador(GetComponent<ConnectPlayer>().GetPlayerID()).GetComponent<MaterialPlayer>().GetMaterialAtual(), true);
             }
             else if (botaoAtual.GetComponent<scriptBotao>().GetJogador(GetComponent<ConnectPlayer>().GetPlayerID()) != null)
             {
@@ -74,7 +65,6 @@ public class SelecaoPersonagem : MonoBehaviour
             }
         }
     }
-
     public void Voltar(InputAction.CallbackContext context)
     {
         if (context.started)
@@ -82,7 +72,6 @@ public class SelecaoPersonagem : MonoBehaviour
             connectManager.GetComponent<ConnectPlayerInMenu>().Voltar(GetComponent<ConnectPlayer>().GetPlayerID());
         }
     }
-
     public void Navegacao(InputAction.CallbackContext context)
     {
         Vector2 orientacao = context.ReadValue<Vector2>();
@@ -101,5 +90,16 @@ public class SelecaoPersonagem : MonoBehaviour
             }
         }
     }
+
+    #region Void's Get/Set
+    public GameObject GetBotaoAtual()
+    { 
+        return botaoAtual;
+    }
+    public GameObject GetPersonagem()
+    {
+        return botaoAtual.GetComponent<scriptBotao>().GetJogador(GetComponent<ConnectPlayer>().GetPlayerID());
+    }
+    #endregion
 
 }

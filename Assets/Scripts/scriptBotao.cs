@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.TextCore.LowLevel;
 
 public class scriptBotao : MonoBehaviour
 {
@@ -12,18 +14,6 @@ public class scriptBotao : MonoBehaviour
     [SerializeField] int PersonagemID; //Variavel para saber qual o personagem
     int[] variantePlayer = new int[2];
     bool[] NoBotao = new bool[2];
-
-    public void SetJogadorNoBotao(bool value, int playerIndex)
-    { 
-        NoBotao[playerIndex] = value;
-        InstantiateJogador(value, playerIndex);
-    }
-
-    public GameObject GetJogador(int playerIndex)
-    { 
-        return Jogador[playerIndex];
-    }
-
     public void DestroyPersonagem(int playerIndex)
     {
         if (Jogador[playerIndex] != null)
@@ -32,18 +22,6 @@ public class scriptBotao : MonoBehaviour
         }
     }
 
-    public void SetVariantePlayer(int newVariantePlayer, int playerIndex)
-    {
-        variantePlayer[playerIndex] = newVariantePlayer;
-    }
-    public int GetVariantePlayer(int playerIndex)
-    { 
-        return variantePlayer[playerIndex];
-    }
-    public int GetPersonagemID()
-    { 
-        return PersonagemID;
-    }
     void InstantiateJogador(bool value, int playerIndex)
     {
         if (value && PrefabJogador != null)
@@ -76,15 +54,17 @@ public class scriptBotao : MonoBehaviour
                     }
                     break;
             }
-            Jogador[playerIndex].GetComponent<MaterialPlayer>().SetPlayerID(playerIndex);
-            Jogador[playerIndex].GetComponent<MaterialPlayer>().SetBotao(this.gameObject);
+            PersonagensManager personagensManager = GameObject.FindGameObjectWithTag("PersonagemManager").GetComponent<PersonagensManager>();
+            MaterialPlayer materialPlayer = Jogador[playerIndex].GetComponent<MaterialPlayer>();
+            materialPlayer.SetPlayerID(playerIndex);
+            materialPlayer.SetBotao(this.gameObject);
+            personagensManager.SetPersonagemID(PersonagemID, playerIndex);
         }
         else
         {
             Destroy(Jogador[playerIndex]);
         }
     }
-
     public void Orientacao(GameObject jogador, Vector2 orientacao)
     {
         switch (orientacao)
@@ -115,4 +95,28 @@ public class scriptBotao : MonoBehaviour
                 break;
         }
     }
+
+    #region Void's Get/Set
+    public void SetJogadorNoBotao(bool value, int playerIndex)
+    { 
+        NoBotao[playerIndex] = value;
+        InstantiateJogador(value, playerIndex);
+    }
+    public GameObject GetJogador(int playerIndex)
+    { 
+        return Jogador[playerIndex];
+    }
+    public void SetVariantePlayer(int newVariantePlayer, int playerIndex)
+    {
+        variantePlayer[playerIndex] = newVariantePlayer;
+    }
+    public int GetVariantePlayer(int playerIndex)
+    { 
+        return variantePlayer[playerIndex];
+    }
+    public int GetPersonagemID()
+    { 
+        return PersonagemID;
+    }
+    #endregion
 }

@@ -104,7 +104,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6042919135044194306}
-  - component: {fileID: 8538664666730685135}
   m_Layer: 0
   m_Name: nara
   m_TagString: Untagged
@@ -132,34 +131,6 @@ Transform:
   m_Father: {fileID: 4743303365692611087}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!114 &8538664666730685135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 149119745377257969}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d07bd5c9c9e54c44878a4c237d085a4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  VarianteDaSkin: []
-  PartesDoCorpo:
-  - {fileID: 2535780235716495698}
-  - {fileID: 1192263844710013247}
-  - {fileID: 3014026803680739464}
-  - {fileID: 7813996346361524218}
-  - {fileID: 782408906295775224}
-  - {fileID: 6937396610672254488}
-  - {fileID: 6757202109634479650}
-  - {fileID: 8112686747739935298}
-  - {fileID: 3505516221689296666}
-  - {fileID: 1127680274305014479}
-  - {fileID: 7218692869924287352}
-  - {fileID: 7002460024583549704}
-  - {fileID: 8678336720529811677}
-  playerID: 0
 --- !u!1 &167079366755351895
 GameObject:
   m_ObjectHideFlags: 0
@@ -5866,9 +5837,10 @@ GameObject:
   - component: {fileID: 5825252824003833760}
   - component: {fileID: 5825252824003833765}
   - component: {fileID: 757593877083283454}
+  - component: {fileID: 341695578596307042}
   m_Layer: 0
   m_Name: Nara
-  m_TagString: Player1
+  m_TagString: Player2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6504,6 +6476,72 @@ MonoBehaviour:
   danoExplosao: 18
   rangeExplosao: 1
   vfxExplosao: {fileID: 743939760015915183}
+--- !u!114 &341695578596307042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6635523287152186700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d07bd5c9c9e54c44878a4c237d085a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  VarianteDaSkin:
+  - nome: Nara Principal
+    material:
+    - {fileID: 2100000, guid: 8f00857e604a17441abc5f89cc5c502f, type: 2}
+    - {fileID: 2100000, guid: 8817f34031c4c914e8f976b54df4a281, type: 2}
+    - {fileID: 2100000, guid: 39f9ac03968bd1449ab9f90f0726424a, type: 2}
+    - {fileID: 2100000, guid: e7ba6750a976ed848bda8e7e5aa88327, type: 2}
+    - {fileID: 2100000, guid: 3021a234ff74bab47b26e7cefeccb646, type: 2}
+    - {fileID: 2100000, guid: 4ddf1a12c4bf89d4eacb7989b38388b5, type: 2}
+    - {fileID: 2100000, guid: ce61ff82fbca12045a58a1adcb24bd15, type: 2}
+    - {fileID: 2100000, guid: e7ba6750a976ed848bda8e7e5aa88327, type: 2}
+    - {fileID: 2100000, guid: 3aebaba0fffd06d48a5fe2f20eb98c68, type: 2}
+    - {fileID: 2100000, guid: f22acba4a179b11438a07df4eca9481d, type: 2}
+    - {fileID: 2100000, guid: e645839132acda044890ab814588f44a, type: 2}
+    - {fileID: 2100000, guid: 39f9ac03968bd1449ab9f90f0726424a, type: 2}
+    - {fileID: 2100000, guid: 897a13c56d208514e8a642e6b589928b, type: 2}
+    - {fileID: 2100000, guid: f5fccc0277028ee4e95a224d86389aae, type: 2}
+    - {fileID: 2100000, guid: b8098f626d251a34c98e007e9c45cd3d, type: 2}
+  - nome: Nara Amarelo
+    material:
+    - {fileID: 2100000, guid: c0e982c8298add5438fad7a69cbb4750, type: 2}
+    - {fileID: 2100000, guid: 42d02448d2860824aacf39cf9cf01a6f, type: 2}
+    - {fileID: 2100000, guid: 0ccf2657ef149834fa2b261cb7b20afd, type: 2}
+    - {fileID: 2100000, guid: 8175feacc6d48884dbad359c0fd32826, type: 2}
+    - {fileID: 2100000, guid: 8a799a757fb58064a8111c8c7f89dd3f, type: 2}
+    - {fileID: 2100000, guid: ec7856294c15b2f449e15e418c2905f8, type: 2}
+    - {fileID: 2100000, guid: 26738dac53e06584eb5a205762a8c667, type: 2}
+    - {fileID: 2100000, guid: 8175feacc6d48884dbad359c0fd32826, type: 2}
+    - {fileID: 2100000, guid: 8a6f454b344e65547a094bfb98731ab8, type: 2}
+    - {fileID: 2100000, guid: 9990e0a3d14bbee43bcd4b0b49b1d409, type: 2}
+    - {fileID: 2100000, guid: 6d72c2a5a4815414fbc419c6e18e7018, type: 2}
+    - {fileID: 2100000, guid: 0ccf2657ef149834fa2b261cb7b20afd, type: 2}
+    - {fileID: 2100000, guid: 2501c00b2b1620545a9fd2c4a8b0da0d, type: 2}
+    - {fileID: 2100000, guid: 5f27205e115f5ec43bb1f2c8326267f2, type: 2}
+    - {fileID: 2100000, guid: fbb356529f5293846913f2c085641ec2, type: 2}
+  PartesDoCorpo:
+  - {fileID: 2535780235716495698}
+  - {fileID: 1192263844710013247}
+  - {fileID: 3014026803680739464}
+  - {fileID: 7813996346361524218}
+  - {fileID: 782408906295775224}
+  - {fileID: 6937396610672254488}
+  - {fileID: 6757202109634479650}
+  - {fileID: 8112686747739935298}
+  - {fileID: 3505516221689296666}
+  - {fileID: 1127680274305014479}
+  - {fileID: 7218692869924287352}
+  - {fileID: 7002460024583549704}
+  - {fileID: 8678336720529811677}
+  playerID: -1
+  otherPlayerID: -1
+  materialAtual: -1
+  materialOutroPlayer: -1
+  selecaoPersonagem: 0
 --- !u!1 &6667637921726142731
 GameObject:
   m_ObjectHideFlags: 0
