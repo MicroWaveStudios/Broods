@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -311,7 +311,7 @@ MonoBehaviour:
   m_NotificationBehavior: 2
   m_MaxPlayerCount: 2
   m_AllowJoining: 1
-  m_JoinBehavior: 1
+  m_JoinBehavior: 0
   m_PlayerJoinedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -5712,7 +5712,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1467521165}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 212.47227}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.9401001, y: 0.9401001, z: 0.9401001}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8406,7 +8406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eeb3c54bc0f266428f2131fda29c0fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connectManger: {fileID: 38311946}
+  connectManager: {fileID: 38311946}
   spritePersonagens: []
   BotoesDaCena:
   - {fileID: 1639498863}
@@ -8423,6 +8423,8 @@ MonoBehaviour:
   VarianteTxt:
   - {fileID: 1336287686}
   - {fileID: 1749301350}
+  PersonagemID: ffffffffffffffff
+  varianteAtual: ffffffffffffffff
 --- !u!1 &2146736372
 GameObject:
   m_ObjectHideFlags: 0
@@ -8702,6 +8704,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 686568307675038822, guid: 8d4d75442401b004a983f7b838e6c95d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3840164913029830530, guid: 8d4d75442401b004a983f7b838e6c95d, type: 3}
+      propertyPath: m_SendPointerHoverToParent
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3840164913029830530, guid: 8d4d75442401b004a983f7b838e6c95d, type: 3}
+      propertyPath: m_DeselectOnBackgroundClick
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3840164913029830532, guid: 8d4d75442401b004a983f7b838e6c95d, type: 3}

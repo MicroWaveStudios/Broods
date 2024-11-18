@@ -496,6 +496,10 @@ PrefabInstance:
       propertyPath: texto
       value: 
       objectReference: {fileID: 1355915943}
+    - target: {fileID: 1229946910750169814, guid: ffe2ddd29f20ab8469e6a3e7339eb19e, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 5520663030062143179, guid: 5570590b875383a409a5d02469448c17, type: 2}
     - target: {fileID: 1229946910750169815, guid: ffe2ddd29f20ab8469e6a3e7339eb19e, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -15861,6 +15865,9 @@ MonoBehaviour:
   - {fileID: 8292358560270981689}
   - {fileID: 7662445003697521132}
   playerID: 0
+  otherPlayerID: 0
+  materialAtual: -1
+  materialOutroPlayer: -1
 --- !u!1 &7276105705913735695
 GameObject:
   m_ObjectHideFlags: 0

@@ -42,17 +42,6 @@ public class PlayerStats : MonoBehaviour
     {
         life = maxLife;
         energy = 0;
-        //if (Pontos.SplitKeyboard)
-        //{
-        //    if (gameObject.tag == "Player1")
-        //    {
-        //        GetComponent<PlayerInput>().SwitchCurrentControlScheme("KeyboardLeft");
-        //    }
-        //    else
-        //    {
-        //        GetComponent<PlayerInput>().SwitchCurrentControlScheme("KeyboardRight");
-        //    }
-        //}
     }
 
     private void Update()
@@ -64,6 +53,7 @@ public class PlayerStats : MonoBehaviour
         if (life <= 0f && !tutorial)
         {
             scrpGameController.GameFinished();
+            tutorial = true;
         }
         if (teste == true)
         {

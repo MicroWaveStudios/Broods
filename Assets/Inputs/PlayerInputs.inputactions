@@ -1084,7 +1084,7 @@
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard",
+                    "groups": "Keyboard;KeyboardLeft",
                     "action": "Click",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -1200,6 +1200,12 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Static",
+            "id": "dd456586-6638-48f3-8407-f7da7c1e124f",
+            "actions": [],
+            "bindings": []
         }
     ],
     "controlSchemes": [

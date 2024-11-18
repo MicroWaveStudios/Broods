@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
+using System.Linq;
 
 public class CountdownTimer : MonoBehaviour
 {
     [SerializeField] GameController gameController;
 
-    GameObject Player1;
-    GameObject Player2;
+    GameObject[] player = new GameObject[2];
     [SerializeField] Transform[] InstancePosition;
     [SerializeField] TMP_Text countdownText;
     [SerializeField] TMP_Text TxtTimerGame;
@@ -17,27 +17,35 @@ public class CountdownTimer : MonoBehaviour
     bool FinishedStart = false;
     bool isPaused;
     bool gameFinished;
+    bool podeComecar;
 
     [SerializeField] int tempo;
 
     private void Update()
     {
-        Player1 = GameObject.FindGameObjectWithTag("Player1");
-        Player2 = GameObject.FindGameObjectWithTag("Player2");
+        player[0] = GameObject.FindGameObjectWithTag("Player1");
+        player[1] = GameObject.FindGameObjectWithTag("Player2");
 
-        if (Player1 != null && Player2 != null && !FinishedStart)
+        if (player[0] != null && player[1] != null && !FinishedStart && podeComecar)
         {
             StartCoroutine(CountdownStart());
             FinishedStart = true;
         }
+        //if (podeComecar)
+        //{
+        //    Player1.transform.position = InstancePosition[0].position;
+        //    Player2.transform.position = InstancePosition[1].position;
+        //}
     }
 
     private IEnumerator CountdownStart()
     {
         isPaused = true;
         EnablePlayerInputs(false);
-        Player1.transform.position = InstancePosition[0].position;
-        Player2.transform.position = InstancePosition[1].position;
+        for (int i = 0; i < player.Length; i++)
+        {
+            player[i].transform.position = InstancePosition[i].position;
+        }
 
         countdownText.transform.gameObject.SetActive(true);
 
@@ -54,6 +62,7 @@ public class CountdownTimer : MonoBehaviour
 
         EnablePlayerInputs(true);
         isPaused = false;
+        podeComecar = false;
         StartCoroutine(TimerGame());
         yield break;
     }
@@ -78,10 +87,24 @@ public class CountdownTimer : MonoBehaviour
         return isPaused;
     }
 
+    public void SetPodeComecar(bool value)
+    { 
+        podeComecar = value;
+    }
+
     void EnablePlayerInputs(bool value)
     {
-        Player1.GetComponent<PlayerInput>().enabled = value;
-        Player2.GetComponent<PlayerInput>().enabled = value;
+        for (int i = 0; i < player.Length; i++)
+        {
+            if (value)
+            {
+                player[i].GetComponent<PlayerController>().EnableMapActionPlayer();
+            }
+            else
+            {
+                player[i].GetComponent<PlayerController>().EnableMapActionStatic();
+            }
+        }
     }
 
 }

@@ -13,6 +13,7 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] NaraSkills NaraSkills;
 
     [SerializeField] Animator anim;
+    [SerializeField] Sons scrSons;
 
     [SerializeField] bool _InAttack = false;
     [SerializeField] bool InCombo = false;
@@ -42,7 +43,7 @@ public class PlayerCombat : MonoBehaviour
     public struct AttackList
     {
         public string NomeDoAtaque;
-        public int[] AtaqueRange; // Variavel que definirá onde o ataque acontecerá | 0 = Parte Inferior / 1 = Parte Superior / 2 = Corpo Todo \\
+        public int[] AtaqueRange; // Variavel que definirï¿½ onde o ataque acontecerï¿½ | 0 = Parte Inferior / 1 = Parte Superior / 2 = Corpo Todo \\
         public int[] Dano;
         public int[] OrdemCombo;
         public float[] FramesContinuar;
@@ -72,8 +73,8 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
-    // Botão X / Cross (Playstation) - A (Xbox) - B (Nintendo Switch) - K (Teclado/Teclado Direito) - G (Teclado Esquerdo) 
-    // Retornará o número 0
+    // Botï¿½o X / Cross (Playstation) - A (Xbox) - B (Nintendo Switch) - K (Teclado/Teclado Direito) - G (Teclado Esquerdo) 
+    // Retornarï¿½ o nï¿½mero 0
     public void LowAttack(InputAction.CallbackContext context)
     {
         StartCoroutine(ChangeActualNumber(0));
@@ -81,11 +82,12 @@ public class PlayerCombat : MonoBehaviour
         {
             Attack(0);
             atacouBaixo = true;
+            scrSons.TocarSom("Laser");
         }
     }
 
-    // Botão Quadrado / Square (Playstation) - X (Xbox) - Y (Nintendo Switch) - J (Teclado/Teclado Direito) - F (Teclado Esquerdo)
-    // Retornará o número 1
+    // Botï¿½o Quadrado / Square (Playstation) - X (Xbox) - Y (Nintendo Switch) - J (Teclado/Teclado Direito) - F (Teclado Esquerdo)
+    // Retornarï¿½ o nï¿½mero 1
     public void LightAttack(InputAction.CallbackContext context)
     {
         StartCoroutine(ChangeActualNumber(1));
@@ -93,12 +95,13 @@ public class PlayerCombat : MonoBehaviour
         {
             Attack(1);
             atacouLeve = true;
+            scrSons.TocarSom("Lanca1");
         }
     }
 
 
-    // Botão Triângulo / Triangle (Playstation) - Y (Xbox) - X (Nintendo Switch) - I (Teclado/Teclado Direito) - T (Teclado Esquerdo)
-    // Retornará o número 2
+    // Botï¿½o Triï¿½ngulo / Triangle (Playstation) - Y (Xbox) - X (Nintendo Switch) - I (Teclado/Teclado Direito) - T (Teclado Esquerdo)
+    // Retornarï¿½ o nï¿½mero 2
     public void MediumAttack(InputAction.CallbackContext context)
     {
         StartCoroutine(ChangeActualNumber(2));
@@ -106,11 +109,12 @@ public class PlayerCombat : MonoBehaviour
         {
             Attack(2);
             atacouMedio = true;
+            scrSons.TocarSom("Lanca2");
         }
     }
 
-    // Botão O / Circle (Playstation) - B (Xbox) - A (Nintendo Switch) - L (Teclado/Teclado Direito) - H (Teclado Esquerdo)
-    // Retornará o número 3
+    // Botï¿½o O / Circle (Playstation) - B (Xbox) - A (Nintendo Switch) - L (Teclado/Teclado Direito) - H (Teclado Esquerdo)
+    // Retornarï¿½ o nï¿½mero 3
     public void HeavyAttack(InputAction.CallbackContext context)
     {
         StartCoroutine(ChangeActualNumber(3));
@@ -118,10 +122,11 @@ public class PlayerCombat : MonoBehaviour
         {
             Attack(3);
             atacouPesado = true;
+            scrSons.TocarSom("Lanca3");
         }
     }
 
-    // Esse void identificará qual botão de golpe está sendo retornado
+    // Esse void identificarï¿½ qual botï¿½o de golpe estï¿½ sendo retornado
     // 0 = SouthButton / 1 = WestButton / 2 = NorthButton / 3 = EastButton
     public IEnumerator ChangeActualNumber(int number)
     {
@@ -158,7 +163,7 @@ public class PlayerCombat : MonoBehaviour
 
     // ================================================================= //
 
-    // Mêcanica de Combo antiga \\
+    // Mï¿½canica de Combo antiga \\
 
     //IEnumerator FirstCombo()
     //{

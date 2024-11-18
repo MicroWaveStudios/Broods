@@ -84,7 +84,7 @@ public class volumeSettings : MonoBehaviour
         AplicarVolume();
     }
 
-    public void BotaoVoltarSemSalvar()
+    public void BotaoVoltar()
     {
         if (volumeGeral.value != PlayerPrefs.GetFloat("VolumeGeral") ||
             BG.value != PlayerPrefs.GetFloat("VolumeBG") ||

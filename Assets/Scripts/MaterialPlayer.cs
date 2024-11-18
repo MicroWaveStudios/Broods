@@ -18,13 +18,62 @@ public class MaterialPlayer : MonoBehaviour
 
     [SerializeField] int playerID;
     [SerializeField] int otherPlayerID;
-    [SerializeField] int materialAtual = -1;
+
+    [SerializeField] int materialAtual = 0;
     [SerializeField] int materialOutroPlayer = -1;
+
+    [SerializeField] bool selecaoPersonagem;
 
     private void Start()
     {
-        TrocarMaterial(1);
+        if (selecaoPersonagem)
+        {
+            PersonagensManager personagensManager = GameObject.FindGameObjectWithTag("PersonagemManager").GetComponent<PersonagensManager>();
+            TrocarMaterial(1);
+        }
     }
+
+    public void TrocarMaterial(float direcao)
+    {
+        PersonagensManager personagensManager = GameObject.FindGameObjectWithTag("PersonagemManager").GetComponent<PersonagensManager>();
+        materialOutroPlayer = botao.GetComponent<scriptBotao>().GetVariantePlayer(otherPlayerID);
+
+        materialAtual += (int)direcao;
+
+        if (materialAtual >= VarianteDaSkin.Count)
+        {
+            materialAtual = 0;
+        }
+        else
+        {
+            if (materialAtual < 0)
+            {
+                materialAtual = VarianteDaSkin.Count - 1;
+            }
+        }
+        if (personagensManager.GetPersonagemID(playerID) == personagensManager.GetPersonagemID(otherPlayerID) && personagensManager.GetConfirmouPersonagem(otherPlayerID))
+        {
+            while (materialAtual == materialOutroPlayer)
+            {
+                materialAtual += (int)direcao;
+            }
+        }
+        botao.GetComponent<scriptBotao>().SetVariantePlayer(materialAtual, playerID);
+        SetMaterialPersonagem(materialAtual);
+        GameObject.FindGameObjectWithTag("PersonagemManager").GetComponent<PersonagensManager>().TrocarVarianteTxt(playerID, VarianteDaSkin[materialAtual].nome);
+    }
+    public void SetMaterialPersonagem(int skin)
+    {
+        for (int i = 0; i < PartesDoCorpo.Length; i++)
+        {
+            if (PartesDoCorpo[i] != null && VarianteDaSkin[skin].material[i] != null)
+            { 
+                PartesDoCorpo[i].GetComponent<Renderer>().material = VarianteDaSkin[skin].material[i];
+            }
+        }
+    }
+
+    #region Void's Get/Set
     public void SetMaterialAtual(int novoMaterialAtual)
     {
         materialAtual = novoMaterialAtual;
@@ -37,71 +86,24 @@ public class MaterialPlayer : MonoBehaviour
     {
         botao = newBotao;
     }
-    public void TrocarMaterial(float direcao)
-    {
-        materialAtual += (int)direcao;
-        VerificacaoVarianteOutroPlayer();
-
-        for (int i = 0; i < 1; i++)
+    public void SetPlayerID(int newPlayerID)
+    { 
+        playerID = newPlayerID;
+        for (int i = 0; i < 2; i++)
         {
             if (playerID != i)
             {
                 otherPlayerID = i;
             }
         }
-
-        PersonagensManager personagemManager = GameObject.FindGameObjectWithTag("PersonagemManager").GetComponent<PersonagensManager>();
-
-        if (materialAtual == materialOutroPlayer && personagemManager.GetPersonagemID(playerID) == personagemManager.GetPersonagemID(otherPlayerID) && personagemManager.GetConfirmouPersonagem(otherPlayerID))
-        {
-            if (direcao > 0)
-            {
-                materialAtual++;
-            }
-            else if (direcao < 0)
-            {
-                materialAtual--;
-            }
-        }
-        if (materialAtual >= VarianteDaSkin.Count)
-        {
-            materialAtual = 0;
-        }
-        else
-        {
-            if (materialAtual < 0)
-            {
-                materialAtual = VarianteDaSkin.Count - 1;
-            }
-        }
-        botao.GetComponent<scriptBotao>().SetVariantePlayer(materialAtual, playerID);
-        SetMaterialPersonagem(materialAtual);
-        GameObject.FindGameObjectWithTag("PersonagemManager").GetComponent<PersonagensManager>().SetVariante(playerID, materialAtual);
-        GameObject.FindGameObjectWithTag("PersonagemManager").GetComponent<PersonagensManager>().TrocarVarianteTxt(playerID, VarianteDaSkin[materialAtual].nome);
     }
-    void VerificacaoVarianteOutroPlayer()
-    {
-        for (int i = 0; i < 1; i++)
-        {
-            if (playerID != i)
-            {
-                materialOutroPlayer = botao.GetComponent<scriptBotao>().GetVariantePlayer(i);
-            }
-        }
-    }
-    public void SetPlayerID(int newPlayerID)
+    public int GetMaterialAtual()
     { 
-        playerID = newPlayerID;
+        return materialAtual;
     }
     public string GetVarianteAtual()
     {
         return VarianteDaSkin[materialAtual].nome;
     }
-    public void SetMaterialPersonagem(int skin)
-    {
-        for (int i = 0; i < PartesDoCorpo.Length; i++)
-        {
-            PartesDoCorpo[i].GetComponent<Renderer>().material = VarianteDaSkin[skin].material[i];
-        }
-    }
+    #endregion
 }
