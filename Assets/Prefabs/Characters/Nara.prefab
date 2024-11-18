@@ -6252,6 +6252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   directionX: 0
+  scrSons: {fileID: 0}
   objFumaca: {fileID: 6830945488235815930}
   noChao: 0
   crouched: 0
@@ -6291,6 +6292,7 @@ MonoBehaviour:
   playerStats: {fileID: 5825252824003833765}
   NaraSkills: {fileID: 757593877083283454}
   anim: {fileID: 5825252824003833767}
+  scrSons: {fileID: 0}
   _InAttack: 0
   InCombo: 0
   ordem: 0
