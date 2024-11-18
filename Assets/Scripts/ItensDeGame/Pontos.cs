@@ -12,4 +12,5 @@ class Pontos
     public static string cenaAtual;
 
     public static int[] variante = new int[2];
+    public static int[] personagem = new int[2];
 }

@@ -124,6 +124,7 @@ public class ConnectPlayerInMenu : MonoBehaviour
             Pontos.prefabPlayer[i] = prefabPersonagens[player[i].GetComponent<ConnectPlayer>().GetNumeroPersonagem()];
             Pontos.ControlSchemePlayer[i] = player[i].GetComponent<ConnectPlayer>().GetControlScheme();
             Pontos.variante[i] = personagensManager.GetVariante(i);
+            Pontos.personagem[i] = player[i].GetComponent<ConnectPlayer>().GetNumeroPersonagem();
             Pontos.prefabPlayer[i].tag = player[i].tag;
         }
     }

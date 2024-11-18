@@ -29,6 +29,11 @@ public class GameController : MonoBehaviour
     [SerializeField] Image greenBar2;
     [SerializeField] Image redBar2;
 
+    [SerializeField] GameObject[] fotoPersonagem;
+    [SerializeField] TMP_Text[] nomeDoPersonagem;
+    [SerializeField] Sprite[] imagemPersonagem_P1;
+    [SerializeField] Sprite[] imagemPersonagem_P2;
+
     [SerializeField] GameObject[] BarraJogador;
 
     [SerializeField] Slider energyBarPlayer1;
@@ -77,6 +82,27 @@ public class GameController : MonoBehaviour
         }
         BarraJogador[0].SetActive(true);
         BarraJogador[1].SetActive(true);
+        for (int i = 0; i < player.Length; i++)
+        {
+            switch (i)
+            {
+                case 0:
+                    fotoPersonagem[i].GetComponent<Image>().sprite = imagemPersonagem_P1[Pontos.personagem[i]];
+                    break;
+                case 1:
+                    fotoPersonagem[i].GetComponent<Image>().sprite = imagemPersonagem_P2[Pontos.personagem[i]];
+                    break;
+            }
+            switch (Pontos.personagem[i])
+            {
+                case 0:
+                    nomeDoPersonagem[i].text = "NARÁ";
+                    break;
+                case 1:
+                    nomeDoPersonagem[i].text = "XIMAS"; 
+                    break;
+            }
+        }
         Pontos.cenaAtual = SceneManager.GetActiveScene().name;
     }
 
