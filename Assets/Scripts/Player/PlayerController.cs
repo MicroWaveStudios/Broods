@@ -19,6 +19,9 @@ public class PlayerController : MonoBehaviour
     [Header("Input Settings")]
     public PlayerInput playerInput;
 
+    [Header("Input Device Configurator")]
+    [SerializeField] InputDeviceConfigurator inputDeviceConfigurator;
+
     [Header("Input Action Maps")]
     private string actionMapPlayer = "Player";
     private string actionMapUI = "UI";

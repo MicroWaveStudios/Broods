@@ -520,6 +520,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInput: {fileID: 6713973963200268977}
+  inputDeviceConfigurator: {fileID: 11400000, guid: f6ea719d6f75b124fab3ca689c4e90be, type: 2}
 --- !u!114 &6713973963200268976
 MonoBehaviour:
   m_ObjectHideFlags: 0
