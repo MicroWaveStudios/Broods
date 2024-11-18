@@ -103,7 +103,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
         if (jumpCount == 1 && context.performed && !playerCombat.GetInAttack() && !playerCombat.GetInCombo())
         {
             crouched = true;
-            scrSons.TocarSom("Agachar");
+            //scrSons.TocarSom("Agachar");
             SetCrouched(true, 0f);
         }
         else if (jumpCount == 0 || context.canceled)

@@ -131,7 +131,7 @@ public class PlayerCombat : MonoBehaviour
         actualNumber = -1;
         yield break;
     }
-    void Attack(int numberAttack)
+    public void Attack(int numberAttack)
     {
         if (!_InAttack && !InCombo && playerMove.GetNoChao() && !InMeiaLua && !playerStats.GetInAction() && ListaDeAtaqueAtual == -1)
         {

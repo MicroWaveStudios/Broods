@@ -12,22 +12,33 @@ public class ComandosTutorial : MonoBehaviour
     [SerializeField] private GameObject painelFimTutorial;
     PlayerMoveRigidbody playerMove;
     PlayerCombat playerCombat;
-    PlayerInput playerInput;
-
+    public bool podeAtacar = true;
+    
     private void Start()
     {
         playerMove = GameObject.FindGameObjectWithTag("Player1").GetComponent<PlayerMoveRigidbody>();
         playerCombat = GameObject.FindGameObjectWithTag("Player1").GetComponent<PlayerCombat>();
-        playerInput = GameObject.FindGameObjectWithTag("Player1").GetComponent<PlayerInput>();
     }
     private void Update()
     {
         Jogando();
+
+        if (playerCombat.GetInAttack())
+        {
+            podeAtacar = false;
+        }
+        else
+        {
+            podeAtacar = true;
+        }
     }
 
     public void Jogando()
     {
         instrucoes.SetActive(true);
+
+        if (podeAtacar)
+        {
 
         if (playerMove.GetDirecaoX() == 1f)
         {
@@ -67,6 +78,7 @@ public class ComandosTutorial : MonoBehaviour
         if (playerCombat.GetAtacouBaixo())
         {
             acao[7].color = Color.green;
+        }
         }
 
         int x = 0;
