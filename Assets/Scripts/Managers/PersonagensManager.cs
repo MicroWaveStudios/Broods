@@ -89,7 +89,7 @@ public class PersonagensManager : MonoBehaviour
             SetVariante(playerIndex, material);
             for (int i = 0; i < 2; i++)
             {
-                if (playerIndex != i && GetPersonagemID(playerIndex) == GetPersonagemID(i))
+                if (playerIndex != i && GetPersonagemID(playerIndex) == GetPersonagemID(i) && GetVariante(playerIndex) == connectManager.GetPlayer(i).GetComponent<SelecaoPersonagem>().GetBotaoAtual().GetComponent<scriptBotao>().GetJogador(i).GetComponent<MaterialPlayer>().GetMaterialAtual())
                 {
                     connectManager.GetPlayer(i).GetComponent<SelecaoPersonagem>().GetBotaoAtual().GetComponent<scriptBotao>().GetJogador(i).GetComponent<MaterialPlayer>().TrocarMaterial(1);
                 }

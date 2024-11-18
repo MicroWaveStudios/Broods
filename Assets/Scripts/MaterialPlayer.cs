@@ -66,10 +66,7 @@ public class MaterialPlayer : MonoBehaviour
     {
         for (int i = 0; i < PartesDoCorpo.Length; i++)
         {
-            if (PartesDoCorpo[i] != null && VarianteDaSkin[skin].material[i] != null)
-            { 
-                PartesDoCorpo[i].GetComponent<Renderer>().material = VarianteDaSkin[skin].material[i];
-            }
+            PartesDoCorpo[i].GetComponent<Renderer>().material = VarianteDaSkin[skin].material[i];
         }
     }
 

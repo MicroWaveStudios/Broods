@@ -55,9 +55,10 @@ public class SelecaoPersonagem : MonoBehaviour
     {
         if (context.started && botaoAtual != null && personagensManager.GetComponent<PersonagensManager>().GetNaSelecaoDePersonagem())
         {
-            if (personagensManager.GetComponent<PersonagensManager>().GetSelecionouPersonagem(GetComponent<ConnectPlayer>().GetPlayerID()))
+            if (personagensManager.GetComponent<PersonagensManager>().GetSelecionouPersonagem(GetComponent<ConnectPlayer>().GetPlayerID()) && !personagensManager.GetComponent<PersonagensManager>().GetConfirmouPersonagem(GetComponent<ConnectPlayer>().GetPlayerID()))
             {
                 personagensManager.GetComponent<PersonagensManager>().ConfirmouPersonagem(GetComponent<ConnectPlayer>().GetPlayerID(), botaoAtual.GetComponent<scriptBotao>().GetJogador(GetComponent<ConnectPlayer>().GetPlayerID()).GetComponent<MaterialPlayer>().GetMaterialAtual(), true);
+                Debug.Log("Confirmou o personagem");
             }
             else if (botaoAtual.GetComponent<scriptBotao>().GetJogador(GetComponent<ConnectPlayer>().GetPlayerID()) != null)
             {
