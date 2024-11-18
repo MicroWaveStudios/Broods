@@ -82,7 +82,6 @@ public class PlayerCombat : MonoBehaviour
         {
             Attack(0);
             atacouBaixo = true;
-            scrSons.TocarSom("Laser");
         }
     }
 
@@ -95,7 +94,6 @@ public class PlayerCombat : MonoBehaviour
         {
             Attack(1);
             atacouLeve = true;
-            scrSons.TocarSom("Lanca1");
         }
     }
 
@@ -109,7 +107,6 @@ public class PlayerCombat : MonoBehaviour
         {
             Attack(2);
             atacouMedio = true;
-            scrSons.TocarSom("Lanca2");
         }
     }
 
@@ -122,7 +119,6 @@ public class PlayerCombat : MonoBehaviour
         {
             Attack(3);
             atacouPesado = true;
-            scrSons.TocarSom("Lanca3");
         }
     }
 
@@ -157,6 +153,23 @@ public class PlayerCombat : MonoBehaviour
                     laserAtaqueBaixo.Play();
                 }
             }
+
+            switch (ListaDeAtaqueAtual)
+            {
+                case 0:
+                    scrSons.TocarSom("AtaqueLeve");
+                    break;
+                case 1:
+                    scrSons.TocarSom("AtaqueBaixo");
+                    break;
+                case 2:
+                    scrSons.TocarSom("AtaqueMedio");
+                    break;
+                case 3:
+                    scrSons.TocarSom("AtaqueForte");
+                    break;
+            }
+
             StartCoroutine(Combo());
         }
     }
