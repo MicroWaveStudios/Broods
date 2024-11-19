@@ -599,7 +599,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c84735c9a3aba114ebd095ef82fbc171, type: 2}
+  - {fileID: 2100000, guid: 3021a234ff74bab47b26e7cefeccb646, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5840,7 +5840,7 @@ GameObject:
   - component: {fileID: 341695578596307042}
   m_Layer: 0
   m_Name: Nara
-  m_TagString: Player1
+  m_TagString: Player2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8645,7 +8645,7 @@ MeshRenderer:
   m_Materials:
   - {fileID: 2100000, guid: 897a13c56d208514e8a642e6b589928b, type: 2}
   - {fileID: 2100000, guid: b8098f626d251a34c98e007e9c45cd3d, type: 2}
-  - {fileID: 2100000, guid: f5fccc0277028ee4e95a224d86389aae, type: 2}
+  - {fileID: 2100000, guid: 639adeff376c3f74c89a9adb924fedeb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

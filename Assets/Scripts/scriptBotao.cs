@@ -33,7 +33,7 @@ public class scriptBotao : MonoBehaviour
             Jogador[playerIndex] = Instantiate(PrefabJogador, GameObject.FindGameObjectWithTag("PersonagemManager").GetComponent<PersonagensManager>().GetPosicaoInstanciar(playerIndex).position, Quaternion.Euler(0f, 90f, 0f));
             switch (PrefabJogador.name)
             {
-                case "Nara Variant":
+                case "NaraOutline Variant":
                     if (playerIndex == 0)
                     {
                         Jogador[playerIndex].transform.localScale = new Vector3(1f, 1f, 1f);
@@ -43,7 +43,7 @@ public class scriptBotao : MonoBehaviour
                         Jogador[playerIndex].transform.localScale = new Vector3(1f, 1f, -1);
                     }
                     break;
-                case "Ximas Variant":
+                case "XimasOutline Variant":
                     if (playerIndex == 0)
                     {
                         Jogador[playerIndex].transform.localScale = new Vector3(0.009999999f, 0.01f, 0.009999999f);

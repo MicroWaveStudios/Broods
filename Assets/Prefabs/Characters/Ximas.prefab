@@ -764,7 +764,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 073b3f2324942f1439ef02534199e52f, type: 2}
+  - {fileID: 2100000, guid: 54a7dde8cdd989042b25f09bdfd0416a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3028,18 +3028,14 @@ MonoBehaviour:
     - 0
     - 150
   - NomeDoAtaque: AtaqueMedio
-    AtaqueRange: 0200000002000000020000000200000002000000
-    Dano: 0600000004000000040000000400000008000000
-    OrdemCombo: 01000000010000000100000001000000
+    AtaqueRange: 020000000200000002000000
+    Dano: 060000000400000008000000
+    OrdemCombo: 0100000001000000
     FramesContinuar:
     - 0.7
     - 0.5
     - 0.5
-    - 0.5
-    - 0.4
     VelocidadeDaAnimacao:
-    - 1
-    - 1
     - 1
     - 1
     - 1
@@ -3047,31 +3043,21 @@ MonoBehaviour:
     - 24
     - 24
     - 24
-    - 24
-    - 24
     MoveDamage:
     - 150
-    - 2000
-    - 2000
-    - 2000
+    - 500
     - 0
     MoveDamageOtherPlayer:
     - 0
+    - 500
     - 0
-    - 0
-    - 0
-    - 300
     MoveUpOtherPlayer:
     - 0
-    - 200
-    - 200
-    - 200
+    - 0
     - 0
     MoveUp:
     - 0
-    - 150
-    - 150
-    - 150
+    - 0
     - 0
   - NomeDoAtaque: AtaqueForte
     AtaqueRange: 02000000020000000200000002000000
@@ -3228,7 +3214,7 @@ MonoBehaviour:
     - {fileID: 2100000, guid: 073b3f2324942f1439ef02534199e52f, type: 2}
     - {fileID: 2100000, guid: 073b3f2324942f1439ef02534199e52f, type: 2}
     - {fileID: 2100000, guid: 073b3f2324942f1439ef02534199e52f, type: 2}
-    - {fileID: 2100000, guid: 073b3f2324942f1439ef02534199e52f, type: 2}
+    - {fileID: 2100000, guid: 54a7dde8cdd989042b25f09bdfd0416a, type: 2}
     - {fileID: 2100000, guid: c98c398aa7be0a040a9d0674042ec890, type: 2}
     - {fileID: 2100000, guid: b633f305a8311d14d960d4aad43d1a58, type: 2}
     - {fileID: 2100000, guid: b633f305a8311d14d960d4aad43d1a58, type: 2}
