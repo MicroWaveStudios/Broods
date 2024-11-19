@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1046,6 +1046,103 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &802584186
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 802584187}
+  - component: {fileID: 802584190}
+  - component: {fileID: 802584189}
+  - component: {fileID: 802584188}
+  m_Layer: 5
+  m_Name: CaixaPreta
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &802584187
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802584186}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1824567745}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &802584188
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802584186}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b0ee11fb89bd6bc4b9c71aaf270e6641, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &802584189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802584186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &802584190
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802584186}
+  m_CullTransparentMesh: 1
 --- !u!1 &953803311
 GameObject:
   m_ObjectHideFlags: 0
@@ -2489,6 +2586,7 @@ RectTransform:
   - {fileID: 281814410}
   - {fileID: 1937321424}
   - {fileID: 1437681053}
+  - {fileID: 802584187}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4764,6 +4862,18 @@ PrefabInstance:
       value: DialogoManager
       objectReference: {fileID: 0}
     - target: {fileID: 1229946910750169812, guid: ffe2ddd29f20ab8469e6a3e7339eb19e, type: 3}
+      propertyPath: timer
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1229946910750169812, guid: ffe2ddd29f20ab8469e6a3e7339eb19e, type: 3}
+      propertyPath: caixaPreta
+      value: 
+      objectReference: {fileID: 802584186}
+    - target: {fileID: 1229946910750169812, guid: ffe2ddd29f20ab8469e6a3e7339eb19e, type: 3}
+      propertyPath: sceneManager
+      value: 
+      objectReference: {fileID: 440266112}
+    - target: {fileID: 1229946910750169812, guid: ffe2ddd29f20ab8469e6a3e7339eb19e, type: 3}
       propertyPath: spriteMostrar
       value: 
       objectReference: {fileID: 1898781471}
@@ -6061,6 +6171,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CaixaDialogo
       objectReference: {fileID: 0}
+    - target: {fileID: 2244034507038444422, guid: 0af204b5f6b35f64b8a64408c9f0df78, type: 3}
+      propertyPath: m_TagString
+      value: CaixaDialogo
+      objectReference: {fileID: 0}
     - target: {fileID: 2244034507506201318, guid: 0af204b5f6b35f64b8a64408c9f0df78, type: 3}
       propertyPath: m_text
       value: 
@@ -6813,6 +6927,7 @@ MonoBehaviour:
     - 0
     MoveDamageOtherPlayer: []
     MoveUpOtherPlayer: []
+    MoveUp: []
   - NomeDoAtaque: AtaqueFraco
     AtaqueRange: 01000000
     Dano: 0a000000
@@ -6827,6 +6942,7 @@ MonoBehaviour:
     - 0
     MoveDamageOtherPlayer: []
     MoveUpOtherPlayer: []
+    MoveUp: []
   - NomeDoAtaque: AtaqueMedio
     AtaqueRange: 02000000
     Dano: 0f000000
@@ -6841,6 +6957,7 @@ MonoBehaviour:
     - 150
     MoveDamageOtherPlayer: []
     MoveUpOtherPlayer: []
+    MoveUp: []
   - NomeDoAtaque: AtaqueForte
     AtaqueRange: 02000000
     Dano: 0f000000
@@ -6855,6 +6972,7 @@ MonoBehaviour:
     - 250
     MoveDamageOtherPlayer: []
     MoveUpOtherPlayer: []
+    MoveUp: []
   - NomeDoAtaque: AtaqueBaixoAgachado
     AtaqueRange: 00000000
     Dano: 00000000
@@ -6869,6 +6987,7 @@ MonoBehaviour:
     - 0
     MoveDamageOtherPlayer: []
     MoveUpOtherPlayer: []
+    MoveUp: []
   FrameAtual: 0
 --- !u!4 &2754065481602694933
 Transform:
@@ -7335,6 +7454,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackGameObject: {fileID: 1899415470794758818}
   vfxEnergiaMate: {fileID: 5379745171921154369}
+  vfxCorte1: {fileID: 0}
+  vfxCorte2: {fileID: 0}
   custoDash: 10
   danoDash: 20
   ordemComboDash: 0200000003000000
@@ -8520,6 +8641,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca8049ff7646d72458a94f906cb11d7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colisaoCone: {fileID: 0}
   directionX: 0
   scrSons: {fileID: 0}
   objFumaca: {fileID: 2428397225295619071}

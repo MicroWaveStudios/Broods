@@ -13,6 +13,8 @@ public class ComandosTutorial : MonoBehaviour
     PlayerMoveRigidbody playerMove;
     PlayerCombat playerCombat;
     public bool podeAtacar = true;
+
+    [SerializeField] sceneManager sceneManager;
     
     private void Start()
     {
@@ -105,6 +107,7 @@ public class ComandosTutorial : MonoBehaviour
     {
         instrucoes.SetActive(false);
         yield return new WaitForSeconds(1f);
-        painelFimTutorial.SetActive(true);
+        //painelFimTutorial.SetActive(true);
+        sceneManager.GetComponent<sceneManager>().VoltarMenu();
     }
 }

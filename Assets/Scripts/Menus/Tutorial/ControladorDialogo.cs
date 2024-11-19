@@ -16,9 +16,14 @@ public class ControladorDialogo : MonoBehaviour
 {
     public DialogoData dialogoData;
 
+    [SerializeField] float timer;
+
     [SerializeField] Image spriteMostrar;
     [SerializeField] GameObject tutorialManager;
     [SerializeField] bool treinamento;
+
+    [SerializeField] sceneManager sceneManager;
+    [SerializeField] GameObject caixaPreta;
 
     int textoAtual = 0;
     bool acabouAnimacao = false;
@@ -34,14 +39,13 @@ public class ControladorDialogo : MonoBehaviour
     void Awake()
     {
         textoComAnimacao = FindObjectOfType<AnimacaoTexto>();
-        dialogueUI = FindObjectOfType<Dialogo_UI>();
-        playerController = FindObjectOfType<PlayerController>();
+        dialogueUI = GameObject.FindGameObjectWithTag("CaixaDialogo").GetComponent<Dialogo_UI>();
+        playerController = GameObject.FindGameObjectWithTag("Player1").GetComponent<PlayerController>();
         textoComAnimacao.acabouDeEscrever = AnimacaoDeEscreverTerminou;
     }
 
     void Start()
     {
-        playerController.EnableMapActionUI();
         estado = ESTADO.DESABILITADO;
         Next();
     }
@@ -127,13 +131,23 @@ public class ControladorDialogo : MonoBehaviour
                 dialogueUI.Disable();
                 textoComAnimacao.texto.gameObject.SetActive(false); 
                 textoAtual = 0;
-                playerController.EnableMapActionPlayer();
+                //playerController.EnableMapActionPlayer();
 
+                //here
+                StartCoroutine(StartFadeInFadeOut());
+                
                 if (!treinamento)
                 {
                     tutorialManager.GetComponent<ComandosTutorial>().enabled = true;
                 }
             }
         }
+    }
+
+    IEnumerator StartFadeInFadeOut()
+    {
+        caixaPreta.GetComponent<Animator>().SetTrigger("Change");
+        yield return new WaitForSeconds(timer);
+        sceneManager.GetComponent<sceneManager>().TutorialTeste();
     }
 }

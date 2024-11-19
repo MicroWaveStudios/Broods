@@ -32,6 +32,11 @@ public class sceneManager : MonoBehaviour
         SceneManager.LoadScene("Tutorial");
     }
 
+    public void TutorialTeste()
+    {
+        SceneManager.LoadScene("Tutorial Teste");
+    }
+
     public void CampoDeTreinamento()
     {
         SceneManager.LoadScene("CampoDeTreinamento");
