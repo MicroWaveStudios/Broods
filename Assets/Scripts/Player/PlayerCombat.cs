@@ -23,13 +23,13 @@ public class PlayerCombat : MonoBehaviour
     float timer = 0f;
 
     int ListaDeAtaqueAtual = -1;
-    int OrdemCombo;
+    //int OrdemCombo;
 
     bool atacouLeve;
     bool atacouMedio;
     bool atacouPesado;
     bool atacouBaixo;
-    bool atacouAgachado;
+    //bool atacouAgachado;
 
     string NomeAtaqueAtual;
 
@@ -155,6 +155,7 @@ public class PlayerCombat : MonoBehaviour
                 {
                     laserAtaqueBaixo.Play();
                 }
+                
             }
 
             NomeAtaqueAtual = _AttackList[ListaDeAtaqueAtual].NomeDoAtaque;
@@ -174,7 +175,7 @@ public class PlayerCombat : MonoBehaviour
             //        scrSons.TocarSom("AtaqueForte");
             //        break;
             //}
-          
+
             StartCoroutine(Combo());
         }
     }
@@ -271,10 +272,10 @@ public class PlayerCombat : MonoBehaviour
         atacouMedio = false;
         atacouBaixo = false;
         atacouPesado = false;
-        atacouAgachado = false;
+        //atacouAgachado = false;
         ListaDeAtaqueAtual = -1;
         ordem = 0;
-        OrdemCombo = -1;
+        //OrdemCombo = -1;
         timer = 0f;
         actualNumber = -1;
         yield return new WaitForSeconds(0.3f);

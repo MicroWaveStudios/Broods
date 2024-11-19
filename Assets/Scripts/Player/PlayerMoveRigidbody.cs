@@ -255,7 +255,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
     }
 
     public void GravidadeZero(bool tirarGravidade)
-    {        
+    {
         rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
 
         if (tirarGravidade)

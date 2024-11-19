@@ -24,8 +24,9 @@ public class XimasSkills : MonoBehaviour
     bool trava = true;
 
     [SerializeField] GameObject vfxEnergiaMate;
-    [SerializeField] VisualEffect vfxCorte;
-    
+    [SerializeField] VisualEffect vfxCorte1;
+    [SerializeField] VisualEffect vfxCorte2;
+
     [Header("Skill Dash com Corte")]
     [SerializeField] float custoDash;
     [SerializeField] float danoDash;
@@ -86,7 +87,6 @@ public class XimasSkills : MonoBehaviour
         {
             if (playerCombat.GetOrdemCombo() < 3 && playerCombat.GetOrdemCombo() != 0)
             {
-                Debug.Log("Zerou");
                 scrpRigidbody.GravidadeZero(true);
                 outroPlayer.GetComponent<PlayerMoveRigidbody>().TravarNoAr();
                 scrpRigidbody.ColisaoZero();
@@ -98,13 +98,13 @@ public class XimasSkills : MonoBehaviour
             //    scrpRigidbody.ColisaoNormal();
             //}
 
-            if (playerCombat.GetOrdemCombo() == 4 && trava == true)
+            if (playerCombat.GetOrdemCombo() == 4 && trava == false)
             {
                 scrpRigidbody.GravidadeNormal();
                 outroPlayer.GetComponent<PlayerMoveRigidbody>().GravidadeNormal();
                 scrpRigidbody.ColisaoNormal();
                 transform.position = new Vector3(outroPlayer.transform.position.x, transform.position.y, transform.position.z);
-                trava = false;
+                trava = true;
             }
         }
         else
@@ -112,7 +112,7 @@ public class XimasSkills : MonoBehaviour
             scrpRigidbody.GravidadeNormal();
             outroPlayer.GetComponent<PlayerMoveRigidbody>().GravidadeNormal();
             scrpRigidbody.ColisaoNormal();
-            trava = true;
+            trava = false;
         }
 
         if (playerCombat.GetNomeAtaqueAtual() == "AtaqueFraco" && playerCombat.GetInCombo() == true)
@@ -134,19 +134,29 @@ public class XimasSkills : MonoBehaviour
             scrpRigidbody.GravidadeNormal();
         }
 
-        if (playerCombat.GetNomeAtaqueAtual() == "AtaqueForte" && playerCombat.GetInCombo() == true)
-        {
-            if (playerCombat.GetOrdemCombo() == 3 && trava == true)
-            {
-                vfxCorte.Play();
-                trava = false;
-            }
-        }
-        else
-        {
-            trava = true;
-        }
+        //if (playerCombat.GetNomeAtaqueAtual() == "AtaqueForte" && playerCombat.GetInCombo() == true)
+        //{
+        //    if (playerCombat.GetOrdemCombo() == 3 && trava == false)
+        //    {
+        //        vfxCorte.Play();
+        //        trava = true;
+        //    }
+        //}
+        //else
+        //{
+        //    trava = false;
+        //}
 
+    }
+
+    public void PlayVfxCorte()
+    {
+        vfxCorte1.Play();
+    }
+
+    public void PlayVfxCorte2()
+    {
+        vfxCorte2.Play();
     }
 
     public void MeiaLuaStart(InputAction.CallbackContext context)
