@@ -599,7 +599,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3021a234ff74bab47b26e7cefeccb646, type: 2}
+  - {fileID: 2100000, guid: c84735c9a3aba114ebd095ef82fbc171, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5840,7 +5840,7 @@ GameObject:
   - component: {fileID: 341695578596307042}
   m_Layer: 0
   m_Name: Nara
-  m_TagString: Player1
+  m_TagString: Player2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6252,6 +6252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca8049ff7646d72458a94f906cb11d7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colisaoCone: {fileID: 2334146910550661658}
   directionX: 0
   scrSons: {fileID: 0}
   objFumaca: {fileID: 6830945488235815930}
@@ -6276,6 +6277,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInput: {fileID: 5825252824003833820}
+  inputDeviceConfigurator: {fileID: 0}
 --- !u!114 &5825252824003833763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6306,7 +6308,7 @@ MonoBehaviour:
     Dano: 05000000
     OrdemCombo: 
     FramesContinuar:
-    - 0.1
+    - 0.3
     VelocidadeDaAnimacao:
     - 2
     SampleRate:
@@ -6317,13 +6319,17 @@ MonoBehaviour:
     - 0
     MoveUpOtherPlayer:
     - 0
+    MoveUp:
+    - 0
+    - 0
+    - 0
   - NomeDoAtaque: AtaqueFraco
     AtaqueRange: 010000000100000001000000
-    Dano: 050000000200000006000000
+    Dano: 050000000300000007000000
     OrdemCombo: 0200000003000000
     FramesContinuar:
     - 0.2
-    - 0.3
+    - 0.5
     - 0.7
     VelocidadeDaAnimacao:
     - 1
@@ -6339,19 +6345,23 @@ MonoBehaviour:
     - 200
     MoveDamageOtherPlayer:
     - 0
-    - 0
-    - 0
+    - 30
+    - 150
     MoveUpOtherPlayer:
+    - 0
+    - 0
+    - 600
+    MoveUp:
     - 0
     - 0
     - 0
   - NomeDoAtaque: AtaqueMedio
     AtaqueRange: 020000000200000002000000
-    Dano: 070000000400000008000000
+    Dano: 060000000200000003000000
     OrdemCombo: 0100000000000000
     FramesContinuar:
     - 0.5
-    - 0.7
+    - 0.8
     - 0.7
     VelocidadeDaAnimacao:
     - 1
@@ -6362,20 +6372,24 @@ MonoBehaviour:
     - 24
     - 24
     MoveDamage:
-    - 0
+    - 150
     - 200
     - 0
     MoveDamageOtherPlayer:
-    - 0
+    - 150
     - 0
     - 0
     MoveUpOtherPlayer:
     - 0
     - 0
     - 0
+    MoveUp:
+    - 0
+    - 0
+    - 0
   - NomeDoAtaque: AtaqueForte
     AtaqueRange: 020000000200000002000000
-    Dano: 0a0000000600000006000000
+    Dano: 070000000500000007000000
     OrdemCombo: 03000000
     FramesContinuar:
     - 0.6
@@ -6390,25 +6404,29 @@ MonoBehaviour:
     - 60
     - 60
     MoveDamage:
+    - 200
     - 0
-    - 0
-    - 0
+    - 300
     MoveDamageOtherPlayer:
     - 0
-    - 0
-    - 0
+    - -200
+    - 5000
     MoveUpOtherPlayer:
+    - 0
+    - 0
+    - 150
+    MoveUp:
     - 0
     - 0
     - 0
   - NomeDoAtaque: AtaqueBaixoAgachado
     AtaqueRange: 00000000
-    Dano: 00000000
-    OrdemCombo: 
+    Dano: 04000000
+    OrdemCombo: 01000000
     FramesContinuar:
-    - 0.1
+    - 0.6
     VelocidadeDaAnimacao:
-    - 1
+    - 1.9
     SampleRate:
     - 24
     MoveDamage:
@@ -6416,6 +6434,8 @@ MonoBehaviour:
     MoveDamageOtherPlayer:
     - 0
     MoveUpOtherPlayer:
+    - 0
+    MoveUp:
     - 0
   FrameAtual: 0
 --- !u!114 &5825252824003833760
@@ -6443,9 +6463,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 0
-  maxLife: 100
+  maxLife: 200
   damageMultiplier: 0
-  maxEnergy: 15
+  maxEnergy: 50
   energy: 0
   defendendo: 0
   defendeu: 0
@@ -6467,7 +6487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackGameObject: {fileID: 5825252823125675279}
-  custoLaser: 5
+  custoLaser: 10
   danoLaser: 7
   ordemComboLaser: 0200000003000000
   tarticos:
@@ -6476,11 +6496,11 @@ MonoBehaviour:
   - {fileID: 1432033910219361331}
   - {fileID: 5062114023866469586}
   - {fileID: 2682009038027207675}
-  custoTartico: 10
+  custoTartico: 20
   ordemComboTarticos: 0100000003000000
   tarticosContagem: 0
-  custoExplosao: 7.5
-  danoExplosao: 18
+  custoExplosao: 30
+  danoExplosao: 15
   rangeExplosao: 1
   vfxExplosao: {fileID: 743939760015915183}
 --- !u!114 &341695578596307042

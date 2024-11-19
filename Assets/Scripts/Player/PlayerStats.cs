@@ -79,17 +79,17 @@ public class PlayerStats : MonoBehaviour
         return InAction;
     }
 
-    public void MoveDamage(float moveDamage)
-    {
-        //playerMoveRigidbody.SetForce(moveDamage);
-        playerMoveRigidbody.MoverAoLevarDano(moveDamage);
-        //playerAnimator.TriggerAction("TomouDano");
-    }
+    //public void MoveDamage(float moveDamage)
+    //{
+    //    //playerMoveRigidbody.SetForce(moveDamage);
+    //    playerMoveRigidbody.MoverAoLevarDano(moveDamage);
+    //    //playerAnimator.TriggerAction("TomouDano");
+    //}
 
     public void CounterParry(GameObject otherPlayer)
     {
         playerAnimator.TriggerAction("PerryContinuacao");
-        otherPlayer.GetComponent<PlayerStats>().SufferDamage(10, 3, 10, 10, 0, null);
+        otherPlayer.GetComponent<PlayerStats>().SufferDamage(7, 3, 10, 10, 0, null);
     }
 
     public void SufferDamage(float damage, float attackRange, float moveDamage, float moveDamageOtherPlayer, float moveUpOtherPlayer, GameObject otherPlayer)

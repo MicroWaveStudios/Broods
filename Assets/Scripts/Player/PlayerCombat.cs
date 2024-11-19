@@ -31,6 +31,8 @@ public class PlayerCombat : MonoBehaviour
     bool atacouBaixo;
     bool atacouAgachado;
 
+    string NomeAtaqueAtual;
+
     [SerializeField] public int ordem;
 
 
@@ -52,6 +54,7 @@ public class PlayerCombat : MonoBehaviour
         public float[] MoveDamage;
         public float[] MoveDamageOtherPlayer;
         public float[] MoveUpOtherPlayer;
+        public float[] MoveUp;
     }
     [SerializeField] List<AttackList> _AttackList = new List<AttackList>();
 
@@ -148,28 +151,30 @@ public class PlayerCombat : MonoBehaviour
                 _InAttack = true;
                 playerAnimator.TriggerAction(_AttackList[ListaDeAtaqueAtual].NomeDoAtaque);
 
-                if (numberAttack == 0 && !playerStats.GetXimas())
+                if (numberAttack == 0 && !playerStats.GetXimas() && !playerMove.GetCrouched())
                 {
                     laserAtaqueBaixo.Play();
                 }
             }
 
-            switch (ListaDeAtaqueAtual)
-            {
-                case 0:
-                    scrSons.TocarSom("AtaqueLeve");
-                    break;
-                case 1:
-                    scrSons.TocarSom("AtaqueBaixo");
-                    break;
-                case 2:
-                    scrSons.TocarSom("AtaqueMedio");
-                    break;
-                case 3:
-                    scrSons.TocarSom("AtaqueForte");
-                    break;
-            }
+            NomeAtaqueAtual = _AttackList[ListaDeAtaqueAtual].NomeDoAtaque;
 
+            //switch (ListaDeAtaqueAtual)
+            //{
+            //    case 0:
+            //        scrSons.TocarSom("AtaqueLeve");
+            //        break;
+            //    case 1:
+            //        scrSons.TocarSom("AtaqueBaixo");
+            //        break;
+            //    case 2:
+            //        scrSons.TocarSom("AtaqueMedio");
+            //        break;
+            //    case 3:
+            //        scrSons.TocarSom("AtaqueForte");
+            //        break;
+            //}
+          
             StartCoroutine(Combo());
         }
     }
@@ -199,10 +204,13 @@ public class PlayerCombat : MonoBehaviour
             ResetCombo();
             yield break;
         }
-        attackGameObject.GetComponent<Damage>().SetAttack(_AttackList[ListaDeAtaqueAtual].Dano[ordem], _AttackList[ListaDeAtaqueAtual].AtaqueRange[ordem], _AttackList[ListaDeAtaqueAtual].MoveDamage[ordem], _AttackList[ListaDeAtaqueAtual].MoveDamageOtherPlayer[ordem], _AttackList[ListaDeAtaqueAtual].MoveUpOtherPlayer[ordem], true);
+        attackGameObject.GetComponent<Damage>().SetAttack(_AttackList[ListaDeAtaqueAtual].Dano[ordem], _AttackList[ListaDeAtaqueAtual].AtaqueRange[ordem], _AttackList[ListaDeAtaqueAtual].MoveDamage[ordem], _AttackList[ListaDeAtaqueAtual].MoveDamageOtherPlayer[ordem], _AttackList[ListaDeAtaqueAtual].MoveUpOtherPlayer[ordem], true, _AttackList[ListaDeAtaqueAtual].MoveUp[ordem]);
         //playerMove.MoverAoAtacar(_AttackList[ListaDeAtaqueAtual].MoveDamage[ordem]);
         yield return new WaitForSeconds(0.01f);
         InCombo = true;
+
+        
+
         yield return StartCoroutine(ContinuarCombo());
         //yield return StartCoroutine(WaitForFrames(_AttackList[ListaDeAtaqueAtual].FramesContinuar[ordem], _AttackList[ListaDeAtaqueAtual].VelocidadeDaAnimacao[ordem], _AttackList[ListaDeAtaqueAtual].SampleRate[ordem]));
     }
@@ -258,6 +266,7 @@ public class PlayerCombat : MonoBehaviour
 
     IEnumerator ResetCombo_()
     {
+        //playerMove.GravidadeNormal();
         atacouLeve = false;
         atacouMedio = false;
         atacouBaixo = false;
@@ -265,12 +274,20 @@ public class PlayerCombat : MonoBehaviour
         atacouAgachado = false;
         ListaDeAtaqueAtual = -1;
         ordem = 0;
+        OrdemCombo = -1;
         timer = 0f;
         actualNumber = -1;
         yield return new WaitForSeconds(0.3f);
         _InAttack = false;
         yield return new WaitForSeconds(0.2f);
         InCombo = false;
+    }
+
+
+    public void SomarOrdemCombo()
+    {
+        ordem++;
+        attackGameObject.GetComponent<Damage>().SetAttack(_AttackList[ListaDeAtaqueAtual].Dano[ordem], _AttackList[ListaDeAtaqueAtual].AtaqueRange[ordem], _AttackList[ListaDeAtaqueAtual].MoveDamage[ordem], _AttackList[ListaDeAtaqueAtual].MoveDamageOtherPlayer[ordem], _AttackList[ListaDeAtaqueAtual].MoveUpOtherPlayer[ordem], true, _AttackList[ListaDeAtaqueAtual].MoveUp[ordem]);
     }
 
     // Voids para POO
@@ -335,5 +352,14 @@ public class PlayerCombat : MonoBehaviour
     public bool GetInMeiaLua()
     {
         return InMeiaLua;
+    }
+    public string GetNomeAtaqueAtual()
+    {
+        return NomeAtaqueAtual;
+    }
+
+    public int GetOrdemCombo()
+    {
+        return ordem;
     }
 }

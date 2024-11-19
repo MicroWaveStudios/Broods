@@ -21,7 +21,10 @@ public class XimasSkills : MonoBehaviour
     float timer;
     bool InMeiaLua = false;
 
+    bool trava = true;
+
     [SerializeField] GameObject vfxEnergiaMate;
+    [SerializeField] VisualEffect vfxCorte;
     
     [Header("Skill Dash com Corte")]
     [SerializeField] float custoDash;
@@ -78,6 +81,72 @@ public class XimasSkills : MonoBehaviour
         {
             vfxEnergiaMate.SetActive(false);
         }
+
+        if (playerCombat.GetNomeAtaqueAtual() == "AtaqueMedio" && playerCombat.GetInCombo() == true)
+        {
+            if (playerCombat.GetOrdemCombo() < 3 && playerCombat.GetOrdemCombo() != 0)
+            {
+                Debug.Log("Zerou");
+                scrpRigidbody.GravidadeZero(true);
+                outroPlayer.GetComponent<PlayerMoveRigidbody>().TravarNoAr();
+                scrpRigidbody.ColisaoZero();
+            }
+            //else
+            //{
+            //    scrpRigidbody.GravidadeNormal();
+            //    outroPlayer.GetComponent<PlayerMoveRigidbody>().GravidadeNormal();
+            //    scrpRigidbody.ColisaoNormal();
+            //}
+
+            if (playerCombat.GetOrdemCombo() == 4 && trava == true)
+            {
+                scrpRigidbody.GravidadeNormal();
+                outroPlayer.GetComponent<PlayerMoveRigidbody>().GravidadeNormal();
+                scrpRigidbody.ColisaoNormal();
+                transform.position = new Vector3(outroPlayer.transform.position.x, transform.position.y, transform.position.z);
+                trava = false;
+            }
+        }
+        else
+        {
+            scrpRigidbody.GravidadeNormal();
+            outroPlayer.GetComponent<PlayerMoveRigidbody>().GravidadeNormal();
+            scrpRigidbody.ColisaoNormal();
+            trava = true;
+        }
+
+        if (playerCombat.GetNomeAtaqueAtual() == "AtaqueFraco" && playerCombat.GetInCombo() == true)
+        {
+            if (playerCombat.GetOrdemCombo() == 2)
+            {
+                scrpRigidbody.GravidadeZero(false);
+                scrpRigidbody.ColisaoZero();
+            }
+            else
+            {
+                scrpRigidbody.ColisaoNormal();
+                scrpRigidbody.GravidadeNormal();
+            }
+        }
+        else
+        {
+            scrpRigidbody.ColisaoNormal();
+            scrpRigidbody.GravidadeNormal();
+        }
+
+        if (playerCombat.GetNomeAtaqueAtual() == "AtaqueForte" && playerCombat.GetInCombo() == true)
+        {
+            if (playerCombat.GetOrdemCombo() == 3 && trava == true)
+            {
+                vfxCorte.Play();
+                trava = false;
+            }
+        }
+        else
+        {
+            trava = true;
+        }
+
     }
 
     public void MeiaLuaStart(InputAction.CallbackContext context)
@@ -234,7 +303,7 @@ public class XimasSkills : MonoBehaviour
 
         playerCombat.SetInAttack(true);
 
-        attackGameObject.GetComponent<Damage>().SetAttack(danoSopro, rangeSopro, 10f, 10f, 0f, false);
+        attackGameObject.GetComponent<Damage>().SetAttack(danoSopro, rangeSopro, 10f, 10f, 0f, false, 0f);
 
         scrpPlayerStats.UsouSkill(custoSopro);
 

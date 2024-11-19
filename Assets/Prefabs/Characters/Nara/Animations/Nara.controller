@@ -619,6 +619,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 2
     m_ConditionEvent: NoChao
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: InCombo
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -163754087543999662}
   m_Solo: 0

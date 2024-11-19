@@ -7,6 +7,7 @@ using UnityEngine.VFX;
 public class PlayerMoveRigidbody : MonoBehaviour
 {
     Rigidbody rb;
+    [SerializeField] Collider colisaoCone;
     [SerializeField] float directionX;
     PlayerStats playerStats;
     PlayerCombat playerCombat;
@@ -219,17 +220,17 @@ public class PlayerMoveRigidbody : MonoBehaviour
     {
         //StartCoroutine(moverAoLevarDano());
         rb.AddForce(Vector3.zero);
-        rb.AddForce(Vector3.left * moveDamage * isPlayer2);
+        rb.AddForce(Vector3.left * moveDamage * isPlayer2, ForceMode.Force);
     }
 
-    IEnumerator moverAoLevarDano()
-    {
-        rb.AddForce(Vector3.zero);
-        yield return new WaitForSeconds(0.02f);
-        rb.AddForce(Vector3.zero);
-        rb.AddForce(Vector3.left * MoveForceSufferAttack * isPlayer2);
-        yield break;
-    }
+    //IEnumerator moverAoLevarDano()
+    //{
+    //    rb.AddForce(Vector3.zero);
+    //    yield return new WaitForSeconds(0.02f);
+    //    rb.AddForce(Vector3.zero);
+    //    rb.AddForce(Vector3.left * MoveForceSufferAttack * isPlayer2);
+    //    yield break;
+    //}
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -247,6 +248,39 @@ public class PlayerMoveRigidbody : MonoBehaviour
             noChao = false;
         }
             
+    }
+
+    public void TravarNoAr()
+    {
+        rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
+    }
+
+    public void GravidadeZero(bool tirarGravidade)
+    {        
+        rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
+
+        if (tirarGravidade)
+        {
+            rb.useGravity = false;
+        }
+    }
+
+    public void GravidadeNormal()
+    {
+        rb.useGravity = true;
+        rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
+    }
+
+    public void ColisaoZero()
+    {
+        this.gameObject.GetComponent<Collider>().isTrigger = true;
+        colisaoCone.isTrigger = true;
+    }
+
+    public void ColisaoNormal()
+    {
+        this.gameObject.GetComponent<Collider>().isTrigger = false;
+        colisaoCone.isTrigger = false;
     }
 
 

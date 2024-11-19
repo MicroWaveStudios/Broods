@@ -206,7 +206,7 @@ public class NaraSkills : MonoBehaviour
             yield break;
         }
 
-        attackGameObject.GetComponent<Damage>().SetAttack(20f, 3, 0f, 0f, 0f, false);
+        attackGameObject.GetComponent<Damage>().SetAttack(20f, 3, 0f, 0f, 0f, false, 0f);
 
         Vector3 NovaPosicaoOutroPlayer = outroPlayer.transform.position;
 
@@ -305,7 +305,7 @@ public class NaraSkills : MonoBehaviour
 
         playerCombat.SetInAttack(true);
 
-        attackGameObject.GetComponent<Damage>().SetAttack(danoExplosao, rangeExplosao, 0f, 220f, 0f, false);
+        attackGameObject.GetComponent<Damage>().SetAttack(danoExplosao, rangeExplosao, 0f, 220f, 0f, false, 0f);
 
         scrpPlayerStats.UsouSkill(custoExplosao);
 

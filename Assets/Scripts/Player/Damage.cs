@@ -13,6 +13,7 @@ public class Damage : MonoBehaviour
     float moveDamage;
     float moveDamageOtherPlayer;
     float moveUpOtherPlayer;
+    float moveUp;
     bool addEnergy;
 
     private void Awake()
@@ -24,10 +25,11 @@ public class Damage : MonoBehaviour
 
     private void OnEnable()
     {
+        rbPlayer.MoveUp(moveUp);
         rbPlayer.MoverAoAtacar(moveDamage);
     }
 
-    public void SetAttack(float newDamage, float newAttackRange, float newMoveDamage, float newMoveDamageOtherPlayer, float newMoveUpOtherPlayer, bool newAddEnergy)
+    public void SetAttack(float newDamage, float newAttackRange, float newMoveDamage, float newMoveDamageOtherPlayer, float newMoveUpOtherPlayer, bool newAddEnergy, float newMoveUp)
     {
         damage = newDamage;
         attackRange = newAttackRange;
@@ -35,6 +37,7 @@ public class Damage : MonoBehaviour
         moveDamageOtherPlayer = newMoveDamageOtherPlayer;
         moveUpOtherPlayer = newMoveUpOtherPlayer;
         addEnergy = newAddEnergy;
+        moveUp = newMoveUp;
     }
 
     public void SetDamage(float newDamage)
@@ -61,6 +64,8 @@ public class Damage : MonoBehaviour
             {
                 playerStats.AddEnergy(damage);
             }
+
+            Debug.Log(moveDamageOtherPlayer);
 
             otherPlayerStats.SufferDamage(damage, attackRange, moveDamage, moveDamageOtherPlayer, moveUpOtherPlayer, this.transform.parent.gameObject);
             otherPlayerStats.AddEnergy(damage / 2);
