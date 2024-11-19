@@ -2815,7 +2815,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca8049ff7646d72458a94f906cb11d7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colisaoCone: {fileID: 6137319956086261583}
+  colisaoCone: {fileID: 0}
   directionX: 0
   scrSons: {fileID: 0}
   objFumaca: {fileID: 2428397226556226383}
@@ -2911,7 +2911,7 @@ MonoBehaviour:
     MoveUpOtherPlayer:
     - 0
     - 125
-    - 0
+    - 300
     MoveUp:
     - 0
     - 0
@@ -2924,8 +2924,8 @@ MonoBehaviour:
     - 0.7
     - 0.5
     - 0.5
-    - 0.7
     - 0.5
+    - 0.4
     VelocidadeDaAnimacao:
     - 1
     - 1
@@ -2949,7 +2949,7 @@ MonoBehaviour:
     - 0
     - 0
     - 0
-    - 500
+    - 300
     MoveUpOtherPlayer:
     - 0
     - 200
@@ -2957,10 +2957,10 @@ MonoBehaviour:
     - 200
     - 0
     MoveUp:
-    - 200
-    - 200
-    - 200
-    - 200
+    - 0
+    - 150
+    - 150
+    - 150
     - 0
   - NomeDoAtaque: AtaqueForte
     AtaqueRange: 02000000020000000200000002000000
@@ -3045,9 +3045,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 0
-  maxLife: 200
+  maxLife: 100
   damageMultiplier: 0
-  maxEnergy: 30
+  maxEnergy: 15
   energy: 0
   defendendo: 0
   defendeu: 0
@@ -3071,12 +3071,12 @@ MonoBehaviour:
   attackGameObject: {fileID: 1899415472055321106}
   vfxEnergiaMate: {fileID: 5379745173210982897}
   vfxCorte: {fileID: 7292148528990412385}
-  custoDash: 30
-  danoDash: 10
+  custoDash: 10
+  danoDash: 20
   ordemComboDash: 0200000003000000
   ordemComboParry: 0100000003000000
-  custoSopro: 30
-  danoSopro: 15
+  custoSopro: 10
+  danoSopro: 30
   rangeSopro: 2
   vfxExplosaoMate: {fileID: 565746949879960757}
 --- !u!114 &6733909688477422776
@@ -3304,14 +3304,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2238406526609157144}
-  m_LocalRotation: {x: -0.26936388, y: -0.65379816, z: 0.26935446, w: 0.6537885}
+  m_LocalRotation: {x: -0.42822233, y: -0.5627027, z: 0.4282149, w: 0.56269294}
   m_LocalPosition: {x: 40, y: 105, z: -2}
   m_LocalScale: {x: 99.99999, y: 100, z: 99.99999}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1543341450706339045}
   m_RootOrder: 14
-  m_LocalEulerAnglesHint: {x: 0, y: -90.001, z: 44.783}
+  m_LocalEulerAnglesHint: {x: 0, y: -90.001, z: 74.543}
 --- !u!2083052967 &7292148528990412385
 VisualEffect:
   m_ObjectHideFlags: 0
@@ -8738,7 +8738,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7657034320336801801}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.5, y: 1, z: 1}
