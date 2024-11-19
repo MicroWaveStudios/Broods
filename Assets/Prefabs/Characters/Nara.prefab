@@ -5840,7 +5840,7 @@ GameObject:
   - component: {fileID: 341695578596307042}
   m_Layer: 0
   m_Name: Nara
-  m_TagString: Player1
+  m_TagString: Player2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6276,6 +6276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInput: {fileID: 5825252824003833820}
+  inputDeviceConfigurator: {fileID: 0}
 --- !u!114 &5825252824003833763
 MonoBehaviour:
   m_ObjectHideFlags: 0

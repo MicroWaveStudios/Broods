@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -103,14 +104,12 @@ public class PlayerMoveRigidbody : MonoBehaviour
         if (jumpCount == 1 && context.performed && !playerCombat.GetInAttack() && !playerCombat.GetInCombo())
         {
             crouched = true;
-            //scrSons.TocarSom("Agachar");
             SetCrouched(true, 0f);
         }
         else if (jumpCount == 0 || context.canceled)
         {
             SetCrouched(false, 0.2f);
         }
-
     }
 
     public void OnJump(InputAction.CallbackContext context)
@@ -245,10 +244,8 @@ public class PlayerMoveRigidbody : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             noChao = false;
-        }
-            
+        }      
     }
-
 
     public float GetDirecaoX()
     {

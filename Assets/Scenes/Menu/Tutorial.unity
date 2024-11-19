@@ -432,6 +432,7 @@ MonoBehaviour:
   - {fileID: 1899209961}
   instrucoes: {fileID: 1437681052}
   painelFimTutorial: {fileID: 1937321423}
+  podeAtacar: 1
 --- !u!4 &483563901
 Transform:
   m_ObjectHideFlags: 0
@@ -2885,6 +2886,10 @@ PrefabInstance:
     - target: {fileID: 4420403423698361151, guid: 6ae38b9c128d93748b30d3cef5189263, type: 3}
       propertyPath: m_LocalPosition.z
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5825252824003833763, guid: 6ae38b9c128d93748b30d3cef5189263, type: 3}
+      propertyPath: tutorial
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5825252824003833765, guid: 6ae38b9c128d93748b30d3cef5189263, type: 3}
       propertyPath: tutorial
@@ -19075,6 +19080,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInput: {fileID: 8744644015764081372}
+  inputDeviceConfigurator: {fileID: 0}
 --- !u!4 &9004046929739530084
 Transform:
   m_ObjectHideFlags: 0

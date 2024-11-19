@@ -169,7 +169,7 @@ public class PlayerCombat : MonoBehaviour
                     scrSons.TocarSom("AtaqueForte");
                     break;
             }
-
+            
             StartCoroutine(Combo());
         }
     }
