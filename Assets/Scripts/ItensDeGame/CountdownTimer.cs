@@ -31,15 +31,11 @@ public class CountdownTimer : MonoBehaviour
             StartCoroutine(CountdownStart());
             FinishedStart = true;
         }
-        //if (podeComecar)
-        //{
-        //    Player1.transform.position = InstancePosition[0].position;
-        //    Player2.transform.position = InstancePosition[1].position;
-        //}
     }
 
     private IEnumerator CountdownStart()
     {
+        Debug.Log("Comecou");
         isPaused = true;
         EnablePlayerInputs(false);
         for (int i = 0; i < player.Length; i++)

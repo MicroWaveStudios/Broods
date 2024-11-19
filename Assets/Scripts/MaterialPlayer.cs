@@ -64,9 +64,9 @@ public class MaterialPlayer : MonoBehaviour
     }
     public void SetMaterialPersonagem(int skin)
     {
-        for (int i = 0; i < PartesDoCorpo.Length - 1; i++)
+        for (int i = 0; i < PartesDoCorpo.Length; i++)
         {
-                PartesDoCorpo[i].GetComponent<Renderer>().material = VarianteDaSkin[skin].material[i];
+            PartesDoCorpo[i].GetComponent<Renderer>().material = VarianteDaSkin[skin].material[i];
         }
     }
 

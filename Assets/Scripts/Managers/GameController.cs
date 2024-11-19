@@ -66,13 +66,6 @@ public class GameController : MonoBehaviour
         //}
         if (Pontos.SplitKeyboard)
         {
-            //PlayerInput player1 = PlayerInput.Instantiate(Pontos.prefabPlayer[0], 0, "KeyboardLeft", -1, Keyboard.current);
-            //PlayerInput player2 = PlayerInput.Instantiate(Pontos.prefabPlayer[1], 1, "KeyboardRight", -1, Keyboard.current);
-            //player1.tag = "Player1";
-            //player2.tag = "Player2";
-            //playerInputManager.DisableJoining();
-
-            //txtInformativo.SetActive(true);
             EnableSplitKeyboard();
         }
         else
@@ -448,8 +441,8 @@ public class GameController : MonoBehaviour
         playerInputManager.playerPrefab = Pontos.prefabPlayer[1];
         PlayerInput player2 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 1, "KeyboardRight", -1, Keyboard.current);
         player1.GetComponent<MaterialPlayer>().SetMaterialPersonagem(Pontos.variante[0]);
-        player1.tag = "Player1";
         player2.GetComponent<MaterialPlayer>().SetMaterialPersonagem(Pontos.variante[1]);
+        player1.tag = "Player1";
         player2.tag = "Player2";
 
         GetComponent<CountdownTimer>().SetPodeComecar(true);
