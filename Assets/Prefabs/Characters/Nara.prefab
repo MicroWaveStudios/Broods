@@ -6564,6 +6564,8 @@ MonoBehaviour:
   - {fileID: 7218692869924287352}
   - {fileID: 7002460024583549704}
   - {fileID: 8678336720529811677}
+  - {fileID: 8678336720529811677}
+  - {fileID: 8678336720529811677}
   playerID: -1
   otherPlayerID: -1
   materialAtual: -1

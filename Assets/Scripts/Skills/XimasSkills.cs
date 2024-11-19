@@ -103,7 +103,7 @@ public class XimasSkills : MonoBehaviour
                 scrpRigidbody.GravidadeNormal();
                 outroPlayer.GetComponent<PlayerMoveRigidbody>().GravidadeNormal();
                 scrpRigidbody.ColisaoNormal();
-                transform.position = new Vector3(outroPlayer.transform.position.x, transform.position.y, transform.position.z);
+                transform.position = new Vector3(outroPlayer.transform.position.x + (-1.5f * scrpRigidbody.isPlayer2), transform.position.y, transform.position.z);
                 trava = true;
             }
         }
@@ -259,7 +259,7 @@ public class XimasSkills : MonoBehaviour
         
         if (scrpPlayerStats.energy < custoDash)
         {
-            Debug.Log("Sem Energia");
+            //Debug.Log("Sem Energia");
             yield break;
         }
 

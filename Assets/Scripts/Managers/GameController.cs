@@ -73,7 +73,7 @@ public class GameController : MonoBehaviour
             //playerInputManager.DisableJoining();
 
             //txtInformativo.SetActive(true);
-            EnableSplitKeyboard(null);
+            EnableSplitKeyboard();
         }
         else
         {
@@ -439,18 +439,18 @@ public class GameController : MonoBehaviour
         yield break;
     }
 
-    public void EnableSplitKeyboard(GameObject newGameObject)
+    public void EnableSplitKeyboard()
     {
         Pontos.prefabPlayer[1].GetComponent<PlayerInput>().defaultControlScheme = "KeyboardLeft";
         playerInputManager.playerPrefab = Pontos.prefabPlayer[0];
-        PlayerInput player3 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 0, "KeyboardLeft", -1, Keyboard.current, Mouse.current);
+        PlayerInput player1 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 0, "KeyboardLeft", -1, Keyboard.current, Mouse.current);
         Pontos.prefabPlayer[1].GetComponent<PlayerInput>().defaultControlScheme = "KeyboardRight";
         playerInputManager.playerPrefab = Pontos.prefabPlayer[1];
-        PlayerInput player4 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 1, "KeyboardRight", -1, Keyboard.current);
-        player3.GetComponent<MaterialPlayer>().SetMaterialPersonagem(Pontos.variante[0]);
-        player3.tag = "Player1";
-        player4.GetComponent<MaterialPlayer>().SetMaterialPersonagem(Pontos.variante[1]);
-        player4.tag = "Player2";
+        PlayerInput player2 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 1, "KeyboardRight", -1, Keyboard.current);
+        player1.GetComponent<MaterialPlayer>().SetMaterialPersonagem(Pontos.variante[0]);
+        player1.tag = "Player1";
+        player2.GetComponent<MaterialPlayer>().SetMaterialPersonagem(Pontos.variante[1]);
+        player2.tag = "Player2";
 
         GetComponent<CountdownTimer>().SetPodeComecar(true);
         //StartCoroutine(InstantiatePlayerSplitKeyboard());
