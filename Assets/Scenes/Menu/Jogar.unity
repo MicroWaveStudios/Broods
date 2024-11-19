@@ -1362,7 +1362,7 @@ PrefabInstance:
     - target: {fileID: 7635764584608856731, guid: ea09e7c8c8dd3014ab6837ca2d6bcb26, type: 3}
       propertyPath: PrefabJogador
       value: 
-      objectReference: {fileID: 957597484839092533, guid: e1bb1516de1c03b489443de1bda23b61, type: 3}
+      objectReference: {fileID: 2532096949830309562, guid: 6475e884f6c56db4da20f1deb1962c4e, type: 3}
     - target: {fileID: 7635764584608856731, guid: ea09e7c8c8dd3014ab6837ca2d6bcb26, type: 3}
       propertyPath: BotoesProximos.Array.size
       value: 4
@@ -5662,7 +5662,7 @@ PrefabInstance:
     - target: {fileID: 7635764584608856731, guid: ea09e7c8c8dd3014ab6837ca2d6bcb26, type: 3}
       propertyPath: PrefabJogador
       value: 
-      objectReference: {fileID: 4787019588658103715, guid: 35b22893867a7664d81ddd210915c879, type: 3}
+      objectReference: {fileID: 698870570890983936, guid: f941966e2ef0da74781aa68898b06337, type: 3}
     - target: {fileID: 7635764584608856731, guid: ea09e7c8c8dd3014ab6837ca2d6bcb26, type: 3}
       propertyPath: BotoesProximos.Array.size
       value: 4
