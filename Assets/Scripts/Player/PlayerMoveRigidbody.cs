@@ -34,12 +34,15 @@ public class PlayerMoveRigidbody : MonoBehaviour
     GameObject gameManager;
     GameController gameController;
 
+    bool trava = true;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
         playerCombat = GetComponent<PlayerCombat>();
         playerStats = GetComponent<PlayerStats>();
         playerInput = GetComponent<PlayerInput>();
+        scrSons = GetComponent<Sons>();
 
         vfxFumaca = objFumaca.GetComponent<VisualEffect>();
         scrpFumaca = objFumaca.GetComponent<FumacaChao>();
@@ -76,6 +79,19 @@ public class PlayerMoveRigidbody : MonoBehaviour
         else
         {
             playerStats.SetDefendendo(false);
+        }
+
+        if (crouched)
+        {
+            if (!trava)
+            {
+                scrSons.TocarSom("Agachar");
+                trava = true;
+            }
+        }
+        else
+        {
+            trava = false;
         }
     }
     private void FixedUpdate()
@@ -246,7 +262,6 @@ public class PlayerMoveRigidbody : MonoBehaviour
         {
             noChao = false;
         }
-            
     }
 
     public void TravarNoAr()

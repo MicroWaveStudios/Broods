@@ -55,6 +55,7 @@ public class PlayerCombat : MonoBehaviour
         public float[] MoveDamageOtherPlayer;
         public float[] MoveUpOtherPlayer;
         public float[] MoveUp;
+        public string[] Sons;
     }
     [SerializeField] List<AttackList> _AttackList = new List<AttackList>();
 
@@ -205,7 +206,7 @@ public class PlayerCombat : MonoBehaviour
             ResetCombo();
             yield break;
         }
-        attackGameObject.GetComponent<Damage>().SetAttack(_AttackList[ListaDeAtaqueAtual].Dano[ordem], _AttackList[ListaDeAtaqueAtual].AtaqueRange[ordem], _AttackList[ListaDeAtaqueAtual].MoveDamage[ordem], _AttackList[ListaDeAtaqueAtual].MoveDamageOtherPlayer[ordem], _AttackList[ListaDeAtaqueAtual].MoveUpOtherPlayer[ordem], true, _AttackList[ListaDeAtaqueAtual].MoveUp[ordem]);
+        attackGameObject.GetComponent<Damage>().SetAttack(_AttackList[ListaDeAtaqueAtual].Dano[ordem], _AttackList[ListaDeAtaqueAtual].AtaqueRange[ordem], _AttackList[ListaDeAtaqueAtual].MoveDamage[ordem], _AttackList[ListaDeAtaqueAtual].MoveDamageOtherPlayer[ordem], _AttackList[ListaDeAtaqueAtual].MoveUpOtherPlayer[ordem], true, _AttackList[ListaDeAtaqueAtual].MoveUp[ordem], _AttackList[ListaDeAtaqueAtual].Sons[ordem]);
         //playerMove.MoverAoAtacar(_AttackList[ListaDeAtaqueAtual].MoveDamage[ordem]);
         yield return new WaitForSeconds(0.01f);
         InCombo = true;
@@ -288,7 +289,7 @@ public class PlayerCombat : MonoBehaviour
     public void SomarOrdemCombo()
     {
         ordem++;
-        attackGameObject.GetComponent<Damage>().SetAttack(_AttackList[ListaDeAtaqueAtual].Dano[ordem], _AttackList[ListaDeAtaqueAtual].AtaqueRange[ordem], _AttackList[ListaDeAtaqueAtual].MoveDamage[ordem], _AttackList[ListaDeAtaqueAtual].MoveDamageOtherPlayer[ordem], _AttackList[ListaDeAtaqueAtual].MoveUpOtherPlayer[ordem], true, _AttackList[ListaDeAtaqueAtual].MoveUp[ordem]);
+        attackGameObject.GetComponent<Damage>().SetAttack(_AttackList[ListaDeAtaqueAtual].Dano[ordem], _AttackList[ListaDeAtaqueAtual].AtaqueRange[ordem], _AttackList[ListaDeAtaqueAtual].MoveDamage[ordem], _AttackList[ListaDeAtaqueAtual].MoveDamageOtherPlayer[ordem], _AttackList[ListaDeAtaqueAtual].MoveUpOtherPlayer[ordem], true, _AttackList[ListaDeAtaqueAtual].MoveUp[ordem], _AttackList[ListaDeAtaqueAtual].Sons[ordem]);
     }
 
     // Voids para POO

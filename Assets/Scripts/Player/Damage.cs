@@ -8,6 +8,8 @@ public class Damage : MonoBehaviour
 
     PlayerMoveRigidbody rbPlayer;
 
+    Sons scrSons;
+
     [SerializeField] float damage;
     [SerializeField] float attackRange;
     float moveDamage;
@@ -15,21 +17,25 @@ public class Damage : MonoBehaviour
     float moveUpOtherPlayer;
     float moveUp;
     bool addEnergy;
+    string somAtaque;
 
     private void Awake()
     {
         playerStats = transform.parent.GetComponent<PlayerStats>();
 
         rbPlayer = transform.parent.GetComponent<PlayerMoveRigidbody>();
+
+        scrSons = transform.parent.GetComponent<Sons>();
     }
 
     private void OnEnable()
     {
         rbPlayer.MoveUp(moveUp);
         rbPlayer.MoverAoAtacar(moveDamage);
+        scrSons.TocarSom(somAtaque);
     }
 
-    public void SetAttack(float newDamage, float newAttackRange, float newMoveDamage, float newMoveDamageOtherPlayer, float newMoveUpOtherPlayer, bool newAddEnergy, float newMoveUp)
+    public void SetAttack(float newDamage, float newAttackRange, float newMoveDamage, float newMoveDamageOtherPlayer, float newMoveUpOtherPlayer, bool newAddEnergy, float newMoveUp, string som)
     {
         damage = newDamage;
         attackRange = newAttackRange;
@@ -38,6 +44,7 @@ public class Damage : MonoBehaviour
         moveUpOtherPlayer = newMoveUpOtherPlayer;
         addEnergy = newAddEnergy;
         moveUp = newMoveUp;
+        somAtaque = som;
     }
 
     public void SetDamage(float newDamage)

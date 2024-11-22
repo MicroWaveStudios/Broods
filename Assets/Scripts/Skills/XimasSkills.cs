@@ -91,12 +91,6 @@ public class XimasSkills : MonoBehaviour
                 outroPlayer.GetComponent<PlayerMoveRigidbody>().TravarNoAr();
                 scrpRigidbody.ColisaoZero();
             }
-            //else
-            //{
-            //    scrpRigidbody.GravidadeNormal();
-            //    outroPlayer.GetComponent<PlayerMoveRigidbody>().GravidadeNormal();
-            //    scrpRigidbody.ColisaoNormal();
-            //}
 
             if (playerCombat.GetOrdemCombo() == 4 && trava == false)
             {
@@ -107,6 +101,7 @@ public class XimasSkills : MonoBehaviour
                 trava = true;
             }
         }
+
         else
         {
             scrpRigidbody.GravidadeNormal();
@@ -313,7 +308,7 @@ public class XimasSkills : MonoBehaviour
 
         playerCombat.SetInAttack(true);
 
-        attackGameObject.GetComponent<Damage>().SetAttack(danoSopro, rangeSopro, 10f, 10f, 0f, false, 0f);
+        attackGameObject.GetComponent<Damage>().SetAttack(danoSopro, rangeSopro, 10f, 10f, 0f, false, 0f, "Sopro");
 
         scrpPlayerStats.UsouSkill(custoSopro);
 

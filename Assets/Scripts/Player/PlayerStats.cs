@@ -15,6 +15,7 @@ public class PlayerStats : MonoBehaviour
     PlayerCombat playerCombat;
     PlayerAnimator playerAnimator;
     GameController scrpGameController;
+    Sons scrSons;
     public bool defendendo;
 
     public bool defendeu;
@@ -31,6 +32,7 @@ public class PlayerStats : MonoBehaviour
         playerMoveRigidbody = this.GetComponent<PlayerMoveRigidbody>();
         playerCombat = this.GetComponent<PlayerCombat>();
         playerAnimator = this.GetComponent<PlayerAnimator>();
+        scrSons = this.GetComponent<Sons>();
 
         if (!tutorial)
         {
@@ -146,6 +148,8 @@ public class PlayerStats : MonoBehaviour
                 //MoveDamage(moveDamage);
 
                 vfxImpacto.Play();
+                scrSons.TocarSom("LevarDano");
+                
 
                 playerCombat.ResetCombo();
                 StartCoroutine(ResetScripts(0.5f));
