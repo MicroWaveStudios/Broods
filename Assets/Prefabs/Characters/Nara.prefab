@@ -5111,7 +5111,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 5520663030062143179, guid: 5570590b875383a409a5d02469448c17, type: 2}
   m_audioClip: {fileID: 8300000, guid: 8b14dee8f6dbf8e4b97de79c9209de89, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5367,7 +5367,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 5520663030062143179, guid: 5570590b875383a409a5d02469448c17, type: 2}
   m_audioClip: {fileID: 8300000, guid: 28e5eab811ffefd4cbb8bf61ab0a1772, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5462,7 +5462,7 @@ GameObject:
   - component: {fileID: 5422245076999747860}
   - component: {fileID: 5422245076999747867}
   m_Layer: 0
-  m_Name: Lanca3 - Nara
+  m_Name: NullHit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5493,9 +5493,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 5520663030062143179, guid: 5570590b875383a409a5d02469448c17, type: 2}
-  m_audioClip: {fileID: 8300000, guid: ca04e315d5d0bea40a0f4e702c1aff52, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 5b924631d259b6945b3ce4ff0411517d, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -6646,7 +6646,7 @@ GameObject:
   - component: {fileID: 995425808579810349}
   m_Layer: 0
   m_Name: Nara
-  m_TagString: Player2
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7410,7 +7410,7 @@ MonoBehaviour:
     som: {fileID: 5422245076729843441}
   - nome: Som2
     som: {fileID: 5422245075782231304}
-  - nome: Som3
+  - nome: NullHit
     som: {fileID: 5422245076999747867}
   - nome: Laser
     som: {fileID: 5422245076415329271}

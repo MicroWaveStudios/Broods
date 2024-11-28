@@ -18,6 +18,7 @@ public class Damage : MonoBehaviour
     float moveUp;
     bool addEnergy;
     string somAtaque;
+    bool acertou = false;
 
     private void Awake()
     {
@@ -32,7 +33,19 @@ public class Damage : MonoBehaviour
     {
         rbPlayer.MoveUp(moveUp);
         rbPlayer.MoverAoAtacar(moveDamage);
-        scrSons.TocarSom(somAtaque);
+        scrSons.TocarSom("NullHit");
+
+        if (somAtaque == "Laser")
+        {
+            scrSons.TocarSom("Laser");
+        }
+
+        if (somAtaque == "Sopro")
+        {
+            scrSons.TocarSom("Sopro");
+        }
+
+        //Arrumar os sons de Laser e sopro, para ser tocado quando o jogador errar
     }
 
     public void SetAttack(float newDamage, float newAttackRange, float newMoveDamage, float newMoveDamageOtherPlayer, float newMoveUpOtherPlayer, bool newAddEnergy, float newMoveUp, string som)
@@ -76,7 +89,8 @@ public class Damage : MonoBehaviour
 
             otherPlayerStats.SufferDamage(damage, attackRange, moveDamage, moveDamageOtherPlayer, moveUpOtherPlayer, this.transform.parent.gameObject);
             otherPlayerStats.AddEnergy(damage / 2);
+
+            scrSons.TocarSom(somAtaque);
         }
     }
-
 }
