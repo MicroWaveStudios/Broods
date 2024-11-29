@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.InputSystem;
 using System.Linq;
 using UnityEngine.UI;
+using UnityEditor;
 
 public class CountdownTimer : MonoBehaviour
 {
@@ -13,20 +14,18 @@ public class CountdownTimer : MonoBehaviour
     GameObject[] player = new GameObject[2];
     [SerializeField] Transform[] InstancePosition;
     [SerializeField] TMP_Text countdownText;
+    [SerializeField] TMP_Text CaiPraPorradaText;
     [SerializeField] TMP_Text TxtTimerGame;
     public float countdownTime = 3f;
     bool FinishedStart = false;
     bool isPaused;
     bool gameFinished;
     bool podeComecar;
-    Animator anim;
+    [SerializeField] AnimationClip animacaoLoop;
+    [SerializeField] GameObject background;
 
     [SerializeField] int tempo;
 
-    private void Start()
-    {
-        anim = countdownText.GetComponent<Animator>();
-    }
     private void Update()
     {
         player[0] = GameObject.FindGameObjectWithTag("Player1");
@@ -37,8 +36,6 @@ public class CountdownTimer : MonoBehaviour
             StartCoroutine(CountdownStart());
             FinishedStart = true;
         }
-
-        Debug.Log(countdownTime);
     }
 
     private IEnumerator CountdownStart()
@@ -51,26 +48,20 @@ public class CountdownTimer : MonoBehaviour
             player[i].transform.position = InstancePosition[i].position;
         }
 
+        yield return new WaitForSeconds(0.1f);
         countdownText.transform.gameObject.SetActive(true);
 
         while (countdownTime > 0f)
         {
             countdownText.text = countdownTime.ToString();
-            yield return new WaitForSeconds(1f);
-            anim.Play("Countdown"); //nao ta funcionando
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.9f);
             countdownTime--;
         }
-        //while (countdownTime > 0f)
-        //{ 
-        //    countdownText.text = countdownTime.ToString();
-        //    yield return new WaitForSeconds(1f);
-        //    countdownTime--;
-        //}
 
-        countdownText.text = "CAI PRA PORRADA!";
-        yield return new WaitForSeconds(1f);
         countdownText.transform.gameObject.SetActive(false);
+        CaiPraPorradaText.text = "CAI PRA PORRADA!";
+        yield return new WaitForSeconds(1f);
+        CaiPraPorradaText.transform.gameObject.SetActive(false);
 
         EnablePlayerInputs(true);
         isPaused = false;
@@ -82,6 +73,8 @@ public class CountdownTimer : MonoBehaviour
     int i;
     IEnumerator TimerGame()
     {
+        background.SetActive(true);
+        
         for (i = tempo; i > 1; i--)
         {
             if (i >= 10)

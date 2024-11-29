@@ -15,8 +15,8 @@ public class piscarTextoJogadores : MonoBehaviour
     void Start()
     {
         valorMinimo = 0.1f;
-        valorMaximo = 1.5f;
-        valorAtual = 1.5f;
+        valorMaximo = 1.7f;
+        valorAtual = 1.7f;
         EstadoAtual = estado.ENCOLHENDO;
     }
 

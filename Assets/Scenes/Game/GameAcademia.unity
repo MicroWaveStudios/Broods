@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18291372, g: 0.22617263, b: 0.2927307, a: 1}
+  m_IndirectSpecularColor: {r: 0.18291344, g: 0.22617225, b: 0.29273003, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3207,7 +3207,6 @@ MonoBehaviour:
   notFocusedPlayer: {fileID: 0}
   eventSystemManager: {fileID: 721454773}
   PanelManager: {fileID: 441249399}
-  txtInformativo: {fileID: 780747062}
 --- !u!4 &1140325869
 Transform:
   m_ObjectHideFlags: 0
@@ -3244,6 +3243,8 @@ MonoBehaviour:
   - {fileID: 142740010}
   countdownText: {fileID: 2060001245}
   TxtTimerGame: {fileID: 1869833480}
+  countdownTime: 3
+  background: {fileID: 1769979405}
   tempo: 99
 --- !u!114 &1140325871
 MonoBehaviour:
@@ -6187,7 +6188,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1769979406
 Transform:
   m_ObjectHideFlags: 0
