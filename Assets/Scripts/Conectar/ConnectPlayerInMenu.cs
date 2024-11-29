@@ -26,8 +26,6 @@ public class ConnectPlayerInMenu : MonoBehaviour
     [SerializeField] GameObject ContinueButton;
     [SerializeField] GameObject BackButton;
 
-    [SerializeField] GameObject TxtSplitKeyboard;
-
     [Header("Characters Screen")]
     [SerializeField] GameObject[] player;
     [SerializeField] Transform[] spawn; //Variavel para nn bugar os players ao ir para a cena jogar
@@ -71,7 +69,6 @@ public class ConnectPlayerInMenu : MonoBehaviour
         else
         {
             KeyboardMenu[playerID].SetActive(value);
-            TxtSplitKeyboard.SetActive(value);
         }
     }
 

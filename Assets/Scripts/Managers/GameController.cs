@@ -55,8 +55,6 @@ public class GameController : MonoBehaviour
 
     PlayerInputManager playerInputManager;
 
-    [SerializeField] GameObject txtInformativo;
-
     private void Start()
     {
         playerInputManager = GetComponent<PlayerInputManager>();

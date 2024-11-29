@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
 using System.Linq;
+using UnityEngine.UI;
 
 public class CountdownTimer : MonoBehaviour
 {
@@ -13,14 +14,19 @@ public class CountdownTimer : MonoBehaviour
     [SerializeField] Transform[] InstancePosition;
     [SerializeField] TMP_Text countdownText;
     [SerializeField] TMP_Text TxtTimerGame;
-    float countdownTime = 3f;
+    public float countdownTime = 3f;
     bool FinishedStart = false;
     bool isPaused;
     bool gameFinished;
     bool podeComecar;
+    Animator anim;
 
     [SerializeField] int tempo;
 
+    private void Start()
+    {
+        anim = countdownText.GetComponent<Animator>();
+    }
     private void Update()
     {
         player[0] = GameObject.FindGameObjectWithTag("Player1");
@@ -31,6 +37,8 @@ public class CountdownTimer : MonoBehaviour
             StartCoroutine(CountdownStart());
             FinishedStart = true;
         }
+
+        Debug.Log(countdownTime);
     }
 
     private IEnumerator CountdownStart()
@@ -45,13 +53,21 @@ public class CountdownTimer : MonoBehaviour
 
         countdownText.transform.gameObject.SetActive(true);
 
-
         while (countdownTime > 0f)
-        { 
+        {
             countdownText.text = countdownTime.ToString();
+            yield return new WaitForSeconds(1f);
+            anim.Play("Countdown"); //nao ta funcionando
             yield return new WaitForSeconds(1f);
             countdownTime--;
         }
+        //while (countdownTime > 0f)
+        //{ 
+        //    countdownText.text = countdownTime.ToString();
+        //    yield return new WaitForSeconds(1f);
+        //    countdownTime--;
+        //}
+
         countdownText.text = "CAI PRA PORRADA!";
         yield return new WaitForSeconds(1f);
         countdownText.transform.gameObject.SetActive(false);
@@ -62,7 +78,6 @@ public class CountdownTimer : MonoBehaviour
         StartCoroutine(TimerGame());
         yield break;
     }
-
 
     int i;
     IEnumerator TimerGame()
