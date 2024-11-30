@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.2576067, g: 0.68980116, b: 0.8192755, a: 1}
+  m_IndirectSpecularColor: {r: 0.25754258, g: 0.6897825, b: 0.81921965, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4316,6 +4316,7 @@ MonoBehaviour:
   - {fileID: 1155059939}
   DefaultButtonSelected: {fileID: 1155059939}
   EventSystemManager: {fileID: 721454773}
+  background: {fileID: 8429429391730836248}
 --- !u!4 &857956302
 Transform:
   m_ObjectHideFlags: 0
@@ -5423,7 +5424,6 @@ MonoBehaviour:
   countdownText: {fileID: 2060001245}
   CaiPraPorradaText: {fileID: 1819921936}
   TxtTimerGame: {fileID: 1869833480}
-  countdownTime: 3
   animacaoLoop: {fileID: 7400000, guid: d33f5754518229047ad8dbe6295af6bd, type: 2}
   background: {fileID: 8429429391730836248}
   tempo: 99
@@ -11376,7 +11376,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!82 &8429429391730836249
 AudioSource:
   m_ObjectHideFlags: 0
@@ -11388,7 +11388,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 4517697327000267489, guid: 5570590b875383a409a5d02469448c17, type: 2}
   m_audioClip: {fileID: 8300000, guid: c39064172ade1a74b906b68b458db26c, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1

@@ -51,7 +51,8 @@ public class Damage : MonoBehaviour
         {
             isAtaqueMedioXimas = false;
         }
-                rbPlayer.MoveUp(moveUp);
+
+        rbPlayer.MoveUp(moveUp);
         rbPlayer.MoverAoAtacar(moveDamage, isAtaqueMedioXimas);
         scrSons.TocarSom("NullHit");
 
@@ -64,8 +65,6 @@ public class Damage : MonoBehaviour
         {
             scrSons.TocarSom("Sopro");
         }
-
-        //Arrumar os sons de Laser e sopro, para ser tocado quando o jogador errar
     }
 
     public void SetAttack(float newDamage, float newAttackRange, float newMoveDamage, float newMoveDamageOtherPlayer, float newMoveUpOtherPlayer, bool newAddEnergy, float newMoveUp, string som)

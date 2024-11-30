@@ -16,7 +16,7 @@ public class CountdownTimer : MonoBehaviour
     [SerializeField] TMP_Text countdownText;
     [SerializeField] TMP_Text CaiPraPorradaText;
     [SerializeField] TMP_Text TxtTimerGame;
-    public float countdownTime = 3f;
+    float countdownTime = 3f;
     bool FinishedStart = false;
     bool isPaused;
     bool gameFinished;
@@ -73,7 +73,7 @@ public class CountdownTimer : MonoBehaviour
     int i;
     IEnumerator TimerGame()
     {
-        background.SetActive(true);
+        background.GetComponent<AudioSource>().Play();
         
         for (i = tempo; i > 1; i--)
         {
@@ -110,5 +110,4 @@ public class CountdownTimer : MonoBehaviour
             }
         }
     }
-
 }

@@ -726,7 +726,7 @@ RectTransform:
   m_GameObject: {fileID: 141560945}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.41846597, y: 0.41846597, z: 0.41846597}
+  m_LocalScale: {x: 0.5257188, y: 0.5257188, z: 0.5257188}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 297981787}
@@ -736,7 +736,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 157, y: -33}
+  m_AnchoredPosition: {x: 195.45, y: -33.268}
   m_SizeDelta: {x: 564, y: 311}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &141560947
@@ -1420,7 +1420,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 203, y: -110.34059}
+  m_AnchoredPosition: {x: 203, y: -56}
   m_SizeDelta: {x: 220.7299, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &235834633
@@ -1912,7 +1912,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -222, y: -17.994461}
+  m_AnchoredPosition: {x: -222, y: 7.005535}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &345687247
@@ -2175,7 +2175,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -223, y: -4.9573517}
+  m_AnchoredPosition: {x: -223, y: 5}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &464364975
@@ -2556,7 +2556,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 198.65431, y: -4.9573517}
+  m_AnchoredPosition: {x: 198.65431, y: 13.999994}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &535490292
@@ -3380,7 +3380,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -218.00003, y: 82.22956}
+  m_AnchoredPosition: {x: -228, y: 82.22956}
   m_SizeDelta: {x: 213.9333, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &681509024
@@ -3702,7 +3702,7 @@ RectTransform:
   m_GameObject: {fileID: 820502262}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.41846597, y: 0.41846597, z: 0.41846597}
+  m_LocalScale: {x: 0.5257188, y: 0.5257188, z: 0.5257188}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2062880119}
@@ -3712,7 +3712,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -143.00003, y: -32.999996}
+  m_AnchoredPosition: {x: -181.45, y: -33.268}
   m_SizeDelta: {x: 564, y: 311}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &820502267
@@ -5155,7 +5155,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -221, y: -110.34059}
+  m_AnchoredPosition: {x: -221, y: -56}
   m_SizeDelta: {x: 220.7299, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1365987860
@@ -7109,7 +7109,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 198.65431, y: -4.9573517}
+  m_AnchoredPosition: {x: 198.65431, y: 14}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1710629358
@@ -7912,7 +7912,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 25.212013, y: 141.35953}
+  m_AnchoredPosition: {x: 25.212013, y: 220}
   m_SizeDelta: {x: 887.6, y: 54.6788}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1979459878
@@ -7962,8 +7962,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 80
+  m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject[] ButtonPanel;
     [SerializeField] GameObject DefaultButtonSelected;
     [SerializeField] GameObject EventSystemManager;
+    [SerializeField] GameObject background;
 
     public void UIStatePause(bool value)
     {
@@ -18,6 +19,15 @@ public class UIManager : MonoBehaviour
     { 
         PausePanel.SetActive(value);
         EventSystemManager.GetComponent<EventSystemManager>().SetCurrentSelectedButton(DefaultButtonSelected);
+
+        if (value)
+        {
+            background.GetComponent<AudioSource>().Pause();
+        }
+        else
+        {
+            background.GetComponent<AudioSource>().UnPause();
+        }
     }
 
     public void ButtonPressed(int numberButton)
