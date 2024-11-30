@@ -101,7 +101,6 @@ public class XimasSkills : MonoBehaviour
                 trava = true;
             }
         }
-
         else
         {
             scrpRigidbody.GravidadeNormal();

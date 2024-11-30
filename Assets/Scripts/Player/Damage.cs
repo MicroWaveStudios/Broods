@@ -6,6 +6,8 @@ public class Damage : MonoBehaviour
 {
     PlayerStats playerStats;
 
+    PlayerCombat playerCombat;
+
     PlayerMoveRigidbody rbPlayer;
 
     Sons scrSons;
@@ -19,10 +21,13 @@ public class Damage : MonoBehaviour
     bool addEnergy;
     string somAtaque;
     bool acertou = false;
+    bool isAtaqueMedioXimas;
 
     private void Awake()
     {
         playerStats = transform.parent.GetComponent<PlayerStats>();
+        
+        playerCombat = transform.parent.GetComponent<PlayerCombat>();
 
         rbPlayer = transform.parent.GetComponent<PlayerMoveRigidbody>();
 
@@ -31,8 +36,23 @@ public class Damage : MonoBehaviour
 
     private void OnEnable()
     {
-        rbPlayer.MoveUp(moveUp);
-        rbPlayer.MoverAoAtacar(moveDamage);
+        if (playerCombat.GetNomeAtaqueAtual() == "AtaqueMedio" && playerCombat.GetInCombo() == true)
+        {
+            if (playerCombat.GetOrdemCombo() < 3 && playerCombat.GetOrdemCombo() != 0)
+            {
+                isAtaqueMedioXimas = true;
+            }
+            else
+            {
+                isAtaqueMedioXimas = false;
+            }
+        }
+        else
+        {
+            isAtaqueMedioXimas = false;
+        }
+                rbPlayer.MoveUp(moveUp);
+        rbPlayer.MoverAoAtacar(moveDamage, isAtaqueMedioXimas);
         scrSons.TocarSom("NullHit");
 
         if (somAtaque == "Laser")

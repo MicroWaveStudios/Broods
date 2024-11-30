@@ -2651,7 +2651,7 @@ GameObject:
   - component: {fileID: 7016451780072166860}
   m_Layer: 7
   m_Name: Ximas
-  m_TagString: Player1
+  m_TagString: Player2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3164,14 +3164,18 @@ MonoBehaviour:
     - Marretada
     - Espada
   - NomeDoAtaque: AtaqueMedio
-    AtaqueRange: 020000000200000002000000
-    Dano: 060000000400000008000000
-    OrdemCombo: 0100000001000000
+    AtaqueRange: 0200000002000000020000000200000002000000
+    Dano: 0600000004000000080000000800000008000000
+    OrdemCombo: 01000000010000000100000001000000
     FramesContinuar:
     - 0.7
-    - 0.5
-    - 0.5
+    - 0.7
+    - 0.7
+    - 0.7
+    - 0.4
     VelocidadeDaAnimacao:
+    - 1
+    - 1
     - 1
     - 1
     - 1
@@ -3179,25 +3183,37 @@ MonoBehaviour:
     - 24
     - 24
     - 24
+    - 24
+    - 24
     MoveDamage:
     - 150
+    - 500
+    - 500
     - 500
     - 0
     MoveDamageOtherPlayer:
     - 0
-    - 500
+    - 0
+    - 0
+    - 0
     - 0
     MoveUpOtherPlayer:
     - 0
-    - 0
+    - 500
+    - 500
+    - 500
     - 0
     MoveUp:
+    - 0
+    - 0
     - 0
     - 0
     - 0
     Sons:
     - Marretada
     - Marretada
+    - Corte
+    - Corte
     - Corte
   - NomeDoAtaque: AtaqueForte
     AtaqueRange: 02000000020000000200000002000000

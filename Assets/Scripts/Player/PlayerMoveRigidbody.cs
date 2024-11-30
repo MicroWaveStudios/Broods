@@ -181,10 +181,20 @@ public class PlayerMoveRigidbody : MonoBehaviour
     //    crouched = value;
     //}
 
-    public void MoverAoAtacar(float MoverAoAtacar_)
+    public void MoverAoAtacar(float MoverAoAtacar_, bool isAtaqueMedioXimas)
     {
         rb.AddForce(Vector3.zero);
-        rb.AddForce(Vector3.right * MoverAoAtacar_ * 2 * isPlayer2);
+
+        if (isAtaqueMedioXimas == false)
+        {          
+            rb.AddForce(Vector3.right * MoverAoAtacar_ * 2 * isPlayer2);
+        }
+        else
+        {
+            Vector3 diagonal = new Vector3(1.5f, 1, 0);
+            rb.AddForce(diagonal * MoverAoAtacar_ * 2 * isPlayer2);
+        }
+        
         SetOtherPlayerForce(MoverAoAtacar_);
     }
 
@@ -271,7 +281,8 @@ public class PlayerMoveRigidbody : MonoBehaviour
 
     public void GravidadeZero(bool tirarGravidade)
     {
-        rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
+        //rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
+        rb.useGravity = false;
 
         if (tirarGravidade)
         {
