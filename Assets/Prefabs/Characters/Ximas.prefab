@@ -2945,7 +2945,7 @@ GameObject:
   - component: {fileID: 7016451780072166860}
   m_Layer: 7
   m_Name: Ximas
-  m_TagString: Player2
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3440,19 +3440,19 @@ MonoBehaviour:
     MoveDamage:
     - 0
     - 0
-    - 6000
+    - 400
     MoveDamageOtherPlayer:
     - 0
     - 0
     - 0
     MoveUpOtherPlayer:
     - 0
-    - 125
-    - 300
+    - 150
+    - 0
     MoveUp:
     - 0
     - 0
-    - 150
+    - 0
     Sons:
     - Corte
     - Marretada
@@ -3463,9 +3463,9 @@ MonoBehaviour:
     OrdemCombo: 01000000010000000100000001000000
     FramesContinuar:
     - 0.7
-    - 0.7
-    - 0.7
-    - 0.7
+    - 0.5
+    - 0.5
+    - 0.6
     - 0.4
     VelocidadeDaAnimacao:
     - 1
@@ -3480,10 +3480,10 @@ MonoBehaviour:
     - 24
     - 24
     MoveDamage:
-    - 150
-    - 500
-    - 500
-    - 500
+    - 0
+    - 0
+    - 0
+    - 0
     - 0
     MoveDamageOtherPlayer:
     - 0
@@ -3499,7 +3499,7 @@ MonoBehaviour:
     - 0
     MoveUp:
     - 0
-    - 0
+    - 200
     - 0
     - 0
     - 0
@@ -3529,20 +3529,20 @@ MonoBehaviour:
     - 24
     - 24
     MoveDamage:
-    - 150
-    - 250
     - 0
+    - 0
+    - 100
     - 350
     MoveDamageOtherPlayer:
-    - 150
-    - -300
-    - 200
-    - 200
+    - 0
+    - -150
+    - 350
+    - 500
     MoveUpOtherPlayer:
     - 0
     - 0
     - 0
-    - 200
+    - 300
     MoveUp:
     - 0
     - 0

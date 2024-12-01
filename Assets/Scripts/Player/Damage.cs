@@ -34,6 +34,40 @@ public class Damage : MonoBehaviour
         scrSons = transform.parent.GetComponent<Sons>();
     }
 
+    private void OnDisable()
+    {
+        bool zerarVelocidade = false;
+
+        if (playerCombat.GetNomeAtaqueAtual() == "AtaqueFraco")
+        {
+            if (playerCombat.GetOrdemCombo() == 2)
+            {
+                zerarVelocidade = true;
+            }
+        }
+
+        if (playerCombat.GetNomeAtaqueAtual() == "AtaqueForte")
+        {
+            if (playerCombat.GetOrdemCombo() >= 2)
+            {
+                zerarVelocidade = true;
+            }
+        }
+
+        if (playerCombat.GetNomeAtaqueAtual() == "AtaqueMedio")
+        {
+            if (playerCombat.GetOrdemCombo() < 3 && playerCombat.GetOrdemCombo() != 0)
+            {
+                zerarVelocidade = true;
+            }
+        }
+
+        if (zerarVelocidade == true)
+        {
+            rbPlayer.ZerarVelocidade();
+        }
+    }
+
     private void OnEnable()
     {
         if (playerCombat.GetNomeAtaqueAtual() == "AtaqueMedio" && playerCombat.GetInCombo() == true)

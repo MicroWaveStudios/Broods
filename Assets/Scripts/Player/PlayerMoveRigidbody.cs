@@ -108,7 +108,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
         }
         else
         {
-            rb.velocity = new Vector3(0f, rb.velocity.y, rb.velocity.z);
+            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, rb.velocity.z);
         }
         //WasPressedThisFrame() pesquisar em casa
     }
@@ -155,7 +155,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
 
     public void Jump(float force, bool value)
     {
-        rb.AddForce(Vector3.zero);
+        //rb.velocity = Vector3.zero;
         rb.AddForce(Vector3.up * force);
         if (value)
         {
@@ -185,17 +185,17 @@ public class PlayerMoveRigidbody : MonoBehaviour
 
     public void MoverAoAtacar(float MoverAoAtacar_, bool isAtaqueMedioXimas)
     {
-        rb.AddForce(Vector3.zero);
+        rb.velocity = Vector3.zero;
 
-        if (isAtaqueMedioXimas == false)
-        {          
+        //if (isAtaqueMedioXimas == false)
+        //{
             rb.AddForce(Vector3.right * MoverAoAtacar_ * 2 * isPlayer2);
-        }
-        else
-        {
-            Vector3 diagonal = new Vector3(1.5f, 1, 0);
-            rb.AddForce(diagonal * MoverAoAtacar_ * 2 * isPlayer2);
-        }
+        //}
+        //else
+        //{
+        //    Vector3 dash = new Vector3(2, 0.2f, 2) * (MoverAoAtacar_);
+        //    rb.velocity = dash;
+        //}
         
         SetOtherPlayerForce(MoverAoAtacar_);
     }
@@ -246,7 +246,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
     public void MoverAoLevarDano(float moveDamage)
     {
         //StartCoroutine(moverAoLevarDano());
-        rb.AddForce(Vector3.zero);
+        rb.velocity = Vector3.zero;
         rb.AddForce(Vector3.left * moveDamage * isPlayer2, ForceMode.Force);
     }
 
@@ -281,14 +281,13 @@ public class PlayerMoveRigidbody : MonoBehaviour
         rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
     }
 
-    public void GravidadeZero(bool tirarGravidade)
-    {
-        //rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
+    public void GravidadeZero(bool travarY)
+    {      
         rb.useGravity = false;
 
-        if (tirarGravidade)
+        if (travarY)
         {
-            rb.useGravity = false;
+            rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
         }
     }
 
@@ -308,6 +307,11 @@ public class PlayerMoveRigidbody : MonoBehaviour
     {
         this.gameObject.GetComponent<Collider>().isTrigger = false;
         colisaoCone.isTrigger = false;
+    }
+
+    public void ZerarVelocidade()
+    {
+        rb.velocity = Vector3.zero;
     }
 
     public float GetDirecaoX()

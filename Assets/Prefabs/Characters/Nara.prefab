@@ -6767,7 +6767,7 @@ GameObject:
   - component: {fileID: 995425808579810349}
   m_Layer: 0
   m_Name: Nara
-  m_TagString: Player1
+  m_TagString: Player2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7258,8 +7258,8 @@ MonoBehaviour:
     OrdemCombo: 0200000003000000
     FramesContinuar:
     - 0.2
-    - 0.5
-    - 0.7
+    - 0.4
+    - 0.6
     VelocidadeDaAnimacao:
     - 1
     - 1
@@ -7269,12 +7269,12 @@ MonoBehaviour:
     - 60
     - 60
     MoveDamage:
-    - 150
-    - 150
-    - 200
+    - 1
+    - 100
+    - 0
     MoveDamageOtherPlayer:
     - 0
-    - 30
+    - 60
     - 150
     MoveUpOtherPlayer:
     - 0
@@ -7305,13 +7305,13 @@ MonoBehaviour:
     - 24
     - 24
     MoveDamage:
-    - 150
-    - 200
-    - 0
+    - 2
+    - 3
+    - -1.2
     MoveDamageOtherPlayer:
-    - 150
-    - 0
-    - 0
+    - 50
+    - 100
+    - -50
     MoveUpOtherPlayer:
     - 0
     - 0
@@ -7341,17 +7341,17 @@ MonoBehaviour:
     - 60
     - 60
     MoveDamage:
-    - 200
-    - 0
-    - 300
+    - 1
+    - -70
+    - 80
     MoveDamageOtherPlayer:
     - 0
     - -200
-    - 5000
+    - 500
     MoveUpOtherPlayer:
     - 0
+    - 200
     - 0
-    - 150
     MoveUp:
     - 0
     - 0
@@ -7451,7 +7451,7 @@ MonoBehaviour:
     SampleRate:
     - 24
     MoveDamage:
-    - 0
+    - 100
     MoveDamageOtherPlayer:
     - 0
     MoveUpOtherPlayer:

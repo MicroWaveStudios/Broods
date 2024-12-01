@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.2582091, g: 0.68974036, b: 0.8184585, a: 1}
+  m_IndirectSpecularColor: {r: 0.25753132, g: 0.68975174, b: 0.8191974, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -572,6 +572,50 @@ Transform:
   m_Father: {fileID: 1973572149}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!1 &119614010
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 119614011}
+  - component: {fileID: 119614012}
+  m_Layer: 0
+  m_Name: reiniciar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &119614011
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119614010}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.89751, y: 2.1459582, z: 1.6708493}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &119614012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119614010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54fbea0fc4f784b4e8d9939a5fbf62e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &125197181
 GameObject:
   m_ObjectHideFlags: 0
@@ -5424,7 +5468,7 @@ MonoBehaviour:
   TxtTimerGame: {fileID: 1869833480}
   animacaoLoop: {fileID: 7400000, guid: d33f5754518229047ad8dbe6295af6bd, type: 2}
   background: {fileID: 8429429391730836248}
-  tempo: 99
+  tempo: 2147483647
 --- !u!114 &1140325871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11497,7 +11541,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 4517697327000267489, guid: 5570590b875383a409a5d02469448c17, type: 2}
   m_audioClip: {fileID: 8300000, guid: c39064172ade1a74b906b68b458db26c, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 1
   Mute: 0

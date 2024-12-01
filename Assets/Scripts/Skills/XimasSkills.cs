@@ -48,13 +48,13 @@ public class XimasSkills : MonoBehaviour
 
     private void Awake()
     {
-        scrpRigidbody = GetComponent<PlayerMoveRigidbody>();
-        playerCombat = GetComponent<PlayerCombat>();
-        playerAnimator = GetComponent<PlayerAnimator>();
+        scrpRigidbody = this.gameObject.GetComponent<PlayerMoveRigidbody>();
+        playerCombat = this.gameObject.GetComponent<PlayerCombat>();
+        playerAnimator = this.gameObject.GetComponent<PlayerAnimator>();
         //objTpDash = GameObject.FindGameObjectWithTag("TpDash").transform;
         //objLaser = transform.GetChild(1).gameObject;
         //vfxLaser = objLaser.GetComponent<VisualEffect>();
-        scrpPlayerStats = GetComponent<PlayerStats>();
+        scrpPlayerStats = this.gameObject.GetComponent<PlayerStats>();
     }
 
     private void Update()
@@ -83,37 +83,40 @@ public class XimasSkills : MonoBehaviour
             vfxEnergiaMate.SetActive(false);
         }
 
-        if (playerCombat.GetNomeAtaqueAtual() == "AtaqueMedio" && playerCombat.GetInCombo() == true)
+        if (playerCombat.GetNomeAtaqueAtual() == "AtaqueMedio")
         {
+            Debug.Log("ATAQUE MÉDIO");
             if (playerCombat.GetOrdemCombo() < 3 && playerCombat.GetOrdemCombo() != 0)
             {
-                scrpRigidbody.GravidadeZero(true);
-                outroPlayer.GetComponent<PlayerMoveRigidbody>().TravarNoAr();
+                Debug.Log("ORDEM DO COMBO CORRETA");
+                scrpRigidbody.GravidadeZero(false);
+                //outroPlayer.GetComponent<PlayerMoveRigidbody>().TravarNoAr();
                 scrpRigidbody.ColisaoZero();
             }
 
             if (playerCombat.GetOrdemCombo() == 4 && trava == false)
             {
                 scrpRigidbody.GravidadeNormal();
-                outroPlayer.GetComponent<PlayerMoveRigidbody>().GravidadeNormal();
+                //outroPlayer.GetComponent<PlayerMoveRigidbody>().GravidadeNormal();
                 scrpRigidbody.ColisaoNormal();
                 transform.position = new Vector3(outroPlayer.transform.position.x + (-1.5f * scrpRigidbody.isPlayer2), transform.position.y, transform.position.z);
                 trava = true;
             }
         }
-        else
-        {
-            scrpRigidbody.GravidadeNormal();
-            outroPlayer.GetComponent<PlayerMoveRigidbody>().GravidadeNormal();
-            scrpRigidbody.ColisaoNormal();
-            trava = false;
-        }
+        //else
+        //{
+        //    Debug.Log("NÃO É ATAQUE MÉDIO");
+        //    scrpRigidbody.GravidadeNormal();
+        //    outroPlayer.GetComponent<PlayerMoveRigidbody>().GravidadeNormal();
+        //    scrpRigidbody.ColisaoNormal();
+        //    trava = false;
+        //}
 
-        if (playerCombat.GetNomeAtaqueAtual() == "AtaqueFraco" && playerCombat.GetInCombo() == true)
+        if (playerCombat.GetNomeAtaqueAtual() == "AtaqueFraco")
         {
             if (playerCombat.GetOrdemCombo() == 2)
             {
-                scrpRigidbody.GravidadeZero(false);
+                scrpRigidbody.GravidadeZero(true);
                 scrpRigidbody.ColisaoZero();
             }
             else
@@ -122,7 +125,8 @@ public class XimasSkills : MonoBehaviour
                 scrpRigidbody.GravidadeNormal();
             }
         }
-        else
+
+        if (playerCombat.GetInCombo() == false)
         {
             scrpRigidbody.ColisaoNormal();
             scrpRigidbody.GravidadeNormal();

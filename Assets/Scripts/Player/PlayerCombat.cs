@@ -278,6 +278,7 @@ public class PlayerCombat : MonoBehaviour
         atacouMedio = false;
         atacouBaixo = false;
         atacouPesado = false;
+        NomeAtaqueAtual = null;
         //atacouAgachado = false;
         ListaDeAtaqueAtual = -1;
         ordem = 0;
