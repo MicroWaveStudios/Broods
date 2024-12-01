@@ -9,6 +9,8 @@ public class MaterialPlayer : MonoBehaviour
     {
         public string nome;
         public Material[] material;
+        //[Header("Tártico")]
+        //public Material[] materials;
     }
 
     [SerializeField] List<ListaMaterial> VarianteDaSkin = new List<ListaMaterial>();
