@@ -368,14 +368,21 @@ public class GameController : MonoBehaviour
         player[1] = null;
     }
 
+    int ganhador;
     public void GameFinished()
     {
         if (lifePlayer1 != lifePlayer2)
         {
             if (lifePlayer1 > lifePlayer2)
+            {
                 Pontos.pontosP1++;
+                ganhador = 0;
+            }
             else if (lifePlayer2 > lifePlayer1)
+            { 
                 Pontos.pontosP2++;
+                ganhador = 1;
+            }
 
             if (Pontos.pontosP1 > 1)
             {
@@ -394,7 +401,7 @@ public class GameController : MonoBehaviour
         }
         if (!finishGame)
         {
-            StartCoroutine(ReloadRound());
+            StartCoroutine(ReloadRound(ganhador));
         }
     }
 
@@ -403,9 +410,9 @@ public class GameController : MonoBehaviour
 
     [SerializeField] float VitoriaXimas;
     [SerializeField] float VitoriaNara;
-    void VitoriaTempo(int ganhador)
+    void VitoriaTempo(int novoGanhador)
     {
-        switch (Pontos.personagem[ganhador])
+        switch (Pontos.personagem[novoGanhador])
         {
             case 0:
                 tempoAnimacaoDeVitoria = VitoriaNara;
@@ -416,39 +423,48 @@ public class GameController : MonoBehaviour
         }
     }
 
-    IEnumerator ReloadRound()
+    IEnumerator ReloadRound(int novoGanhador)
     {
         for (int i = 0; i < player.Length; i++)
         {
+            if (i != novoGanhador)
+            {
+                player[i].GetComponent<PlayerAnimator>().Perdeu();
+            }
             player[i].GetComponent<PlayerController>().EnableMapActionUI();
         }
         yield return new WaitForSeconds(2f);
         SceneManager.LoadScene(Pontos.cenaAtual);
     }
 
-    IEnumerator FinishGame(int ganhador)
+    IEnumerator FinishGame(int novoGanhador)
     {
         for (int i = 0; i < player.Length; i++)
         {
+            if (i != novoGanhador)
+            {
+                player[i].GetComponent<PlayerAnimator>().Perdeu();
+            }
             player[i].GetComponent<PlayerController>().EnableMapActionUI();
         }
+        ChangeSide = false;
         yield return new WaitForSeconds(2f);
-        if (player[ganhador].GetComponent<PlayerStats>().GetXimas())
+        if (player[novoGanhador].GetComponent<PlayerStats>().GetXimas())
         {
-            player[ganhador].transform.localScale = new Vector3(0.009999999f, 0.01f, 0.009999999f);
+            player[novoGanhador].transform.localScale = new Vector3(0.009999999f, 0.01f, 0.009999999f);
         }
         else
         {
-            player[ganhador].transform.localScale = new Vector3(1f, 1f, 1f);
+            player[novoGanhador].transform.localScale = new Vector3(1f, 1f, 1f);
         }
-        player[ganhador].GetComponent<PlayerAnimator>().Ganhou();
+        player[novoGanhador].GetComponent<PlayerAnimator>().Ganhou();
 
         CameraPrincipal.SetActive(false);
         CameraVitoria.SetActive(true);
 
-        CameraVitoria.transform.position = player[ganhador].transform.position;
+        CameraVitoria.transform.position = player[novoGanhador].transform.position;
         Animator animCamera = CameraVitoria.GetComponent<Animator>();
-        animCamera.SetTrigger("Vitoria" + Pontos.personagem[ganhador]);
+        animCamera.SetTrigger("Vitoria" + Pontos.personagem[novoGanhador]);
 
         BarraJogador[0].SetActive(false);
         BarraJogador[1].SetActive(false);
@@ -460,7 +476,7 @@ public class GameController : MonoBehaviour
 
         //yield return new WaitForSeconds(tempoAnimacaoDeVitoria);
 
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3f);
         winnerPanel.SetActive(true);
         PanelManager.ChangePanel(1);
         ZerarPontos();

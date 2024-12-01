@@ -104,7 +104,7 @@ public class Damage : MonoBehaviour
                 playerStats.AddEnergy(damage);
             }
 
-            Debug.Log(moveDamageOtherPlayer);
+            //Debug.Log(moveDamageOtherPlayer);
 
             otherPlayerStats.SufferDamage(damage, attackRange, moveDamage, moveDamageOtherPlayer, moveUpOtherPlayer, this.transform.parent.gameObject);
             otherPlayerStats.AddEnergy(damage / 2);

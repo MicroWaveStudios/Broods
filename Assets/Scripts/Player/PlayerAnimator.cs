@@ -29,6 +29,11 @@ public class PlayerAnimator : MonoBehaviour
         anim.SetTrigger("Ganhou");
     }
 
+    public void Perdeu()
+    {
+        anim.SetBool("Derrota", true);
+    }
+
     public void TriggerAction(string AttackName)
     {
         anim.SetTrigger(AttackName);
