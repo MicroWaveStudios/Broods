@@ -24,6 +24,11 @@ public class PlayerAnimator : MonoBehaviour
         anim.SetFloat("OrdemCombo", playerCombat.GetAtualOrdemCombo() + 1f);
     }
 
+    public void Ganhou()
+    {
+        anim.SetTrigger("Ganhou");
+    }
+
     public void TriggerAction(string AttackName)
     {
         anim.SetTrigger(AttackName);

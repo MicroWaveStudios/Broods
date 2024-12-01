@@ -3407,6 +3407,86 @@ MonoBehaviour:
     - 0
     Sons:
     - Pow
+  - NomeDoAtaque: 
+    AtaqueRange: 00000000
+    Dano: 04000000
+    OrdemCombo: 
+    FramesContinuar:
+    - 0.4
+    VelocidadeDaAnimacao:
+    - 1
+    SampleRate:
+    - 1
+    MoveDamage:
+    - 0
+    MoveDamageOtherPlayer:
+    - 0
+    MoveUpOtherPlayer:
+    - 0
+    MoveUp:
+    - 0
+    Sons:
+    - Pow
+  - NomeDoAtaque: 
+    AtaqueRange: 00000000
+    Dano: 04000000
+    OrdemCombo: 
+    FramesContinuar:
+    - 0.4
+    VelocidadeDaAnimacao:
+    - 1
+    SampleRate:
+    - 1
+    MoveDamage:
+    - 0
+    MoveDamageOtherPlayer:
+    - 0
+    MoveUpOtherPlayer:
+    - 0
+    MoveUp:
+    - 0
+    Sons:
+    - Pow
+  - NomeDoAtaque: 
+    AtaqueRange: 00000000
+    Dano: 04000000
+    OrdemCombo: 
+    FramesContinuar:
+    - 0.4
+    VelocidadeDaAnimacao:
+    - 1
+    SampleRate:
+    - 1
+    MoveDamage:
+    - 0
+    MoveDamageOtherPlayer:
+    - 0
+    MoveUpOtherPlayer:
+    - 0
+    MoveUp:
+    - 0
+    Sons:
+    - Pow
+  - NomeDoAtaque: "AtaqueA\xE9reo"
+    AtaqueRange: 02000000
+    Dano: 04000000
+    OrdemCombo: 
+    FramesContinuar:
+    - 0.4
+    VelocidadeDaAnimacao:
+    - 1
+    SampleRate:
+    - 24
+    MoveDamage:
+    - 0
+    MoveDamageOtherPlayer:
+    - 0
+    MoveUpOtherPlayer:
+    - 0
+    MoveUp:
+    - 0
+    Sons:
+    - Pow
   FrameAtual: 0
 --- !u!114 &1781845846367271014
 MonoBehaviour:

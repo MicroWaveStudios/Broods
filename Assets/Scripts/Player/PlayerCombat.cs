@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.VFX;
@@ -137,29 +138,33 @@ public class PlayerCombat : MonoBehaviour
     }
     public void Attack(int numberAttack)
     {
-        if (!_InAttack && !InCombo && playerMove.GetNoChao() && !InMeiaLua && !playerStats.GetInAction() && ListaDeAtaqueAtual == -1)
+        if (!_InAttack && !InCombo && !InMeiaLua && !playerStats.GetInAction() && ListaDeAtaqueAtual == -1)
         {
             if (playerMove.GetCrouched())
             {
                 ListaDeAtaqueAtual = numberAttack + 4;
             }
+            else if (!playerMove.GetNoChao())
+            {
+                ListaDeAtaqueAtual = numberAttack + 8;
+            }
             else
             {
                 ListaDeAtaqueAtual = numberAttack;
             }
-            if (ListaDeAtaqueAtual < _AttackList.Count)
+            if (ListaDeAtaqueAtual < _AttackList.Count && _AttackList[ListaDeAtaqueAtual].NomeDoAtaque != "")
             {
                 _InAttack = true;
                 playerAnimator.TriggerAction(_AttackList[ListaDeAtaqueAtual].NomeDoAtaque);
 
-                if (numberAttack == 0 && !playerStats.GetXimas() && !playerMove.GetCrouched())
+                if (ListaDeAtaqueAtual == 0 && !playerStats.GetXimas() && !playerMove.GetCrouched())
                 {
                     laserAtaqueBaixo.Play();
                 }
                 
+                NomeAtaqueAtual = _AttackList[ListaDeAtaqueAtual].NomeDoAtaque;
             }
 
-            NomeAtaqueAtual = _AttackList[ListaDeAtaqueAtual].NomeDoAtaque;
 
             //switch (ListaDeAtaqueAtual)
             //{

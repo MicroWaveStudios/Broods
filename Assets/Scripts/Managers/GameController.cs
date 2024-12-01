@@ -19,6 +19,7 @@ public class GameController : MonoBehaviour
     [SerializeField] GameObject[] PrefabPlayer;
 
     [SerializeField] GameObject PlayerTeste;
+    [SerializeField] GameObject UIGame;
 
     [SerializeField] Transform[] InstancePosition;
     [SerializeField] Transform mid;
@@ -45,6 +46,7 @@ public class GameController : MonoBehaviour
 
     public float distance;
     public bool ChangedSide;
+    bool ChangeSide = true;
 
     public GameObject focusedPlayer;
     public GameObject notFocusedPlayer;
@@ -52,6 +54,11 @@ public class GameController : MonoBehaviour
 
     [SerializeField] GameObject eventSystemManager;
     [SerializeField] PanelsManager PanelManager;
+
+    [Header("Cameras")]
+    [SerializeField] GameObject CameraPrincipal;
+    [SerializeField] GameObject CameraVitoria;
+
 
     PlayerInputManager playerInputManager;
 
@@ -275,22 +282,24 @@ public class GameController : MonoBehaviour
             PlayerLeft = player[1].transform;
             PlayerRight = player[0].transform;
         }
-
-        if (PlayerLeft.GetComponent<PlayerStats>().GetXimas())
+        if (ChangeSide)
         {
-            PlayerLeft.localScale = new Vector3(0.009999999f, 0.01f, 0.009999999f);
-        }
-        else
-        {
-            PlayerLeft.localScale = new Vector3(1f, 1f, 1f);
-        }
-        if (PlayerRight.GetComponent<PlayerStats>().GetXimas())
-        {
-            PlayerRight.localScale = new Vector3(0.009999999f, 0.01f, -0.009999999f);
-        }
-        else
-        {
-            PlayerRight.localScale = new Vector3(1f, 1f, -1f);
+            if (PlayerLeft.GetComponent<PlayerStats>().GetXimas())
+            {
+                PlayerLeft.localScale = new Vector3(0.009999999f, 0.01f, 0.009999999f);
+            }
+            else
+            {
+                PlayerLeft.localScale = new Vector3(1f, 1f, 1f);
+            }
+            if (PlayerRight.GetComponent<PlayerStats>().GetXimas())
+            {
+                PlayerRight.localScale = new Vector3(0.009999999f, 0.01f, -0.009999999f);
+            }
+            else
+            {
+                PlayerRight.localScale = new Vector3(1f, 1f, -1f);
+            }
         }
     }
 
@@ -370,36 +379,90 @@ public class GameController : MonoBehaviour
 
             if (Pontos.pontosP1 > 1)
             {
+                VitoriaTempo(0);
                 textPlayerWinner.text = "Player 1 Ganhou!";
-                StartCoroutine(FinishGame());
+                StartCoroutine(FinishGame(0));
                 finishGame = true;
             }
             if (Pontos.pontosP2 > 1)
             {
+                VitoriaTempo(1);
                 textPlayerWinner.text = "Player 2 Ganhou!";
-                StartCoroutine(FinishGame());
+                StartCoroutine(FinishGame(1));
                 finishGame = true;
             }
         }
         if (!finishGame)
         {
-            SceneManager.LoadScene(Pontos.cenaAtual);
+            StartCoroutine(ReloadRound());
         }
     }
 
     bool finishGame = false;
+    float tempoAnimacaoDeVitoria;
 
-    IEnumerator FinishGame()
+    [SerializeField] float VitoriaXimas;
+    [SerializeField] float VitoriaNara;
+    void VitoriaTempo(int ganhador)
     {
-        BarraJogador[0].SetActive(false);
-        BarraJogador[1].SetActive(false);
-        ZerarPontos();
-        PanelManager.ChangePanel(1);
+        switch (Pontos.personagem[ganhador])
+        {
+            case 0:
+                tempoAnimacaoDeVitoria = VitoriaNara;
+                break;
+            case 1:
+                tempoAnimacaoDeVitoria = VitoriaXimas;
+                break;
+        }
+    }
+
+    IEnumerator ReloadRound()
+    {
         for (int i = 0; i < player.Length; i++)
         {
             player[i].GetComponent<PlayerController>().EnableMapActionUI();
         }
-        //yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(Pontos.cenaAtual);
+    }
+
+    IEnumerator FinishGame(int ganhador)
+    {
+        for (int i = 0; i < player.Length; i++)
+        {
+            player[i].GetComponent<PlayerController>().EnableMapActionUI();
+        }
+        yield return new WaitForSeconds(2f);
+        if (player[ganhador].GetComponent<PlayerStats>().GetXimas())
+        {
+            player[ganhador].transform.localScale = new Vector3(0.009999999f, 0.01f, 0.009999999f);
+        }
+        else
+        {
+            player[ganhador].transform.localScale = new Vector3(1f, 1f, 1f);
+        }
+        player[ganhador].GetComponent<PlayerAnimator>().Ganhou();
+
+        CameraPrincipal.SetActive(false);
+        CameraVitoria.SetActive(true);
+
+        CameraVitoria.transform.position = player[ganhador].transform.position;
+        Animator animCamera = CameraVitoria.GetComponent<Animator>();
+        animCamera.SetTrigger("Vitoria" + Pontos.personagem[ganhador]);
+
+        BarraJogador[0].SetActive(false);
+        BarraJogador[1].SetActive(false);
+        ZerarPontos();
+
+        UIGame.SetActive(false);
+
+        //PanelManager.ChangePanel(1);
+
+        //yield return new WaitForSeconds(tempoAnimacaoDeVitoria);
+
+        yield return new WaitForSeconds(5f);
+        winnerPanel.SetActive(true);
+        PanelManager.ChangePanel(1);
         ZerarPontos();
         //yield return new WaitForSeconds(2.5f);
         //SceneManager.LoadScene("Menu");

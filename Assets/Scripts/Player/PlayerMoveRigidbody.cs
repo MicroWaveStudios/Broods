@@ -22,6 +22,8 @@ public class PlayerMoveRigidbody : MonoBehaviour
     [SerializeField] bool noChao;
     [SerializeField] bool crouched = false;
 
+    bool ChangeSide = true;
+
     string otherPlayerTag;
 
     public float isPlayer2 = 1;

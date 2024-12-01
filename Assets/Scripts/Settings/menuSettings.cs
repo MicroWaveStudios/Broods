@@ -16,7 +16,7 @@ public class menuSettings : MonoBehaviour
     private bool onVsync;
     private float vSync;
 
-    [Header("Resolução")]
+    [Header("Resoluï¿½ï¿½o")]
     int width;
     int height;
     private int resolucaoAtual_index = 0;
@@ -24,7 +24,7 @@ public class menuSettings : MonoBehaviour
     private List<Resolution> filteredResolutions;
     private float currentRefreshRate;
 
-    [Header("Botões")]
+    [Header("Botï¿½es")]
     [SerializeField] private TMP_Dropdown QualityDropdown;
     [SerializeField] private Toggle FullscreenToggle;
     [SerializeField] private TMP_Dropdown resolutionDropdown;
@@ -33,6 +33,7 @@ public class menuSettings : MonoBehaviour
     private void Start()
     {
         panelsManager = FindObjectOfType<PanelsManager>();
+        panelsManager.GetComponent<PanelsManager>().ChangePanel(0);
 
         resolutions = Screen.resolutions;
         filteredResolutions = new List<Resolution>();
