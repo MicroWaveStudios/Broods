@@ -4174,7 +4174,7 @@ MonoBehaviour:
     FramesContinuar:
     - 0.6
     - 0.8
-    - 0.7
+    - 0.6
     VelocidadeDaAnimacao:
     - 1.3
     - 1
@@ -4260,7 +4260,7 @@ MonoBehaviour:
     Dano: 07000000040000000300000008000000
     OrdemCombo: 030000000300000003000000
     FramesContinuar:
-    - 0.7
+    - 0.4
     - 0.6
     - 0.55
     - 0.6

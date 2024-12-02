@@ -109,6 +109,7 @@ public class XimasSkills : MonoBehaviour
             {
                 scrpRigidbody.GravidadeZero(true);
                 scrpRigidbody.ColisaoZero();
+                scrpRigidbody.SetJumpCount(0);
             }
             else
             {

@@ -314,6 +314,16 @@ public class PlayerMoveRigidbody : MonoBehaviour
         rb.velocity = Vector3.zero;
     }
 
+    public void SetJumpCount(int value)
+    {
+        jumpCount = value;
+    }
+
+    public int GetJumpCount()
+    { 
+        return jumpCount;
+    }
+
     public float GetDirecaoX()
     {
         return directionX;

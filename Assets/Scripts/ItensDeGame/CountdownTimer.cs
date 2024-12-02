@@ -40,7 +40,10 @@ public class CountdownTimer : MonoBehaviour
 
     private IEnumerator CountdownStart()
     {
-        Debug.Log("Comecou");
+        for (int i = 0; i < player.Length; i++)
+        {
+            player[i].GetComponent<PlayerAnimator>().SetIntro(true);
+        }
         isPaused = true;
         EnablePlayerInputs(false);
         for (int i = 0; i < player.Length; i++)
@@ -62,7 +65,10 @@ public class CountdownTimer : MonoBehaviour
         CaiPraPorradaText.text = "CAI PRA PORRADA!";
         yield return new WaitForSeconds(1f);
         CaiPraPorradaText.transform.gameObject.SetActive(false);
-
+        for (int i = 0; i < player.Length; i++)
+        {
+            player[i].GetComponent<PlayerAnimator>().SetIntro(false);
+        }
         EnablePlayerInputs(true);
         isPaused = false;
         podeComecar = false;

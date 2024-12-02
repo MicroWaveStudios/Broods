@@ -22,6 +22,7 @@ public class PlayerAnimator : MonoBehaviour
         anim.SetBool("InCombo", playerCombat.GetInCombo());
         anim.SetBool("InAttack", playerCombat.GetInAttack());
         anim.SetFloat("OrdemCombo", playerCombat.GetAtualOrdemCombo() + 1f);
+        anim.SetFloat("jumpCount", (int)playerMoveRigidbody.GetJumpCount());
     }
 
     public void Ganhou()
@@ -32,6 +33,11 @@ public class PlayerAnimator : MonoBehaviour
     public void Perdeu()
     {
         anim.SetBool("Derrota", true);
+    }
+
+    public void SetIntro(bool value)
+    {
+        anim.SetBool("Intro", value);
     }
 
     public void TriggerAction(string AttackName)
