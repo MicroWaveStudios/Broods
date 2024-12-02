@@ -8,17 +8,12 @@ public class PanelsManager : MonoBehaviour
     [SerializeField] GameObject[] panel;
     [SerializeField] GameObject[] defaultPanelButton;
     int currentPanel;
-
-    private void Start()
-    {
-        //ChangePanel(0);
-    }
-
     public void ChangePanel(int numberPanel)
     {
         panel[currentPanel].SetActive(false);
         currentPanel = numberPanel;
         panel[currentPanel].SetActive(true);
+
         if (defaultPanelButton[currentPanel] != null)
         {
             eventSystemManager.GetComponent<EventSystemManager>().SetCurrentSelectedButton(defaultPanelButton[currentPanel]);
@@ -32,4 +27,8 @@ public class PanelsManager : MonoBehaviour
         eventSystemManager.GetComponent<EventSystemManager>().SetCurrentSelectedButton(defaultPanelButton[currentPanel]);
     }
 
+    public int GetPanel()
+    {
+        return currentPanel;
+    }
 }

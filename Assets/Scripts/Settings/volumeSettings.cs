@@ -19,9 +19,11 @@ public class volumeSettings : MonoBehaviour
 
     [Header("Audios")]
     public AudioMixer audioMixer;
+    [SerializeField] GameObject fundo;
 
     [Header("PanelManager")]
     PanelsManager panelsManager;
+    [SerializeField] GameObject telaInicio;
 
     private void Start()
     {
@@ -91,12 +93,12 @@ public class volumeSettings : MonoBehaviour
             VFX.value != PlayerPrefs.GetFloat("VolumeVFX"))
         {
             //PopUpNaoSalvou.SetActive(true);
-            panelsManager.ChangePanel(6);
+            panelsManager.ChangePanel(7);
         }
         else
         {
             //JanelaConfigs.SetActive(true);
-            panelsManager.ChangePanel(1);
+            panelsManager.ChangePanel(2);
         }
     }
 
@@ -147,6 +149,18 @@ public class volumeSettings : MonoBehaviour
         if (VFX.value == -80)
         {
             VFXText.text = "0";
+        }
+    }
+
+    private void Update()
+    {
+        if (telaInicio.activeInHierarchy)
+        {
+            fundo.SetActive(false);
+        }
+        else
+        {
+            fundo.SetActive(true);
         }
     }
 }

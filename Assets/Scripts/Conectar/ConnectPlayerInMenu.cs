@@ -25,6 +25,8 @@ public class ConnectPlayerInMenu : MonoBehaviour
     [SerializeField] GameObject[] EnterMessage;
     [SerializeField] GameObject ContinueButton;
     [SerializeField] GameObject BackButton;
+    [SerializeField] AudioSource conectar;
+    [SerializeField] AudioSource desconectar;
 
     [Header("Characters Screen")]
     [SerializeField] GameObject[] player;
@@ -48,20 +50,26 @@ public class ConnectPlayerInMenu : MonoBehaviour
     public void ConnectDisconnectPlayer(GameObject Player, int playerID, string controlScheme, bool value)
     {
         DesactivePlayerText(playerID);
+
         if (!value)
         {
+            desconectar.Play();
             player[playerID] = null;
             playerInScene--;
             ContinueButton.SetActive(value);
             eventSystemManager.GetComponent<EventSystemManager>().SetCurrentSelectedButton(BackButton);
+
             if (controlScheme == "KeyboardLeft" || controlScheme == "KeyboardRight")
             {
                 playerInScene = 0;
             }
+
             Destroy(Player);
         }
+
         EnterMessage[playerID].SetActive(!value);
         PlayerMenu[playerID].SetActive(value);
+
         if (controlScheme == "Gamepad")
         {
             GamepadMenu[playerID].SetActive(value);
@@ -82,6 +90,8 @@ public class ConnectPlayerInMenu : MonoBehaviour
     public void JoinPlayer(GameObject spawnedPlayer)
     {
         int playerNumber;
+        conectar.Play();
+
         if (player[0] == null)
         {
             playerNumber = 0;

@@ -156,12 +156,12 @@ public class menuSettings : MonoBehaviour
             resolucaoAtual_index != PlayerPrefs.GetInt("resolution"))
         {
             //PopUpNaoSalvouGraficos.SetActive(true);
-            panelsManager.ChangePanel(3);
+            panelsManager.ChangePanel(4);
         }
         else
         {
             //PopUpConfigs.SetActive(true);
-            panelsManager.ChangePanel(1);
+            panelsManager.ChangePanel(2);
         }
     }
 
