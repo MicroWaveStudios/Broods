@@ -303,10 +303,16 @@ public class GameController : MonoBehaviour
         }
     }
 
+    [SerializeField] float midY;
     void MidPosition()
     {
         distance = Vector3.Distance(PlayerLeft.position, PlayerRight.position)/2f;
-        mid.position = new Vector3(PlayerLeft.position.x + distance, mid.position.y, mid.position.z);
+        midY = player[0].transform.position.y + player[1].transform.position.y /2f + 3.5f;
+        if (midY > 2)
+        {
+            midY = 2.01f;
+        }
+        mid.position = new Vector3(PlayerLeft.position.x + distance, midY, mid.position.z);
     }
 
     public void Pause(GameObject newFocusedPlayer, bool value)
@@ -558,5 +564,10 @@ public class GameController : MonoBehaviour
         Pontos.pontosP2 = 0;
 
         SceneManager.LoadScene(Pontos.cenaAtual);
+    }
+
+    public float GetDistance()
+    {
+        return distance;
     }
 }
