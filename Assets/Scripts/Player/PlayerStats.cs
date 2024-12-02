@@ -8,7 +8,7 @@ public class PlayerStats : MonoBehaviour
 {
     [SerializeField] public float life;
     [SerializeField] public float maxLife;
-    float damageMultiplier = 1;
+    float damageMultiplier = 0.5f;
     [SerializeField] public float maxEnergy;
     [SerializeField] public float energy;
     PlayerMoveRigidbody playerMoveRigidbody;

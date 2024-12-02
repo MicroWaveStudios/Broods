@@ -19,6 +19,7 @@ public class NaraSkills : MonoBehaviour
     float timer;
     
     bool InMeiaLua = false;
+    bool transcendido = false;
     Vector3 posicaoRaycast;
     Vector3 posicaoRaycastPlayer2;
 
@@ -98,7 +99,11 @@ public class NaraSkills : MonoBehaviour
             Debug.DrawLine(posicaoRaycast, outroPlayer.transform.position, Color.red);
         }
 
-
+        if (tarticosContagem >= 5 && transcendido == false)
+        {
+            transcendido = true;
+            BrilharTatuagem();
+        }
 
         posicaoRaycast = new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z);
     }
@@ -295,7 +300,7 @@ public class NaraSkills : MonoBehaviour
 
         tarticosContagem++;
 
-        scrpPlayerStats.SomarDamageMultiplier(tarticosContagem / 2);
+        scrpPlayerStats.SomarDamageMultiplier(0.3f * tarticosContagem);
 
         //danoLaser += tarticosContagem;
 
@@ -397,19 +402,16 @@ public class NaraSkills : MonoBehaviour
 
     public void BrilharTatuagem()
     {
-        //for (float i = 0; i < 1.2f; i += 0.1f)
-        //{
         tatuagens[numVariacao].SetColor("_Color1", corBrilho[numVariacao] * 19f);
-        //}
-
     }
 
     public void ApagarTatuagem()
     {
-        //for (float i = 0; i > 0; i -= 0.1f)
-        //{
-        tatuagens[numVariacao].SetColor("_Color1", Color.white * 1f);
-        //}
+        if (transcendido == false)
+        {
+            tatuagens[numVariacao].SetColor("_Color1", Color.white * 1f);
+        }
+        
     }
 }
 
