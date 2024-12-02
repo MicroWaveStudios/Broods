@@ -167,6 +167,11 @@ public class PlayerMoveRigidbody : MonoBehaviour
         }
     }
 
+    public void Morrer()
+    {
+        rb.AddForce(Vector3.right * isPlayer2 * 100f);
+    }
+
     public bool GetIsGrounded()
     {
         return noChao;

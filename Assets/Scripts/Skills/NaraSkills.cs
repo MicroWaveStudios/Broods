@@ -210,20 +210,17 @@ public class NaraSkills : MonoBehaviour
 
         attackGameObject.GetComponent<Damage>().SetAttack(20f, 3, 0f, 0f, 0f, false, 0f, "Laser");
 
-        playerCombat.SetInCombo(true);
-
         Vector3 NovaPosicaoOutroPlayer = outroPlayer.transform.position;
 
         playerCombat.SetInAttack(true);
 
         playerAnimator.TriggerAction("Laser");
 
-        yield return new WaitForSeconds(0.2f);     
+        yield return new WaitForSeconds(0f);     
 
         RaycastHit hit;
 
-        playerCombat.ResetCombo();
-        //StartCoroutine(scrpPlayerStats.ResetScripts(0f));
+        StartCoroutine(scrpPlayerStats.ResetScripts(0f));
 
         vfxLaser.Play();
 
@@ -296,7 +293,7 @@ public class NaraSkills : MonoBehaviour
 
         playerAnimator.TriggerAction("Tartico");
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.5f);
         playerCombat.SetInAttack(false);
         yield return ResetCombo();
         yield break;
