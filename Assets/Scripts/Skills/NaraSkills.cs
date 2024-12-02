@@ -37,6 +37,10 @@ public class NaraSkills : MonoBehaviour
         public VisualEffect visualEffectDoAtaque;
     }
 
+    [SerializeField] Material[] tatuagens;
+    [SerializeField] Color[] corBrilho;
+    int numVariacao;
+
     [Header("Skill Laser")]
     [SerializeField] float custoLaser;
     [SerializeField] float danoLaser;
@@ -68,6 +72,12 @@ public class NaraSkills : MonoBehaviour
         objLaser = transform.GetChild(1).gameObject;
         vfxLaser = objLaser.GetComponent<VisualEffect>();
         scrpPlayerStats = GetComponent<PlayerStats>();
+    }
+
+    private void Start()
+    {
+        numVariacao = Pontos.variante[GetComponent<PlayerController>().GetPlayerID()];
+        ApagarTatuagem();
     }
 
     private void Update()
@@ -216,6 +226,8 @@ public class NaraSkills : MonoBehaviour
 
         playerAnimator.TriggerAction("Laser");
 
+        BrilharTatuagem();
+
         yield return new WaitForSeconds(0f);     
 
         RaycastHit hit;
@@ -293,6 +305,8 @@ public class NaraSkills : MonoBehaviour
 
         playerAnimator.TriggerAction("Tartico");
 
+        BrilharTatuagem();
+
         yield return new WaitForSeconds(0.5f);
         playerCombat.SetInAttack(false);
         yield return ResetCombo();
@@ -315,6 +329,8 @@ public class NaraSkills : MonoBehaviour
 
         playerAnimator.TriggerAction("Kaboom");
 
+        BrilharTatuagem();
+
         yield return new WaitForSeconds(0.3f);
 
         vfxExplosao.Play();
@@ -334,6 +350,7 @@ public class NaraSkills : MonoBehaviour
         ordemLaser = 0;
         ordemTarticos = 0;     
         timer = 0f;
+        ApagarTatuagem();
         playerCombat.SetInMeiaLua(false);
         playerCombat.SetInAttack(false);
         actualNumber = -1;
@@ -377,4 +394,22 @@ public class NaraSkills : MonoBehaviour
     {
         return InMeiaLua;
     }
+
+    public void BrilharTatuagem()
+    {
+        //for (float i = 0; i < 1.2f; i += 0.1f)
+        //{
+        tatuagens[numVariacao].SetColor("_Color1", corBrilho[numVariacao] * 19f);
+        //}
+
+    }
+
+    public void ApagarTatuagem()
+    {
+        //for (float i = 0; i > 0; i -= 0.1f)
+        //{
+        tatuagens[numVariacao].SetColor("_Color1", Color.white * 1f);
+        //}
+    }
 }
+

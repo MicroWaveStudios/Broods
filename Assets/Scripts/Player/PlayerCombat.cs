@@ -157,8 +157,9 @@ public class PlayerCombat : MonoBehaviour
                 _InAttack = true;
                 playerAnimator.TriggerAction(_AttackList[ListaDeAtaqueAtual].NomeDoAtaque);
 
-                if (ListaDeAtaqueAtual == 0 && !playerStats.GetXimas() && !playerMove.GetCrouched())
+                if (ListaDeAtaqueAtual == 0 && !playerStats.GetXimas() && !playerMove.GetCrouched() && !playerStats.GetInAction())
                 {
+                    NaraSkills.BrilharTatuagem();
                     laserAtaqueBaixo.Play();
                 }
                 
@@ -274,6 +275,7 @@ public class PlayerCombat : MonoBehaviour
         atacouBaixo = false;
         atacouPesado = false;
         NomeAtaqueAtual = null;
+        NaraSkills.ApagarTatuagem();
         //atacouAgachado = false;
         ListaDeAtaqueAtual = -1;
         attackGameObject.GetComponent<Damage>().SetAttack(0, 0, 0, 0, 0, false, 0, null);

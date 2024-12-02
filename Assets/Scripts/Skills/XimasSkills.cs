@@ -27,6 +27,7 @@ public class XimasSkills : MonoBehaviour
     [SerializeField] VisualEffect vfxCorte1;
     [SerializeField] VisualEffect vfxCorte2;
     [SerializeField] VisualEffect vfxBrilhoOlho;
+    [SerializeField] VisualEffect vfxFumacaCabeca;
 
     [Header("Skill Dash com Corte")]
     [SerializeField] float custoDash;
@@ -56,6 +57,11 @@ public class XimasSkills : MonoBehaviour
         //objLaser = transform.GetChild(1).gameObject;
         //vfxLaser = objLaser.GetComponent<VisualEffect>();
         scrpPlayerStats = this.gameObject.GetComponent<PlayerStats>();
+    }
+
+    private void Start()
+    {
+        vfxFumacaCabeca.Play();
     }
 
     private void Update()
