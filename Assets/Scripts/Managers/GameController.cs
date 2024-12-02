@@ -262,7 +262,9 @@ public class GameController : MonoBehaviour
 
     void PlayerEnergy()
     {
+        energyBarPlayer1.maxValue = player[0].GetComponent<PlayerStats>().maxEnergy;
         energyBarPlayer1.value = player[0].GetComponent<PlayerStats>().energy;
+        energyBarPlayer2.maxValue = player[1].GetComponent<PlayerStats>().maxEnergy;
         energyBarPlayer2.value = player[1].GetComponent<PlayerStats>().energy;
     }
 

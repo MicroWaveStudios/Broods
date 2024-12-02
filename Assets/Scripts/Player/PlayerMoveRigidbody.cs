@@ -189,7 +189,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
 
         //if (isAtaqueMedioXimas == false)
         //{
-            rb.AddForce(Vector3.right * MoverAoAtacar_ * 2 * isPlayer2);
+        rb.AddForce(Vector3.right * MoverAoAtacar_ * 2 * isPlayer2);
         //}
         //else
         //{

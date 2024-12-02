@@ -21,7 +21,7 @@ public class PlayerCombat : MonoBehaviour
     bool InParry = false;
     bool InMeiaLua = false;
     int actualNumber = 0;
-    float timer = 0f;
+    float tempoDecorrido = 0f;
 
     int ListaDeAtaqueAtual = -1;
     //int OrdemCombo;
@@ -225,26 +225,21 @@ public class PlayerCombat : MonoBehaviour
     {
         float tempoRestante = 0f;
 
-        while (timer < _AttackList[ListaDeAtaqueAtual].FramesContinuar[ordem] && !playerStats.GetInAction() /*&& ordem < _AttackList[ListaDeAtaqueAtual].OrdemCombo.Length*/) 
+        while (tempoDecorrido < _AttackList[ListaDeAtaqueAtual].FramesContinuar[ordem] && !playerStats.GetInAction() /*&& ordem < _AttackList[ListaDeAtaqueAtual].OrdemCombo.Length*/) 
         {
-            timer += 1 * Time.deltaTime;
+            tempoDecorrido += 1 * Time.deltaTime;
 
             if(ordem >= _AttackList[ListaDeAtaqueAtual].OrdemCombo.Length)
             {
                 goto skip;
             }
 
-            tempoRestante = _AttackList[ListaDeAtaqueAtual].FramesContinuar[ordem] - timer;
-
-            if (tempoRestante <= 0.01f)
-            {
-                //Debug.Log("Continuar");
-            }
+            tempoRestante = _AttackList[ListaDeAtaqueAtual].FramesContinuar[ordem] - tempoDecorrido;
 
             if (actualNumber == _AttackList[ListaDeAtaqueAtual].OrdemCombo[ordem] && tempoRestante <= 0.1f)
             {
                 ordem++;
-                timer = 0;
+                tempoDecorrido = 0;
                 StartCoroutine(Combo());
                 yield break;
             }
@@ -281,9 +276,10 @@ public class PlayerCombat : MonoBehaviour
         NomeAtaqueAtual = null;
         //atacouAgachado = false;
         ListaDeAtaqueAtual = -1;
+        attackGameObject.GetComponent<Damage>().SetAttack(0, 0, 0, 0, 0, false, 0, null);
         ordem = 0;
         //OrdemCombo = -1;
-        timer = 0f;
+        tempoDecorrido = 0f;
         actualNumber = -1;
         yield return new WaitForSeconds(0.3f);
         _InAttack = false;

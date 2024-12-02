@@ -48,6 +48,10 @@ public class LaserSeguir : MonoBehaviour
             //                             objSeguir.transform.position.y, 
             //                             objSeguir.transform.position.z);
 
+            if(outroPlayer.GetComponent<PlayerStats>().GetXimas() == true)
+            {
+                objSeguir.transform.position = new Vector3(objSeguir.transform.position.x, objSeguir.transform.position.y + 1.3f, objSeguir.transform.position.z);
+            }
 
             transform.LookAt(objSeguir.transform.position);
         }

@@ -85,10 +85,8 @@ public class XimasSkills : MonoBehaviour
 
         if (playerCombat.GetNomeAtaqueAtual() == "AtaqueMedio")
         {
-            Debug.Log("ATAQUE MÉDIO");
             if (playerCombat.GetOrdemCombo() < 3 && playerCombat.GetOrdemCombo() != 0)
             {
-                Debug.Log("ORDEM DO COMBO CORRETA");
                 scrpRigidbody.GravidadeZero(false);
                 //outroPlayer.GetComponent<PlayerMoveRigidbody>().TravarNoAr();
                 scrpRigidbody.ColisaoZero();
@@ -103,14 +101,6 @@ public class XimasSkills : MonoBehaviour
                 trava = true;
             }
         }
-        //else
-        //{
-        //    Debug.Log("NÃO É ATAQUE MÉDIO");
-        //    scrpRigidbody.GravidadeNormal();
-        //    outroPlayer.GetComponent<PlayerMoveRigidbody>().GravidadeNormal();
-        //    scrpRigidbody.ColisaoNormal();
-        //    trava = false;
-        //}
 
         if (playerCombat.GetNomeAtaqueAtual() == "AtaqueFraco")
         {
@@ -132,19 +122,6 @@ public class XimasSkills : MonoBehaviour
             scrpRigidbody.GravidadeNormal();
         }
 
-        //if (playerCombat.GetNomeAtaqueAtual() == "AtaqueForte" && playerCombat.GetInCombo() == true)
-        //{
-        //    if (playerCombat.GetOrdemCombo() == 3 && trava == false)
-        //    {
-        //        vfxCorte.Play();
-        //        trava = true;
-        //    }
-        //}
-        //else
-        //{
-        //    trava = false;
-        //}
-
     }
 
     public void PlayVfxCorte()
@@ -159,25 +136,26 @@ public class XimasSkills : MonoBehaviour
 
     public void MeiaLuaStart(InputAction.CallbackContext context)
     {
-        if (!InMeiaLua)
+        if (!InMeiaLua && context.started)
         {
             StartCoroutine(ConfirmacaoSkill(0.2f));
         }        
     }
     public void MeiaLuaEsquerda(InputAction.CallbackContext context)
     {
-        if (context.ReadValue<Vector2>().x * scrpRigidbody.isPlayer2 < 0)
+        if (context.ReadValue<Vector2>().x * scrpRigidbody.isPlayer2 < 0 && context.started)
             StartCoroutine(ChangeActualNumber(1));
     }
 
     public void MeiaLuaDireita(InputAction.CallbackContext context)
     {
-        if (context.ReadValue<Vector2>().x * scrpRigidbody.isPlayer2 > 0)
+        if (context.ReadValue<Vector2>().x * scrpRigidbody.isPlayer2 > 0 && context.started)
             StartCoroutine(ChangeActualNumber(2));
     }
     public void MeiaLuaAtaqueLeve(InputAction.CallbackContext context)
     {
-        StartCoroutine(ChangeActualNumber(3));
+        if (context.started)
+            StartCoroutine(ChangeActualNumber(3));
     }
 
     public void PoderMarretada(InputAction.CallbackContext context)
@@ -261,6 +239,10 @@ public class XimasSkills : MonoBehaviour
             yield break;
         }
 
+        vfxExplosaoMate.Play();
+
+        yield return new WaitForSeconds(0.3f);
+
         playerCombat.SetInAttack(true);
 
         transform.position = posicaoTpDash;
@@ -272,10 +254,8 @@ public class XimasSkills : MonoBehaviour
 
         StartCoroutine(scrpPlayerStats.ResetScripts(0.5f));
 
-        //vfxLaser.Play();
-
+        
         scrpPlayerStats.UsouSkill(custoDash);
-
 
         yield return new WaitForSeconds(1f);
 
