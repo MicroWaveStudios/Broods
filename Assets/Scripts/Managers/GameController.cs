@@ -568,6 +568,20 @@ public class GameController : MonoBehaviour
         SceneManager.LoadScene(Pontos.cenaAtual);
     }
 
+    public GameObject GetPlayer(int index)
+    {
+        return player[index];
+    }
+
+    public Transform GetPlayerLeft()
+    { 
+        return PlayerLeft;
+    }
+    public Transform GetPlayerRight()
+    {
+        return PlayerRight;
+    }
+
     public float GetDistance()
     {
         return distance;
