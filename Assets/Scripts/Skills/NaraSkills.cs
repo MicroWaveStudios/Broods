@@ -210,6 +210,8 @@ public class NaraSkills : MonoBehaviour
 
         attackGameObject.GetComponent<Damage>().SetAttack(20f, 3, 0f, 0f, 0f, false, 0f, "Laser");
 
+        playerCombat.SetInCombo(true);
+
         Vector3 NovaPosicaoOutroPlayer = outroPlayer.transform.position;
 
         playerCombat.SetInAttack(true);
@@ -220,7 +222,8 @@ public class NaraSkills : MonoBehaviour
 
         RaycastHit hit;
 
-        StartCoroutine(scrpPlayerStats.ResetScripts(0.5f));
+        playerCombat.ResetCombo();
+        StartCoroutine(scrpPlayerStats.ResetScripts(0.2f));
 
         vfxLaser.Play();
 
@@ -252,7 +255,7 @@ public class NaraSkills : MonoBehaviour
         }
         else
         {
-            //Debug.Log("Não foi");
+            //Debug.Log("Nï¿½o foi");
         }
 
         yield return new WaitForSeconds(1f);

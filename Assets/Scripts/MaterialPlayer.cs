@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MaterialPlayer : MonoBehaviour
@@ -9,15 +10,27 @@ public class MaterialPlayer : MonoBehaviour
     {
         public string nome;
         public Material[] material;
-        //[Header("Tártico")]
-        //public Material[] materials;
     }
 
+    [System.Serializable]
+    struct ListaMaterialTarticos
+    {
+        public Material[] material;
+    }
 
-    [Header("Tártico")]
-    [SerializeField] GameObject[] Tarticos;
-    [SerializeField] Material[] MaterialTarticos;
+    [System.Serializable]
+    struct ListaTarticosGame
+    {
+        public GameObject[] material;
+    }
 
+    [Header("Tárticos da Intro")]
+    [SerializeField] GameObject[] TarticoIntro;
+
+    [Header("Tárticos do Game")]
+    [SerializeField] List<ListaTarticosGame> ListaTarticos = new List<ListaTarticosGame>();
+
+    [SerializeField] List<ListaMaterialTarticos> VarianteTartico = new List<ListaMaterialTarticos>();
     [SerializeField] List<ListaMaterial> VarianteDaSkin = new List<ListaMaterial>();
 
     [SerializeField] GameObject[] PartesDoCorpo;
@@ -30,6 +43,7 @@ public class MaterialPlayer : MonoBehaviour
     [SerializeField] int materialOutroPlayer = -1;
 
     [SerializeField] bool selecaoPersonagem;
+    [SerializeField] bool hasTartico;
 
     private void Start()
     {
@@ -76,13 +90,20 @@ public class MaterialPlayer : MonoBehaviour
             PartesDoCorpo[i].GetComponent<Renderer>().material = VarianteDaSkin[skin].material[i];
         }
 
-        //if (MaterialTarticos != null && Tarticos[0] != null)
-        //{
-        //    for (int i = 0; i < Tarticos.Length; i++)
-        //    {
-        //        Tarticos[i].GetComponent<Renderer>().material = MaterialTarticos[skin];
-        //    }
-        //}
+        if (hasTartico)
+        {
+            for (int i = 0; i < TarticoIntro.Length; i++)
+            {
+                TarticoIntro[i].GetComponent<Renderer>().materials = VarianteTartico[skin].material;
+            }
+            for (int i = 0; i < ListaTarticos.Count; i++)
+            {
+                for (int x = 0; x < ListaTarticos[i].material.Length; x++)
+                {
+                    ListaTarticos[i].material[x].GetComponent<Renderer>().material = VarianteTartico[skin].material[x];
+                }
+            }
+        }
     }
 
     #region Void's Get/Set
