@@ -4499,7 +4499,7 @@ MonoBehaviour:
     - {fileID: 2100000, guid: 073b3f2324942f1439ef02534199e52f, type: 2}
     - {fileID: 2100000, guid: 54a7dde8cdd989042b25f09bdfd0416a, type: 2}
     - {fileID: 2100000, guid: c98c398aa7be0a040a9d0674042ec890, type: 2}
-    - {fileID: 2100000, guid: b633f305a8311d14d960d4aad43d1a58, type: 2}
+    - {fileID: 2100000, guid: 7d7636a131d8c2348aea97e1a0c6633a, type: 2}
     - {fileID: 2100000, guid: b633f305a8311d14d960d4aad43d1a58, type: 2}
     - {fileID: 2100000, guid: b633f305a8311d14d960d4aad43d1a58, type: 2}
   - nome: Simas
@@ -4528,7 +4528,7 @@ MonoBehaviour:
     - {fileID: 2100000, guid: 72940bcf8793f4a4a8a2e26ceae60ee2, type: 2}
     - {fileID: 2100000, guid: 72940bcf8793f4a4a8a2e26ceae60ee2, type: 2}
     - {fileID: 2100000, guid: 202d64e9778c95d4aa6333fff2e6eee5, type: 2}
-    - {fileID: 2100000, guid: ff1303b8371cf3d49b0d4ecfda6570c8, type: 2}
+    - {fileID: 2100000, guid: 35ff26a0e1a5b9c44b3ddc4063e616bb, type: 2}
     - {fileID: 2100000, guid: ff1303b8371cf3d49b0d4ecfda6570c8, type: 2}
     - {fileID: 2100000, guid: ff1303b8371cf3d49b0d4ecfda6570c8, type: 2}
   PartesDoCorpo:
@@ -10811,7 +10811,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b633f305a8311d14d960d4aad43d1a58, type: 2}
+  - {fileID: 2100000, guid: 7d7636a131d8c2348aea97e1a0c6633a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

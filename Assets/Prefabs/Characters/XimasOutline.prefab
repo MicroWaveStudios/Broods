@@ -2788,6 +2788,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca8049ff7646d72458a94f906cb11d7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colisaoCone: {fileID: 0}
   directionX: 0
   scrSons: {fileID: 0}
   objFumaca: {fileID: 2428397226556226383}
@@ -2812,6 +2813,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInput: {fileID: 8744644016923628140}
+  inputDeviceConfigurator: {fileID: 0}
 --- !u!114 &2752906156958592084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2855,6 +2857,7 @@ MonoBehaviour:
     - 0
     MoveUp:
     - 0
+    Sons: []
   - NomeDoAtaque: AtaqueFraco
     AtaqueRange: 010000000100000001000000
     Dano: 000000000000000000000000
@@ -2887,6 +2890,7 @@ MonoBehaviour:
     - 0
     - 0
     - 150
+    Sons: []
   - NomeDoAtaque: AtaqueMedio
     AtaqueRange: 0200000002000000020000000200000002000000
     Dano: 0f0000000f0000000f0000000f0000000f000000
@@ -2933,6 +2937,7 @@ MonoBehaviour:
     - 150
     - 150
     - 0
+    Sons: []
   - NomeDoAtaque: AtaqueForte
     AtaqueRange: 02000000020000000200000002000000
     Dano: 0f0000000f0000000f0000000f000000
@@ -2972,6 +2977,7 @@ MonoBehaviour:
     - 0
     - 0
     - 0
+    Sons: []
   - NomeDoAtaque: AtaqueBaixoAgachado
     AtaqueRange: 00000000
     Dano: 00000000
@@ -2990,6 +2996,7 @@ MonoBehaviour:
     - 0
     MoveUp:
     - 0
+    Sons: []
   FrameAtual: 0
 --- !u!114 &1781845846367271014
 MonoBehaviour:
@@ -3017,7 +3024,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 0
   maxLife: 100
-  damageMultiplier: 0
   maxEnergy: 15
   energy: 0
   defendendo: 0
@@ -3041,7 +3047,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackGameObject: {fileID: 1899415472055321106}
   vfxEnergiaMate: {fileID: 5379745173210982897}
-  vfxCorte: {fileID: 7292148528990412385}
+  vfxCorte1: {fileID: 0}
+  vfxCorte2: {fileID: 0}
+  vfxBrilhoOlho: {fileID: 0}
   custoDash: 10
   danoDash: 20
   ordemComboDash: 0200000003000000
@@ -8453,7 +8461,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b633f305a8311d14d960d4aad43d1a58, type: 2}
+  - {fileID: 2100000, guid: 7d7636a131d8c2348aea97e1a0c6633a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

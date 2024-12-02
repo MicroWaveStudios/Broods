@@ -13,6 +13,11 @@ public class MaterialPlayer : MonoBehaviour
         //public Material[] materials;
     }
 
+
+    [Header("Tártico")]
+    [SerializeField] GameObject[] Tarticos;
+    [SerializeField] Material[] MaterialTarticos;
+
     [SerializeField] List<ListaMaterial> VarianteDaSkin = new List<ListaMaterial>();
 
     [SerializeField] GameObject[] PartesDoCorpo;
@@ -70,6 +75,14 @@ public class MaterialPlayer : MonoBehaviour
         {
             PartesDoCorpo[i].GetComponent<Renderer>().material = VarianteDaSkin[skin].material[i];
         }
+
+        //if (MaterialTarticos != null && Tarticos[0] != null)
+        //{
+        //    for (int i = 0; i < Tarticos.Length; i++)
+        //    {
+        //        Tarticos[i].GetComponent<Renderer>().material = MaterialTarticos[skin];
+        //    }
+        //}
     }
 
     #region Void's Get/Set
