@@ -7305,13 +7305,13 @@ MonoBehaviour:
     - 24
     - 24
     MoveDamage:
-    - 2
-    - 3
-    - -1.2
+    - 0
+    - 120
+    - -25
     MoveDamageOtherPlayer:
     - 50
     - 100
-    - -50
+    - -25
     MoveUpOtherPlayer:
     - 0
     - 0
@@ -7487,8 +7487,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   life: 0
   maxLife: 200
-  damageMultiplier: 0
-  maxEnergy: 50
+  maxEnergy: 150
   energy: 0
   defendendo: 0
   defendeu: 0
@@ -7510,7 +7509,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackGameObject: {fileID: 5825252823125675279}
-  custoLaser: 10
+  custoLaser: 60
   danoLaser: 7
   ordemComboLaser: 0200000003000000
   tarticos:
@@ -7519,10 +7518,10 @@ MonoBehaviour:
   - {fileID: 1432033910219361331}
   - {fileID: 5062114023866469586}
   - {fileID: 2682009038027207675}
-  custoTartico: 20
+  custoTartico: 75
   ordemComboTarticos: 0100000003000000
   tarticosContagem: 0
-  custoExplosao: 30
+  custoExplosao: 150
   danoExplosao: 15
   rangeExplosao: 1
   vfxExplosao: {fileID: 743939760015915183}

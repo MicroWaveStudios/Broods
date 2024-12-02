@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.VFX;
@@ -94,25 +95,26 @@ public class NaraSkills : MonoBehaviour
 
     public void MeiaLuaStart(InputAction.CallbackContext context)
     {
-        if (!playerCombat.GetInMeiaLua())
+        if (!playerCombat.GetInMeiaLua() && context.started)
         {
             StartCoroutine(ConfirmacaoSkill(0.2f, 10));
         }
     }
     public void MeiaLuaEsquerda(InputAction.CallbackContext context)
     {
-        if (context.ReadValue<Vector2>().x * scrpRigidbody.isPlayer2 < 0)
+        if (context.ReadValue<Vector2>().x * scrpRigidbody.isPlayer2 < 0 && context.started)
             StartCoroutine(ChangeActualNumber(1));
     }
 
     public void MeiaLuaDireita(InputAction.CallbackContext context)
     {
-        if (context.ReadValue<Vector2>().x * scrpRigidbody.isPlayer2 > 0)
+        if (context.ReadValue<Vector2>().x * scrpRigidbody.isPlayer2 > 0 && context.started)
             StartCoroutine(ChangeActualNumber(2));
     }
     public void MeiaLuaAtaqueLeve(InputAction.CallbackContext context)
     {
-        StartCoroutine(ChangeActualNumber(3));
+        if(context.started)
+            StartCoroutine(ChangeActualNumber(3));
     }
 
     public void PoderExplosao(InputAction.CallbackContext context)
@@ -281,7 +283,9 @@ public class NaraSkills : MonoBehaviour
 
         tarticosContagem++;
 
-        danoLaser += tarticosContagem;
+        scrpPlayerStats.SomarDamageMultiplier(tarticosContagem / 2);
+
+        //danoLaser += tarticosContagem;
 
         //Debug.Log(danoLaser);
 

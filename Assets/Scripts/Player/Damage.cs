@@ -36,36 +36,40 @@ public class Damage : MonoBehaviour
 
     private void OnDisable()
     {
-        bool zerarVelocidade = false;
-
-        if (playerCombat.GetNomeAtaqueAtual() == "AtaqueFraco")
+        if (playerStats.GetXimas() == true)
         {
-            if (playerCombat.GetOrdemCombo() == 2)
+            bool zerarVelocidade = false;
+
+            if (playerCombat.GetNomeAtaqueAtual() == "AtaqueFraco")
             {
-                zerarVelocidade = true;
+                if (playerCombat.GetOrdemCombo() == 2)
+                {
+                    zerarVelocidade = true;
+                }
+            }
+
+            if (playerCombat.GetNomeAtaqueAtual() == "AtaqueForte")
+            {
+                if (playerCombat.GetOrdemCombo() >= 2)
+                {
+                    zerarVelocidade = true;
+                }
+            }
+
+            //if (playerCombat.GetNomeAtaqueAtual() == "AtaqueMedio")
+            //{
+            //    if (playerCombat.GetOrdemCombo() < 3 && playerCombat.GetOrdemCombo() != 0)
+            //    {
+            //        zerarVelocidade = true;
+            //    }
+            //}
+
+            if (zerarVelocidade == true)
+            {
+                rbPlayer.ZerarVelocidade();
             }
         }
-
-        if (playerCombat.GetNomeAtaqueAtual() == "AtaqueForte")
-        {
-            if (playerCombat.GetOrdemCombo() >= 2)
-            {
-                zerarVelocidade = true;
-            }
-        }
-
-        if (playerCombat.GetNomeAtaqueAtual() == "AtaqueMedio")
-        {
-            if (playerCombat.GetOrdemCombo() < 3 && playerCombat.GetOrdemCombo() != 0)
-            {
-                zerarVelocidade = true;
-            }
-        }
-
-        if (zerarVelocidade == true)
-        {
-            rbPlayer.ZerarVelocidade();
-        }
+        
     }
 
     private void OnEnable()
@@ -113,10 +117,10 @@ public class Damage : MonoBehaviour
         somAtaque = som;
     }
 
-    public void SetDamage(float newDamage)
-    {
-        damage = newDamage;
-    }
+    //public void SetDamage(float newDamage)
+    //{
+    //    damage = newDamage;
+    //}
 
     private void OnTriggerEnter(Collider collision)
     {
@@ -140,8 +144,8 @@ public class Damage : MonoBehaviour
 
             //Debug.Log(moveDamageOtherPlayer);
 
-            otherPlayerStats.SufferDamage(damage, attackRange, moveDamage, moveDamageOtherPlayer, moveUpOtherPlayer, this.transform.parent.gameObject);
-            otherPlayerStats.AddEnergy(damage / 2);
+            otherPlayerStats.SufferDamage(damage * playerStats.GetDamageMultiplier(), attackRange, moveDamage, moveDamageOtherPlayer, moveUpOtherPlayer, this.transform.parent.gameObject);
+            otherPlayerStats.AddEnergy((damage * playerStats.GetDamageMultiplier()) / 2);
 
             scrSons.TocarSom(somAtaque);
         }

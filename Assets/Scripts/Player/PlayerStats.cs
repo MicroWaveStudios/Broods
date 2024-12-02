@@ -8,7 +8,7 @@ public class PlayerStats : MonoBehaviour
 {
     [SerializeField] public float life;
     [SerializeField] public float maxLife;
-    [SerializeField] float damageMultiplier;
+    float damageMultiplier = 1;
     [SerializeField] public float maxEnergy;
     [SerializeField] public float energy;
     PlayerMoveRigidbody playerMoveRigidbody;
@@ -90,6 +90,7 @@ public class PlayerStats : MonoBehaviour
 
     public void CounterParry(GameObject otherPlayer)
     {
+        AddEnergy(9999);
         playerAnimator.TriggerAction("PerryContinuacao");
         otherPlayer.GetComponent<PlayerStats>().SufferDamage(7, 3, 10, 10, 0, null);
     }
@@ -183,7 +184,15 @@ public class PlayerStats : MonoBehaviour
 
     public void UsouSkill(float custoSkill)
     {
+        //float oldEnergy = energy;
+
         energy -= custoSkill;
+
+        //if (energy < 0)
+        //{
+        //    energy = oldEnergy;
+        //}
+
     }
 
     void Regen()
@@ -221,5 +230,14 @@ public class PlayerStats : MonoBehaviour
             return false;
         }
 
+    }
+
+    public float GetDamageMultiplier()
+    {
+        return damageMultiplier;
+    }
+    public void SomarDamageMultiplier(float NewDamageMultiplier)
+    {
+        damageMultiplier += NewDamageMultiplier;
     }
 }

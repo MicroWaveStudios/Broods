@@ -3463,9 +3463,9 @@ MonoBehaviour:
     OrdemCombo: 01000000010000000100000001000000
     FramesContinuar:
     - 0.7
-    - 0.5
-    - 0.5
-    - 0.6
+    - 0.4
+    - 0.4
+    - 0.4
     - 0.4
     VelocidadeDaAnimacao:
     - 1
@@ -3481,9 +3481,9 @@ MonoBehaviour:
     - 24
     MoveDamage:
     - 0
-    - 0
-    - 0
-    - 0
+    - 500
+    - 500
+    - 500
     - 0
     MoveDamageOtherPlayer:
     - 0
@@ -3500,8 +3500,8 @@ MonoBehaviour:
     MoveUp:
     - 0
     - 200
-    - 0
-    - 0
+    - 200
+    - 200
     - 0
     Sons:
     - Lamina2
@@ -3679,9 +3679,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 0
-  maxLife: 100
-  damageMultiplier: 0
-  maxEnergy: 15
+  maxLife: 200
+  maxEnergy: 100
   energy: 0
   defendendo: 0
   defendeu: 0
@@ -3706,12 +3705,12 @@ MonoBehaviour:
   vfxEnergiaMate: {fileID: 5379745173210982897}
   vfxCorte1: {fileID: 7292148528990412385}
   vfxCorte2: {fileID: 2435018552233035983}
-  custoDash: 10
-  danoDash: 20
+  custoDash: 100
+  danoDash: 12
   ordemComboDash: 0200000003000000
   ordemComboParry: 0100000003000000
-  custoSopro: 10
-  danoSopro: 30
+  custoSopro: 100
+  danoSopro: 20
   rangeSopro: 2
   vfxExplosaoMate: {fileID: 565746949879960757}
 --- !u!114 &6733909688477422776
