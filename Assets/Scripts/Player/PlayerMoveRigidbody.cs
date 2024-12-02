@@ -106,6 +106,10 @@ public class PlayerMoveRigidbody : MonoBehaviour
         {
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, rb.velocity.z);
         }
+        else if (crouched)
+        {
+            rb.velocity = new Vector3(0f, rb.velocity.y, rb.velocity.z);
+        }
         else
         {
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, rb.velocity.z);
@@ -133,7 +137,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (jumpCount > 0 && !playerCombat.GetInAttack())
+        if (jumpCount > 0 && !playerCombat.GetInAttack() && !playerCombat.GetInAttack())
         {
             Jump(JumpForce, true);
 
@@ -161,6 +165,11 @@ public class PlayerMoveRigidbody : MonoBehaviour
         {
             jumpCount--;
         }
+    }
+
+    public void Morrer()
+    {
+        rb.AddForce(Vector3.right * isPlayer2 * 100f);
     }
 
     public bool GetIsGrounded()

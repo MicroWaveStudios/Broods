@@ -55,6 +55,7 @@ public class PlayerStats : MonoBehaviour
         if (life <= 0f && !tutorial)
         {
             scrpGameController.GameFinished();
+            playerMoveRigidbody.Morrer();
             tutorial = true;
         }
         if (teste == true)

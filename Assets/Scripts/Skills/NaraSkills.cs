@@ -216,11 +216,11 @@ public class NaraSkills : MonoBehaviour
 
         playerAnimator.TriggerAction("Laser");
 
-        yield return new WaitForSeconds(0.2f);     
+        yield return new WaitForSeconds(0f);     
 
         RaycastHit hit;
 
-        StartCoroutine(scrpPlayerStats.ResetScripts(0.5f));
+        StartCoroutine(scrpPlayerStats.ResetScripts(0f));
 
         vfxLaser.Play();
 
@@ -252,7 +252,7 @@ public class NaraSkills : MonoBehaviour
         }
         else
         {
-            //Debug.Log("Não foi");
+            //Debug.Log("Nï¿½o foi");
         }
 
         yield return new WaitForSeconds(1f);
@@ -293,7 +293,7 @@ public class NaraSkills : MonoBehaviour
 
         playerAnimator.TriggerAction("Tartico");
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.5f);
         playerCombat.SetInAttack(false);
         yield return ResetCombo();
         yield break;

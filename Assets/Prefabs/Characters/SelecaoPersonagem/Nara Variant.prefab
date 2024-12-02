@@ -167,6 +167,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 1879456106804587856, guid: 6ae38b9c128d93748b30d3cef5189263, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1903947192797130759, guid: 6ae38b9c128d93748b30d3cef5189263, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -338,6 +342,10 @@ PrefabInstance:
     - target: {fileID: 3903289410309896524, guid: 6ae38b9c128d93748b30d3cef5189263, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3915243630622418320, guid: 6ae38b9c128d93748b30d3cef5189263, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3935987274061828706, guid: 6ae38b9c128d93748b30d3cef5189263, type: 3}
       propertyPath: m_Layer
@@ -551,6 +559,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 6029970686652474510, guid: 6ae38b9c128d93748b30d3cef5189263, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6038161759343250208, guid: 6ae38b9c128d93748b30d3cef5189263, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -726,6 +738,10 @@ PrefabInstance:
     - target: {fileID: 7151827573086861971, guid: 6ae38b9c128d93748b30d3cef5189263, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7213099207054332394, guid: 6ae38b9c128d93748b30d3cef5189263, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7219123754298006668, guid: 6ae38b9c128d93748b30d3cef5189263, type: 3}
       propertyPath: m_Layer
@@ -1057,6 +1073,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d07bd5c9c9e54c44878a4c237d085a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TarticoIntro: []
+  ListaTarticos: []
+  VarianteTartico:
+  - material:
+    - {fileID: 2100000, guid: 3aebaba0fffd06d48a5fe2f20eb98c68, type: 2}
+    - {fileID: 2100000, guid: e299e1ccf37b4e644b2ec04810c42466, type: 2}
+    - {fileID: 2100000, guid: c84735c9a3aba114ebd095ef82fbc171, type: 2}
+    - {fileID: 2100000, guid: ce61ff82fbca12045a58a1adcb24bd15, type: 2}
+  - material:
+    - {fileID: 2100000, guid: 8a6f454b344e65547a094bfb98731ab8, type: 2}
+    - {fileID: 2100000, guid: c9335def57e8de549b73ca41ecde031a, type: 2}
+    - {fileID: 2100000, guid: 9b66d7cc289241347bbb12ccd5bdf797, type: 2}
+    - {fileID: 2100000, guid: 26738dac53e06584eb5a205762a8c667, type: 2}
   VarianteDaSkin:
   - nome: Nara Principal
     material:
@@ -1113,6 +1142,7 @@ MonoBehaviour:
   materialAtual: -1
   materialOutroPlayer: -1
   selecaoPersonagem: 1
+  hasTartico: 0
 --- !u!1 &2434759708475868731 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8112686747739935298, guid: 6ae38b9c128d93748b30d3cef5189263, type: 3}
