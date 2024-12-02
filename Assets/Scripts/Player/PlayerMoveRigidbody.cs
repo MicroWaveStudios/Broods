@@ -108,7 +108,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
         }
         else if (crouched)
         {
-            rb.velocity = new Vector3(transform.position.x, rb.velocity.y, rb.velocity.z);
+            rb.velocity = new Vector3(0f, rb.velocity.y, rb.velocity.z);
         }
         else
         {

@@ -223,7 +223,7 @@ public class NaraSkills : MonoBehaviour
         RaycastHit hit;
 
         playerCombat.ResetCombo();
-        StartCoroutine(scrpPlayerStats.ResetScripts(0.2f));
+        //StartCoroutine(scrpPlayerStats.ResetScripts(0f));
 
         vfxLaser.Play();
 
