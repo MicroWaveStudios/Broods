@@ -26,6 +26,7 @@ public class XimasSkills : MonoBehaviour
     [SerializeField] GameObject vfxEnergiaMate;
     [SerializeField] VisualEffect vfxCorte1;
     [SerializeField] VisualEffect vfxCorte2;
+    [SerializeField] VisualEffect vfxBrilhoOlho;
 
     [Header("Skill Dash com Corte")]
     [SerializeField] float custoDash;
@@ -92,13 +93,13 @@ public class XimasSkills : MonoBehaviour
                 scrpRigidbody.ColisaoZero();
             }
 
-            if (playerCombat.GetOrdemCombo() == 4 && trava == false)
+            if (playerCombat.GetOrdemCombo() == 4)
             {
                 scrpRigidbody.GravidadeNormal();
                 //outroPlayer.GetComponent<PlayerMoveRigidbody>().GravidadeNormal();
                 scrpRigidbody.ColisaoNormal();
-                transform.position = new Vector3(outroPlayer.transform.position.x + (-1.5f * scrpRigidbody.isPlayer2), transform.position.y, transform.position.z);
-                trava = true;
+                //transform.position = new Vector3(outroPlayer.transform.position.x + (-1.5f * scrpRigidbody.isPlayer2), transform.position.y, transform.position.z);
+                //trava = true;
             }
         }
 
@@ -132,6 +133,11 @@ public class XimasSkills : MonoBehaviour
     public void PlayVfxCorte2()
     {
         vfxCorte2.Play();
+    }
+
+    public void PlayVfxBrilhoOlho()
+    {
+        vfxBrilhoOlho.Play();
     }
 
     public void MeiaLuaStart(InputAction.CallbackContext context)
