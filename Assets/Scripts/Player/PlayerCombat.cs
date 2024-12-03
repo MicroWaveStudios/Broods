@@ -276,14 +276,13 @@ public class PlayerCombat : MonoBehaviour
 
     IEnumerator ResetCombo_()
     {
-        if (NomeAtaqueAtual != "")
-        {
-            ultimoAtaque = NomeAtaqueAtual;
-            playerAnimator.AttackAction(NomeAtaqueAtual, false);
-            NomeAtaqueAtual = null;
-        }
-        playerAnimator.AttackAction(ultimoAtaque, false);
-        ordem = 0;
+        //if (NomeAtaqueAtual != "")
+        //{
+        //    ultimoAtaque = NomeAtaqueAtual;
+        //    playerAnimator.AttackAction(NomeAtaqueAtual, false);
+        //    NomeAtaqueAtual = null;
+        //}
+        
         //playerMove.GravidadeNormal();
         atacouLeve = false;
         atacouMedio = false;
@@ -297,12 +296,21 @@ public class PlayerCombat : MonoBehaviour
         attackGameObject.GetComponent<Damage>().SetAttack(0, 0, 0, 0, 0, false, 0, null);      
         //OrdemCombo = -1;
         tempoDecorrido = 0f;
-        actualNumber = -1;             
+        actualNumber = -1;
         //playerAnimator.AttackAction(NomeAtaqueAtual, false);
+        
         yield return new WaitForSeconds(0.3f);
         ListaDeAtaqueAtual = -1;
         _InAttack = false;
         yield return new WaitForSeconds(0.2f);
+        if (NomeAtaqueAtual != "")
+        {
+            ultimoAtaque = NomeAtaqueAtual;
+            playerAnimator.AttackAction(NomeAtaqueAtual, false);
+            NomeAtaqueAtual = null;
+        }
+        playerAnimator.AttackAction(ultimoAtaque, false);
+        ordem = 0;
         InCombo = false;
     }
 

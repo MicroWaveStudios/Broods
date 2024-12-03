@@ -51,6 +51,7 @@ public class PlayerStats : MonoBehaviour
     {
         life = maxLife;
         energy = 0;
+        StartCoroutine(TimerFimSequencia());
     }
 
     private void Update()
@@ -267,7 +268,6 @@ public class PlayerStats : MonoBehaviour
     {
         timer = 0f;
         golpesSequencia++;
-        StartCoroutine(TimerFimSequencia());
     }
 
     public float GetSequencia()
@@ -279,9 +279,9 @@ public class PlayerStats : MonoBehaviour
     {
         while (true)
         {
-            while (timer < 2f && golpesSequencia > 0)
+            while (timer < 0.8f)
             {
-                timer += Time.deltaTime;
+                timer += 1 * Time.deltaTime;
                 yield return null;
             }
 
