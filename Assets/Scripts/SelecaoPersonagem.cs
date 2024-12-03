@@ -40,12 +40,16 @@ public class SelecaoPersonagem : MonoBehaviour
     public void SetActiveBordaSelecaoCor(bool value)
     {
         BordaSelecaoCor[playerID].SetActive(value);
-        if (value)
-        {
-            AlterarBotaoAtual(personagensManager.GetComponent<PersonagensManager>().GetBotaoInicial());
-        }
+        //if (value)
+        //{
+        //    AlterarBotaoAtual(personagensManager.GetComponent<PersonagensManager>().GetBotaoInicial());
+        //}
     }
 
+    public GameObject GetBordaCor()
+    {
+        return BordaSelecaoCor[playerID];
+    }
     public void TrocarCorDaBorda(int playerIndex)
     {
         playerID = playerIndex;

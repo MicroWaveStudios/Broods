@@ -16,6 +16,9 @@ public class PersonagensManager : MonoBehaviour
     [SerializeField] GameObject BotaoInicial;
     [SerializeField] GameObject txtContinuar;
 
+    [SerializeField] GameObject[] ProntoP;
+    [SerializeField] GameObject[] Visual;
+
     [SerializeField] Transform[] PosicaoInstanciar;
 
     [SerializeField] Transform[] posicaoPlayer;
@@ -84,9 +87,10 @@ public class PersonagensManager : MonoBehaviour
     {
         varianteAtual[playerIndex] = material;
         confirmouPersonagem[playerIndex] = value;
+        ProntoP[playerIndex].SetActive(value);
         if (value)
         {
-            NomePersonagemTxt[playerIndex].text = "Pronto!";
+            //NomePersonagemTxt[playerIndex].text = "Pronto!";
             connectManager.GetPlayer(playerIndex).GetComponent<ConnectPlayer>().SetNumeroPersonagem(PersonagemID[playerIndex]);
             SetVariante(playerIndex, material);
             for (int i = 0; i < 2; i++)
@@ -113,18 +117,27 @@ public class PersonagensManager : MonoBehaviour
     }
     #endregion
 
+    public void TrocarLocalBordaCor(int index, int variante)
+    { 
+        GameObject borda = connectManager.GetPlayer(index).GetComponent<SelecaoPersonagem>().GetBordaCor();
+        borda.transform.position = Visual[index].transform.GetChild(variante).position;
+    }
+
     #region Selecionar Personagens
     public void SelecionouPersonagem(int playerIndex, int personagemIndex, bool value)
     {
         selecionouPersonagem[playerIndex] = value;
+        Visual[playerIndex].SetActive(value);
+        connectManager.GetPlayer(playerIndex).GetComponent<SelecaoPersonagem>().SetActiveBordaSelecaoCor(value);
     }
     public void SetActiveNomePersonagem(int playerIndex, bool value)
     {
         NomePersonagemTxt[playerIndex].gameObject.SetActive(value);
+        NomePersonagemTxt[playerIndex].transform.GetChild(0).gameObject.SetActive(value);
     }
     #endregion
     string[] nomeVariante = new string[2];
-    public void TrocarVarianteTxt(int playerIndex, string Variante)
+    public void TrocarVarianteTxt(int playerIndex, string nome, string frase)
     {
         if (!confirmouPersonagem[playerIndex])
         {
@@ -143,8 +156,9 @@ public class PersonagensManager : MonoBehaviour
             //        NomePersonagem[1].SetActive(false);
             //        break;
             //}
-            nomeVariante[playerIndex] = Variante;
+            nomeVariante[playerIndex] = nome;
             NomePersonagemTxt[playerIndex].text = nomeVariante[playerIndex];
+            NomePersonagemTxt[playerIndex].transform.GetChild(0).GetComponent<TMP_Text>().text = frase;
         }
     }
     public void DestroyPersonagens()

@@ -43,6 +43,7 @@ public class scriptBotao : MonoBehaviour
                         Jogador[playerIndex].transform.localScale = new Vector3(1f, 1f, -1);
                     }
                     Jogador[playerIndex].GetComponent<MaterialPlayer>().SetNome("NARÁ");
+                    Jogador[playerIndex].GetComponent<MaterialPlayer>().SetFrase("O GUARDIÃO ANCESTRAL");
                     break;
                 case "Ximas Variant":
                     if (playerIndex == 0)
@@ -54,6 +55,7 @@ public class scriptBotao : MonoBehaviour
                         Jogador[playerIndex].transform.localScale = new Vector3(0.009999999f, 0.01f, -0.009999999f);
                     }
                     Jogador[playerIndex].GetComponent<MaterialPlayer>().SetNome("XIMAS");
+                    Jogador[playerIndex].GetComponent<MaterialPlayer>().SetFrase("O ESPADACHIM");
                     break;
             }
             PersonagensManager personagensManager = GameObject.FindGameObjectWithTag("PersonagemManager").GetComponent<PersonagensManager>();
