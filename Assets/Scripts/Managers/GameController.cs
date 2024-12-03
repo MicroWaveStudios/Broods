@@ -396,7 +396,7 @@ public class GameController : MonoBehaviour
                 ganhador = 1;
             }
 
-            Debug.Log("Ganhou");
+
             player[ganhador].GetComponent<PlayerStats>().SomarPontos(1000);
 
             if (player[ganhador].GetComponent<PlayerStats>().life == player[ganhador].GetComponent<PlayerStats>().maxLife)
@@ -418,6 +418,10 @@ public class GameController : MonoBehaviour
                 textPlayerWinner.text = "Player 2 Ganhou!";
                 StartCoroutine(FinishGame(1));
                 finishGame = true;
+            }
+            for (int i = 0; i < Pontos.pontosP.Length; i++)
+            {
+                Pontos.pontosP[i] += player[i].GetComponent<PlayerStats>().GetPontos();
             }
         }
         if (!finishGame)

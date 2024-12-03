@@ -2,7 +2,7 @@ using UnityEngine;
 
 class Pontos
 {
-    public static int[] pontosP = new int[2];
+    public static float[] pontosP = new float[2];
     public static int[] vitoriaP = new int[2];
 
     public static bool SplitKeyboard;
