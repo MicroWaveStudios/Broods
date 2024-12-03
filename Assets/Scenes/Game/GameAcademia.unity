@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18291344, g: 0.22617225, b: 0.29273003, a: 1}
+  m_IndirectSpecularColor: {r: 0.18291372, g: 0.22617263, b: 0.2927307, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3674,11 +3674,11 @@ MonoBehaviour:
   - {fileID: 1068497905}
   - {fileID: 1688566860}
   imagemPersonagem_P1:
-  - {fileID: -375519684, guid: d570efad87f379c429666b59584b2bc6, type: 3}
-  - {fileID: 21300000, guid: 459f5d42797078947b05ba4ec0bd6234, type: 3}
+  - {fileID: 21300000, guid: eeb7fe5800dcefd4c97ec4503c37bda5, type: 3}
+  - {fileID: 21300000, guid: eac302e47ba85f14088ed012a93de270, type: 3}
   imagemPersonagem_P2:
-  - {fileID: 531594640, guid: 6b6821a787e63f044a0c4c8f2f2893a1, type: 3}
-  - {fileID: 21300000, guid: 85d3488140862cd4cb3ec293ea132836, type: 3}
+  - {fileID: 21300000, guid: eeb7fe5800dcefd4c97ec4503c37bda5, type: 3}
+  - {fileID: 21300000, guid: eac302e47ba85f14088ed012a93de270, type: 3}
   BarraJogador:
   - {fileID: 541404078}
   - {fileID: 1085108247}

@@ -47,6 +47,9 @@ public class GameController : MonoBehaviour
     [SerializeField] GameObject[] WinnerCountP1;
     [SerializeField] GameObject[] WinnerCountP2;
 
+    [SerializeField] GameObject[] WinnerPanelPlayer;
+    [SerializeField] TMP_Text pontosTelaWinner; 
+
     public float distance;
     public bool ChangedSide;
     bool ChangeSide = true;
@@ -437,14 +440,12 @@ public class GameController : MonoBehaviour
             if (Pontos.vitoriaP[0] > 1)
             {
                 VitoriaTempo(0);
-                textPlayerWinner.text = "Player 1 Ganhou!";
                 StartCoroutine(FinishGame(0));
                 finishGame = true;
             }
             if (Pontos.vitoriaP[1] > 1)
             {
                 VitoriaTempo(1);
-                textPlayerWinner.text = "Player 2 Ganhou!";
                 StartCoroutine(FinishGame(1));
                 finishGame = true;
             }
@@ -540,6 +541,8 @@ public class GameController : MonoBehaviour
 
         yield return new WaitForSeconds(3f);
         winnerPanel.SetActive(true);
+        WinnerPanelPlayer[novoGanhador].SetActive(true);
+        pontosTelaWinner.text = Pontos.pontosP[novoGanhador].ToString();
         PanelManager.ChangePanel(1);
         ZerarPontosEVitorias();
         //yield return new WaitForSeconds(2.5f);
