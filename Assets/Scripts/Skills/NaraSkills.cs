@@ -231,8 +231,9 @@ public class NaraSkills : MonoBehaviour
 
         playerCombat.SetInAttack(true);
 
-        playerAnimator.TriggerAction("Laser");
-
+        //playerAnimator.TriggerAction("Laser");
+        playerAnimator.AttackAction("Laser", true);
+        playerCombat.SetNomeAtaqueAtual("Laser");
         BrilharTatuagem();
 
         scrpPlayerStats.SomarPontos(150);
@@ -278,7 +279,7 @@ public class NaraSkills : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        playerCombat.SetInAttack(false);
+        playerCombat.ResetCombo();
         yield return ResetCombo();
         yield break;
     }
@@ -312,14 +313,16 @@ public class NaraSkills : MonoBehaviour
 
         scrpPlayerStats.UsouSkill(custoTartico);
 
-        playerAnimator.TriggerAction("Tartico");
+        //playerAnimator.TriggerAction("Tartico");
+        playerAnimator.AttackAction("Tartico", true);
+        playerCombat.SetNomeAtaqueAtual("Tartico");
 
         BrilharTatuagem();
 
         scrpPlayerStats.SomarPontos(150);
 
         yield return new WaitForSeconds(0.5f);
-        playerCombat.SetInAttack(false);
+        playerCombat.ResetCombo();
         yield return ResetCombo();
         yield break;
     }
@@ -332,25 +335,27 @@ public class NaraSkills : MonoBehaviour
             yield break;
         }
 
-        playerCombat.SetInAttack(true);
 
         attackGameObject.GetComponent<Damage>().SetAttack(danoExplosao, rangeExplosao, 0f, 220f, 0f, false, 0f, "Laser");
 
         scrpPlayerStats.UsouSkill(custoExplosao);
 
-        playerAnimator.TriggerAction("Kaboom");
+        //playerAnimator.TriggerAction("Kaboom");
+        playerAnimator.AttackAction("Kaboom", true);
+        playerCombat.SetNomeAtaqueAtual("Kaboom");
 
         BrilharTatuagem();
 
         scrpPlayerStats.SomarPontos(150);
 
+        playerCombat.SetInAttack(true);
         yield return new WaitForSeconds(0.3f);
 
         vfxExplosao.Play();
 
         yield return new WaitForSeconds(0.5f);
 
-        playerCombat.SetInAttack(false);
+        playerCombat.ResetCombo();
         yield return ResetCombo();
         yield break;
     }

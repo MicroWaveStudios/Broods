@@ -139,7 +139,7 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color1: {r: 1, g: 1, b: 1, a: 1}
+    - _Color1: {r: 14.231373, g: 2.235294, b: 4.1725492, a: 19}
     - _Color2: {r: 1, g: 0, b: 0.34317875, a: 0}
     - _ColorGeral: {r: 1, g: 0, b: 0.35391188, a: 0}
     - _ColorTatuagem: {r: 7.4642644, g: 0, b: 1.9291394, a: 0}
