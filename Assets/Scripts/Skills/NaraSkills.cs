@@ -83,6 +83,18 @@ public class NaraSkills : MonoBehaviour
         ApagarTatuagem();
     }
 
+    public void InstantiateTarticos(int index)
+    {
+        if (Pontos.tarticos[index] != 0)
+        {
+            tarticosContagem = Pontos.tarticos[index] - 2;
+            for (int i = 0; i < tarticosContagem; i++)
+            {
+                tarticos[i].SetActive(true);
+            }
+            scrpPlayerStats.SomarDamageMultiplier(0.3f * tarticosContagem);
+        }
+    }
     private void Update()
     {
         if (this.gameObject.CompareTag("Player1"))
@@ -427,6 +439,11 @@ public class NaraSkills : MonoBehaviour
             tatuagens[numVariacao].SetColor("_Color1", Color.white * 1f);
         }
         
+    }
+
+    public int GetTarticos()
+    {
+        return tarticosContagem;
     }
 }
 

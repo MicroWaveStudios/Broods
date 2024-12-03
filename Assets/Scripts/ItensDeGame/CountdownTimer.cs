@@ -68,6 +68,10 @@ public class CountdownTimer : MonoBehaviour
         for (int i = 0; i < player.Length; i++)
         {
             player[i].GetComponent<PlayerAnimator>().SetIntro(false);
+            if (!player[i].GetComponent<PlayerStats>().GetXimas())
+            {
+                player[i].GetComponent<NaraSkills>().InstantiateTarticos(i);
+            }
         }
         EnablePlayerInputs(true);
         isPaused = false;

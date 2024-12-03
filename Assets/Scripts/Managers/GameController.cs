@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Users;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System;
 
 public class GameController : MonoBehaviour
 {
@@ -419,10 +420,16 @@ public class GameController : MonoBehaviour
                 StartCoroutine(FinishGame(1));
                 finishGame = true;
             }
-            for (int i = 0; i < Pontos.pontosP.Length; i++)
+            for (int i = 0; i < player.Length; i++)
             {
                 Pontos.pontosP[i] += player[i].GetComponent<PlayerStats>().GetPontos();
+
+                if (!player[i].GetComponent<PlayerStats>().GetXimas())
+                {
+                    Pontos.tarticos[i] = player[i].GetComponent<NaraSkills>().GetTarticos();
+                }
             }
+
         }
         if (!finishGame)
         {
