@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem.XR;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class PersonagensManager : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class PersonagensManager : MonoBehaviour
 
     [SerializeField] GameObject[] ProntoP;
     [SerializeField] GameObject[] Visual;
+    [SerializeField] GameObject[] BordaCor;
 
     [SerializeField] Transform[] PosicaoInstanciar;
 
@@ -57,10 +59,20 @@ public class PersonagensManager : MonoBehaviour
         else
         {
             connectManager.SetEtapaConectar();
+            for (int i = 0; i < 2; i++)
+            {
+                ProntoP[i].SetActive(value);
+                NomePersonagemTxt[i].gameObject.SetActive(value);
+                BordaCor[i].SetActive(value);
+                Visual[i].SetActive(value);
+            }
         }
         naSelecaoDePersonagem = value;
-        connectManager.GetPlayer(0).GetComponent<SelecaoPersonagem>().SetActiveBordaSelecaoPersonagem(value);
-        connectManager.GetPlayer(1).GetComponent<SelecaoPersonagem>().SetActiveBordaSelecaoPersonagem(value);
+        
+        for (int i = 0; i < 2; i++)
+        {
+            connectManager.GetPlayer(i).GetComponent<SelecaoPersonagem>().SetActiveBordaSelecaoPersonagem(value);
+        }
     }
     public void SetPersonagemID(int personagemIndex, int playerIndex)
     {
@@ -118,17 +130,25 @@ public class PersonagensManager : MonoBehaviour
     #endregion
 
     public void TrocarLocalBordaCor(int index, int variante)
-    { 
-        GameObject borda = connectManager.GetPlayer(index).GetComponent<SelecaoPersonagem>().GetBordaCor();
-        borda.transform.position = Visual[index].transform.GetChild(variante).position;
+    {
+        BordaCor[index].transform.position = Visual[index].transform.GetChild(0).GetChild(variante).position;
     }
 
     #region Selecionar Personagens
     public void SelecionouPersonagem(int playerIndex, int personagemIndex, bool value)
     {
         selecionouPersonagem[playerIndex] = value;
-        Visual[playerIndex].SetActive(value);
-        connectManager.GetPlayer(playerIndex).GetComponent<SelecaoPersonagem>().SetActiveBordaSelecaoCor(value);
+        if (value)
+        {
+            Visual[playerIndex].SetActive(true);
+            Visual[playerIndex].transform.GetChild(personagemIndex).gameObject.SetActive(true);
+        }
+        else 
+        {
+            Visual[playerIndex].transform.GetChild(personagemIndex).gameObject.SetActive(false);
+            Visual[playerIndex].SetActive(false);
+        }
+        BordaCor[playerIndex].SetActive(value);
     }
     public void SetActiveNomePersonagem(int playerIndex, bool value)
     {
