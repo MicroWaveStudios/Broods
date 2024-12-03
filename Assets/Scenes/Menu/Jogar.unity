@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -312,7 +312,7 @@ MonoBehaviour:
   m_NotificationBehavior: 2
   m_MaxPlayerCount: 2
   m_AllowJoining: 1
-  m_JoinBehavior: 0
+  m_JoinBehavior: 1
   m_PlayerJoinedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -6847,6 +6847,8 @@ MonoBehaviour:
   valorMaximo: 0
   valorAtual: 0
   txtFrase: {fileID: 1505878791}
+  button: {fileID: 0}
+  Botao: 0
 --- !u!1 &1546748228
 GameObject:
   m_ObjectHideFlags: 0
@@ -7265,6 +7267,8 @@ MonoBehaviour:
   valorMaximo: 0
   valorAtual: 0
   txtFrase: {fileID: 1594479789}
+  button: {fileID: 0}
+  Botao: 0
 --- !u!1 &1597510575
 GameObject:
   m_ObjectHideFlags: 0
