@@ -15,6 +15,7 @@ public class XimasSkills : MonoBehaviour
 
     PlayerAnimator playerAnimator;
     PlayerCombat playerCombat;
+    Sons scrSons;
 
     GameObject outroPlayer;
 
@@ -53,6 +54,7 @@ public class XimasSkills : MonoBehaviour
         scrpRigidbody = this.gameObject.GetComponent<PlayerMoveRigidbody>();
         playerCombat = this.gameObject.GetComponent<PlayerCombat>();
         playerAnimator = this.gameObject.GetComponent<PlayerAnimator>();
+        scrSons = this.gameObject.GetComponent<Sons>();
         //objTpDash = GameObject.FindGameObjectWithTag("TpDash").transform;
         //objLaser = transform.GetChild(1).gameObject;
         //vfxLaser = objLaser.GetComponent<VisualEffect>();
@@ -286,6 +288,7 @@ public class XimasSkills : MonoBehaviour
         //playerCombat.SetInAttack(true);
         playerCombat.SetInParry(true);
 
+        scrSons.TocarSom("ParryInicio");
         //playerAnimator.TriggerAction("Perry");
         playerAnimator.AttackAction("Perry", true);
         playerCombat.SetNomeAtaqueAtual("Perry");

@@ -94,6 +94,7 @@ public class PlayerStats : MonoBehaviour
 
     public void CounterParry(GameObject otherPlayer)
     {
+        scrSons.TocarSom("ParryCerto");
         SomarPontos(150);
         AddEnergy(9999);
         playerAnimator.TriggerAction("PerryContinuacao");

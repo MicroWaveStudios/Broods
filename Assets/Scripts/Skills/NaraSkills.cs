@@ -16,6 +16,7 @@ public class NaraSkills : MonoBehaviour
     PlayerAnimator playerAnimator;
     PlayerCombat playerCombat;
     GameObject outroPlayer;
+    Sons scrSons;
     float timer;
     
     bool InMeiaLua = false;
@@ -68,6 +69,7 @@ public class NaraSkills : MonoBehaviour
     private void Awake()
     {
         scrpRigidbody = GetComponent<PlayerMoveRigidbody>();
+        scrSons = GetComponent<Sons>();
         playerCombat = GetComponent<PlayerCombat>();
         playerAnimator = GetComponent<PlayerAnimator>();
         objLaser = transform.GetChild(1).gameObject;
@@ -298,7 +300,7 @@ public class NaraSkills : MonoBehaviour
             yield break;
         }
 
-
+        scrSons.TocarSom("Tarticos");
         tarticos[tarticosContagem].SetActive(true);
 
         playerCombat.SetInAttack(true);
