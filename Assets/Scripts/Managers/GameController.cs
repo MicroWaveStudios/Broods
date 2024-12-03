@@ -58,6 +58,8 @@ public class GameController : MonoBehaviour
     [Header("Cameras")]
     [SerializeField] GameObject CameraPrincipal;
     [SerializeField] GameObject CameraVitoria;
+    [SerializeField] float alturaLimite;
+    [SerializeField] float adicionarAltura;
 
 
     PlayerInputManager playerInputManager;
@@ -309,10 +311,10 @@ public class GameController : MonoBehaviour
     void MidPosition()
     {
         distance = Vector3.Distance(PlayerLeft.position, PlayerRight.position)/2f;
-        midY = player[0].transform.position.y + player[1].transform.position.y /2f + 3.5f;
-        if (midY > 2)
+        midY = player[0].transform.position.y + player[1].transform.position.y /2f + adicionarAltura;
+        if (midY > alturaLimite)
         {
-            midY = 2.01f;
+            midY = alturaLimite;
         }
         mid.position = new Vector3(PlayerLeft.position.x + distance, midY, mid.position.z);
     }

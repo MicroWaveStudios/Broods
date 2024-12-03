@@ -3698,6 +3698,8 @@ MonoBehaviour:
   PanelManager: {fileID: 441249399}
   CameraPrincipal: {fileID: 209735157}
   CameraVitoria: {fileID: 592886425}
+  alturaLimite: 3
+  adicionarAltura: 2
   midY: 0
   VitoriaXimas: 0
   VitoriaNara: 0

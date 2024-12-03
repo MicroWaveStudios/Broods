@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.25753132, g: 0.68975174, b: 0.8191974, a: 1}
+  m_IndirectSpecularColor: {r: 0.2582091, g: 0.68974036, b: 0.8184585, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5651,6 +5651,8 @@ MonoBehaviour:
   PanelManager: {fileID: 441249399}
   CameraPrincipal: {fileID: 209735157}
   CameraVitoria: {fileID: 7256449875494638932}
+  alturaLimite: 2
+  adicionarAltura: 3.5
   midY: 0
   VitoriaXimas: 10
   VitoriaNara: 10
