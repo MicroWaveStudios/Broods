@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18291344, g: 0.22617225, b: 0.29273003, a: 1}
+  m_IndirectSpecularColor: {r: 0.18291344, g: 0.22617224, b: 0.29273003, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3683,7 +3683,7 @@ MonoBehaviour:
   energyBarPlayer1: {fileID: 125197183}
   energyBarPlayer2: {fileID: 603111841}
   winnerPanel: {fileID: 436558965}
-  textPlayerWinner: {fileID: 0}
+  textPlayerWinner: {fileID: 223221420}
   WinnerCountP1:
   - {fileID: 1545533071}
   - {fileID: 870913009}
@@ -3700,6 +3700,8 @@ MonoBehaviour:
   CameraVitoria: {fileID: 592886425}
   alturaLimite: 3
   adicionarAltura: 2
+  SomVitoria: {fileID: 0}
+  SomBG: {fileID: 0}
   midY: 0
   VitoriaXimas: 0
   VitoriaNara: 0
