@@ -193,28 +193,28 @@ public class GameController : MonoBehaviour
             PlayerEnergy();
         }
 
-        if (Pontos.pontosP1 >= 1)
+        if (Pontos.vitoriaP[0] >= 1)
         {
             WinnerCountP1[0].SetActive(true);
-            if (Pontos.pontosP1 == 2)
+            if (Pontos.vitoriaP[0] == 2)
             {
                 WinnerCountP1[1].SetActive(true);
             }
         }
-        if (Pontos.pontosP1 == 0)
+        if (Pontos.vitoriaP[0] == 0)
         {
             WinnerCountP1[0].SetActive(false);
             WinnerCountP1[1].SetActive(false);
         }
-        if (Pontos.pontosP2 >= 1)
+        if (Pontos.vitoriaP[1] >= 1)
         {
             WinnerCountP2[0].SetActive(true);
-            if (Pontos.pontosP2 == 2)
+            if (Pontos.vitoriaP[1] == 2)
             {
                 WinnerCountP2[1].SetActive(true);
             }
         }
-        if (Pontos.pontosP2 == 0)
+        if (Pontos.vitoriaP[1] == 0)
         {
             WinnerCountP2[0].SetActive(false);
             WinnerCountP2[1].SetActive(false);
@@ -387,12 +387,12 @@ public class GameController : MonoBehaviour
         {
             if (lifePlayer1 > lifePlayer2)
             {
-                Pontos.pontosP1++;
+                Pontos.vitoriaP[0]++;
                 ganhador = 0;
             }
             else if (lifePlayer2 > lifePlayer1)
-            { 
-                Pontos.pontosP2++;
+            {
+                Pontos.vitoriaP[1]++;
                 ganhador = 1;
             }
 
@@ -405,14 +405,14 @@ public class GameController : MonoBehaviour
                 player[ganhador].GetComponent<PlayerStats>().SomarPontos(1000);
             }
 
-            if (Pontos.pontosP1 > 1)
+            if (Pontos.vitoriaP[0] > 1)
             {
                 VitoriaTempo(0);
                 textPlayerWinner.text = "Player 1 Ganhou!";
                 StartCoroutine(FinishGame(0));
                 finishGame = true;
             }
-            if (Pontos.pontosP2 > 1)
+            if (Pontos.vitoriaP[1] > 1)
             {
                 VitoriaTempo(1);
                 textPlayerWinner.text = "Player 2 Ganhou!";
@@ -491,7 +491,7 @@ public class GameController : MonoBehaviour
 
         BarraJogador[0].SetActive(false);
         BarraJogador[1].SetActive(false);
-        ZerarPontos();
+        ZerarPontosEVitorias();
 
         UIGame.SetActive(false);
 
@@ -502,16 +502,19 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(3f);
         winnerPanel.SetActive(true);
         PanelManager.ChangePanel(1);
-        ZerarPontos();
+        ZerarPontosEVitorias();
         //yield return new WaitForSeconds(2.5f);
         //SceneManager.LoadScene("Menu");
         yield break;
     }
 
-    public void ZerarPontos()
+    public void ZerarPontosEVitorias()
     {
-        Pontos.pontosP1 = 0;
-        Pontos.pontosP2 = 0;
+        for (int i = 0; i < player.Length; i++)
+        {
+            Pontos.pontosP[i] = 0;
+            Pontos.vitoriaP[i] = 0;
+        }
     }
 
 
@@ -548,38 +551,36 @@ public class GameController : MonoBehaviour
         GetComponent<CountdownTimer>().SetPodeComecar(true);
         //StartCoroutine(InstantiatePlayerSplitKeyboard());
     }
-    IEnumerator InstantiatePlayerSplitKeyboard()
-    {
-        playerInputManager.DisableJoining();
+    //IEnumerator InstantiatePlayerSplitKeyboard()
+    //{
+    //    playerInputManager.DisableJoining();
 
-        yield return new WaitForSeconds(1f);
+    //    yield return new WaitForSeconds(1f);
 
-        Pontos.prefabPlayer[1].GetComponent<PlayerInput>().defaultControlScheme = "KeyboardLeft";
-        playerInputManager.playerPrefab = Pontos.prefabPlayer[0];
-        PlayerInput player3 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 0, "KeyboardLeft", -1, Keyboard.current, Mouse.current);
-        Pontos.prefabPlayer[1].GetComponent<PlayerInput>().defaultControlScheme = "KeyboardRight";
-        playerInputManager.playerPrefab = Pontos.prefabPlayer[1];
-        PlayerInput player4 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 1, "KeyboardRight", -1, Keyboard.current);
+    //    Pontos.prefabPlayer[1].GetComponent<PlayerInput>().defaultControlScheme = "KeyboardLeft";
+    //    playerInputManager.playerPrefab = Pontos.prefabPlayer[0];
+    //    PlayerInput player3 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 0, "KeyboardLeft", -1, Keyboard.current, Mouse.current);
+    //    Pontos.prefabPlayer[1].GetComponent<PlayerInput>().defaultControlScheme = "KeyboardRight";
+    //    playerInputManager.playerPrefab = Pontos.prefabPlayer[1];
+    //    PlayerInput player4 = PlayerInput.Instantiate(playerInputManager.playerPrefab, 1, "KeyboardRight", -1, Keyboard.current);
 
-        player3.transform.position = InstancePosition[0].transform.position;
-        player4.transform.position = InstancePosition[1].transform.position;
+    //    player3.transform.position = InstancePosition[0].transform.position;
+    //    player4.transform.position = InstancePosition[1].transform.position;
 
-        yield return new WaitForSeconds(1f);
+    //    yield return new WaitForSeconds(1f);
 
-        player3.GetComponent<MaterialPlayer>().SetMaterialPersonagem(Pontos.variante[0]);
-        player3.tag = "Player1";
-        player4.GetComponent<MaterialPlayer>().SetMaterialPersonagem(Pontos.variante[1]);
-        player4.tag = "Player2";
+    //    player3.GetComponent<MaterialPlayer>().SetMaterialPersonagem(Pontos.variante[0]);
+    //    player3.tag = "Player1";
+    //    player4.GetComponent<MaterialPlayer>().SetMaterialPersonagem(Pontos.variante[1]);
+    //    player4.tag = "Player2";
 
-        yield return new WaitForSeconds(2.5f);
+    //    yield return new WaitForSeconds(2.5f);
 
-        GetComponent<CountdownTimer>().SetPodeComecar(true);
-    }
+    //    GetComponent<CountdownTimer>().SetPodeComecar(true);
+    //}
     public void ReloadScene()
     {
-        Pontos.pontosP1 = 0;
-        Pontos.pontosP2 = 0;
-
+        ZerarPontosEVitorias();
         SceneManager.LoadScene(Pontos.cenaAtual);
     }
 

@@ -94,7 +94,7 @@ public class XimasSkills : MonoBehaviour
 
         if (playerCombat.GetNomeAtaqueAtual() == "AtaqueMedio")
         {
-            if (playerCombat.GetOrdemCombo() < 3 && playerCombat.GetOrdemCombo() != 0)
+            if (playerCombat.GetOrdemCombo() < 3 && playerCombat.GetOrdemCombo() > 1) // != 0
             {
                 scrpRigidbody.GravidadeZero(false);
                 //outroPlayer.GetComponent<PlayerMoveRigidbody>().TravarNoAr();
@@ -277,7 +277,7 @@ public class XimasSkills : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
-        playerCombat.SetInAttack(false);
+        playerCombat.ResetCombo();
         yield return ResetCombo();
         yield break;
     }
@@ -293,7 +293,7 @@ public class XimasSkills : MonoBehaviour
         playerAnimator.AttackAction("Perry", true);
         playerCombat.SetNomeAtaqueAtual("Perry");
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         //playerCombat.SetInAttack(false);
         playerCombat.SetInParry(false);
@@ -326,7 +326,7 @@ public class XimasSkills : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
-        playerCombat.SetInAttack(false);
+        playerCombat.ResetCombo();
 
         yield return ResetCombo();
         yield break;

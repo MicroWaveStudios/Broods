@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3020,6 +3020,7 @@ GameObject:
   - component: {fileID: 347176202}
   - component: {fileID: 347176201}
   - component: {fileID: 347176200}
+  - component: {fileID: 347176203}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -3067,7 +3068,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -3166,6 +3167,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 347176198}
   m_CullTransparentMesh: 1
+--- !u!114 &347176203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 347176198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7de3a8129ed3a9b419fa5a193ae39cc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EstadoAtual: 0
+  valorMinimo: 0
+  valorMaximo: 4
+  valorAtual: 0
+  txtFrase: {fileID: 702521566}
+  button: {fileID: 347176198}
+  Botao: 1
 --- !u!1 &363667258
 GameObject:
   m_ObjectHideFlags: 0
@@ -4360,7 +4380,6 @@ GameObject:
   - component: {fileID: 702521564}
   - component: {fileID: 702521567}
   - component: {fileID: 702521566}
-  - component: {fileID: 702521568}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -4485,23 +4504,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 702521563}
   m_CullTransparentMesh: 1
---- !u!114 &702521568
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 702521563}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7de3a8129ed3a9b419fa5a193ae39cc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  EstadoAtual: 0
-  valorMinimo: 0
-  valorMaximo: 3
-  valorAtual: 0
-  txtFrase: {fileID: 702521566}
 --- !u!1 &734916918
 GameObject:
   m_ObjectHideFlags: 0

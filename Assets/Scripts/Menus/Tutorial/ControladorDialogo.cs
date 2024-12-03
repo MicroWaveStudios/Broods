@@ -129,7 +129,7 @@ public class ControladorDialogo : MonoBehaviour
             else
             {
                 dialogueUI.Disable();
-                textoComAnimacao.texto.gameObject.SetActive(false); 
+                //textoComAnimacao.texto.gameObject.SetActive(false); 
                 textoAtual = 0;
                 //playerController.EnableMapActionPlayer();
 
@@ -138,7 +138,7 @@ public class ControladorDialogo : MonoBehaviour
                 
                 if (!treinamento)
                 {
-                    tutorialManager.GetComponent<ComandosTutorial>().enabled = true;
+                    //tutorialManager.GetComponent<ComandosTutorial>().enabled = true;
                 }
             }
         }
@@ -146,6 +146,7 @@ public class ControladorDialogo : MonoBehaviour
 
     IEnumerator StartFadeInFadeOut()
     {
+        yield return new WaitForSeconds(1f);
         caixaPreta.GetComponent<Animator>().SetTrigger("Change");
         yield return new WaitForSeconds(timer);
         sceneManager.GetComponent<sceneManager>().TutorialTeste();
