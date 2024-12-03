@@ -27,8 +27,17 @@ public class PanelsManager : MonoBehaviour
         eventSystemManager.GetComponent<EventSystemManager>().SetCurrentSelectedButton(defaultPanelButton[currentPanel]);
     }
 
+    public void FecharPainel(int i)
+    {
+        panel[i].SetActive(false);
+    }
+
     public int GetPanel()
     {
         return currentPanel;
+    }
+    public int GetPanelLength()
+    { 
+        return panel.Length;
     }
 }

@@ -20,12 +20,14 @@ public class PersonagensManager : MonoBehaviour
 
     [SerializeField] Transform[] posicaoPlayer;
 
-    [SerializeField] TMP_Text[] VarianteTxt;
+    [SerializeField] TMP_Text[] NomePersonagemTxt;
 
     GameObject[] playerGameObject = new GameObject[2];
 
     [SerializeField] int[] PersonagemID = new int[2];
     [SerializeField] int[] varianteAtual = new int[2];
+
+    [SerializeField] GameObject[] NomePersonagem;
 
     bool naSelecaoDePersonagem;
 
@@ -54,8 +56,8 @@ public class PersonagensManager : MonoBehaviour
             connectManager.SetEtapaConectar();
         }
         naSelecaoDePersonagem = value;
-        connectManager.GetPlayer(0).GetComponent<SelecaoPersonagem>().SetActiveBordaSelecao(value);
-        connectManager.GetPlayer(1).GetComponent<SelecaoPersonagem>().SetActiveBordaSelecao(value);
+        connectManager.GetPlayer(0).GetComponent<SelecaoPersonagem>().SetActiveBordaSelecaoPersonagem(value);
+        connectManager.GetPlayer(1).GetComponent<SelecaoPersonagem>().SetActiveBordaSelecaoPersonagem(value);
     }
     public void SetPersonagemID(int personagemIndex, int playerIndex)
     {
@@ -84,7 +86,7 @@ public class PersonagensManager : MonoBehaviour
         confirmouPersonagem[playerIndex] = value;
         if (value)
         {
-            VarianteTxt[playerIndex].text = "Pronto!";
+            NomePersonagemTxt[playerIndex].text = "Pronto!";
             connectManager.GetPlayer(playerIndex).GetComponent<ConnectPlayer>().SetNumeroPersonagem(PersonagemID[playerIndex]);
             SetVariante(playerIndex, material);
             for (int i = 0; i < 2; i++)
@@ -97,7 +99,7 @@ public class PersonagensManager : MonoBehaviour
         }
         else
         {
-            VarianteTxt[playerIndex].text = nomeVariante[playerIndex];
+            NomePersonagemTxt[playerIndex].text = nomeVariante[playerIndex];
         }
         if (confirmouPersonagem[0] && confirmouPersonagem[1])
         {
@@ -115,7 +117,10 @@ public class PersonagensManager : MonoBehaviour
     public void SelecionouPersonagem(int playerIndex, int personagemIndex, bool value)
     {
         selecionouPersonagem[playerIndex] = value;
-        VarianteTxt[playerIndex].gameObject.SetActive(value);
+    }
+    public void SetActiveNomePersonagem(int playerIndex, bool value)
+    {
+        NomePersonagemTxt[playerIndex].gameObject.SetActive(value);
     }
     #endregion
     string[] nomeVariante = new string[2];
@@ -123,8 +128,23 @@ public class PersonagensManager : MonoBehaviour
     {
         if (!confirmouPersonagem[playerIndex])
         {
+            //switch (connectManager.GetPlayer(playerIndex).GetComponent<ConnectPlayer>().GetNumeroPersonagem())
+            //{
+            //    case 0:
+            //        NomePersonagem[1].SetActive(false);
+            //        NomePersonagem[0].SetActive(true);
+            //        break;
+            //    case 1:
+            //        NomePersonagem[0].SetActive(false);
+            //        NomePersonagem[1].SetActive(true);
+            //        break;
+            //    case -1:
+            //        NomePersonagem[0].SetActive(false);
+            //        NomePersonagem[1].SetActive(false);
+            //        break;
+            //}
             nomeVariante[playerIndex] = Variante;
-            VarianteTxt[playerIndex].text = nomeVariante[playerIndex];
+            NomePersonagemTxt[playerIndex].text = nomeVariante[playerIndex];
         }
     }
     public void DestroyPersonagens()

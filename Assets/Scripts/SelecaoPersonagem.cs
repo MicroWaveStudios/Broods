@@ -6,10 +6,11 @@ using TMPro;
 
 public class SelecaoPersonagem : MonoBehaviour
 {
-    [SerializeField] GameObject BordaSelecaoPersonagem;
-    [SerializeField] TMP_Text textoBorda;
-    [SerializeField] Color[] CorBorda;
-    [SerializeField] Vector3[] PosicaoTexto;
+    [SerializeField] GameObject[] BordaSelecaoPersonagem;
+    [SerializeField] GameObject[] BordaSelecaoCor;
+    //[SerializeField] TMP_Text textoBorda;
+    //[SerializeField] Color[] CorBorda;
+    //[SerializeField] Vector3[] PosicaoTexto;
     [SerializeField] AudioSource PassouPorCima;
     [SerializeField] AudioSource SelecionouBonecoErrado;
     [SerializeField] AudioSource SelecionouCerto;
@@ -21,14 +22,24 @@ public class SelecaoPersonagem : MonoBehaviour
 
     GameObject botaoAtual;
 
+    int playerID;
+
     private void Awake()
     {
         personagensManager = GameObject.FindGameObjectWithTag("PersonagemManager");
         connectManager = GameObject.FindGameObjectWithTag("ConnectManager");
     }
-    public void SetActiveBordaSelecao(bool value)
+    public void SetActiveBordaSelecaoPersonagem(bool value)
     {
-        BordaSelecaoPersonagem.SetActive(value);
+        BordaSelecaoPersonagem[playerID].SetActive(value);
+        if (value)
+        {
+            AlterarBotaoAtual(personagensManager.GetComponent<PersonagensManager>().GetBotaoInicial());
+        }
+    }
+    public void SetActiveBordaSelecaoCor(bool value)
+    {
+        BordaSelecaoCor[playerID].SetActive(value);
         if (value)
         {
             AlterarBotaoAtual(personagensManager.GetComponent<PersonagensManager>().GetBotaoInicial());
@@ -37,11 +48,12 @@ public class SelecaoPersonagem : MonoBehaviour
 
     public void TrocarCorDaBorda(int playerIndex)
     {
-        BordaSelecaoPersonagem.GetComponent<SpriteRenderer>().color = CorBorda[playerIndex];
-        int playerText = playerIndex + 1;
-        textoBorda.rectTransform.position = PosicaoTexto[playerIndex];
-        textoBorda.color = CorBorda[playerIndex];
-        textoBorda.text = "P" + playerText;
+        playerID = playerIndex;
+        //BordaSelecaoPersonagem.GetComponent<SpriteRenderer>().color = CorBorda[playerIndex];
+        //int playerText = playerIndex + 1;
+        //textoBorda.rectTransform.position = PosicaoTexto[playerIndex];
+        //textoBorda.color = CorBorda[playerIndex];
+        //textoBorda.text = "P" + playerText;
     }
 
     public void AlterarBotaoAtual(GameObject novoBotaoAtual)
@@ -54,6 +66,11 @@ public class SelecaoPersonagem : MonoBehaviour
         }
         botaoAtual = novoBotaoAtual;
         transform.position = novoBotaoAtual.transform.position;
+        personagensManager.GetComponent<PersonagensManager>().SetActiveNomePersonagem(playerID, true);
+        if (botaoAtual.GetComponent<scriptBotao>().GetPersonagemID() == -1)
+        {
+            personagensManager.GetComponent<PersonagensManager>().SetActiveNomePersonagem(playerID, false);
+        }
         botaoAtual.GetComponent<scriptBotao>().SetJogadorNoBotao(true, playerIndex);
     }
     public void Confirmar(InputAction.CallbackContext context)
@@ -62,14 +79,14 @@ public class SelecaoPersonagem : MonoBehaviour
         {
             if (botaoAtual != null)
             {
-                if (personagensManager.GetComponent<PersonagensManager>().GetSelecionouPersonagem(GetComponent<ConnectPlayer>().GetPlayerID()) && !personagensManager.GetComponent<PersonagensManager>().GetConfirmouPersonagem(GetComponent<ConnectPlayer>().GetPlayerID()))
+                if (personagensManager.GetComponent<PersonagensManager>().GetSelecionouPersonagem(playerID) && !personagensManager.GetComponent<PersonagensManager>().GetConfirmouPersonagem(playerID))
                 {
-                    personagensManager.GetComponent<PersonagensManager>().ConfirmouPersonagem(GetComponent<ConnectPlayer>().GetPlayerID(), botaoAtual.GetComponent<scriptBotao>().GetJogador(GetComponent<ConnectPlayer>().GetPlayerID()).GetComponent<MaterialPlayer>().GetMaterialAtual(), true);
+                    personagensManager.GetComponent<PersonagensManager>().ConfirmouPersonagem(playerID, botaoAtual.GetComponent<scriptBotao>().GetJogador(playerID).GetComponent<MaterialPlayer>().GetMaterialAtual(), true);
                     SelecionouCerto.Play();
                 }
-                else if (botaoAtual.GetComponent<scriptBotao>().GetJogador(GetComponent<ConnectPlayer>().GetPlayerID()) != null && !personagensManager.GetComponent<PersonagensManager>().GetConfirmouPersonagem(GetComponent<ConnectPlayer>().GetPlayerID()))
+                else if (botaoAtual.GetComponent<scriptBotao>().GetJogador(playerID) != null && !personagensManager.GetComponent<PersonagensManager>().GetConfirmouPersonagem(playerID))
                 {
-                    personagensManager.GetComponent<PersonagensManager>().SelecionouPersonagem(GetComponent<ConnectPlayer>().GetPlayerID(), botaoAtual.GetComponent<scriptBotao>().GetPersonagemID(), true);
+                    personagensManager.GetComponent<PersonagensManager>().SelecionouPersonagem(playerID, botaoAtual.GetComponent<scriptBotao>().GetPersonagemID(), true);
                     SelecionouTudo.Play();
                 }
             }
@@ -87,9 +104,9 @@ public class SelecaoPersonagem : MonoBehaviour
         Vector2 orientacao = context.ReadValue<Vector2>();
         if (orientacao != Vector2.zero)
         {
-            if (personagensManager.GetComponent<PersonagensManager>().GetNaSelecaoDePersonagem() && !personagensManager.GetComponent<PersonagensManager>().GetConfirmouPersonagem(GetComponent<ConnectPlayer>().GetPlayerID()))
+            if (personagensManager.GetComponent<PersonagensManager>().GetNaSelecaoDePersonagem() && !personagensManager.GetComponent<PersonagensManager>().GetConfirmouPersonagem(playerID))
             {
-                if (personagensManager.GetComponent<PersonagensManager>().GetSelecionouPersonagem(GetComponent<ConnectPlayer>().GetPlayerID()))
+                if (personagensManager.GetComponent<PersonagensManager>().GetSelecionouPersonagem(playerID))
                 {
                     GetPersonagem().GetComponent<MaterialPlayer>().TrocarMaterial(context.ReadValue<Vector2>().x);
                     PassouPorCima.Play();

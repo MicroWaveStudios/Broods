@@ -49,6 +49,11 @@ public class ConnectPlayerInMenu : MonoBehaviour
             Pontos.pontosP[i] = 0;
             Pontos.vitoriaP[i] = 0;
         }
+        for (int i = 0; i < panelsManager.GetPanelLength(); i++)
+        {
+            panelsManager.FecharPainel(i);
+        }
+        panelsManager.ChangePanel(0);
     }
     public void ConnectDisconnectPlayer(GameObject Player, int playerID, string controlScheme, bool value)
     {

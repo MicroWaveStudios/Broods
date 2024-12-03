@@ -81,7 +81,7 @@ public class MaterialPlayer : MonoBehaviour
         }
         botao.GetComponent<scriptBotao>().SetVariantePlayer(materialAtual, playerID);
         SetMaterialPersonagem(materialAtual);
-        GameObject.FindGameObjectWithTag("PersonagemManager").GetComponent<PersonagensManager>().TrocarVarianteTxt(playerID, VarianteDaSkin[materialAtual].nome);
+        GameObject.FindGameObjectWithTag("PersonagemManager").GetComponent<PersonagensManager>().TrocarVarianteTxt(playerID, nome);
     }
     public void SetMaterialPersonagem(int skin)
     {
@@ -105,8 +105,17 @@ public class MaterialPlayer : MonoBehaviour
             }
         }
     }
-
+    string nome;
     #region Void's Get/Set
+
+    public void SetNome(string value)
+    {
+        nome = value;
+    }
+    public string GetNome()
+    {
+        return nome;
+    }
     public void SetMaterialAtual(int novoMaterialAtual)
     {
         materialAtual = novoMaterialAtual;
