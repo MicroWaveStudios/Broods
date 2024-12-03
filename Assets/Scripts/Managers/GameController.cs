@@ -95,11 +95,11 @@ public class GameController : MonoBehaviour
             {
                 case 0:
                     fotoPersonagem[i].GetComponent<Image>().sprite = imagemPersonagem_P1[Pontos.personagem[i]];
-                    fotoPersonagem[i].transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+                    //fotoPersonagem[i].transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
                     break;
                 case 1:
                     fotoPersonagem[i].GetComponent<Image>().sprite = imagemPersonagem_P2[Pontos.personagem[i]];
-                    fotoPersonagem[i].transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
+                    //fotoPersonagem[i].transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
                     break;
             }
             switch (Pontos.personagem[i])
@@ -542,11 +542,12 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(3f);
         winnerPanel.SetActive(true);
         WinnerPanelPlayer[novoGanhador].SetActive(true);
-        pontosTelaWinner.text = Pontos.pontosP[novoGanhador].ToString();
+        pontosTelaWinner.text = player[novoGanhador].GetComponent<PlayerStats>().GetPontos().ToString();
         PanelManager.ChangePanel(1);
-        ZerarPontosEVitorias();
         //yield return new WaitForSeconds(2.5f);
         //SceneManager.LoadScene("Menu");
+        yield return new WaitForSeconds(1f);
+        ZerarPontosEVitorias();
         yield break;
     }
 
@@ -622,7 +623,7 @@ public class GameController : MonoBehaviour
     //}
     public void ReloadScene()
     {
-        ZerarPontosEVitorias();
+        //ZerarPontosEVitorias();
         SceneManager.LoadScene(Pontos.cenaAtual);
     }
 
