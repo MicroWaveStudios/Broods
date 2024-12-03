@@ -2,8 +2,8 @@ using UnityEngine;
 
 class Pontos
 {
-    public static int pontosP1;
-    public static int pontosP2;
+    public static int[] pontosP = new int[2];
+    public static int[] vitoriaP = new int[2];
 
     public static bool SplitKeyboard;
 

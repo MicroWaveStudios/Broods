@@ -217,8 +217,6 @@ public class PlayerCombat : MonoBehaviour
         yield return new WaitForSeconds(0.01f);
         InCombo = true;
 
-        
-
         yield return StartCoroutine(ContinuarCombo());
         //yield return StartCoroutine(WaitForFrames(_AttackList[ListaDeAtaqueAtual].FramesContinuar[ordem], _AttackList[ListaDeAtaqueAtual].VelocidadeDaAnimacao[ordem], _AttackList[ListaDeAtaqueAtual].SampleRate[ordem]));
     }

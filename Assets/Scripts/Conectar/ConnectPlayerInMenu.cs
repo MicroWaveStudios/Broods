@@ -44,8 +44,11 @@ public class ConnectPlayerInMenu : MonoBehaviour
 
     private void Start()
     {
-        Pontos.pontosP1 = 0;
-        Pontos.pontosP2 = 0;
+        for (int i = 0; i < Pontos.vitoriaP.Length; i++)
+        {
+            Pontos.pontosP[i] = 0;
+            Pontos.vitoriaP[i] = 0;
+        }
     }
     public void ConnectDisconnectPlayer(GameObject Player, int playerID, string controlScheme, bool value)
     {

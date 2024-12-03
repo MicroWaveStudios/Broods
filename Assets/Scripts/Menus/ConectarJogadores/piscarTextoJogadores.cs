@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+//using UnityEngine.UIElements;
+using UnityEngine.UI;
+//using Microsoft.Unity.VisualStudio.Editor;
 
 public class piscarTextoJogadores : MonoBehaviour
 {
@@ -10,6 +13,10 @@ public class piscarTextoJogadores : MonoBehaviour
     public float valorMaximo;
     public float valorAtual;
     public TMP_Text txtFrase;
+
+    [SerializeField] GameObject button;
+
+    [SerializeField] bool Botao;
 
 
     void Start()
@@ -36,7 +43,14 @@ public class piscarTextoJogadores : MonoBehaviour
         if (EstadoAtual == estado.ENCOLHENDO)
         {
             valorAtual -= 0.01f;
-            txtFrase.color = new Color(Color.white.r, Color.white.g, Color.white.b, valorAtual);
+            if (Botao)
+            {
+                button.GetComponent<Image>().color = new Color(Color.white.r, Color.white.g, Color.white.b, valorAtual);
+            }
+            else
+            {
+                txtFrase.color = new Color(Color.white.r, Color.white.g, Color.white.b, valorAtual);
+            }
             
             if(valorAtual <= valorMinimo)
             {
@@ -47,7 +61,14 @@ public class piscarTextoJogadores : MonoBehaviour
         if (EstadoAtual == estado.AUMENTANDO)
         {
             valorAtual += 0.01f;
-            txtFrase.color = new Color(Color.white.r, Color.white.g, Color.white.b, valorAtual);
+            if (Botao)
+            {
+                button.GetComponent<Image>().color = new Color(Color.white.r, Color.white.g, Color.white.b, valorAtual);
+            }
+            else
+            {
+                txtFrase.color = new Color(Color.white.r, Color.white.g, Color.white.b, valorAtual);
+            }
 
             if (valorAtual >= valorMaximo)
             {

@@ -10,8 +10,10 @@ public class ComandosTutorial : MonoBehaviour
     [SerializeField] public List<TMP_Text> acao = new List<TMP_Text>();
     [SerializeField] private GameObject instrucoes;
     [SerializeField] private GameObject painelFimTutorial;
+    [SerializeField] PanelsManager panelsManager;
     PlayerMoveRigidbody playerMove;
     PlayerCombat playerCombat;
+    PlayerController playerController;
     public bool podeAtacar = true;
 
     [SerializeField] sceneManager sceneManager;
@@ -20,6 +22,7 @@ public class ComandosTutorial : MonoBehaviour
     {
         playerMove = GameObject.FindGameObjectWithTag("Player1").GetComponent<PlayerMoveRigidbody>();
         playerCombat = GameObject.FindGameObjectWithTag("Player1").GetComponent<PlayerCombat>();
+        playerController = GameObject.FindGameObjectWithTag("Player1").GetComponent<PlayerController>();
     }
     private void Update()
     {
@@ -107,7 +110,9 @@ public class ComandosTutorial : MonoBehaviour
     {
         instrucoes.SetActive(false);
         yield return new WaitForSeconds(1f);
-        //painelFimTutorial.SetActive(true);
-        sceneManager.GetComponent<sceneManager>().VoltarMenu();
+        painelFimTutorial.SetActive(true);
+        playerController.EnableMapActionUI();
+        panelsManager.ChangePanel(0);
+        //sceneManager.GetComponent<sceneManager>().VoltarMenu();
     }
 }
