@@ -4432,6 +4432,8 @@ MonoBehaviour:
   defendendo: 0
   defendeu: 0
   pontos: 0
+  golpesSequencia: 0
+  timer: 0
   tutorial: 0
   Ximas: 1
   teste: 0
