@@ -12505,6 +12505,42 @@ PrefabInstance:
       propertyPath: tutorial
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5825252824003833763, guid: 6ae38b9c128d93748b30d3cef5189263, type: 3}
+      propertyPath: _AttackList.Array.data[1].MoveUpOtherPlayer.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5825252824003833763, guid: 6ae38b9c128d93748b30d3cef5189263, type: 3}
+      propertyPath: _AttackList.Array.data[3].MoveUpOtherPlayer.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5825252824003833763, guid: 6ae38b9c128d93748b30d3cef5189263, type: 3}
+      propertyPath: _AttackList.Array.data[1].MoveDamageOtherPlayer.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5825252824003833763, guid: 6ae38b9c128d93748b30d3cef5189263, type: 3}
+      propertyPath: _AttackList.Array.data[1].MoveDamageOtherPlayer.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5825252824003833763, guid: 6ae38b9c128d93748b30d3cef5189263, type: 3}
+      propertyPath: _AttackList.Array.data[2].MoveDamageOtherPlayer.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5825252824003833763, guid: 6ae38b9c128d93748b30d3cef5189263, type: 3}
+      propertyPath: _AttackList.Array.data[2].MoveDamageOtherPlayer.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5825252824003833763, guid: 6ae38b9c128d93748b30d3cef5189263, type: 3}
+      propertyPath: _AttackList.Array.data[2].MoveDamageOtherPlayer.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5825252824003833763, guid: 6ae38b9c128d93748b30d3cef5189263, type: 3}
+      propertyPath: _AttackList.Array.data[3].MoveDamageOtherPlayer.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5825252824003833763, guid: 6ae38b9c128d93748b30d3cef5189263, type: 3}
+      propertyPath: _AttackList.Array.data[3].MoveDamageOtherPlayer.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5825252824003833765, guid: 6ae38b9c128d93748b30d3cef5189263, type: 3}
       propertyPath: tutorial
       value: 1
