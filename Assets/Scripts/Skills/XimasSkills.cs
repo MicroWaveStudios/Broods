@@ -274,12 +274,12 @@ public class XimasSkills : MonoBehaviour
 
         
         scrpPlayerStats.UsouSkill(custoDash);
+        playerAnimator.AttackAction("Dash", false);
 
         yield return new WaitForSeconds(1f);
 
         
-        playerCombat.ResetCombo();
-        playerAnimator.AttackAction("Dash", false);
+        playerCombat.ResetCombo();       
         yield return ResetCombo();
         yield break;
     }
@@ -327,10 +327,12 @@ public class XimasSkills : MonoBehaviour
 
         vfxExplosaoMate.Play();
 
+        playerAnimator.AttackAction("Sopro", false);
+
         yield return new WaitForSeconds(0.5f);
 
         playerCombat.ResetCombo();
-        playerAnimator.AttackAction("Sopro", false);
+        
 
         yield return ResetCombo();
         yield break;
