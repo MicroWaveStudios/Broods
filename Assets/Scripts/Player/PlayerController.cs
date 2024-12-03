@@ -43,6 +43,15 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        if (this.gameObject.CompareTag("Player1"))
+        {
+            playerID = 0;
+        }
+        else
+        {
+            playerID = 1;
+        }
+
         StartCoroutine(PlayerCanDoIt());
     }
 
@@ -115,5 +124,10 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         CanDoIt = true;
         yield break;
+    }
+
+    public int GetPlayerID()
+    {
+        return playerID;
     }
 }

@@ -19,6 +19,7 @@ public class NaraSkills : MonoBehaviour
     float timer;
     
     bool InMeiaLua = false;
+    bool transcendido = false;
     Vector3 posicaoRaycast;
     Vector3 posicaoRaycastPlayer2;
 
@@ -36,6 +37,10 @@ public class NaraSkills : MonoBehaviour
         public float sampleRate;
         public VisualEffect visualEffectDoAtaque;
     }
+
+    [SerializeField] Material[] tatuagens;
+    [SerializeField] Color[] corBrilho;
+    int numVariacao;
 
     [Header("Skill Laser")]
     [SerializeField] float custoLaser;
@@ -70,6 +75,12 @@ public class NaraSkills : MonoBehaviour
         scrpPlayerStats = GetComponent<PlayerStats>();
     }
 
+    private void Start()
+    {
+        numVariacao = Pontos.variante[GetComponent<PlayerController>().GetPlayerID()];
+        ApagarTatuagem();
+    }
+
     private void Update()
     {
         if (this.gameObject.CompareTag("Player1"))
@@ -88,7 +99,11 @@ public class NaraSkills : MonoBehaviour
             Debug.DrawLine(posicaoRaycast, outroPlayer.transform.position, Color.red);
         }
 
-
+        if (tarticosContagem >= 5 && transcendido == false)
+        {
+            transcendido = true;
+            BrilharTatuagem();
+        }
 
         posicaoRaycast = new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z);
     }
@@ -216,6 +231,8 @@ public class NaraSkills : MonoBehaviour
 
         playerAnimator.TriggerAction("Laser");
 
+        BrilharTatuagem();
+
         yield return new WaitForSeconds(0f);     
 
         RaycastHit hit;
@@ -283,7 +300,7 @@ public class NaraSkills : MonoBehaviour
 
         tarticosContagem++;
 
-        scrpPlayerStats.SomarDamageMultiplier(tarticosContagem / 2);
+        scrpPlayerStats.SomarDamageMultiplier(0.3f * tarticosContagem);
 
         //danoLaser += tarticosContagem;
 
@@ -292,6 +309,8 @@ public class NaraSkills : MonoBehaviour
         scrpPlayerStats.UsouSkill(custoTartico);
 
         playerAnimator.TriggerAction("Tartico");
+
+        BrilharTatuagem();
 
         yield return new WaitForSeconds(0.5f);
         playerCombat.SetInAttack(false);
@@ -315,6 +334,8 @@ public class NaraSkills : MonoBehaviour
 
         playerAnimator.TriggerAction("Kaboom");
 
+        BrilharTatuagem();
+
         yield return new WaitForSeconds(0.3f);
 
         vfxExplosao.Play();
@@ -334,6 +355,7 @@ public class NaraSkills : MonoBehaviour
         ordemLaser = 0;
         ordemTarticos = 0;     
         timer = 0f;
+        ApagarTatuagem();
         playerCombat.SetInMeiaLua(false);
         playerCombat.SetInAttack(false);
         actualNumber = -1;
@@ -377,4 +399,19 @@ public class NaraSkills : MonoBehaviour
     {
         return InMeiaLua;
     }
+
+    public void BrilharTatuagem()
+    {
+        tatuagens[numVariacao].SetColor("_Color1", corBrilho[numVariacao] * 19f);
+    }
+
+    public void ApagarTatuagem()
+    {
+        if (transcendido == false)
+        {
+            tatuagens[numVariacao].SetColor("_Color1", Color.white * 1f);
+        }
+        
+    }
 }
+
