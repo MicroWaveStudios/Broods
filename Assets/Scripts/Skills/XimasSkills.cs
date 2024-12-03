@@ -254,7 +254,7 @@ public class XimasSkills : MonoBehaviour
             yield break;
         }
 
-        vfxExplosaoMate.Play();
+        vfxBrilhoOlho.Play();
 
         yield return new WaitForSeconds(0.3f);
 
@@ -265,7 +265,7 @@ public class XimasSkills : MonoBehaviour
         //playerAnimator.TriggerAction("AtaqueFraco");
 
         scrpPlayerStats.SomarPontos(150);
-
+        playerAnimator.AttackAction("Dash", true);
 
         yield return new WaitForSeconds(0.2f);     
 
@@ -277,7 +277,9 @@ public class XimasSkills : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
+        
         playerCombat.ResetCombo();
+        playerAnimator.AttackAction("Dash", false);
         yield return ResetCombo();
         yield break;
     }
@@ -289,14 +291,15 @@ public class XimasSkills : MonoBehaviour
         playerCombat.SetInParry(true);
 
         scrSons.TocarSom("ParryInicio");
+        vfxBrilhoOlho.Play();
         //playerAnimator.TriggerAction("Perry");
         playerAnimator.AttackAction("Perry", true);
-        playerCombat.SetNomeAtaqueAtual("Perry");
 
         yield return new WaitForSeconds(0.5f);
 
         //playerCombat.SetInAttack(false);
         playerCombat.SetInParry(false);
+        playerAnimator.AttackAction("Perry", false);
         playerCombat.ResetCombo();
         yield return ResetCombo();
         yield break;
@@ -318,7 +321,7 @@ public class XimasSkills : MonoBehaviour
 
         scrpPlayerStats.SomarPontos(150);
 
-        playerAnimator.TriggerAction("Sopro");
+        playerAnimator.AttackAction("Sopro", true);
 
         yield return new WaitForSeconds(0.3f);
 
@@ -327,6 +330,7 @@ public class XimasSkills : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         playerCombat.ResetCombo();
+        playerAnimator.AttackAction("Sopro", false);
 
         yield return ResetCombo();
         yield break;
