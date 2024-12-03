@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18291372, g: 0.22617263, b: 0.2927307, a: 1}
+  m_IndirectSpecularColor: {r: 0.18291344, g: 0.22617225, b: 0.29273003, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -548,7 +548,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 5520663030062143179, guid: 5570590b875383a409a5d02469448c17, type: 2}
-  m_audioClip: {fileID: 8300000, guid: ca04e315d5d0bea40a0f4e702c1aff52, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 57e6171ef04e5a7478f6044ccea29d37, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1101,7 +1101,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 5520663030062143179, guid: 5570590b875383a409a5d02469448c17, type: 2}
-  m_audioClip: {fileID: 8300000, guid: f29cb60d1e688fa418773103040b6773, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ff1dffb196be2184da9911dcb6c0ba5e, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -3665,6 +3665,8 @@ MonoBehaviour:
   redBar1: {fileID: 1160454096}
   greenBar2: {fileID: 1720890561}
   redBar2: {fileID: 440837}
+  Pauses: []
+  UI: {fileID: 0}
   fotoPersonagem:
   - {fileID: 1710617183}
   - {fileID: 265857757}
@@ -3908,6 +3910,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sons - Nara
       objectReference: {fileID: 0}
+    - target: {fileID: 9009418403578318580, guid: d178af1e7a8463d4891c3f59384e5039, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 57e6171ef04e5a7478f6044ccea29d37, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d178af1e7a8463d4891c3f59384e5039, type: 3}
 --- !u!4 &1140675177 stripped

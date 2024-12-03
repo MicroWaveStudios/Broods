@@ -29,6 +29,8 @@ public class GameController : MonoBehaviour
     [SerializeField] Image redBar1;
     [SerializeField] Image greenBar2;
     [SerializeField] Image redBar2;
+    [SerializeField] GameObject[] Pauses;
+    [SerializeField] GameObject UI;
 
     [SerializeField] GameObject[] fotoPersonagem;
     [SerializeField] TMP_Text[] nomeDoPersonagem;
@@ -332,7 +334,31 @@ public class GameController : MonoBehaviour
             isPaused = value;
             SetActiveInputNotFocusedPlayer(focusedPlayer.tag, value);
             SwitchControlScheme(value);
+            MostrarPauseCerto(newFocusedPlayer, value);
+            UI.SetActive(value);
             UIPause(value);
+        }
+    }
+
+    public void MostrarPauseCerto(GameObject newFocusedPlayer, bool value)
+    {
+        if (focusedPlayer == null)
+            focusedPlayer = newFocusedPlayer;
+        if (focusedPlayer.tag == newFocusedPlayer.tag)
+        {
+            if (focusedPlayer.name == "Nará")
+            {
+                if (Pontos.ControlSchemePlayer[1] == "Keyboard")
+                {
+                    Pauses[0].SetActive(value);
+                }
+
+                if (Pontos.ControlSchemePlayer[1] == "Gamepad")
+                {
+                    Pauses[1].SetActive(value);
+                }
+
+            }
         }
     }
     void SwitchControlScheme(bool value)
