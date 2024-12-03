@@ -103,6 +103,8 @@ public class NaraSkills : MonoBehaviour
         {
             transcendido = true;
             BrilharTatuagem();
+
+            scrpPlayerStats.SomarPontos(800);
         }
 
         posicaoRaycast = new Vector3(transform.position.x, transform.position.y + 1f, transform.position.z);
@@ -233,6 +235,8 @@ public class NaraSkills : MonoBehaviour
 
         BrilharTatuagem();
 
+        scrpPlayerStats.SomarPontos(150);
+
         yield return new WaitForSeconds(0f);     
 
         RaycastHit hit;
@@ -312,6 +316,8 @@ public class NaraSkills : MonoBehaviour
 
         BrilharTatuagem();
 
+        scrpPlayerStats.SomarPontos(150);
+
         yield return new WaitForSeconds(0.5f);
         playerCombat.SetInAttack(false);
         yield return ResetCombo();
@@ -335,6 +341,8 @@ public class NaraSkills : MonoBehaviour
         playerAnimator.TriggerAction("Kaboom");
 
         BrilharTatuagem();
+
+        scrpPlayerStats.SomarPontos(150);
 
         yield return new WaitForSeconds(0.3f);
 

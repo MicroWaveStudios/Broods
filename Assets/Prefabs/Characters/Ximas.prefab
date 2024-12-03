@@ -3688,7 +3688,7 @@ GameObject:
   - component: {fileID: 7016451780072166860}
   m_Layer: 7
   m_Name: Ximas
-  m_TagString: Player2
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4137,7 +4137,7 @@ MonoBehaviour:
   playerMove: {fileID: 4146799700040216486}
   playerAnimator: {fileID: 1781845846367271014}
   playerStats: {fileID: 212009621018895382}
-  NaraSkills: {fileID: 0}
+  naraSkills: {fileID: 0}
   anim: {fileID: 1360568270482154252}
   scrSons: {fileID: 0}
   _InAttack: 0
@@ -4430,6 +4430,7 @@ MonoBehaviour:
   energy: 0
   defendendo: 0
   defendeu: 0
+  pontos: 0
   tutorial: 0
   Ximas: 1
   teste: 0

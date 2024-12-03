@@ -12860,7 +12860,7 @@ MonoBehaviour:
   playerMove: {fileID: 5825252824003833821}
   playerAnimator: {fileID: 5825252824003833760}
   playerStats: {fileID: 5825252824003833765}
-  NaraSkills: {fileID: 757593877083283454}
+  naraSkills: {fileID: 0}
   anim: {fileID: 5825252824003833767}
   scrSons: {fileID: 0}
   _InAttack: 0
@@ -13131,6 +13131,7 @@ MonoBehaviour:
   energy: 0
   defendendo: 0
   defendeu: 0
+  pontos: 0
   tutorial: 0
   Ximas: 0
   teste: 0

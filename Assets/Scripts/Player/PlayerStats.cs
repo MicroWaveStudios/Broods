@@ -19,6 +19,9 @@ public class PlayerStats : MonoBehaviour
     public bool defendendo;
 
     public bool defendeu;
+
+    public float pontos;
+
     [SerializeField] bool tutorial;
 
     [SerializeField] bool Ximas;
@@ -91,6 +94,7 @@ public class PlayerStats : MonoBehaviour
 
     public void CounterParry(GameObject otherPlayer)
     {
+        SomarPontos(150);
         AddEnergy(9999);
         playerAnimator.TriggerAction("PerryContinuacao");
         otherPlayer.GetComponent<PlayerStats>().SufferDamage(7, 3, 10, 10, 0, null);
@@ -143,6 +147,7 @@ public class PlayerStats : MonoBehaviour
             }
             else
             {
+                SomarPontos(25);
                 life -= damage;
                 playerAnimator.TriggerAction("TomouDano");
                 playerMoveRigidbody.MoveUp(moveUpOtherPlayer);
@@ -159,6 +164,7 @@ public class PlayerStats : MonoBehaviour
         }
         else
         {
+            SomarPontos(50);
             vfxDefesa.Play();
         }
         //scrpGameController.SetTimeScale();
@@ -240,5 +246,15 @@ public class PlayerStats : MonoBehaviour
     public void SomarDamageMultiplier(float NewDamageMultiplier)
     {
         damageMultiplier += NewDamageMultiplier;
+    }
+
+    public void SomarPontos(float somaPontos)
+    {
+        pontos += somaPontos;
+    }
+
+    public float GetPontos()
+    {
+        return pontos;
     }
 }

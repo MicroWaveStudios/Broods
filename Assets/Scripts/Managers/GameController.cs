@@ -392,6 +392,15 @@ public class GameController : MonoBehaviour
                 ganhador = 1;
             }
 
+            Debug.Log("Ganhou");
+            player[ganhador].GetComponent<PlayerStats>().SomarPontos(1000);
+
+            if (player[ganhador].GetComponent<PlayerStats>().life == player[ganhador].GetComponent<PlayerStats>().maxLife)
+            {
+                Debug.Log("Perfect");
+                player[ganhador].GetComponent<PlayerStats>().SomarPontos(1000);
+            }
+
             if (Pontos.pontosP1 > 1)
             {
                 VitoriaTempo(0);

@@ -11,7 +11,7 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] PlayerMoveRigidbody playerMove;
     [SerializeField] PlayerAnimator playerAnimator;
     [SerializeField] PlayerStats playerStats;
-    [SerializeField] NaraSkills NaraSkills;
+    [SerializeField] NaraSkills naraSkills;
 
     [SerializeField] Animator anim;
     [SerializeField] Sons scrSons;
@@ -159,7 +159,6 @@ public class PlayerCombat : MonoBehaviour
 
                 if (ListaDeAtaqueAtual == 0 && !playerStats.GetXimas() && !playerMove.GetCrouched() && !playerStats.GetInAction())
                 {
-                    NaraSkills.BrilharTatuagem();
                     laserAtaqueBaixo.Play();
                 }
                 
@@ -231,7 +230,7 @@ public class PlayerCombat : MonoBehaviour
             tempoDecorrido += 1 * Time.deltaTime;
 
             if(ordem >= _AttackList[ListaDeAtaqueAtual].OrdemCombo.Length)
-            {
+            {                
                 goto skip;
             }
 
@@ -275,7 +274,10 @@ public class PlayerCombat : MonoBehaviour
         atacouBaixo = false;
         atacouPesado = false;
         NomeAtaqueAtual = null;
-        NaraSkills.ApagarTatuagem();
+        //if (!playerStats.GetXimas())
+        //{
+        //    naraSkills.ApagarTatuagem();
+        //}        
         //atacouAgachado = false;
         ListaDeAtaqueAtual = -1;
         attackGameObject.GetComponent<Damage>().SetAttack(0, 0, 0, 0, 0, false, 0, null);

@@ -262,6 +262,9 @@ public class XimasSkills : MonoBehaviour
 
         playerAnimator.TriggerAction("AtaqueFraco");
 
+        scrpPlayerStats.SomarPontos(150);
+
+
         yield return new WaitForSeconds(0.2f);     
 
 
@@ -307,6 +310,8 @@ public class XimasSkills : MonoBehaviour
         attackGameObject.GetComponent<Damage>().SetAttack(danoSopro, rangeSopro, 10f, 10f, 0f, false, 0f, "Sopro");
 
         scrpPlayerStats.UsouSkill(custoSopro);
+
+        scrpPlayerStats.SomarPontos(150);
 
         playerAnimator.TriggerAction("Sopro");
 
