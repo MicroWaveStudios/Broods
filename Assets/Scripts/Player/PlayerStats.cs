@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.VFX;
@@ -20,7 +22,9 @@ public class PlayerStats : MonoBehaviour
 
     public bool defendeu;
 
-    public float pontos;
+    public float pontos = 0f;
+    public float golpesSequencia = 0f;
+    public float timer = 0f;
 
     [SerializeField] bool tutorial;
 
@@ -257,5 +261,33 @@ public class PlayerStats : MonoBehaviour
     public float GetPontos()
     {
         return pontos;
+    }
+
+    public void SomarSequencia()
+    {
+        timer = 0f;
+        golpesSequencia++;
+        StartCoroutine(TimerFimSequencia());
+    }
+
+    public float GetSequencia()
+    {
+        return golpesSequencia;
+    }
+
+    IEnumerator TimerFimSequencia()
+    {
+        while (true)
+        {
+            while (timer < 2f && golpesSequencia > 0)
+            {
+                timer += Time.deltaTime;
+                yield return null;
+            }
+
+            timer = 0f;
+            golpesSequencia = 0;
+            yield return null;
+        }        
     }
 }

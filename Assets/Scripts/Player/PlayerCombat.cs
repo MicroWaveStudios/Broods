@@ -276,6 +276,14 @@ public class PlayerCombat : MonoBehaviour
 
     IEnumerator ResetCombo_()
     {
+        if (NomeAtaqueAtual != "")
+        {
+            ultimoAtaque = NomeAtaqueAtual;
+            playerAnimator.AttackAction(NomeAtaqueAtual, false);
+            NomeAtaqueAtual = null;
+        }
+        playerAnimator.AttackAction(ultimoAtaque, false);
+        ordem = 0;
         //playerMove.GravidadeNormal();
         atacouLeve = false;
         atacouMedio = false;
@@ -286,18 +294,10 @@ public class PlayerCombat : MonoBehaviour
         //    naraSkills.ApagarTatuagem();
         //}        
         //atacouAgachado = false;
-        attackGameObject.GetComponent<Damage>().SetAttack(0, 0, 0, 0, 0, false, 0, null);
-        ordem = 0;
+        attackGameObject.GetComponent<Damage>().SetAttack(0, 0, 0, 0, 0, false, 0, null);      
         //OrdemCombo = -1;
         tempoDecorrido = 0f;
-        actualNumber = -1; 
-        if (NomeAtaqueAtual != "")
-        {
-            ultimoAtaque = NomeAtaqueAtual;
-            playerAnimator.AttackAction(NomeAtaqueAtual, false);
-            NomeAtaqueAtual = null;
-        }
-        playerAnimator.AttackAction(ultimoAtaque, false);
+        actualNumber = -1;             
         //playerAnimator.AttackAction(NomeAtaqueAtual, false);
         yield return new WaitForSeconds(0.3f);
         ListaDeAtaqueAtual = -1;
