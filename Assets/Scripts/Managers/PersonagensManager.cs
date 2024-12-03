@@ -21,6 +21,9 @@ public class PersonagensManager : MonoBehaviour
     [SerializeField] GameObject[] Visual;
     [SerializeField] GameObject[] BordaCor;
 
+    [SerializeField] GameObject[] VisualP1;
+    [SerializeField] GameObject[] VisualP2;
+
     [SerializeField] Transform[] PosicaoInstanciar;
 
     [SerializeField] Transform[] posicaoPlayer;
@@ -138,16 +141,15 @@ public class PersonagensManager : MonoBehaviour
     public void SelecionouPersonagem(int playerIndex, int personagemIndex, bool value)
     {
         selecionouPersonagem[playerIndex] = value;
-        if (value)
+        if (playerIndex == 0)
         {
-            Visual[playerIndex].SetActive(true);
-            Visual[playerIndex].transform.GetChild(personagemIndex).gameObject.SetActive(true);
+            VisualP1[personagemIndex].SetActive(value);
         }
-        else 
+        else
         {
-            Visual[playerIndex].transform.GetChild(personagemIndex).gameObject.SetActive(false);
-            Visual[playerIndex].SetActive(false);
+            VisualP2[personagemIndex].SetActive(value);
         }
+        Visual[playerIndex].SetActive(value);
         BordaCor[playerIndex].SetActive(value);
     }
     public void SetActiveNomePersonagem(int playerIndex, bool value)
