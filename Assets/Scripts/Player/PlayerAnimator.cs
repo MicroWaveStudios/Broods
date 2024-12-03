@@ -43,4 +43,9 @@ public class PlayerAnimator : MonoBehaviour
     {
         anim.SetTrigger(AttackName);
     }
+
+    public void AttackAction(string AttackName, bool value)
+    {
+        anim.SetBool(AttackName, value);
+    }
 }

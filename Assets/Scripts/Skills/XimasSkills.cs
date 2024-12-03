@@ -260,7 +260,7 @@ public class XimasSkills : MonoBehaviour
 
         transform.position = posicaoTpDash;
 
-        playerAnimator.TriggerAction("AtaqueFraco");
+        //playerAnimator.TriggerAction("AtaqueFraco");
 
         scrpPlayerStats.SomarPontos(150);
 
@@ -286,13 +286,15 @@ public class XimasSkills : MonoBehaviour
         //playerCombat.SetInAttack(true);
         playerCombat.SetInParry(true);
 
-        playerAnimator.TriggerAction("Perry");      
+        //playerAnimator.TriggerAction("Perry");
+        playerAnimator.AttackAction("Perry", true);
+        playerCombat.SetNomeAtaqueAtual("Perry");
 
         yield return new WaitForSeconds(1f);
 
         //playerCombat.SetInAttack(false);
         playerCombat.SetInParry(false);
-
+        playerCombat.ResetCombo();
         yield return ResetCombo();
         yield break;
     }

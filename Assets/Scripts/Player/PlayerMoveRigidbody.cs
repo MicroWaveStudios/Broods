@@ -169,7 +169,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
 
     public void Morrer()
     {
-        rb.AddForce(Vector3.right * isPlayer2 * 100f);
+        rb.AddForce(Vector3.left * isPlayer2 * 200f);
     }
 
     public bool GetIsGrounded()
