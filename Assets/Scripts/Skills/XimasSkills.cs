@@ -27,6 +27,7 @@ public class XimasSkills : MonoBehaviour
     [SerializeField] VisualEffect vfxCorte1;
     [SerializeField] VisualEffect vfxCorte2;
     [SerializeField] VisualEffect vfxBrilhoOlho;
+    [SerializeField] VisualEffect vfxFumacaCabeca;
 
     [Header("Skill Dash com Corte")]
     [SerializeField] float custoDash;
@@ -56,6 +57,11 @@ public class XimasSkills : MonoBehaviour
         //objLaser = transform.GetChild(1).gameObject;
         //vfxLaser = objLaser.GetComponent<VisualEffect>();
         scrpPlayerStats = this.gameObject.GetComponent<PlayerStats>();
+    }
+
+    private void Start()
+    {
+        vfxFumacaCabeca.Play();
     }
 
     private void Update()
@@ -256,6 +262,9 @@ public class XimasSkills : MonoBehaviour
 
         playerAnimator.TriggerAction("AtaqueFraco");
 
+        scrpPlayerStats.SomarPontos(150);
+
+
         yield return new WaitForSeconds(0.2f);     
 
 
@@ -301,6 +310,8 @@ public class XimasSkills : MonoBehaviour
         attackGameObject.GetComponent<Damage>().SetAttack(danoSopro, rangeSopro, 10f, 10f, 0f, false, 0f, "Sopro");
 
         scrpPlayerStats.UsouSkill(custoSopro);
+
+        scrpPlayerStats.SomarPontos(150);
 
         playerAnimator.TriggerAction("Sopro");
 

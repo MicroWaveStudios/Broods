@@ -10,7 +10,11 @@ public class SelecaoPersonagem : MonoBehaviour
     [SerializeField] TMP_Text textoBorda;
     [SerializeField] Color[] CorBorda;
     [SerializeField] Vector3[] PosicaoTexto;
-
+    [SerializeField] AudioSource PassouPorCima;
+    [SerializeField] AudioSource SelecionouBonecoErrado;
+    [SerializeField] AudioSource SelecionouCerto;
+    [SerializeField] AudioSource SelecionouTudo;
+ 
     GameObject personagensManager;
     GameObject connectManager;
     PersonagensManager personagensManagerScr;
@@ -46,6 +50,7 @@ public class SelecaoPersonagem : MonoBehaviour
         if (botaoAtual != null)
         {
             botaoAtual.GetComponent<scriptBotao>().SetJogadorNoBotao(false, playerIndex);
+            PassouPorCima.Play();
         }
         botaoAtual = novoBotaoAtual;
         transform.position = novoBotaoAtual.transform.position;
@@ -53,15 +58,20 @@ public class SelecaoPersonagem : MonoBehaviour
     }
     public void Confirmar(InputAction.CallbackContext context)
     {
-        if (context.started && botaoAtual != null && personagensManager.GetComponent<PersonagensManager>().GetNaSelecaoDePersonagem())
+        if (context.started && personagensManager.GetComponent<PersonagensManager>().GetNaSelecaoDePersonagem())
         {
-            if (personagensManager.GetComponent<PersonagensManager>().GetSelecionouPersonagem(GetComponent<ConnectPlayer>().GetPlayerID()) && !personagensManager.GetComponent<PersonagensManager>().GetConfirmouPersonagem(GetComponent<ConnectPlayer>().GetPlayerID()))
+            if (botaoAtual != null)
             {
-                personagensManager.GetComponent<PersonagensManager>().ConfirmouPersonagem(GetComponent<ConnectPlayer>().GetPlayerID(), botaoAtual.GetComponent<scriptBotao>().GetJogador(GetComponent<ConnectPlayer>().GetPlayerID()).GetComponent<MaterialPlayer>().GetMaterialAtual(), true);
-            }
-            else if (botaoAtual.GetComponent<scriptBotao>().GetJogador(GetComponent<ConnectPlayer>().GetPlayerID()) != null)
-            {
-                personagensManager.GetComponent<PersonagensManager>().SelecionouPersonagem(GetComponent<ConnectPlayer>().GetPlayerID(), botaoAtual.GetComponent<scriptBotao>().GetPersonagemID(), true);
+                if (personagensManager.GetComponent<PersonagensManager>().GetSelecionouPersonagem(GetComponent<ConnectPlayer>().GetPlayerID()) && !personagensManager.GetComponent<PersonagensManager>().GetConfirmouPersonagem(GetComponent<ConnectPlayer>().GetPlayerID()))
+                {
+                    personagensManager.GetComponent<PersonagensManager>().ConfirmouPersonagem(GetComponent<ConnectPlayer>().GetPlayerID(), botaoAtual.GetComponent<scriptBotao>().GetJogador(GetComponent<ConnectPlayer>().GetPlayerID()).GetComponent<MaterialPlayer>().GetMaterialAtual(), true);
+                    SelecionouCerto.Play();
+                }
+                else if (botaoAtual.GetComponent<scriptBotao>().GetJogador(GetComponent<ConnectPlayer>().GetPlayerID()) != null && !personagensManager.GetComponent<PersonagensManager>().GetConfirmouPersonagem(GetComponent<ConnectPlayer>().GetPlayerID()))
+                {
+                    personagensManager.GetComponent<PersonagensManager>().SelecionouPersonagem(GetComponent<ConnectPlayer>().GetPlayerID(), botaoAtual.GetComponent<scriptBotao>().GetPersonagemID(), true);
+                    SelecionouTudo.Play();
+                }
             }
         }
     }
@@ -82,6 +92,7 @@ public class SelecaoPersonagem : MonoBehaviour
                 if (personagensManager.GetComponent<PersonagensManager>().GetSelecionouPersonagem(GetComponent<ConnectPlayer>().GetPlayerID()))
                 {
                     GetPersonagem().GetComponent<MaterialPlayer>().TrocarMaterial(context.ReadValue<Vector2>().x);
+                    PassouPorCima.Play();
                 }
                 else
                 {

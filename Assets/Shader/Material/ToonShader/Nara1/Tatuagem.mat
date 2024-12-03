@@ -78,7 +78,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Textura1:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 26f4b1da1290a774581ddb963115171b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Textura2:
@@ -115,6 +115,7 @@ Material:
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+    - _Emission: 0
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
@@ -138,7 +139,7 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Color1: {r: 0.0007314645, g: 0.0007314645, b: 0.0007314645, a: 1}
+    - _Color1: {r: 1, g: 1, b: 1, a: 1}
     - _Color2: {r: 1, g: 0, b: 0.34317875, a: 0}
     - _ColorGeral: {r: 1, g: 0, b: 0.35391188, a: 0}
     - _ColorTatuagem: {r: 7.4642644, g: 0, b: 1.9291394, a: 0}

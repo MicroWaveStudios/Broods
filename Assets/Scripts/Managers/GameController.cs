@@ -58,9 +58,13 @@ public class GameController : MonoBehaviour
     [Header("Cameras")]
     [SerializeField] GameObject CameraPrincipal;
     [SerializeField] GameObject CameraVitoria;
+    [SerializeField] float alturaLimite;
+    [SerializeField] float adicionarAltura;
 
 
     PlayerInputManager playerInputManager;
+    [SerializeField] AudioSource SomVitoria;
+    [SerializeField] AudioSource SomBG;
 
     private void Start()
     {
@@ -309,10 +313,10 @@ public class GameController : MonoBehaviour
     void MidPosition()
     {
         distance = Vector3.Distance(PlayerLeft.position, PlayerRight.position)/2f;
-        midY = player[0].transform.position.y + player[1].transform.position.y /2f + 3.5f;
-        if (midY > 2)
+        midY = player[0].transform.position.y + player[1].transform.position.y /2f + adicionarAltura;
+        if (midY > alturaLimite)
         {
-            midY = 2.01f;
+            midY = alturaLimite;
         }
         mid.position = new Vector3(PlayerLeft.position.x + distance, midY, mid.position.z);
     }
@@ -392,6 +396,15 @@ public class GameController : MonoBehaviour
                 ganhador = 1;
             }
 
+            Debug.Log("Ganhou");
+            player[ganhador].GetComponent<PlayerStats>().SomarPontos(1000);
+
+            if (player[ganhador].GetComponent<PlayerStats>().life == player[ganhador].GetComponent<PlayerStats>().maxLife)
+            {
+                Debug.Log("Perfect");
+                player[ganhador].GetComponent<PlayerStats>().SomarPontos(1000);
+            }
+
             if (Pontos.pontosP1 > 1)
             {
                 VitoriaTempo(0);
@@ -469,6 +482,8 @@ public class GameController : MonoBehaviour
 
         CameraPrincipal.SetActive(false);
         CameraVitoria.SetActive(true);
+        SomVitoria.Play();
+        SomBG.Stop();
 
         CameraVitoria.transform.position = player[novoGanhador].transform.position;
         Animator animCamera = CameraVitoria.GetComponent<Animator>();

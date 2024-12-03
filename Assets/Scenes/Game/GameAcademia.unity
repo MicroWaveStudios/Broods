@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18291372, g: 0.22617263, b: 0.2927307, a: 1}
+  m_IndirectSpecularColor: {r: 0.18291344, g: 0.22617225, b: 0.29273003, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3698,6 +3698,8 @@ MonoBehaviour:
   PanelManager: {fileID: 441249399}
   CameraPrincipal: {fileID: 209735157}
   CameraVitoria: {fileID: 592886425}
+  alturaLimite: 3
+  adicionarAltura: 2
   midY: 0
   VitoriaXimas: 0
   VitoriaNara: 0
@@ -6841,8 +6843,8 @@ AudioSource:
   m_GameObject: {fileID: 1769979405}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 5520663030062143179, guid: 5570590b875383a409a5d02469448c17, type: 2}
-  m_audioClip: {fileID: 8300000, guid: ae07b8be1f7867f4c814543e6019aaac, type: 3}
+  OutputAudioMixerGroup: {fileID: 4517697327000267489, guid: 5570590b875383a409a5d02469448c17, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 8e3912a018020e04bade4c18062f1b7f, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

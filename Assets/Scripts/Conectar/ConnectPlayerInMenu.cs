@@ -217,5 +217,4 @@ public class ConnectPlayerInMenu : MonoBehaviour
     {
         return playerInScene;
     }
-
 }

@@ -13,4 +13,6 @@ class Pontos
 
     public static int[] variante = new int[2];
     public static int[] personagem = new int[2];
+
+    public static bool jaEntrou = false;
 }

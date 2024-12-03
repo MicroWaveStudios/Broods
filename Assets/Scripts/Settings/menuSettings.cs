@@ -33,7 +33,15 @@ public class menuSettings : MonoBehaviour
     private void Start()
     {
         panelsManager = FindObjectOfType<PanelsManager>();
-        panelsManager.GetComponent<PanelsManager>().ChangePanel(0);
+
+        if (!Pontos.jaEntrou)
+        {
+            panelsManager.GetComponent<PanelsManager>().ChangePanel(0);
+        }
+        else
+        {
+            panelsManager.GetComponent<PanelsManager>().ChangePanel(1);
+        }
 
         resolutions = Screen.resolutions;
         filteredResolutions = new List<Resolution>();
@@ -235,5 +243,10 @@ public class menuSettings : MonoBehaviour
         {
             onVsync = false;
         }
+    }
+
+    public void JaEntrouUmaVez()
+    {
+        Pontos.jaEntrou = true;
     }
 }

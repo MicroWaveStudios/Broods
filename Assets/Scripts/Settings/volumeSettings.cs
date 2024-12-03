@@ -19,11 +19,9 @@ public class volumeSettings : MonoBehaviour
 
     [Header("Audios")]
     public AudioMixer audioMixer;
-    [SerializeField] GameObject fundo;
 
     [Header("PanelManager")]
     PanelsManager panelsManager;
-    [SerializeField] GameObject telaInicio;
 
     private void Start()
     {
@@ -149,18 +147,6 @@ public class volumeSettings : MonoBehaviour
         if (VFX.value == -80)
         {
             VFXText.text = "0";
-        }
-    }
-
-    private void Update()
-    {
-        if (telaInicio.activeInHierarchy)
-        {
-            fundo.SetActive(false);
-        }
-        else
-        {
-            fundo.SetActive(true);
         }
     }
 }
