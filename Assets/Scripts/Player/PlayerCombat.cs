@@ -155,7 +155,8 @@ public class PlayerCombat : MonoBehaviour
             if (ListaDeAtaqueAtual < _AttackList.Count && _AttackList[ListaDeAtaqueAtual].NomeDoAtaque != "")
             {
                 _InAttack = true;
-                playerAnimator.TriggerAction(_AttackList[ListaDeAtaqueAtual].NomeDoAtaque);
+                //playerAnimator.TriggerAction(_AttackList[ListaDeAtaqueAtual].NomeDoAtaque);
+                playerAnimator.AttackAction(_AttackList[ListaDeAtaqueAtual].NomeDoAtaque, true);
 
                 if (ListaDeAtaqueAtual == 0 && !playerStats.GetXimas() && !playerMove.GetCrouched() && !playerStats.GetInAction())
                 {
@@ -266,6 +267,7 @@ public class PlayerCombat : MonoBehaviour
         StartCoroutine(ResetCombo_());
     }
 
+
     IEnumerator ResetCombo_()
     {
         //playerMove.GravidadeNormal();
@@ -273,7 +275,6 @@ public class PlayerCombat : MonoBehaviour
         atacouMedio = false;
         atacouBaixo = false;
         atacouPesado = false;
-        NomeAtaqueAtual = null;
         //if (!playerStats.GetXimas())
         //{
         //    naraSkills.ApagarTatuagem();
@@ -285,10 +286,13 @@ public class PlayerCombat : MonoBehaviour
         //OrdemCombo = -1;
         tempoDecorrido = 0f;
         actualNumber = -1;
+        playerAnimator.AttackAction(NomeAtaqueAtual, false);
+        NomeAtaqueAtual = null;
         yield return new WaitForSeconds(0.3f);
         _InAttack = false;
         yield return new WaitForSeconds(0.2f);
         InCombo = false;
+        
     }
 
 
@@ -296,6 +300,11 @@ public class PlayerCombat : MonoBehaviour
     {
         ordem++;
         attackGameObject.GetComponent<Damage>().SetAttack(_AttackList[ListaDeAtaqueAtual].Dano[ordem], _AttackList[ListaDeAtaqueAtual].AtaqueRange[ordem], _AttackList[ListaDeAtaqueAtual].MoveDamage[ordem], _AttackList[ListaDeAtaqueAtual].MoveDamageOtherPlayer[ordem], _AttackList[ListaDeAtaqueAtual].MoveUpOtherPlayer[ordem], true, _AttackList[ListaDeAtaqueAtual].MoveUp[ordem], _AttackList[ListaDeAtaqueAtual].Sons[ordem]);
+    }
+
+    public void SetNomeAtaqueAtual(string newAtaque)
+    { 
+        NomeAtaqueAtual = newAtaque;
     }
 
     // Voids para POO
