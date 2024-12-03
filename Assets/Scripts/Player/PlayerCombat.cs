@@ -235,7 +235,6 @@ public class PlayerCombat : MonoBehaviour
 
             if(ordem >= _AttackList[ListaDeAtaqueAtual].OrdemCombo.Length)
             {
-                Debug.Log(ordem);
                 goto skip;
             }
 

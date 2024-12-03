@@ -138,16 +138,22 @@ public class PersonagensManager : MonoBehaviour
     }
 
     #region Selecionar Personagens
+
+    int[] atualPersonagem = new int[2];
     public void SelecionouPersonagem(int playerIndex, int personagemIndex, bool value)
     {
         selecionouPersonagem[playerIndex] = value;
+        if (value)
+        {
+            atualPersonagem[playerIndex] = personagemIndex;
+        }
         if (playerIndex == 0)
         {
-            VisualP1[personagemIndex].SetActive(value);
+            VisualP1[atualPersonagem[playerIndex]].SetActive(value);
         }
         else
         {
-            VisualP2[personagemIndex].SetActive(value);
+            VisualP2[atualPersonagem[playerIndex]].SetActive(value);
         }
         Visual[playerIndex].SetActive(value);
         BordaCor[playerIndex].SetActive(value);

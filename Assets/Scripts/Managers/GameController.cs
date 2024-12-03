@@ -92,9 +92,11 @@ public class GameController : MonoBehaviour
             {
                 case 0:
                     fotoPersonagem[i].GetComponent<Image>().sprite = imagemPersonagem_P1[Pontos.personagem[i]];
+                    fotoPersonagem[i].transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
                     break;
                 case 1:
                     fotoPersonagem[i].GetComponent<Image>().sprite = imagemPersonagem_P2[Pontos.personagem[i]];
+                    fotoPersonagem[i].transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
                     break;
             }
             switch (Pontos.personagem[i])
@@ -335,7 +337,7 @@ public class GameController : MonoBehaviour
             SetActiveInputNotFocusedPlayer(focusedPlayer.tag, value);
             SwitchControlScheme(value);
             MostrarPauseCerto(newFocusedPlayer, value);
-            UI.SetActive(value);
+            UI.SetActive(!value);
             UIPause(value);
         }
     }
