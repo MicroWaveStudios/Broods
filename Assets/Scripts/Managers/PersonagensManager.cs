@@ -161,7 +161,7 @@ public class PersonagensManager : MonoBehaviour
 
     public void TrocarLocalBordaCor(int index, int variante)
     {
-        BordaCor[index].transform.position = Visual[index].transform.GetChild(0).GetChild(variante).position;
+        BordaCor[index].transform.position = Visual[index].transform.GetChild(2).GetChild(variante).position;
     }
 
     #region Selecionar Personagens
