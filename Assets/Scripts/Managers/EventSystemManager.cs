@@ -24,7 +24,10 @@ public class EventSystemManager : MonoBehaviour
         yield return new WaitForSeconds(0.001f);
         eventSystem.SetSelectedGameObject(newSelectedButton);
         eventSystem.firstSelectedGameObject = newSelectedButton;
-        Button newSelectable = newSelectedButton.GetComponent<Button>();
-        newSelectable.Select();
+        if (newSelectedButton != null)
+        {
+            Button newSelectable = newSelectedButton.GetComponent<Button>();
+            newSelectable.Select();
+        }
     }
 }

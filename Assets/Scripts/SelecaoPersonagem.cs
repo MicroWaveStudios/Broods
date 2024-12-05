@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEditor.Experimental.GraphView;
 
 public class SelecaoPersonagem : MonoBehaviour
 {
@@ -31,19 +32,14 @@ public class SelecaoPersonagem : MonoBehaviour
     }
     public void SetActiveBordaSelecaoPersonagem(bool value)
     {
-        BordaSelecaoPersonagem[playerID].SetActive(value);
-        if (value)
+        if (value && botaoAtual == null)
         {
             AlterarBotaoAtual(personagensManager.GetComponent<PersonagensManager>().GetBotaoInicial());
         }
-    }
-    public void SetActiveBordaSelecaoCor(bool value)
-    {
-        BordaSelecaoCor[playerID].SetActive(value);
-        //if (value)
-        //{
-        //    AlterarBotaoAtual(personagensManager.GetComponent<PersonagensManager>().GetBotaoInicial());
-        //}
+        else if (value)
+        {
+            botaoAtual.GetComponent<scriptBotao>().InstantiateJogador(true, playerID);
+        }
     }
 
     public GameObject GetBordaCor()
@@ -76,6 +72,7 @@ public class SelecaoPersonagem : MonoBehaviour
             personagensManager.GetComponent<PersonagensManager>().SetActiveNomePersonagem(playerID, false);
         }
         botaoAtual.GetComponent<scriptBotao>().SetJogadorNoBotao(true, playerIndex);
+        personagensManager.GetComponent<PersonagensManager>().SetPositionBordaSelecaoPersonagem(novoBotaoAtual, playerID);
     }
     public void Confirmar(InputAction.CallbackContext context)
     {

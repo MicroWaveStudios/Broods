@@ -22,7 +22,7 @@ public class scriptBotao : MonoBehaviour
         }
     }
 
-    void InstantiateJogador(bool value, int playerIndex)
+    public void InstantiateJogador(bool value, int playerIndex)
     {
         if (value && PrefabJogador != null)
         {

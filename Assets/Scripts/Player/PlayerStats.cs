@@ -62,7 +62,6 @@ public class PlayerStats : MonoBehaviour
         }
         if (vida <= 0f && !tutorial)
         {
-            Debug.Log("Vida do Player" + GetComponent<PlayerController>().GetPlayerID() + " é: " + vida);
             scrpGameController.GameFinished();
             playerMoveRigidbody.Morrer();
             tutorial = true;

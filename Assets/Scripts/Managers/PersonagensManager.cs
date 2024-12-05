@@ -20,9 +20,12 @@ public class PersonagensManager : MonoBehaviour
     [SerializeField] GameObject[] ProntoP;
     [SerializeField] GameObject[] Visual;
     [SerializeField] GameObject[] BordaCor;
+    [SerializeField] GameObject[] BordaSelecaoPersonagem;
 
     [SerializeField] GameObject[] VisualP1;
     [SerializeField] GameObject[] VisualP2;
+
+    [SerializeField] GameObject BotoesPersonagens;
 
     [SerializeField] Transform[] PosicaoInstanciar;
 
@@ -38,6 +41,7 @@ public class PersonagensManager : MonoBehaviour
     [SerializeField] GameObject[] NomePersonagem;
 
     bool naSelecaoDePersonagem;
+    bool jaEntrouNaSelecao = false;
 
     bool[] selecionouPersonagem = new bool[2]; 
     bool[] confirmouPersonagem = new bool[2];
@@ -58,24 +62,41 @@ public class PersonagensManager : MonoBehaviour
         if (value == true)
         {
             connectManager.SetEtapaSelecaoPersonagem();
+            if (confirmouPersonagem[0] && confirmouPersonagem[1])
+            {
+                txtContinuar.SetActive(value);
+            }
         }
         else
         {
             connectManager.SetEtapaConectar();
-            for (int i = 0; i < 2; i++)
-            {
-                ProntoP[i].SetActive(value);
-                NomePersonagemTxt[i].gameObject.SetActive(value);
-                BordaCor[i].SetActive(value);
-                Visual[i].SetActive(value);
-            }
+            txtContinuar.SetActive(value);
         }
-        naSelecaoDePersonagem = value;
-        
         for (int i = 0; i < 2; i++)
         {
+            if (confirmouPersonagem[i])
+            {
+                BordaCor[i].SetActive(value);
+                Visual[i].SetActive(value);
+                ProntoP[i].SetActive(value);
+            }
+        }
+        for (int i = 0; i < 2; i++)
+        {
+            NomePersonagemTxt[i].gameObject.SetActive(value);
+        }
+        naSelecaoDePersonagem = value;
+        BotoesPersonagens.SetActive(value);
+
+        for (int i = 0; i < 2; i++)
+        {
+            BordaSelecaoPersonagem[i].SetActive(value);
             connectManager.GetPlayer(i).GetComponent<SelecaoPersonagem>().SetActiveBordaSelecaoPersonagem(value);
         }
+    }
+    public void SetPositionBordaSelecaoPersonagem(GameObject botao, int playerIndex)
+    {
+        BordaSelecaoPersonagem[playerIndex].transform.position = botao.transform.position;
     }
     public void SetPersonagemID(int personagemIndex, int playerIndex)
     {
@@ -122,15 +143,21 @@ public class PersonagensManager : MonoBehaviour
         }
         if (confirmouPersonagem[0] && confirmouPersonagem[1])
         {
-            txtContinuar.SetActive(true);
+            StartCoroutine(SetarTxtContinuar(true));
             eventSystemManager.GetComponent<EventSystemManager>().SetCurrentSelectedButton(txtContinuar);
         }
         else
         {
-            txtContinuar.SetActive(false);
+            StartCoroutine(SetarTxtContinuar(false));
         }
     }
     #endregion
+
+    IEnumerator SetarTxtContinuar(bool value)
+    {
+        yield return new WaitForSeconds(0.01f);
+        txtContinuar.SetActive(value);
+    }
 
     public void TrocarLocalBordaCor(int index, int variante)
     {
