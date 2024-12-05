@@ -4962,6 +4962,13 @@ MonoBehaviour:
   animacaoLoop: {fileID: 7400000, guid: d33f5754518229047ad8dbe6295af6bd, type: 2}
   background: {fileID: 8429429391730836248}
   tempo: 99
+  EstadoAtual: 0
+  valorMinimo: 0
+  valorMaximo: 0
+  valorAtual: 0
+  txtFrase: {fileID: 0}
+  button: {fileID: 0}
+  Botao: 0
 --- !u!114 &1140325871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7593,7 +7600,7 @@ MonoBehaviour:
   m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillOrigin: 1
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &1469383039
