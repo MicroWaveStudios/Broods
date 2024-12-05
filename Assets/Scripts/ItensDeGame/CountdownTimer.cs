@@ -16,6 +16,7 @@ public class CountdownTimer : MonoBehaviour
     [SerializeField] TMP_Text countdownText;
     [SerializeField] TMP_Text CaiPraPorradaText;
     [SerializeField] TMP_Text TxtTimerGame;
+    [SerializeField] GameObject TempoAcabou;
     float countdownTime = 3f;
     bool FinishedStart = false;
     bool isPaused;
@@ -98,6 +99,9 @@ public class CountdownTimer : MonoBehaviour
             yield return new WaitForSeconds(1f);
             yield return new WaitUntil(() => !gameController.GetBooleanIsPaused());
         }
+
+        TempoAcabou.SetActive(true);
+
         gameController.GameFinished();
     }
     public bool GetBooleanIsPaused()
