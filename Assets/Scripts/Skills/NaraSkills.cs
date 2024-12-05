@@ -292,6 +292,8 @@ public class NaraSkills : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
 
+        playerAnimator.AttackAction("Laser", false);
+
         playerCombat.ResetCombo();
         yield return ResetCombo();
         yield break;
@@ -335,6 +337,8 @@ public class NaraSkills : MonoBehaviour
         scrpPlayerStats.SomarPontos(150);
 
         yield return new WaitForSeconds(0.5f);
+
+        playerAnimator.AttackAction("Tartico", false);
         playerCombat.ResetCombo();
         yield return ResetCombo();
         yield break;
@@ -368,6 +372,7 @@ public class NaraSkills : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
+        playerAnimator.AttackAction("Kaboom", false);
         playerCombat.ResetCombo();
         yield return ResetCombo();
         yield break;
@@ -385,6 +390,9 @@ public class NaraSkills : MonoBehaviour
         playerCombat.SetInMeiaLua(false);
         playerCombat.SetInAttack(false);
         actualNumber = -1;
+        playerAnimator.AttackAction("Kaboom", false);
+        playerAnimator.AttackAction("Tartico", false);
+        playerAnimator.AttackAction("Laser", false);
         StopAllCoroutines();
         yield break;
     }

@@ -13044,7 +13044,7 @@ MonoBehaviour:
     - 0
     MoveDamageOtherPlayer:
     - 0
-    - 60
+    - 100
     - 150
     MoveUpOtherPlayer:
     - 0

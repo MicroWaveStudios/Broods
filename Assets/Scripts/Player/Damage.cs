@@ -149,7 +149,7 @@ public class Damage : MonoBehaviour
 
             playerStats.SomarSequencia();
             otherPlayerStats.SufferDamage(damage * otherPlayerStats.GetDamageMultiplier(), attackRange, moveDamage, moveDamageOtherPlayer, moveUpOtherPlayer, this.transform.parent.gameObject);
-            otherPlayerStats.AddEnergy((damage * otherPlayerStats.GetDamageMultiplier()) / 2);
+            otherPlayerStats.AddEnergy((damage * otherPlayerStats.GetDamageMultiplier()) / 3);
 
             scrSons.TocarSom(somAtaque);
         }
