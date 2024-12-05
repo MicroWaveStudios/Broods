@@ -46,6 +46,7 @@ public class GameController : MonoBehaviour
     [SerializeField] TMP_Text[] nomeDoPersonagem;
     [SerializeField] Sprite[] imagemPersonagem_P1;
     [SerializeField] Sprite[] imagemPersonagem_P2;
+    [SerializeField] Sprite[] imagemPersonagem;
 
     [SerializeField] GameObject[] BarraJogador;
 
@@ -100,17 +101,18 @@ public class GameController : MonoBehaviour
         BarraJogador[1].SetActive(true);
         for (int i = 0; i < player.Length; i++)
         {
-            switch (i)
-            {
-                case 0:
-                    fotoPersonagem[i].GetComponent<Image>().sprite = imagemPersonagem_P1[Pontos.personagem[i]];
-                    //fotoPersonagem[i].transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
-                    break;
-                case 1:
-                    fotoPersonagem[i].GetComponent<Image>().sprite = imagemPersonagem_P2[Pontos.personagem[i]];
-                    //fotoPersonagem[i].transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
-                    break;
-            }
+            fotoPersonagem[i].GetComponent<Image>().sprite = imagemPersonagem[Pontos.personagem[i]];
+            //switch (i)
+            //{
+            //    case 0:
+            //        fotoPersonagem[i].GetComponent<Image>().sprite = imagemPersonagem_P1[Pontos.personagem[i]];
+            //        //fotoPersonagem[i].transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
+            //        break;
+            //    case 1:
+            //        fotoPersonagem[i].GetComponent<Image>().sprite = imagemPersonagem_P2[Pontos.personagem[i]];
+            //        //fotoPersonagem[i].transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
+            //        break;
+            //}
             switch (Pontos.personagem[i])
             {
                 case 0:

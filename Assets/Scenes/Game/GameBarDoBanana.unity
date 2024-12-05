@@ -713,15 +713,15 @@ RectTransform:
   m_GameObject: {fileID: 277148956}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -0.7, y: 0.7, z: 0.7}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: -0.8, y: 0.8, z: 0.8}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 700994572656402606}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 342, y: -55}
+  m_AnchoredPosition: {x: 340, y: -70}
   m_SizeDelta: {x: 259, y: 168}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &277148958
@@ -744,7 +744,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: eeb7fe5800dcefd4c97ec4503c37bda5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f2178c9b3765ee7448c9eacf74a159d4, type: 3}
   m_Type: 3
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -4910,6 +4910,9 @@ MonoBehaviour:
   imagemPersonagem_P2:
   - {fileID: 21300000, guid: eeb7fe5800dcefd4c97ec4503c37bda5, type: 3}
   - {fileID: 21300000, guid: eac302e47ba85f14088ed012a93de270, type: 3}
+  imagemPersonagem:
+  - {fileID: 21300000, guid: f2178c9b3765ee7448c9eacf74a159d4, type: 3}
+  - {fileID: 21300000, guid: ade8959dae232c145bf4889ad4cdaa8b, type: 3}
   BarraJogador:
   - {fileID: 8478871232078819072}
   - {fileID: 700994572656402601}
@@ -11210,7 +11213,7 @@ RectTransform:
   m_GameObject: {fileID: 8478871230728326763}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8478871232078819073}
@@ -11218,7 +11221,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -357, y: -58}
+  m_AnchoredPosition: {x: -355, y: -70}
   m_SizeDelta: {x: 259, y: 168}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &8478871230728326757
@@ -11241,7 +11244,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: eeb7fe5800dcefd4c97ec4503c37bda5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f2178c9b3765ee7448c9eacf74a159d4, type: 3}
   m_Type: 3
   m_PreserveAspect: 1
   m_FillCenter: 1
