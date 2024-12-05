@@ -46,6 +46,9 @@ public class PlayerAnimator : MonoBehaviour
 
     public void AttackAction(string AttackName, bool value)
     {
-        anim.SetBool(AttackName, value);
+        if (AttackName != null)
+        { 
+            anim.SetBool(AttackName, value);
+        }
     }
 }

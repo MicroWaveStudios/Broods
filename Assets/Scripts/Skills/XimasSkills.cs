@@ -22,7 +22,7 @@ public class XimasSkills : MonoBehaviour
     float timer;
     bool InMeiaLua = false;
 
-    bool trava = true;
+    //bool trava = true;
 
     [SerializeField] GameObject vfxEnergiaMate;
     [SerializeField] VisualEffect vfxCorte1;
@@ -151,7 +151,7 @@ public class XimasSkills : MonoBehaviour
 
     public void MeiaLuaStart(InputAction.CallbackContext context)
     {
-        if (!InMeiaLua && context.started)
+        if (!playerCombat.GetInMeiaLua() && context.started)
         {
             StartCoroutine(ConfirmacaoSkill(0.2f));
         }        
@@ -258,9 +258,10 @@ public class XimasSkills : MonoBehaviour
 
         yield return new WaitForSeconds(0.3f);
 
+        transform.position = posicaoTpDash;
+
         playerCombat.SetInAttack(true);
 
-        transform.position = posicaoTpDash;
 
         //playerAnimator.TriggerAction("AtaqueFraco");
 
@@ -297,9 +298,9 @@ public class XimasSkills : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
-        //playerCombat.SetInAttack(false);
-        playerCombat.SetInParry(false);
         playerAnimator.AttackAction("Perry", false);
+        //playerCombat.SetInAttack(false);
+        playerCombat.SetInParry(false);       
         playerCombat.ResetCombo();
         yield return ResetCombo();
         yield break;
@@ -342,11 +343,16 @@ public class XimasSkills : MonoBehaviour
 
     IEnumerator ResetCombo()
     {
+        Debug.Log("RESET COMBO");
+        yield return new WaitForSeconds(0.1f);
         ordemDash = 0;
         ordemParry = 0;     
         timer = 0f;
-        InMeiaLua = false;
         playerCombat.SetInMeiaLua(false);
+        playerCombat.SetInAttack(false);
+        playerAnimator.AttackAction("Perry", false);
+        playerAnimator.AttackAction("Sopro", false);
+        playerAnimator.AttackAction("Dash", false);
         actualNumber = -1;
         StopAllCoroutines();
         yield break;
