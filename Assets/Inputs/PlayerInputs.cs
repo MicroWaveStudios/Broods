@@ -105,7 +105,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""id"": ""f6f4ec5c-6ace-4510-bb73-4e31a4f14799"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Tap"",
                     ""initialStateCheck"": false
                 },
                 {
@@ -477,7 +477,18 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard;KeyboardRight"",
+                    ""groups"": ""Keyboard;KeyboardLeft"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3afebe90-aab6-4e24-b7ef-5e136e8b8cb7"",
+                    ""path"": ""<Keyboard>/backspace"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardRight"",
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -671,7 +682,7 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""id"": ""e6bf868c-58ec-4120-a517-f9f9775358f7"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Tap"",
                     ""initialStateCheck"": false
                 },
                 {
@@ -765,7 +776,18 @@ public partial class @PlayerInputs : IInputActionCollection2, IDisposable
                     ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Keyboard;KeyboardRight"",
+                    ""groups"": ""Keyboard;KeyboardLeft"",
+                    ""action"": ""ExitPause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8b1aceb6-52a7-4a2c-955f-732650a92fa4"",
+                    ""path"": ""<Keyboard>/backspace"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardRight"",
                     ""action"": ""ExitPause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false

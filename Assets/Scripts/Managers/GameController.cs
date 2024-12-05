@@ -28,8 +28,19 @@ public class GameController : MonoBehaviour
     GameObject Canvas;
     [SerializeField] Image[] barraVerde;
     [SerializeField] Image[] barraVermelha;
-    [SerializeField] GameObject[] Pauses;
     [SerializeField] GameObject UI;
+    [SerializeField] GameObject PauseUI;
+
+    [System.Serializable]
+    struct Pause
+    {
+        public GameObject[] PauseNara;
+        public GameObject[] PauseXimas;
+    }
+
+    [SerializeField] List<Pause> Pauses = new List<Pause>();
+
+    [SerializeField] string[] ControlScheme;
 
     [SerializeField] GameObject[] fotoPersonagem;
     [SerializeField] TMP_Text[] nomeDoPersonagem;
@@ -310,41 +321,90 @@ public class GameController : MonoBehaviour
         mid.position = new Vector3(PlayerLeft.position.x + distance, midY, mid.position.z);
     }
 
-    public void Pause(GameObject newFocusedPlayer, bool value)
+    public void PauseOn_Off(GameObject newFocusedPlayer, bool value)
     {
         if (focusedPlayer == null)
+        { 
             focusedPlayer = newFocusedPlayer;
+        }
         if (focusedPlayer.tag == newFocusedPlayer.tag)
         {
             PanelManager.GetComponent<PanelsManager>().ChangePanel(0);
             isPaused = value;
             SetActiveInputNotFocusedPlayer(focusedPlayer.tag, value);
             SwitchControlScheme(value);
+            PauseUI.SetActive(value);
             MostrarPauseCerto(newFocusedPlayer, value);
             UI.SetActive(!value);
             UIPause(value);
+            if (!value)
+            {
+                focusedPlayer = null;
+            }
         }
     }
 
     public void MostrarPauseCerto(GameObject newFocusedPlayer, bool value)
     {
+        int playerID = newFocusedPlayer.GetComponent<PlayerController>().GetPlayerID();
         if (focusedPlayer == null)
             focusedPlayer = newFocusedPlayer;
         if (focusedPlayer.tag == newFocusedPlayer.tag)
         {
-            if (focusedPlayer.name == "Nará")
+            for (int i = 0; i < ControlScheme.Length; i++)
             {
-                if (Pontos.ControlSchemePlayer[1] == "Keyboard")
+                //Debug.Log(Pontos.ControlSchemePlayer[playerID] + " " + ControlScheme[i]);
+                //Debug.Log(focusedPlayer.name);
+                if (Pontos.ControlSchemePlayer[playerID] == ControlScheme[i])
                 {
-                    Pauses[0].SetActive(value);
+                    if (Pontos.personagem[playerID] == 0)
+                    {
+                        Pauses[playerID].PauseNara[i].SetActive(value);
+                    }
+                    if (Pontos.personagem[playerID] == 1)
+                    {
+                        Pauses[playerID].PauseXimas[i].SetActive(value);
+                    }
                 }
-
-                if (Pontos.ControlSchemePlayer[1] == "Gamepad")
-                {
-                    Pauses[1].SetActive(value);
-                }
-
             }
+            //if (focusedPlayer.name == "Nará")
+            //{
+            //    if (Pontos.ControlSchemePlayer[playerID] == "Keyboard")
+            //    {
+            //        PauseP1[0].SetActive(value);
+            //    }
+            //    if (Pontos.ControlSchemePlayer[playerID] == "KeyboardLeft")
+            //    {
+            //        PauseNara[1].SetActive(value);
+            //    }
+            //    if (Pontos.ControlSchemePlayer[playerID] == "KeyboardRight")
+            //    {
+            //        PauseNara[2].SetActive(value);
+            //    }
+            //    if (Pontos.ControlSchemePlayer[playerID] == "Gamepad")
+            //    {
+            //        PauseNara[3].SetActive(value);
+            //    }
+            //}
+            //if (focusedPlayer.name == "Ximas")
+            //{
+            //    if (Pontos.ControlSchemePlayer[playerID] == "Keyboard")
+            //    {
+            //        PauseXimas[0].SetActive(value);
+            //    }
+            //    if (Pontos.ControlSchemePlayer[playerID] == "KeyboardLeft")
+            //    {
+            //        PauseXimas[1].SetActive(value);
+            //    }
+            //    if (Pontos.ControlSchemePlayer[playerID] == "KeyboardRight")
+            //    {
+            //        PauseXimas[2].SetActive(value);
+            //    }
+            //    if (Pontos.ControlSchemePlayer[playerID] == "Gamepad")
+            //    {
+            //        PauseXimas[3].SetActive(value);
+            //    }
+            //}
         }
     }
     void SwitchControlScheme(bool value)

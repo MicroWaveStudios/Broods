@@ -210,6 +210,7 @@ public class PlayerCombat : MonoBehaviour
         {
             yield break;
         }
+        Debug.Log(ListaDeAtaqueAtual);
         attackGameObject.GetComponent<Damage>().SetAttack(_AttackList[ListaDeAtaqueAtual].Dano[ordem], _AttackList[ListaDeAtaqueAtual].AtaqueRange[ordem], _AttackList[ListaDeAtaqueAtual].MoveDamage[ordem], _AttackList[ListaDeAtaqueAtual].MoveDamageOtherPlayer[ordem], _AttackList[ListaDeAtaqueAtual].MoveUpOtherPlayer[ordem], true, _AttackList[ListaDeAtaqueAtual].MoveUp[ordem], _AttackList[ListaDeAtaqueAtual].Sons[ordem]);
         //playerMove.MoverAoAtacar(_AttackList[ListaDeAtaqueAtual].MoveDamage[ordem]);
         yield return new WaitForSeconds(0.01f);

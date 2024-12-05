@@ -91,13 +91,23 @@ public class PlayerController : MonoBehaviour
     }
     public void PauseOn(InputAction.CallbackContext context)
     {
-        if (scene == Scene.Game)
-            gameManager.GetComponent<GameController>().Pause(this.gameObject, true);
+        if (context.started)
+        {
+            if (scene == Scene.Game)
+            { 
+                gameManager.GetComponent<GameController>().PauseOn_Off(this.gameObject, true);
+            }
+        }
     }
     public void PauseOff(InputAction.CallbackContext context)
     {
-        if (scene == Scene.Game)
-            gameManager.GetComponent<GameController>().Pause(this.gameObject, false);
+        if (context.started)
+        {
+            if (scene == Scene.Game)
+            { 
+                gameManager.GetComponent<GameController>().PauseOn_Off(this.gameObject, false);
+            }
+        }
     }
     public bool GetSceneGame()
     {
