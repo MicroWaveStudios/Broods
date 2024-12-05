@@ -20,7 +20,7 @@ public class Damage : MonoBehaviour
     float moveUp;
     bool addEnergy;
     string somAtaque;
-    bool acertou = false;
+    //bool acertou = false;
     bool isAtaqueMedioXimas;
 
     private void Awake()
@@ -140,7 +140,7 @@ public class Damage : MonoBehaviour
             if (addEnergy)
             {
                 playerStats.SomarPontos(100);
-                playerStats.AddEnergy(damage);
+                playerStats.AddEnergy(damage * playerStats.GetDamageMultiplier());
             }
 
 
@@ -148,8 +148,8 @@ public class Damage : MonoBehaviour
             //Debug.Log(moveDamageOtherPlayer);        
 
             playerStats.SomarSequencia();
-            otherPlayerStats.SufferDamage(damage * playerStats.GetDamageMultiplier(), attackRange, moveDamage, moveDamageOtherPlayer, moveUpOtherPlayer, this.transform.parent.gameObject);
-            otherPlayerStats.AddEnergy((damage * playerStats.GetDamageMultiplier()) / 2);
+            otherPlayerStats.SufferDamage(damage * otherPlayerStats.GetDamageMultiplier(), attackRange, moveDamage, moveDamageOtherPlayer, moveUpOtherPlayer, this.transform.parent.gameObject);
+            otherPlayerStats.AddEnergy((damage * otherPlayerStats.GetDamageMultiplier()) / 2);
 
             scrSons.TocarSom(somAtaque);
         }

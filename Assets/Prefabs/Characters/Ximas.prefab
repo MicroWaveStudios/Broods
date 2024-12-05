@@ -3688,7 +3688,7 @@ GameObject:
   - component: {fileID: 7016451780072166860}
   m_Layer: 7
   m_Name: Ximas
-  m_TagString: Player2
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4426,8 +4426,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vida: 0
-  vidaMax: 200
-  energiaMax: 100
+  vidaMax: 150
+  energiaMax: 15
   energia: 0
   defendendo: 0
   defendeu: 0
@@ -4457,12 +4457,12 @@ MonoBehaviour:
   vfxCorte2: {fileID: 2435018552233035983}
   vfxBrilhoOlho: {fileID: 7720604043664718712}
   vfxFumacaCabeca: {fileID: 4998855614316937339}
-  custoDash: 100
-  danoDash: 12
+  custoDash: 15
+  danoDash: 20
   ordemComboDash: 0200000003000000
   ordemComboParry: 0100000003000000
-  custoSopro: 100
-  danoSopro: 20
+  custoSopro: 15
+  danoSopro: 30
   rangeSopro: 2
   vfxExplosaoMate: {fileID: 565746949879960757}
 --- !u!114 &6733909688477422776

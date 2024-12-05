@@ -221,7 +221,7 @@ public class PlayerStats : MonoBehaviour
 
     public void AddEnergy(float qtdEnergia)
     {
-        energia += qtdEnergia;
+        energia += qtdEnergia/2;
         if (energia > energiaMax)
         {
             energia = energiaMax;

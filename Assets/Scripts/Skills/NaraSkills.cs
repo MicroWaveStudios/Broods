@@ -274,21 +274,21 @@ public class NaraSkills : MonoBehaviour
 
         scrpPlayerStats.UsouSkill(custoLaser);
 
-        if (hit.collider != null)
-        {
+        //if (hit.collider != null)
+        //{
 
-            GameObject Player2 = hit.collider.gameObject;
+        //    GameObject Player2 = hit.collider.gameObject;
 
-            if (Player2.GetComponent<PlayerStats>() != null)
-            {
-                Player2.GetComponent<PlayerStats>().SufferDamage(danoLaser, 2, 20f, 20f, 0f, this.gameObject);
-                Player2.GetComponent<PlayerStats>().AddEnergy(danoLaser / 2);
-            }                    
-        }
-        else
-        {
-            //Debug.Log("N�o foi");
-        }
+        //    if (Player2.GetComponent<PlayerStats>() != null)
+        //    {
+        //        Player2.GetComponent<PlayerStats>().SufferDamage(danoLaser, 2, 20f, 20f, 0f, this.gameObject);
+        //        Player2.GetComponent<PlayerStats>().AddEnergy(danoLaser / 2);
+        //    }                    
+        //}
+        //else
+        //{
+        //    //Debug.Log("N�o foi");
+        //}
 
         yield return new WaitForSeconds(1f);
 

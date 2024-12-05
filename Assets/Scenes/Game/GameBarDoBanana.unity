@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.2582091, g: 0.68974036, b: 0.8184585, a: 1}
+  m_IndirectSpecularColor: {r: 0.25753132, g: 0.68975174, b: 0.8191974, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4871,10 +4871,6 @@ MonoBehaviour:
   barraVermelha:
   - {fileID: 8478871231414836555}
   - {fileID: 700994573412060649}
-  greenBar1: {fileID: 8478871232042856519}
-  redBar1: {fileID: 8478871231414836555}
-  greenBar2: {fileID: 700994572483445283}
-  redBar2: {fileID: 700994573412060649}
   Pauses:
   - {fileID: 1597771618}
   - {fileID: 864120742}

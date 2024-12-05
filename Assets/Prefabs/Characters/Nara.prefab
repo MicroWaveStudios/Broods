@@ -13256,8 +13256,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vida: 0
-  vidaMax: 200
-  energiaMax: 100
+  vidaMax: 150
+  energiaMax: 15
   energia: 0
   defendendo: 0
   defendeu: 0
@@ -13288,7 +13288,7 @@ MonoBehaviour:
   corBrilho:
   - {r: 0.7490196, g: 0.11764706, b: 0.21960784, a: 1}
   - {r: 0.7490196, g: 0.4627451, b: 0.09803922, a: 1}
-  custoLaser: 60
+  custoLaser: 5
   danoLaser: 7
   ordemComboLaser: 0200000003000000
   tarticos:
@@ -13297,10 +13297,10 @@ MonoBehaviour:
   - {fileID: 1432033910219361331}
   - {fileID: 5062114023866469586}
   - {fileID: 2682009038027207675}
-  custoTartico: 75
+  custoTartico: 10
   ordemComboTarticos: 0100000003000000
   tarticosContagem: 0
-  custoExplosao: 150
+  custoExplosao: 15
   danoExplosao: 15
   rangeExplosao: 1
   vfxExplosao: {fileID: 743939760015915183}
