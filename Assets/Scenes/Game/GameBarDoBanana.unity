@@ -4987,7 +4987,7 @@ MonoBehaviour:
   TxtTimerGame: {fileID: 1869833480}
   animacaoLoop: {fileID: 7400000, guid: d33f5754518229047ad8dbe6295af6bd, type: 2}
   background: {fileID: 8429429391730836248}
-  tempo: 99
+  tempo: 120
 --- !u!114 &1140325871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8951,8 +8951,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -5, y: 465}
-  m_SizeDelta: {x: 63.196, y: 50}
+  m_AnchoredPosition: {x: 0, y: 465}
+  m_SizeDelta: {x: 70, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1869833480
 MonoBehaviour:
@@ -8974,7 +8974,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 99
+  m_text: '120
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c08d2beccd65cc24898f2568477464f6, type: 2}
   m_sharedMaterial: {fileID: -3573398107632926605, guid: c08d2beccd65cc24898f2568477464f6, type: 2}
