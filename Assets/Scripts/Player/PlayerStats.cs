@@ -8,11 +8,11 @@ using UnityEngine.VFX;
 
 public class PlayerStats : MonoBehaviour
 {
-    [SerializeField] public float life;
-    [SerializeField] public float maxLife;
+    [SerializeField] float vida;
+    [SerializeField] float vidaMax;
     float damageMultiplier = 0.5f;
-    [SerializeField] public float maxEnergy;
-    [SerializeField] public float energy;
+    [SerializeField] float energiaMax;
+    [SerializeField] float energia;
     PlayerMoveRigidbody playerMoveRigidbody;
     PlayerCombat playerCombat;
     PlayerAnimator playerAnimator;
@@ -49,8 +49,8 @@ public class PlayerStats : MonoBehaviour
 
     private void Start()
     {
-        life = maxLife;
-        energy = 0;
+        vida = vidaMax;
+        energia = 0;
         StartCoroutine(TimerFimSequencia());
     }
 
@@ -60,8 +60,9 @@ public class PlayerStats : MonoBehaviour
         {
             //GetComponent<PlayerInput>().SwitchCurrentControlScheme("");
         }
-        if (life <= 0f && !tutorial)
+        if (vida <= 0f && !tutorial)
         {
+            Debug.Log("Vida do Player" + GetComponent<PlayerController>().GetPlayerID() + " é: " + vida);
             scrpGameController.GameFinished();
             playerMoveRigidbody.Morrer();
             tutorial = true;
@@ -154,7 +155,7 @@ public class PlayerStats : MonoBehaviour
             else
             {
                 SomarPontos(25);
-                life -= damage;
+                vida -= damage;
                 playerAnimator.TriggerAction("TomouDano");
                 playerMoveRigidbody.MoveUp(moveUpOtherPlayer);
                 playerMoveRigidbody.MoverAoLevarDano(moveDamageOtherPlayer);
@@ -199,7 +200,7 @@ public class PlayerStats : MonoBehaviour
     {
         //float oldEnergy = energy;
 
-        energy -= custoSkill;
+        energia -= custoSkill;
 
         //if (energy < 0)
         //{
@@ -210,20 +211,20 @@ public class PlayerStats : MonoBehaviour
 
     void Regen()
     {
-        life += 100f;
+        vida += 100f;
 
-        if (life > maxLife)
+        if (vida > vidaMax)
         {
-            life = maxLife;
+            vida = vidaMax;
         }
     }
 
     public void AddEnergy(float qtdEnergia)
     {
-        energy += qtdEnergia;
-        if (energy > maxEnergy)
+        energia += qtdEnergia;
+        if (energia > energiaMax)
         {
-            energy = maxEnergy;
+            energia = energiaMax;
         }
     }
 
@@ -234,7 +235,7 @@ public class PlayerStats : MonoBehaviour
 
     public bool GetEnergyFull()
     {
-        if (energy >= maxEnergy)
+        if (energia >= energiaMax)
         {
             return true;
         }
@@ -275,6 +276,22 @@ public class PlayerStats : MonoBehaviour
         return golpesSequencia;
     }
 
+    public float GetEnergia()
+    { 
+        return energia;
+    }
+    public float GetEnergiaMax()
+    { 
+        return energiaMax;
+    }
+    public float GetVida()
+    {
+        return vida;
+    }
+    public float GetVidaMax() 
+    { 
+        return vidaMax;
+    }
     IEnumerator TimerFimSequencia()
     {
         while (true)

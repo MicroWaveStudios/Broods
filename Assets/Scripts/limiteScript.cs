@@ -25,7 +25,7 @@ public class limiteScript : MonoBehaviour
     private void Update()
     {
         distance = gameController.GetDistance();
-        playerLeft = gameController.GetPlayerLeft().position.x;
+        playerLeft = gameController.GetPlayerLeft().position.x; // deu erro aqui
         playerRight = gameController.GetPlayerRight().position.x;
         if (distance <= maxDistance) 
         {

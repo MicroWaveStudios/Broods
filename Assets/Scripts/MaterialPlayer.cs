@@ -61,34 +61,55 @@ public class MaterialPlayer : MonoBehaviour
 
         materialAtual += (int)direcao;
 
-        if (materialAtual >= VarianteDaSkin.Count)
+        StartCoroutine(Verificacao());
+        if (materialAtual >= VarianteDaSkin.Count || materialAtual < 0)
         {
-            materialAtual = 0;
-        }
-        else
-        {
-            if (materialAtual < 0)
-            {
-                materialAtual = VarianteDaSkin.Count - 1;
-            }
+            goto pular;
         }
         if (personagensManager.GetPersonagemID(playerID) == personagensManager.GetPersonagemID(otherPlayerID) && personagensManager.GetConfirmouPersonagem(otherPlayerID))
         {
             while (materialAtual == materialOutroPlayer)
             {
                 materialAtual += (int)direcao;
+                StartCoroutine(Verificacao());
             }
         }
+        pular:
+        //if (personagensManager.GetPersonagemID(playerID) == personagensManager.GetPersonagemID(otherPlayerID) && personagensManager.GetConfirmouPersonagem(otherPlayerID))
+        //{
+        //    while (materialAtual == materialOutroPlayer)
+        //    {
+        //        materialAtual += (int)direcao;
+        //    }
+        //}
         botao.GetComponent<scriptBotao>().SetVariantePlayer(materialAtual, playerID);
         SetMaterialPersonagem(materialAtual);
         GameObject.FindGameObjectWithTag("PersonagemManager").GetComponent<PersonagensManager>().TrocarVarianteTxt(playerID, nome, frase);
         GameObject.FindGameObjectWithTag("PersonagemManager").GetComponent<PersonagensManager>().TrocarLocalBordaCor(playerID, materialAtual);
     }
+    IEnumerator Verificacao()
+    {
+        if (materialAtual >= VarianteDaSkin.Count)
+        {
+            materialAtual = 0;
+            goto pular;
+        }
+        if (materialAtual < 0)
+        {
+            materialAtual = VarianteDaSkin.Count - 1;
+            goto pular;
+        }
+        pular:
+        yield break;
+    }
     public void SetMaterialPersonagem(int skin)
     {
         for (int i = 0; i < PartesDoCorpo.Length; i++)
         {
-            PartesDoCorpo[i].GetComponent<Renderer>().material = VarianteDaSkin[skin].material[i];
+            if (PartesDoCorpo[i] != null && skin < VarianteDaSkin.Count && skin >= 0)
+            {
+                PartesDoCorpo[i].GetComponent<Renderer>().material = VarianteDaSkin[skin].material[i]; 
+            }
         }
 
         if (hasTartico)

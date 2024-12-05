@@ -13255,10 +13255,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25fbdd007d3706f47a556b2390fa8c8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 0
-  maxLife: 200
-  maxEnergy: 150
-  energy: 0
+  vida: 0
+  vidaMax: 200
+  energiaMax: 100
+  energia: 0
   defendendo: 0
   defendeu: 0
   pontos: 0

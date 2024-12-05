@@ -10,8 +10,9 @@ using System;
 
 public class GameController : MonoBehaviour
 {
-    float lifePlayer1;
-    float lifePlayer2;
+    //float lifePlayer1;
+    //float lifePlayer2;
+    float[] vidaPlayer = new float[2];
 
     GameObject[] player = new GameObject[2];
     //GameObject Player2;
@@ -25,10 +26,8 @@ public class GameController : MonoBehaviour
     [SerializeField] Transform[] InstancePosition;
     [SerializeField] Transform mid;
     GameObject Canvas;
-    [SerializeField] Image greenBar1;
-    [SerializeField] Image redBar1;
-    [SerializeField] Image greenBar2;
-    [SerializeField] Image redBar2;
+    [SerializeField] Image[] barraVerde;
+    [SerializeField] Image[] barraVermelha;
     [SerializeField] GameObject[] Pauses;
     [SerializeField] GameObject UI;
 
@@ -39,8 +38,7 @@ public class GameController : MonoBehaviour
 
     [SerializeField] GameObject[] BarraJogador;
 
-    [SerializeField] Slider energyBarPlayer1;
-    [SerializeField] Slider energyBarPlayer2;
+    [SerializeField] Image[] barraDeEnergia;
     [SerializeField] GameObject winnerPanel;
     [SerializeField] TMP_Text textPlayerWinner;
 
@@ -197,8 +195,8 @@ public class GameController : MonoBehaviour
             }
             ChangePlayer();
             MidPosition();
-            PlayerLife();
-            PlayerEnergy();
+            //PlayerLife();
+            PlayerVida_Energia();
         }
 
         if (Pontos.vitoriaP[0] >= 1)
@@ -229,55 +227,38 @@ public class GameController : MonoBehaviour
         }
     }
 
-    void PlayerLife()
-    {
-        lifePlayer1 = player[0].GetComponent<PlayerStats>().life / player[0].GetComponent<PlayerStats>().maxLife;
-        greenBar1.fillAmount = lifePlayer1;
-        StartCoroutine(DecreaseRedBar1(lifePlayer1));
+    //void PlayerLife()
+    //{
+    //    lifePlayer1 = player[0].GetComponent<PlayerStats>().GetVida() / player[0].GetComponent<PlayerStats>().GetVidaMax();
+    //    greenBar1.fillAmount = lifePlayer1;
+    //    StartCoroutine(DecreaseRedBar1(lifePlayer1));
 
-        lifePlayer2 = player[1].GetComponent<PlayerStats>().life / player[1].GetComponent<PlayerStats>().maxLife;
-        greenBar2.fillAmount = lifePlayer2;
-        StartCoroutine(DecreaseRedBar2(lifePlayer2));
-    }
-
-    IEnumerator DecreaseRedBar1(float lifePlayer)
-    {
-        yield return new WaitForSeconds(0.5f);
-        float redBar1Amount = redBar1.fillAmount;
-
-        while (redBar1.fillAmount > lifePlayer)
-        {
-            redBar1Amount -= Time.deltaTime * 0.25f;
-            redBar1.fillAmount = redBar1Amount;
-
-            yield return null;
-        }
-
-        redBar1.fillAmount = lifePlayer;
-    }
-
-    IEnumerator DecreaseRedBar2(float lifePlayer)
+    //    //lifePlayer2 = player[1].GetComponent<PlayerStats>().vida / player[1].GetComponent<PlayerStats>().vidaMax;
+    //    //greenBar2.fillAmount = lifePlayer2;
+    //    StartCoroutine(DecreaseRedBar2(lifePlayer2));
+    //}
+    IEnumerator DecreaseBarraVermelha(float lifePlayer, int playerIndex)
     {
         yield return new WaitForSeconds(0.5f);
-        float redBar2Amount = redBar2.fillAmount;
-
-        while (redBar2.fillAmount > lifePlayer)
+        float barraVermelhaAmount = barraVermelha[playerIndex].fillAmount;
+        while (barraVermelha[playerIndex].fillAmount > lifePlayer)
         {
-            redBar2Amount -= Time.deltaTime * 0.25f;
-            redBar2.fillAmount = redBar2Amount;
-
+            barraVermelhaAmount -= Time.deltaTime * 0.25f;
+            barraVermelha[playerIndex].fillAmount = barraVermelhaAmount;
             yield return null;
         }
-
-        redBar2.fillAmount = lifePlayer;
+        barraVermelha[playerIndex].fillAmount = lifePlayer;
     }
 
-    void PlayerEnergy()
+    void PlayerVida_Energia()
     {
-        energyBarPlayer1.maxValue = player[0].GetComponent<PlayerStats>().maxEnergy;
-        energyBarPlayer1.value = player[0].GetComponent<PlayerStats>().energy;
-        energyBarPlayer2.maxValue = player[1].GetComponent<PlayerStats>().maxEnergy;
-        energyBarPlayer2.value = player[1].GetComponent<PlayerStats>().energy;
+        for (int i = 0; i < player.Length; i++)
+        {
+            barraDeEnergia[i].fillAmount = player[i].GetComponent<PlayerStats>().GetEnergia() / player[i].GetComponent<PlayerStats>().GetEnergiaMax();
+            vidaPlayer[i] = player[i].GetComponent<PlayerStats>().GetVida() / player[i].GetComponent<PlayerStats>().GetVidaMax();
+            barraVerde[i].fillAmount = vidaPlayer[i];
+            StartCoroutine(DecreaseBarraVermelha(vidaPlayer[i], i));
+        }
     }
 
     void ChangePlayer()
@@ -415,14 +396,14 @@ public class GameController : MonoBehaviour
     int ganhador;
     public void GameFinished()
     {
-        if (lifePlayer1 != lifePlayer2)
+        if (player[0].GetComponent<PlayerStats>().GetVida() != player[1].GetComponent<PlayerStats>().GetVida())
         {
-            if (lifePlayer1 > lifePlayer2)
+            if (player[0].GetComponent<PlayerStats>().GetVida() > player[1].GetComponent<PlayerStats>().GetVida())
             {
                 Pontos.vitoriaP[0]++;
                 ganhador = 0;
             }
-            else if (lifePlayer2 > lifePlayer1)
+            else if (player[1].GetComponent<PlayerStats>().GetVida() > player[0].GetComponent<PlayerStats>().GetVida())
             {
                 Pontos.vitoriaP[1]++;
                 ganhador = 1;
@@ -431,7 +412,7 @@ public class GameController : MonoBehaviour
 
             player[ganhador].GetComponent<PlayerStats>().SomarPontos(1000);
 
-            if (player[ganhador].GetComponent<PlayerStats>().life == player[ganhador].GetComponent<PlayerStats>().maxLife)
+            if (player[ganhador].GetComponent<PlayerStats>().GetVida() == player[ganhador].GetComponent<PlayerStats>().GetVidaMax())
             {
                 Debug.Log("Perfect");
                 player[ganhador].GetComponent<PlayerStats>().SomarPontos(1000);

@@ -95,6 +95,7 @@ public class CountdownTimer : MonoBehaviour
             yield return new WaitUntil(() => !gameController.GetBooleanIsPaused());
         }
         gameController.GameFinished();
+        Debug.Log("MANO ACABOU POR CONTA DO TIMER");
     }
     public bool GetBooleanIsPaused()
     {

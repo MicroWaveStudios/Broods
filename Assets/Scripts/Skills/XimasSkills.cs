@@ -248,7 +248,7 @@ public class XimasSkills : MonoBehaviour
     IEnumerator SkillDash()
     {
         
-        if (scrpPlayerStats.energy < custoDash)
+        if (scrpPlayerStats.GetEnergia() < custoDash)
         {
             //Debug.Log("Sem Energia");
             yield break;
@@ -307,7 +307,7 @@ public class XimasSkills : MonoBehaviour
 
     IEnumerator SkillSopro()
     {
-        if (scrpPlayerStats.energy < custoSopro)
+        if (scrpPlayerStats.GetEnergia() < custoSopro)
         {
             //Debug.Log("Sem Energia");
             yield break;

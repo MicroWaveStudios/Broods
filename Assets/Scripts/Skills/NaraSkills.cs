@@ -232,7 +232,7 @@ public class NaraSkills : MonoBehaviour
     IEnumerator SkillLaser()
     {
         
-        if (scrpPlayerStats.energy < custoLaser)
+        if (scrpPlayerStats.GetEnergia() < custoLaser)
         {
             //Debug.Log("Sem Energia");
             yield break;
@@ -299,7 +299,7 @@ public class NaraSkills : MonoBehaviour
 
     IEnumerator SkillTartico()
     {
-        if (scrpPlayerStats.energy < custoTartico)
+        if (scrpPlayerStats.GetEnergia() < custoTartico)
         {
             //Debug.Log("Sem Energia");
             yield break;
@@ -342,7 +342,7 @@ public class NaraSkills : MonoBehaviour
 
     IEnumerator SkillExplosao()
     {
-        if (scrpPlayerStats.energy < custoExplosao)
+        if (scrpPlayerStats.GetEnergia() < custoExplosao)
         {
             //Debug.Log("Sem Energia");
             yield break;
