@@ -85,17 +85,20 @@ public class CountdownTimer : MonoBehaviour
     {
         background.GetComponent<AudioSource>().Play();
         
-        for (i = tempo; i > 1; i--)
+        for (i = tempo; i >= 0; i--)
         {
             if (i >= 10)
+            {
                 TxtTimerGame.text = i.ToString();
+            }
             else
+            { 
                 TxtTimerGame.text = "0" + i.ToString();
+            }
             yield return new WaitForSeconds(1f);
             yield return new WaitUntil(() => !gameController.GetBooleanIsPaused());
         }
         gameController.GameFinished();
-        Debug.Log("MANO ACABOU POR CONTA DO TIMER");
     }
     public bool GetBooleanIsPaused()
     {
