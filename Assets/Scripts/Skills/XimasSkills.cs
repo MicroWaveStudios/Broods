@@ -259,7 +259,7 @@ public class XimasSkills : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
 
         transform.position = posicaoTpDash;
-
+        scrSons.TocarSom("Dash");
         playerCombat.SetInAttack(true);
 
 

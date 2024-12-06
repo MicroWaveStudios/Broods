@@ -99,9 +99,29 @@ public class Damage : MonoBehaviour
             scrSons.TocarSom("Laser");
         }
 
+        if (somAtaque == "Tarticos")
+        {
+            scrSons.TocarSom("Tarticos");
+        }
+
         if (somAtaque == "Sopro")
         {
             scrSons.TocarSom("Sopro");
+        }
+
+        if (somAtaque == "ParryCerto")
+        {
+            scrSons.TocarSom("ParryCerto");
+        }
+
+        if (somAtaque == "ParryInicio")
+        {
+            scrSons.TocarSom("ParryInicio");
+        }
+
+        if (somAtaque == "Dash")
+        {
+            scrSons.TocarSom("Dash");
         }
     }
 

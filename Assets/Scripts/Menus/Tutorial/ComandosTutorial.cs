@@ -109,7 +109,7 @@ public class ComandosTutorial : MonoBehaviour
     private IEnumerator Acabou()
     {
         instrucoes.SetActive(false);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2.5f);
         painelFimTutorial.SetActive(true);
         playerController.EnableMapActionUI();
         panelsManager.ChangePanel(0);

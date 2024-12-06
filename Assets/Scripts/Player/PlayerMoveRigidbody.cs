@@ -177,6 +177,7 @@ public class PlayerMoveRigidbody : MonoBehaviour
     public void Morrer()
     {
         rb.AddForce(Vector3.left * isPlayer2 * 200f);
+        scrSons.TocarSom("Morrer");
     }
 
     public bool GetIsGrounded()

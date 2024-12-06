@@ -16,7 +16,7 @@ public class menuSettings : MonoBehaviour
     private bool onVsync;
     private float vSync;
 
-    [Header("Resolu��o")]
+    [Header("Resolucao")]
     int width;
     int height;
     private int resolucaoAtual_index = 0;
@@ -24,7 +24,7 @@ public class menuSettings : MonoBehaviour
     private List<Resolution> filteredResolutions;
     private float currentRefreshRate;
 
-    [Header("Bot�es")]
+    [Header("Botoes")]
     [SerializeField] private TMP_Dropdown QualityDropdown;
     [SerializeField] private Toggle FullscreenToggle;
     [SerializeField] private TMP_Dropdown resolutionDropdown;
