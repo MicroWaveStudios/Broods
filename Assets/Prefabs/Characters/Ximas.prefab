@@ -3688,7 +3688,7 @@ GameObject:
   - component: {fileID: 7016451780072166860}
   m_Layer: 7
   m_Name: Ximas
-  m_TagString: Player1
+  m_TagString: Player2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11978,14 +11978,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7657034320336801801}
-  m_LocalRotation: {x: -0.36994395, y: -0, z: -0, w: 0.92905414}
-  m_LocalPosition: {x: 0, y: 169, z: -7.5}
+  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
+  m_LocalPosition: {x: 0, y: 150, z: -7.5}
   m_LocalScale: {x: 100.00002, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1543341450706339045}
   m_RootOrder: 13
-  m_LocalEulerAnglesHint: {x: -43.424, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
 --- !u!65 &6137319956086261583
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11993,11 +11993,11 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7657034320336801801}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: b29325d6e335b914aa1b5a5d5af3eda7, type: 2}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 1, z: 1}
+  m_Size: {x: 0.8, y: 0.8, z: 0.8}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7692184425983046914
 GameObject:

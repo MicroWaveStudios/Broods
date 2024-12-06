@@ -151,8 +151,9 @@ public class PlayerCombat : MonoBehaviour
             {
                 ListaDeAtaqueAtual = numberAttack;
             }
-            if (ListaDeAtaqueAtual > -1 && ListaDeAtaqueAtual < _AttackList.Count && _AttackList[ListaDeAtaqueAtual].NomeDoAtaque != "")
+            if (ListaDeAtaqueAtual > -1 && ListaDeAtaqueAtual < _AttackList.Count && _AttackList[ListaDeAtaqueAtual].NomeDoAtaque != null)
             {
+                Debug.Log(_AttackList[ListaDeAtaqueAtual].NomeDoAtaque);
                 _InAttack = true;
                 //playerAnimator.TriggerAction(_AttackList[ListaDeAtaqueAtual].NomeDoAtaque);
                 playerAnimator.AttackAction(_AttackList[ListaDeAtaqueAtual].NomeDoAtaque, true);
@@ -163,8 +164,12 @@ public class PlayerCombat : MonoBehaviour
                 }
                 
                 NomeAtaqueAtual = _AttackList[ListaDeAtaqueAtual].NomeDoAtaque;
+                StartCoroutine(Combo());
             }
-
+            else
+            {
+                ListaDeAtaqueAtual = -1;
+            }
 
             //switch (ListaDeAtaqueAtual)
             //{
@@ -182,7 +187,6 @@ public class PlayerCombat : MonoBehaviour
             //        break;
             //}
 
-            StartCoroutine(Combo());
         }
     }
 
