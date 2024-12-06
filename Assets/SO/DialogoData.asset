@@ -13,52 +13,52 @@ MonoBehaviour:
   m_Name: DialogoData
   m_EditorClassIdentifier: Assembly-CSharp::DialogoData/DialogueData
   scriptFalas:
-  - nome: "Nar\xE1"
-    icon: {fileID: 21300000, guid: 0b88bc4b7bfbbb548ab8ffbbbd1ff96f, type: 3}
+  - nome: "NAR\xC1"
+    icon: {fileID: 21300000, guid: f2178c9b3765ee7448c9eacf74a159d4, type: 3}
     text: "Olha s\xF3 o que temos aqui..."
-  - nome: "Nar\xE1"
-    icon: {fileID: 21300000, guid: 0b88bc4b7bfbbb548ab8ffbbbd1ff96f, type: 3}
+  - nome: "NAR\xC1"
+    icon: {fileID: 21300000, guid: f2178c9b3765ee7448c9eacf74a159d4, type: 3}
     text: "Ol\xE1, bem vindo ao Broods, me chamo Nar\xE1 e te ensinarei a ser um
       lutador."
-  - nome: "Nar\xE1"
-    icon: {fileID: 21300000, guid: 0b88bc4b7bfbbb548ab8ffbbbd1ff96f, type: 3}
+  - nome: "NAR\xC1"
+    icon: {fileID: 21300000, guid: f2178c9b3765ee7448c9eacf74a159d4, type: 3}
     text: "Vamos come\xE7ar pelo b\xE1sico: Para se mover, aperte A e D"
-  - nome: "Nar\xE1"
-    icon: {fileID: 21300000, guid: 0b88bc4b7bfbbb548ab8ffbbbd1ff96f, type: 3}
+  - nome: "NAR\xC1"
+    icon: {fileID: 21300000, guid: f2178c9b3765ee7448c9eacf74a159d4, type: 3}
     text: "J\xE1 para pular, aperte W. Voc\xEA tamb\xE9m pode agachar apertando S"
-  - nome: "Nar\xE1"
-    icon: {fileID: 21300000, guid: 0b88bc4b7bfbbb548ab8ffbbbd1ff96f, type: 3}
+  - nome: "NAR\xC1"
+    icon: {fileID: 21300000, guid: f2178c9b3765ee7448c9eacf74a159d4, type: 3}
     text: "Oh, esqueci de lhe informar, ao se movimentar para tr\xE1s, voc\xEA tamb\xE9m
       passa a se defender. "
-  - nome: "Nar\xE1"
-    icon: {fileID: 21300000, guid: 0b88bc4b7bfbbb548ab8ffbbbd1ff96f, type: 3}
+  - nome: "NAR\xC1"
+    icon: {fileID: 21300000, guid: f2178c9b3765ee7448c9eacf74a159d4, type: 3}
     text: "Mas cuidado, caso seu inimigo ataque agachado, voc\xEA defender\xE1 somente
       se tamb\xE9m estiver agachado."
-  - nome: "Nar\xE1"
-    icon: {fileID: 21300000, guid: 0b88bc4b7bfbbb548ab8ffbbbd1ff96f, type: 3}
+  - nome: "NAR\xC1"
+    icon: {fileID: 21300000, guid: f2178c9b3765ee7448c9eacf74a159d4, type: 3}
     text: "\xD3timo, vamos agora aos ataques. Teste com o Ximas, ele n\xE3o vai se
       importar"
-  - nome: Ximas
-    icon: {fileID: 21300000, guid: 459f5d42797078947b05ba4ec0bd6234, type: 3}
+  - nome: XIMAS
+    icon: {fileID: 21300000, guid: ade8959dae232c145bf4889ad4cdaa8b, type: 3}
     text: Hum...
-  - nome: "Nar\xE1"
-    icon: {fileID: 21300000, guid: 0b88bc4b7bfbbb548ab8ffbbbd1ff96f, type: 3}
+  - nome: "NAR\xC1"
+    icon: {fileID: 21300000, guid: f2178c9b3765ee7448c9eacf74a159d4, type: 3}
     text: Use as teclas J, I, L e K para executar diferentes ataques.
-  - nome: "Nar\xE1"
-    icon: {fileID: 21300000, guid: 0b88bc4b7bfbbb548ab8ffbbbd1ff96f, type: 3}
+  - nome: "NAR\xC1"
+    icon: {fileID: 21300000, guid: f2178c9b3765ee7448c9eacf74a159d4, type: 3}
     text: "Lembre-se que voc\xEA pode aplicar um ataque agachado, com K."
-  - nome: "Nar\xE1"
-    icon: {fileID: 21300000, guid: 0b88bc4b7bfbbb548ab8ffbbbd1ff96f, type: 3}
+  - nome: "NAR\xC1"
+    icon: {fileID: 21300000, guid: f2178c9b3765ee7448c9eacf74a159d4, type: 3}
     text: "Sei que s\xE3o muitas informa\xE7\xF5es logo de cara, mas garanto que
       ser\xE3o de grande ajuda no futuro."
-  - nome: "Nar\xE1"
-    icon: {fileID: 21300000, guid: 0b88bc4b7bfbbb548ab8ffbbbd1ff96f, type: 3}
+  - nome: "NAR\xC1"
+    icon: {fileID: 21300000, guid: f2178c9b3765ee7448c9eacf74a159d4, type: 3}
     text: "Preciso ir embora agora, mas sinta-se livre para continuar treinando e
       aperfei\xE7oando seus ataques, pois existem outras t\xE9cnicas poss\xEDveis. "
-  - nome: "Nar\xE1"
-    icon: {fileID: 21300000, guid: 0b88bc4b7bfbbb548ab8ffbbbd1ff96f, type: 3}
+  - nome: "NAR\xC1"
+    icon: {fileID: 21300000, guid: f2178c9b3765ee7448c9eacf74a159d4, type: 3}
     text: "Mais para frente, durante as partidas, aperte ESC para pausar o jogo e
       aprender a utilizar suas habilidades, relembrando o que voc\xEA esqueceu."
-  - nome: "Nar\xE1"
-    icon: {fileID: 21300000, guid: 0b88bc4b7bfbbb548ab8ffbbbd1ff96f, type: 3}
+  - nome: "NAR\xC1"
+    icon: {fileID: 21300000, guid: f2178c9b3765ee7448c9eacf74a159d4, type: 3}
     text: Agora... vamos praticar!

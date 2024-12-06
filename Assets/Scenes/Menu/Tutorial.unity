@@ -432,6 +432,7 @@ MonoBehaviour:
   - {fileID: 1899209961}
   instrucoes: {fileID: 1437681052}
   painelFimTutorial: {fileID: 1937321423}
+  panelsManager: {fileID: 0}
   podeAtacar: 1
   sceneManager: {fileID: 0}
 --- !u!4 &483563901
@@ -3691,13 +3692,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25fbdd007d3706f47a556b2390fa8c8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 0
-  maxLife: 1e+11
-  maxEnergy: 15
-  energy: 0
+  vida: 0
+  vidaMax: 0
+  energiaMax: 0
+  energia: 0
   defendendo: 0
   defendeu: 0
   pontos: 0
+  golpesSequencia: 0
+  timer: 0
   tutorial: 1
   Ximas: 1
   teste: 1
@@ -6252,6 +6255,42 @@ PrefabInstance:
     - target: {fileID: 2244034507506201318, guid: 0af204b5f6b35f64b8a64408c9f0df78, type: 3}
       propertyPath: m_text
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2244034507552322832, guid: 0af204b5f6b35f64b8a64408c9f0df78, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f2178c9b3765ee7448c9eacf74a159d4, type: 3}
+    - target: {fileID: 2244034507552322833, guid: 0af204b5f6b35f64b8a64408c9f0df78, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 223
+      objectReference: {fileID: 0}
+    - target: {fileID: 2244034507552322833, guid: 0af204b5f6b35f64b8a64408c9f0df78, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 182
+      objectReference: {fileID: 0}
+    - target: {fileID: 2244034507552322833, guid: 0af204b5f6b35f64b8a64408c9f0df78, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2244034507552322833, guid: 0af204b5f6b35f64b8a64408c9f0df78, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2244034507552322833, guid: 0af204b5f6b35f64b8a64408c9f0df78, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2244034507552322833, guid: 0af204b5f6b35f64b8a64408c9f0df78, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -617
+      objectReference: {fileID: 0}
+    - target: {fileID: 2244034507552322833, guid: 0af204b5f6b35f64b8a64408c9f0df78, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2244034507744995875, guid: 0af204b5f6b35f64b8a64408c9f0df78, type: 3}
+      propertyPath: m_text
+      value: "NAR\xC1"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0af204b5f6b35f64b8a64408c9f0df78, type: 3}
@@ -10311,7 +10350,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b633f305a8311d14d960d4aad43d1a58, type: 2}
+  - {fileID: 2100000, guid: 7d7636a131d8c2348aea97e1a0c6633a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
