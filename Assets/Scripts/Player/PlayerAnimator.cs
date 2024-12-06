@@ -41,7 +41,10 @@ public class PlayerAnimator : MonoBehaviour
 
     public void TriggerAction(string AttackName)
     {
-        anim.SetTrigger(AttackName);
+        if (AttackName != null)
+        {
+            anim.SetTrigger(AttackName);
+        }
     }
 
     public void AttackAction(string AttackName, bool value)

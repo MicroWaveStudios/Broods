@@ -4140,7 +4140,7 @@ MonoBehaviour:
   playerStats: {fileID: 212009621018895382}
   naraSkills: {fileID: 0}
   anim: {fileID: 1360568270482154252}
-  scrSons: {fileID: 0}
+  scrSons: {fileID: 7016451780072166860}
   _InAttack: 0
   InCombo: 0
   ordem: 0
@@ -4205,56 +4205,32 @@ MonoBehaviour:
     - Marretada
     - Espada
   - NomeDoAtaque: AtaqueMedio
-    AtaqueRange: 0200000002000000020000000200000002000000
-    Dano: 0600000004000000080000000800000008000000
-    OrdemCombo: 01000000010000000100000001000000
+    AtaqueRange: 0200000002000000
+    Dano: 0600000004000000
+    OrdemCombo: 01000000
     FramesContinuar:
     - 0.6
     - 0.4
-    - 0.4
-    - 0.4
-    - 0.2
     VelocidadeDaAnimacao:
-    - 1
-    - 1
-    - 1
     - 1
     - 1
     SampleRate:
     - 24
     - 24
-    - 24
-    - 24
-    - 24
     MoveDamage:
     - 0
-    - 300
-    - 300
-    - 300
     - 0
     MoveDamageOtherPlayer:
-    - 0
-    - 0
-    - 0
     - 0
     - 0
     MoveUpOtherPlayer:
     - 0
     - 0
-    - 0
-    - 0
-    - 0
     MoveUp:
-    - 0
-    - 0
-    - 0
     - 0
     - 0
     Sons:
     - Lamina2
-    - Corte
-    - Corte
-    - Corte
     - Corte
   - NomeDoAtaque: AtaqueForte
     AtaqueRange: 02000000020000000200000002000000
