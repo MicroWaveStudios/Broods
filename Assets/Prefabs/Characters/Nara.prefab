@@ -12666,7 +12666,7 @@ GameObject:
   - component: {fileID: 995425808579810349}
   m_Layer: 0
   m_Name: Nara
-  m_TagString: Player1
+  m_TagString: Player2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13131,7 +13131,7 @@ MonoBehaviour:
   _AttackList:
   - NomeDoAtaque: AtaqueBaixo
     AtaqueRange: 00000000
-    Dano: 05000000
+    Dano: 04000000
     OrdemCombo: 
     FramesContinuar:
     - 0.3
@@ -13153,7 +13153,7 @@ MonoBehaviour:
     - Laser
   - NomeDoAtaque: AtaqueFraco
     AtaqueRange: 010000000100000001000000
-    Dano: 050000000300000007000000
+    Dano: 040000000200000006000000
     OrdemCombo: 0200000003000000
     FramesContinuar:
     - 0.2
@@ -13189,7 +13189,7 @@ MonoBehaviour:
     - Lanca1
   - NomeDoAtaque: AtaqueMedio
     AtaqueRange: 020000000200000002000000
-    Dano: 060000000200000003000000
+    Dano: 050000000200000003000000
     OrdemCombo: 0100000000000000
     FramesContinuar:
     - 0.5
@@ -13225,7 +13225,7 @@ MonoBehaviour:
     - Lanca3
   - NomeDoAtaque: AtaqueForte
     AtaqueRange: 020000000200000002000000
-    Dano: 070000000500000007000000
+    Dano: 060000000400000006000000
     OrdemCombo: 03000000
     FramesContinuar:
     - 0.6
@@ -13386,6 +13386,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vida: 0
   vidaMax: 150
+  damageMultiplier: 0.5
   energiaMax: 15
   energia: 0
   defendendo: 0

@@ -3688,7 +3688,7 @@ GameObject:
   - component: {fileID: 7016451780072166860}
   m_Layer: 7
   m_Name: Ximas
-  m_TagString: Player2
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4150,7 +4150,7 @@ MonoBehaviour:
   _AttackList:
   - NomeDoAtaque: AtaqueBaixo
     AtaqueRange: 00000000
-    Dano: 05000000
+    Dano: 07000000
     OrdemCombo: 
     FramesContinuar:
     - 0.47
@@ -4170,7 +4170,7 @@ MonoBehaviour:
     - Pow
   - NomeDoAtaque: AtaqueFraco
     AtaqueRange: 010000000100000001000000
-    Dano: 060000000200000007000000
+    Dano: 080000000400000009000000
     OrdemCombo: 0200000003000000
     FramesContinuar:
     - 0.4
@@ -4206,7 +4206,7 @@ MonoBehaviour:
     - Espada
   - NomeDoAtaque: AtaqueMedio
     AtaqueRange: 0200000002000000
-    Dano: 0600000004000000
+    Dano: 0800000006000000
     OrdemCombo: 01000000
     FramesContinuar:
     - 0.6
@@ -4234,7 +4234,7 @@ MonoBehaviour:
     - Corte
   - NomeDoAtaque: AtaqueForte
     AtaqueRange: 02000000020000000200000002000000
-    Dano: 07000000040000000300000008000000
+    Dano: 0900000006000000050000000a000000
     OrdemCombo: 030000000300000003000000
     FramesContinuar:
     - 0.4
@@ -4278,7 +4278,7 @@ MonoBehaviour:
     - Lamina
   - NomeDoAtaque: AtaqueBaixoAgachado
     AtaqueRange: 00000000
-    Dano: 04000000
+    Dano: 06000000
     OrdemCombo: 
     FramesContinuar:
     - 0.4
@@ -4358,7 +4358,7 @@ MonoBehaviour:
     - Pow
   - NomeDoAtaque: "AtaqueA\xE9reo"
     AtaqueRange: 02000000
-    Dano: 04000000
+    Dano: 07000000
     OrdemCombo: 
     FramesContinuar:
     - 0.4
@@ -4403,6 +4403,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vida: 0
   vidaMax: 150
+  damageMultiplier: 0.5
   energiaMax: 15
   energia: 0
   defendendo: 0

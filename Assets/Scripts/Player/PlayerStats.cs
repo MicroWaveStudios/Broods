@@ -10,7 +10,7 @@ public class PlayerStats : MonoBehaviour
 {
     [SerializeField] float vida;
     [SerializeField] float vidaMax;
-    float damageMultiplier = 0.5f;
+    public float damageMultiplier = 0.5f;
     [SerializeField] float energiaMax;
     [SerializeField] float energia;
     PlayerMoveRigidbody playerMoveRigidbody;
