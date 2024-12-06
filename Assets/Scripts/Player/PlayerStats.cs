@@ -145,6 +145,7 @@ public class PlayerStats : MonoBehaviour
                 }
                 break;
         }
+
         if (!defendeu)
         {
             if (playerCombat.GetInParry() == true)
@@ -158,11 +159,10 @@ public class PlayerStats : MonoBehaviour
                 playerAnimator.TriggerAction("TomouDano");
                 playerMoveRigidbody.MoveUp(moveUpOtherPlayer);
                 playerMoveRigidbody.MoverAoLevarDano(moveDamageOtherPlayer);
-                //MoveDamage(moveDamage);
 
                 vfxImpacto.Play();
                 scrSons.TocarSom("LevarDano");
-                
+
 
                 playerCombat.ResetCombo();
                 StartCoroutine(ResetScripts(0.5f));

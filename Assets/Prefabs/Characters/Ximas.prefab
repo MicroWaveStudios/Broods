@@ -4194,7 +4194,7 @@ MonoBehaviour:
     - 0
     MoveUpOtherPlayer:
     - 0
-    - 150
+    - 0
     - 0
     MoveUp:
     - 0
@@ -4237,13 +4237,13 @@ MonoBehaviour:
     - 0
     - 0
     - 0
-    - 300
+    - 0
     MoveUpOtherPlayer:
     - 0
-    - 500
-    - 400
-    - 400
-    - -400
+    - 0
+    - 0
+    - 0
+    - 0
     MoveUp:
     - 0
     - 150
@@ -4252,7 +4252,7 @@ MonoBehaviour:
     - -200
     Sons:
     - Lamina2
-    - Marretada
+    - Corte
     - Corte
     - Corte
     - Corte

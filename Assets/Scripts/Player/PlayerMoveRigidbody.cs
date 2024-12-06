@@ -249,14 +249,15 @@ public class PlayerMoveRigidbody : MonoBehaviour
 
     public void MoveUp(float moveUp)
     {
-        Jump(moveUp, false);
+        rb.velocity = Vector3.zero;
+        rb.AddForce(Vector3.up * moveUp);
     }
 
     public void MoverAoLevarDano(float moveDamage)
     {
         //StartCoroutine(moverAoLevarDano());
         rb.velocity = Vector3.zero;
-        rb.AddForce(Vector3.left * moveDamage * isPlayer2, ForceMode.Force);
+        rb.AddForce(Vector3.left * moveDamage * isPlayer2);
     }
 
     //IEnumerator moverAoLevarDano()
