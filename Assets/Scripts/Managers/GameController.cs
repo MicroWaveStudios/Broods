@@ -7,6 +7,8 @@ using UnityEngine.InputSystem.Users;
 using UnityEngine.SceneManagement;
 using TMPro;
 using System;
+using System.Linq;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class GameController : MonoBehaviour
 {
@@ -135,31 +137,35 @@ public class GameController : MonoBehaviour
     //    playerInput2.tag = "Player2";
     //}
 
+
+    InputDevice[] device = InputSystem.devices.ToArray(); 
     void InstanciarPlayer()
     {
         for (int i = 0; i < 2; i++)
         {
             Pontos.prefabPlayer[i].GetComponent<PlayerInput>().defaultControlScheme = Pontos.ControlSchemePlayer[i];
             int tagPlayer = i + 1;
-            //Pontos.prefabPlayer[i].tag = "Player" + tagPlayer; 
-            //Debug.Log(Pontos.ControlSchemePlayer[i]);
 
             PlayerInput newPlayerInput;
+
+            InputDevice deviceController = Pontos.devicePlayer[i];
 
             switch (Pontos.ControlSchemePlayer[i])
             {
                 case "Gamepad":
                     Pontos.prefabPlayer[i].GetComponent<PlayerInput>().defaultControlScheme = "Gamepad";
-                    newPlayerInput = PlayerInput.Instantiate(Pontos.prefabPlayer[i], i, Pontos.ControlSchemePlayer[i], -1, Gamepad.current);
+                    newPlayerInput = PlayerInput.Instantiate(Pontos.prefabPlayer[i], i, Pontos.ControlSchemePlayer[i], pairWithDevices: new InputDevice[] { deviceController });
                     newPlayerInput.tag = "Player" + tagPlayer;
+                    newPlayerInput.GetComponent<MaterialPlayer>().SetMaterialPersonagem(Pontos.variante[i]);
                     break;
                 case "Keyboard":
                     Pontos.prefabPlayer[i].GetComponent<PlayerInput>().defaultControlScheme = "Keyboard";
                     newPlayerInput = PlayerInput.Instantiate(Pontos.prefabPlayer[i], i, Pontos.ControlSchemePlayer[i], -1, Keyboard.current, Mouse.current);
                     newPlayerInput.tag = "Player" + tagPlayer;
+                    newPlayerInput.GetComponent<MaterialPlayer>().SetMaterialPersonagem(Pontos.variante[i]);
                     break;
             }
-
+            
             //switch (Pontos.ControlSchemePlayer[i])
             //{
             //    case "Gamepad":

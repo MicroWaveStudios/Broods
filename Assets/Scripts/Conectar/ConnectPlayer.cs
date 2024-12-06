@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -36,6 +37,9 @@ public class ConnectPlayer : MonoBehaviour
     private void Start()
     {
         connectManager.GetComponent<ConnectPlayerInMenu>().JoinPlayer(this.gameObject);
+
+        InputDevice device = playerInput.devices.FirstOrDefault();
+        Pontos.devicePlayer[playerID] = device;
     }
     public void SetupPlayer(int newPlayerID)
     { 

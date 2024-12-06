@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 class Pontos
 {
@@ -17,4 +18,6 @@ class Pontos
     public static int[] personagem = new int[2];
 
     public static bool jaEntrou = false;
+
+    public static InputDevice[] devicePlayer = new InputDevice[2];
 }
