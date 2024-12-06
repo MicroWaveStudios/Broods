@@ -98,21 +98,28 @@ public class PlayerMoveRigidbody : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (jumpCount == 1 && !GetComponent<PlayerCombat>().GetInAttack() && !crouched && !playerStats.GetInAction())
-        { 
-            rb.velocity = new Vector3(directionX * MoveForce, rb.velocity.y, rb.velocity.z);
-        }
-        else if (jumpCount == 0)
+        if (!playerStats.GetDefendeu())
         {
-            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, rb.velocity.z);
-        }
-        else if (crouched)
-        {
-            rb.velocity = new Vector3(0f, rb.velocity.y, rb.velocity.z);
+            if (jumpCount == 1 && !GetComponent<PlayerCombat>().GetInAttack() && !crouched && !playerStats.GetInAction())
+            { 
+                rb.velocity = new Vector3(directionX * MoveForce, rb.velocity.y, rb.velocity.z);
+            }
+            else if (jumpCount == 0)
+            {
+                rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, rb.velocity.z);
+            }
+            else if (crouched)
+            {
+                rb.velocity = new Vector3(0f, rb.velocity.y, rb.velocity.z);
+            }
+            else
+            {
+                rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, rb.velocity.z);
+            }
         }
         else
         {
-            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, rb.velocity.z);
+            rb.velocity = Vector3.zero;
         }
         //WasPressedThisFrame() pesquisar em casa
     }

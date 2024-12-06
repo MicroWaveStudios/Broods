@@ -172,11 +172,16 @@ public class PlayerStats : MonoBehaviour
         {
             SomarPontos(50);
             vfxDefesa.Play();
+            StartCoroutine(ResetDefendeu());
         }
         //scrpGameController.SetTimeScale();
     }
 
-
+    IEnumerator ResetDefendeu()
+    {
+        yield return new WaitForSeconds(0.8f);
+        defendeu = false;
+    }
     public IEnumerator ResetScripts(float delay)
     {
         yield return new WaitForSeconds(0.1f);
@@ -259,6 +264,11 @@ public class PlayerStats : MonoBehaviour
         pontos += somaPontos;
     }
 
+
+    public bool GetDefendeu()
+    {
+        return defendeu;
+    }
     public float GetPontos()
     {
         return pontos;
