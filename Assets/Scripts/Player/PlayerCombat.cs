@@ -143,9 +143,9 @@ public class PlayerCombat : MonoBehaviour
             {
                 ListaDeAtaqueAtual = numberAttack + 4;
             }
-            else if (!playerMove.GetNoChao())
+            else if (!playerMove.GetNoChao() && playerMove.GetJumpCount() < 1)
             {
-                ListaDeAtaqueAtual = numberAttack + 8;
+                ListaDeAtaqueAtual = numberAttack + 5;
             }
             else
             {
