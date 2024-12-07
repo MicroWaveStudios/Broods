@@ -13157,7 +13157,7 @@ MonoBehaviour:
     OrdemCombo: 0200000003000000
     FramesContinuar:
     - 0.2
-    - 0.4
+    - 0.5
     - 0.6
     VelocidadeDaAnimacao:
     - 1
