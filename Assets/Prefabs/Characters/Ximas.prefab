@@ -4150,14 +4150,14 @@ MonoBehaviour:
   _AttackList:
   - NomeDoAtaque: AtaqueBaixo
     AtaqueRange: 00000000
-    Dano: 04000000
+    Dano: 09000000
     OrdemCombo: 
     FramesContinuar:
-    - 0.3
+    - 0.47
     VelocidadeDaAnimacao:
-    - 2
+    - 1
     SampleRate:
-    - 24
+    - 1
     MoveDamage:
     - 0
     MoveDamageOtherPlayer:
@@ -4166,128 +4166,146 @@ MonoBehaviour:
     - 0
     MoveUp:
     - 0
-    - 0
-    - 0
     Sons:
-    - Laser
+    - Pow
   - NomeDoAtaque: AtaqueFraco
     AtaqueRange: 010000000100000001000000
-    Dano: 040000000200000006000000
+    Dano: 0a000000060000000b000000
     OrdemCombo: 0200000003000000
     FramesContinuar:
-    - 0.2
-    - 0.5
+    - 0.4
+    - 0.6
     - 0.6
     VelocidadeDaAnimacao:
+    - 1.3
     - 1
     - 1
-    - 1.8
     SampleRate:
     - 24
-    - 60
-    - 60
+    - 24
+    - 24
     MoveDamage:
-    - 1
-    - 100
     - 0
+    - 0
+    - 400
     MoveDamageOtherPlayer:
     - 0
-    - 100
-    - 150
+    - 0
+    - 0
     MoveUpOtherPlayer:
     - 0
     - 0
-    - 600
+    - 0
     MoveUp:
     - 0
     - 0
     - 0
     Sons:
-    - Lanca2
-    - Lanca2
-    - Lanca1
+    - Corte
+    - Marretada
+    - Espada
   - NomeDoAtaque: AtaqueMedio
-    AtaqueRange: 020000000200000002000000
-    Dano: 050000000200000003000000
-    OrdemCombo: 0100000000000000
+    AtaqueRange: 0200000002000000
+    Dano: 0a00000008000000
+    OrdemCombo: 01000000
     FramesContinuar:
-    - 0.5
-    - 0.8
-    - 0.7
+    - 0.6
+    - 0.4
     VelocidadeDaAnimacao:
-    - 1
     - 1
     - 1
     SampleRate:
     - 24
     - 24
-    - 24
     MoveDamage:
     - 0
-    - 120
-    - -25
-    MoveDamageOtherPlayer:
-    - 50
-    - 100
-    - -25
-    MoveUpOtherPlayer:
     - 0
+    MoveDamageOtherPlayer:
+    - 0
+    - 0
+    MoveUpOtherPlayer:
     - 0
     - 0
     MoveUp:
     - 0
     - 0
-    - 0
     Sons:
-    - Lanca1
-    - Lanca1
-    - Lanca3
+    - Lamina2
+    - Corte
   - NomeDoAtaque: AtaqueForte
-    AtaqueRange: 020000000200000002000000
-    Dano: 060000000400000006000000
-    OrdemCombo: 03000000
+    AtaqueRange: 02000000020000000200000002000000
+    Dano: 0b00000008000000070000000c000000
+    OrdemCombo: 030000000300000003000000
     FramesContinuar:
+    - 0.4
     - 0.6
-    - 0.6
+    - 0.55
     - 0.6
     VelocidadeDaAnimacao:
-    - 1.9
-    - 2
-    - 2
+    - 1.2
+    - 1.2
+    - 1.2
+    - 1.2
     SampleRate:
     - 24
-    - 60
-    - 60
+    - 24
+    - 24
+    - 24
     MoveDamage:
-    - 1
-    - -70
-    - 80
+    - 0
+    - 0
+    - 0
+    - 0
     MoveDamageOtherPlayer:
     - 0
-    - -200
+    - -150
+    - 150
     - 500
     MoveUpOtherPlayer:
     - 0
-    - 200
     - 0
+    - 0
+    - 300
     MoveUp:
     - 0
     - 0
     - 0
+    - 0
     Sons:
-    - Lanca2
-    - Lanca3
-    - Lanca1
+    - Marretada
+    - Corte
+    - Pow
+    - Lamina
   - NomeDoAtaque: AtaqueBaixoAgachado
+    AtaqueRange: 00000000
+    Dano: 08000000
+    OrdemCombo: 
+    FramesContinuar:
+    - 0.4
+    VelocidadeDaAnimacao:
+    - 1
+    SampleRate:
+    - 1
+    MoveDamage:
+    - 0
+    MoveDamageOtherPlayer:
+    - 0
+    MoveUpOtherPlayer:
+    - 0
+    MoveUp:
+    - 0
+    Sons:
+    - Pow
+  - NomeDoAtaque: 
     AtaqueRange: 00000000
     Dano: 04000000
     OrdemCombo: 
     FramesContinuar:
-    - 0.7
+    - 0.4
     VelocidadeDaAnimacao:
-    - 1.9
+    - 1
     SampleRate:
-    - 24
+    - 1
     MoveDamage:
     - 0
     MoveDamageOtherPlayer:
@@ -4297,10 +4315,50 @@ MonoBehaviour:
     MoveUp:
     - 0
     Sons:
-    - Lanca2
+    - Pow
+  - NomeDoAtaque: 
+    AtaqueRange: 00000000
+    Dano: 04000000
+    OrdemCombo: 
+    FramesContinuar:
+    - 0.4
+    VelocidadeDaAnimacao:
+    - 1
+    SampleRate:
+    - 1
+    MoveDamage:
+    - 0
+    MoveDamageOtherPlayer:
+    - 0
+    MoveUpOtherPlayer:
+    - 0
+    MoveUp:
+    - 0
+    Sons:
+    - Pow
+  - NomeDoAtaque: 
+    AtaqueRange: 00000000
+    Dano: 04000000
+    OrdemCombo: 
+    FramesContinuar:
+    - 0.4
+    VelocidadeDaAnimacao:
+    - 1
+    SampleRate:
+    - 1
+    MoveDamage:
+    - 0
+    MoveDamageOtherPlayer:
+    - 0
+    MoveUpOtherPlayer:
+    - 0
+    MoveUp:
+    - 0
+    Sons:
+    - Pow
   - NomeDoAtaque: "AtaqueA\xE9reo"
     AtaqueRange: 02000000
-    Dano: 04000000
+    Dano: 07000000
     OrdemCombo: 
     FramesContinuar:
     - 0.4
@@ -4309,7 +4367,7 @@ MonoBehaviour:
     SampleRate:
     - 24
     MoveDamage:
-    - 100
+    - 0
     MoveDamageOtherPlayer:
     - 0
     MoveUpOtherPlayer:
@@ -4317,7 +4375,7 @@ MonoBehaviour:
     MoveUp:
     - 0
     Sons:
-    - Lanca1
+    - Pow
   FrameAtual: 0
 --- !u!114 &1781845846367271014
 MonoBehaviour:
