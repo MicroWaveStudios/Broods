@@ -25,6 +25,8 @@ public class GameController : MonoBehaviour
     [SerializeField] GameObject PlayerTeste;
     [SerializeField] GameObject UIGame;
 
+    [SerializeField] GameObject[] TarticosUI;
+
     [SerializeField] Transform[] InstancePosition;
     [SerializeField] Transform mid;
     GameObject Canvas;
@@ -138,7 +140,6 @@ public class GameController : MonoBehaviour
     //}
 
 
-    InputDevice[] device = InputSystem.devices.ToArray(); 
     void InstanciarPlayer()
     {
         for (int i = 0; i < 2; i++)
@@ -216,6 +217,25 @@ public class GameController : MonoBehaviour
             MidPosition();
             //PlayerLife();
             PlayerVida_Energia();
+            for (int i = 0; i < player.Length; i++)
+            {
+                if (Pontos.personagem[i] == 0)
+                {
+                    TarticosUI[i].SetActive(true);
+                    int quantidadeTartico = player[i].GetComponent<NaraSkills>().GetTarticos();
+                    if (quantidadeTartico > 0)
+                    {
+                        for (int x = 0; x < quantidadeTartico; x++)
+                        {
+                            TarticosUI[i].transform.GetChild(x).GetComponent<Image>().color = new Color(Color.white.r, Color.white.g, Color.white.b, 255f);
+                        }
+                    }
+                }
+                else
+                {
+                    TarticosUI[i].SetActive(false);
+                }
+            }
         }
 
         if (Pontos.vitoriaP[0] >= 1)
