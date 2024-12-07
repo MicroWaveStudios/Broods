@@ -24,6 +24,7 @@ public class PlayerStats : MonoBehaviour
 
     public GameObject[] txtContadores;
     [SerializeField] Color[] corContadores;
+    Vector3 scaleContador;
 
     public bool defendeu;
 
@@ -58,6 +59,7 @@ public class PlayerStats : MonoBehaviour
         vida = vidaMax;
         energia = 0;
         txtContadores = GameObject.FindGameObjectsWithTag("ContadoresSequencia");
+        scaleContador = txtContadores[0].transform.localScale;
         StartCoroutine(TimerFimSequencia());
     }
 
@@ -288,9 +290,13 @@ public class PlayerStats : MonoBehaviour
         golpesSequencia++;
         txtContadores[scrpPlayerController.GetPlayerID()].GetComponent<TMP_Text>().text = golpesSequencia.ToString() + "x";
         Vector3 scaleTXT = txtContadores[scrpPlayerController.GetPlayerID()].transform.localScale;
-        txtContadores[scrpPlayerController.GetPlayerID()].transform.localScale = new Vector3(scaleTXT.x + 0.1f, scaleTXT.y + 0.1f, scaleTXT.z + 0.1f);
+        Vector3 maxScale = new Vector3(scaleContador.x + 1, scaleContador.y + 1, scaleContador.z + 1);
+        if (scaleTXT.x < maxScale.x)
+        {
+            txtContadores[scrpPlayerController.GetPlayerID()].transform.localScale = new Vector3(scaleTXT.x + 0.1f, scaleTXT.y + 0.1f, scaleTXT.z + 0.1f);
+        }       
         txtContadores[scrpPlayerController.GetPlayerID()].transform.rotation = Quaternion.Euler(Random.Range(-10f, 10f), Random.Range(-10f, 10f), Random.Range(-10f, 10f));
-        if (golpesSequencia <= corContadores.Length)
+        if (golpesSequencia <= corContadores.Length - 1)
         {
             txtContadores[scrpPlayerController.GetPlayerID()].GetComponent<TMP_Text>().color = corContadores[golpesSequencia];
         }
