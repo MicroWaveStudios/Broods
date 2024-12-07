@@ -13279,7 +13279,7 @@ MonoBehaviour:
     - 0
     Sons:
     - Lanca2
-  - NomeDoAtaque: null
+  - NomeDoAtaque: 
     AtaqueRange: 00000000
     Dano: 04000000
     OrdemCombo: 01000000
@@ -13299,7 +13299,7 @@ MonoBehaviour:
     - 0
     Sons:
     - Som1
-  - NomeDoAtaque: null
+  - NomeDoAtaque: 
     AtaqueRange: 00000000
     Dano: 04000000
     OrdemCombo: 01000000
@@ -13319,7 +13319,7 @@ MonoBehaviour:
     - 0
     Sons:
     - Lanca1
-  - NomeDoAtaque: null
+  - NomeDoAtaque: 
     AtaqueRange: 00000000
     Dano: 04000000
     OrdemCombo: 01000000

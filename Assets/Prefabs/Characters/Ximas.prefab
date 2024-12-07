@@ -4296,7 +4296,7 @@ MonoBehaviour:
     - 0
     Sons:
     - Pow
-  - NomeDoAtaque: null
+  - NomeDoAtaque: 
     AtaqueRange: 00000000
     Dano: 04000000
     OrdemCombo: 
@@ -4316,7 +4316,7 @@ MonoBehaviour:
     - 0
     Sons:
     - Pow
-  - NomeDoAtaque: null
+  - NomeDoAtaque: 
     AtaqueRange: 00000000
     Dano: 04000000
     OrdemCombo: 
@@ -4336,7 +4336,7 @@ MonoBehaviour:
     - 0
     Sons:
     - Pow
-  - NomeDoAtaque: null
+  - NomeDoAtaque: 
     AtaqueRange: 00000000
     Dano: 04000000
     OrdemCombo: 
