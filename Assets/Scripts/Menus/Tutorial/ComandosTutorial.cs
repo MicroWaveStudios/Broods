@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -13,8 +14,9 @@ public class ComandosTutorial : MonoBehaviour
     [SerializeField] PanelsManager panelsManager;
     PlayerMoveRigidbody playerMove;
     PlayerCombat playerCombat;
-    PlayerController playerController;
+    [SerializeField] PlayerController playerController;
     public bool podeAtacar = true;
+    [SerializeField] GameObject[] prefabsInScene;
 
     [SerializeField] sceneManager sceneManager;
     
@@ -22,7 +24,7 @@ public class ComandosTutorial : MonoBehaviour
     {
         playerMove = GameObject.FindGameObjectWithTag("Player1").GetComponent<PlayerMoveRigidbody>();
         playerCombat = GameObject.FindGameObjectWithTag("Player1").GetComponent<PlayerCombat>();
-        playerController = GameObject.FindGameObjectWithTag("Player1").GetComponent<PlayerController>();
+        //playerController = GameObject.FindGameObjectWithTag("Player1").GetComponent<PlayerController>();
     }
     private void Update()
     {
@@ -112,7 +114,7 @@ public class ComandosTutorial : MonoBehaviour
         yield return new WaitForSeconds(2.5f);
         painelFimTutorial.SetActive(true);
         playerController.EnableMapActionUI();
-        panelsManager.ChangePanel(0);
+        panelsManager.ChangePanel(1);
         //sceneManager.GetComponent<sceneManager>().VoltarMenu();
     }
 }
