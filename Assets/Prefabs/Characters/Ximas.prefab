@@ -4150,7 +4150,7 @@ MonoBehaviour:
   _AttackList:
   - NomeDoAtaque: AtaqueBaixo
     AtaqueRange: 00000000
-    Dano: 07000000
+    Dano: 09000000
     OrdemCombo: 
     FramesContinuar:
     - 0.47
@@ -4170,7 +4170,7 @@ MonoBehaviour:
     - Pow
   - NomeDoAtaque: AtaqueFraco
     AtaqueRange: 010000000100000001000000
-    Dano: 080000000400000009000000
+    Dano: 0a000000060000000b000000
     OrdemCombo: 0200000003000000
     FramesContinuar:
     - 0.4
@@ -4206,7 +4206,7 @@ MonoBehaviour:
     - Espada
   - NomeDoAtaque: AtaqueMedio
     AtaqueRange: 0200000002000000
-    Dano: 0800000006000000
+    Dano: 0a00000008000000
     OrdemCombo: 01000000
     FramesContinuar:
     - 0.6
@@ -4234,7 +4234,7 @@ MonoBehaviour:
     - Corte
   - NomeDoAtaque: AtaqueForte
     AtaqueRange: 02000000020000000200000002000000
-    Dano: 0900000006000000050000000a000000
+    Dano: 0b00000008000000070000000c000000
     OrdemCombo: 030000000300000003000000
     FramesContinuar:
     - 0.4
@@ -4278,7 +4278,7 @@ MonoBehaviour:
     - Lamina
   - NomeDoAtaque: AtaqueBaixoAgachado
     AtaqueRange: 00000000
-    Dano: 06000000
+    Dano: 08000000
     OrdemCombo: 
     FramesContinuar:
     - 0.4

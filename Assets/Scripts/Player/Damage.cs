@@ -163,7 +163,7 @@ public class Damage : MonoBehaviour
                 playerStats.AddEnergy(damage * playerStats.GetDamageMultiplier());
             }
 
-            playerStats.SomarSequencia();
+            //playerStats.SomarSequencia();
             otherPlayerStats.SufferDamage(damage * playerStats.GetDamageMultiplier(), attackRange, moveDamage, moveDamageOtherPlayer, moveUpOtherPlayer, this.transform.parent.gameObject);
             otherPlayerStats.AddEnergy((damage * playerStats.GetDamageMultiplier()) / 3);
 

@@ -163,6 +163,7 @@ public class PlayerStats : MonoBehaviour
             }
             else
             {
+                otherPlayer.GetComponent<PlayerStats>().SomarSequencia();
                 SomarPontos(25);
                 vida -= damage;
                 playerAnimator.TriggerAction("TomouDano");
@@ -171,8 +172,6 @@ public class PlayerStats : MonoBehaviour
 
                 vfxImpacto.Play();
                 scrSons.TocarSom("LevarDano");
-
-
                 playerCombat.ResetCombo();
                 StartCoroutine(ResetScripts(0.5f));
             }
