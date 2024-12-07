@@ -3408,14 +3408,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de36284866be3d544bcebfb1c4558ac9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PausePanel: {fileID: 0}
+  PausePanel: {fileID: 13720734}
   ButtonPanel:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  DefaultButtonSelected: {fileID: 0}
+  - {fileID: 1709763132}
+  DefaultButtonSelected: {fileID: 1709763132}
   EventSystemManager: {fileID: 721454773}
-  background: {fileID: 0}
+  background: {fileID: 1769979405}
 --- !u!4 &857956302
 Transform:
   m_ObjectHideFlags: 0
@@ -3972,22 +3970,22 @@ MonoBehaviour:
   PauseUI: {fileID: 13720734}
   Pauses:
   - PauseNara:
-    - {fileID: 0}
+    - {fileID: 864082055}
     - {fileID: 864082055}
     - {fileID: 864082055}
     - {fileID: 315576379}
     PauseXimas:
-    - {fileID: 0}
+    - {fileID: 81540012}
     - {fileID: 81540012}
     - {fileID: 81540012}
     - {fileID: 1365564262}
   - PauseNara:
-    - {fileID: 0}
+    - {fileID: 1921674369}
     - {fileID: 1921674369}
     - {fileID: 1921674369}
     - {fileID: 666252906}
     PauseXimas:
-    - {fileID: 0}
+    - {fileID: 1204963305}
     - {fileID: 1204963305}
     - {fileID: 1204963305}
     - {fileID: 611805868}

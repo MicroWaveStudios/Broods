@@ -3828,8 +3828,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PausePanel: {fileID: 53203561}
   ButtonPanel:
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 1155059939}
   DefaultButtonSelected: {fileID: 1155059939}
   EventSystemManager: {fileID: 721454773}
@@ -5796,22 +5794,22 @@ MonoBehaviour:
   PauseUI: {fileID: 53203561}
   Pauses:
   - PauseNara:
-    - {fileID: 0}
+    - {fileID: 433249992}
     - {fileID: 433249992}
     - {fileID: 433249992}
     - {fileID: 1597771618}
     PauseXimas:
-    - {fileID: 0}
+    - {fileID: 490972805}
     - {fileID: 490972805}
     - {fileID: 490972805}
     - {fileID: 2004598445}
   - PauseNara:
-    - {fileID: 0}
+    - {fileID: 864120742}
     - {fileID: 864120742}
     - {fileID: 864120742}
     - {fileID: 863404253}
     PauseXimas:
-    - {fileID: 0}
+    - {fileID: 293287662}
     - {fileID: 293287662}
     - {fileID: 293287662}
     - {fileID: 968276115}
