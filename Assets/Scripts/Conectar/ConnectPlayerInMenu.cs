@@ -142,6 +142,7 @@ public class ConnectPlayerInMenu : MonoBehaviour
             Pontos.personagem[i] = player[i].GetComponent<ConnectPlayer>().GetNumeroPersonagem();
             Pontos.prefabPlayer[i].tag = player[i].tag;
         }
+        personagensManager.LoadingPanel(novaCenaAtual);
     }
     public void SetarPrefabPlayer(int playerAtual, int prefabIndex)
     {

@@ -10,6 +10,7 @@ public class PersonagensManager : MonoBehaviour
 {
     #region Variaveis
     [SerializeField] ConnectPlayerInMenu connectManager;
+    [SerializeField] sceneManager sceneManager;
 
     [SerializeField] Image[] spritePersonagens;
     [SerializeField] GameObject[] BotoesDaCena;
@@ -24,6 +25,18 @@ public class PersonagensManager : MonoBehaviour
 
     [SerializeField] GameObject[] VisualP1;
     [SerializeField] GameObject[] VisualP2;
+
+    [System.Serializable]
+    public struct PersonagemLoading
+    {
+        public GameObject[] PersonagensLoading;
+    }
+    [SerializeField] List<PersonagemLoading> listaDePersonagemLoading = new List<PersonagemLoading>();
+
+    [SerializeField] GameObject Background;
+    [SerializeField] GameObject Versus;
+    [SerializeField] GameObject LoadingIcon; 
+    [SerializeField] GameObject PainelLoading;
 
     [SerializeField] GameObject BotoesPersonagens;
 
@@ -215,6 +228,40 @@ public class PersonagensManager : MonoBehaviour
             NomePersonagemTxt[playerIndex].text = nomeVariante[playerIndex];
             NomePersonagemTxt[playerIndex].transform.GetChild(0).GetComponent<TMP_Text>().text = frase;
         }
+    }
+
+    public void LoadingPanel(string cena)
+    {
+        PainelLoading.SetActive(true);
+        for (int i = 0; i < 2; i++)
+        {
+            for (int x = 0; x < 2; x++)
+            {
+                listaDePersonagemLoading[i].PersonagensLoading[x].SetActive(false);
+            }
+        }
+        for (int i = 0; i < 2; i++)
+        {
+            listaDePersonagemLoading[i].PersonagensLoading[connectManager.GetPlayer(i).GetComponent<ConnectPlayer>().GetNumeroPersonagem()].SetActive(true);
+        }
+        StartCoroutine(FadeIn(cena));
+    }
+    IEnumerator FadeIn(string cena)
+    {
+        float adicionar = 0;
+        while (adicionar < 3f)
+        {
+            listaDePersonagemLoading[0].PersonagensLoading[connectManager.GetPlayer(0).GetComponent<ConnectPlayer>().GetNumeroPersonagem()].GetComponent<Image>().color = new Color(Color.white.r, Color.white.g, Color.white.b, adicionar);
+            listaDePersonagemLoading[1].PersonagensLoading[connectManager.GetPlayer(1).GetComponent<ConnectPlayer>().GetNumeroPersonagem()].GetComponent<Image>().color = new Color(Color.white.r, Color.white.g, Color.white.b, adicionar);
+            Background.GetComponent<Image>().color = new Color(Color.white.r, Color.white.g, Color.white.b, adicionar);
+            Versus.GetComponent<Image>().color = new Color(Color.white.r, Color.white.g, Color.white.b, adicionar);
+            LoadingIcon.GetComponent<Image>().color = new Color(Color.white.r, Color.white.g, Color.white.b, adicionar);
+
+            adicionar += 0.02f;
+            yield return new WaitForSeconds(0.01f);
+        }
+        yield return new WaitForSeconds(5f);
+        sceneManager.CarregarGame(cena);
     }
     public void DestroyPersonagens()
     {

@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class sceneManager : MonoBehaviour
 {
+    public void CarregarGame(string nomeCena)
+    {
+        SceneManager.LoadScene(nomeCena);
+    }
     public void Game()
     {
         SceneManager.LoadScene("GameAcademia");
