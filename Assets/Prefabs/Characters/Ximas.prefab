@@ -3688,7 +3688,7 @@ GameObject:
   - component: {fileID: 7016451780072166860}
   m_Layer: 7
   m_Name: Ximas
-  m_TagString: Player1
+  m_TagString: Player2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4296,7 +4296,7 @@ MonoBehaviour:
     - 0
     Sons:
     - Pow
-  - NomeDoAtaque: 
+  - NomeDoAtaque: null
     AtaqueRange: 00000000
     Dano: 04000000
     OrdemCombo: 
@@ -4316,7 +4316,7 @@ MonoBehaviour:
     - 0
     Sons:
     - Pow
-  - NomeDoAtaque: 
+  - NomeDoAtaque: null
     AtaqueRange: 00000000
     Dano: 04000000
     OrdemCombo: 
@@ -4336,7 +4336,7 @@ MonoBehaviour:
     - 0
     Sons:
     - Pow
-  - NomeDoAtaque: 
+  - NomeDoAtaque: null
     AtaqueRange: 00000000
     Dano: 04000000
     OrdemCombo: 
