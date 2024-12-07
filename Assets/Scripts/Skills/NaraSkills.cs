@@ -320,7 +320,7 @@ public class NaraSkills : MonoBehaviour
 
         tarticosContagem++;
 
-        scrpPlayerStats.SomarDamageMultiplier(0.3f * tarticosContagem);
+        scrpPlayerStats.SomarDamageMultiplier(0.2f * tarticosContagem);
 
         //danoLaser += tarticosContagem;
 
