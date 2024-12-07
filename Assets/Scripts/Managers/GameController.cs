@@ -626,6 +626,7 @@ public class GameController : MonoBehaviour
         {
             Pontos.pontosP[i] = 0;
             Pontos.vitoriaP[i] = 0;
+            Pontos.tarticos[i] = 0;
         }
     }
 

@@ -445,9 +445,7 @@ public class NaraSkills : MonoBehaviour
         {
             tatuagens[numVariacao].SetColor("_Color1", Color.white * 1f);
         }
-        
     }
-
     public int GetTarticos()
     {
         return tarticosContagem;
