@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.VFX;
+using TMPro;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -18,12 +19,16 @@ public class PlayerStats : MonoBehaviour
     PlayerAnimator playerAnimator;
     GameController scrpGameController;
     Sons scrSons;
+    PlayerController scrpPlayerController;
     public bool defendendo;
+
+    public GameObject[] txtContadores;
+    [SerializeField] Color[] corContadores;
 
     public bool defendeu;
 
     public float pontos = 0f;
-    public float golpesSequencia = 0f;
+    public int golpesSequencia = 0;
     public float timer = 0f;
 
     [SerializeField] bool tutorial;
@@ -40,6 +45,7 @@ public class PlayerStats : MonoBehaviour
         playerCombat = this.GetComponent<PlayerCombat>();
         playerAnimator = this.GetComponent<PlayerAnimator>();
         scrSons = this.GetComponent<Sons>();
+        scrpPlayerController = this.GetComponent<PlayerController>();
 
         if (!tutorial)
         {
@@ -51,6 +57,7 @@ public class PlayerStats : MonoBehaviour
     {
         vida = vidaMax;
         energia = 0;
+        txtContadores = GameObject.FindGameObjectsWithTag("ContadoresSequencia");
         StartCoroutine(TimerFimSequencia());
     }
 
@@ -71,6 +78,8 @@ public class PlayerStats : MonoBehaviour
             InvokeRepeating("Regen", 3f, 3f);
             teste = false;
         }
+
+        
     }
 
     public void SetDefendendo(bool value)
@@ -278,6 +287,16 @@ public class PlayerStats : MonoBehaviour
     {
         timer = 0f;
         golpesSequencia++;
+        txtContadores[scrpPlayerController.GetPlayerID()].GetComponent<TMP_Text>().text = golpesSequencia.ToString() + "x";
+        Vector3 scaleTXT = txtContadores[scrpPlayerController.GetPlayerID()].transform.localScale;
+        txtContadores[scrpPlayerController.GetPlayerID()].transform.localScale = new Vector3(scaleTXT.x + 0.1f, scaleTXT.y + 0.1f, scaleTXT.z + 0.1f);
+        txtContadores[scrpPlayerController.GetPlayerID()].transform.rotation = Quaternion.Euler(Random.Range(-10f, 10f), Random.Range(-10f, 10f), Random.Range(-10f, 10f));
+        if (golpesSequencia <= corContadores.Length)
+        {
+            txtContadores[scrpPlayerController.GetPlayerID()].GetComponent<TMP_Text>().color = corContadores[golpesSequencia];
+        }
+        
+        txtContadores[scrpPlayerController.GetPlayerID()].SetActive(true);
     }
 
     public float GetSequencia()
@@ -305,7 +324,7 @@ public class PlayerStats : MonoBehaviour
     {
         while (true)
         {
-            while (timer < 0.8f)
+            while (timer < 1f)
             {
                 timer += 1 * Time.deltaTime;
                 yield return null;
@@ -313,6 +332,15 @@ public class PlayerStats : MonoBehaviour
 
             timer = 0f;
             golpesSequencia = 0;
+
+            if (txtContadores != null)
+            {
+                txtContadores[scrpPlayerController.GetPlayerID()].GetComponent<TMP_Text>().text = golpesSequencia.ToString();
+                txtContadores[scrpPlayerController.GetPlayerID()].transform.localScale = new Vector3(1f, 1f, 1f);
+                txtContadores[scrpPlayerController.GetPlayerID()].GetComponent<TMP_Text>().color = corContadores[0];
+                txtContadores[scrpPlayerController.GetPlayerID()].SetActive(false);
+            }
+            
             yield return null;
         }        
     }

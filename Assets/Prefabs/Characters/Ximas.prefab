@@ -4407,6 +4407,18 @@ MonoBehaviour:
   energiaMax: 15
   energia: 0
   defendendo: 0
+  txtContadores: []
+  corContadores:
+  - {r: 0.9254298, g: 1, b: 0, a: 1}
+  - {r: 0.9907571, g: 1, b: 0, a: 1}
+  - {r: 1, g: 0.8666878, b: 0, a: 1}
+  - {r: 1, g: 0.6938923, b: 0, a: 1}
+  - {r: 1, g: 0.58280736, b: 0, a: 1}
+  - {r: 1, g: 0.44054037, b: 0, a: 1}
+  - {r: 1, g: 0.28719693, b: 0, a: 1}
+  - {r: 1, g: 0.12530698, b: 0, a: 1}
+  - {r: 1, g: 0.029372733, b: 0, a: 1}
+  - {r: 1, g: 0, b: 0.1181407, a: 1}
   defendeu: 0
   pontos: 0
   golpesSequencia: 0
